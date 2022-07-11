@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('doctor_specifics', function (Blueprint $table) {
             $table->id();
             $table->integer("doctor_id");
+            $table->enum("speciality", array("cardiology", "ear, nose, and throat", "endocrinology and metabolic disorders", "oncology", "denistry", "neurology", "nephrology", "orthopedics", "family medicine", "internal medicine", "allergy and immunology", "gastroenterology and hepatology"));
+            $table->float('rate', 9, 1);
             $table->text('about');
             $table->binary('background_img');
             $table->string('university');

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer("follower_id");
             $table->integer("doctor_id");
+            $table->timestamps();
         });
     }
 

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer("patient_id");
             $table->string("title");
             $table->date("date");
-            $table->string("duration");
+            $table->integer("duration");
             $table->timestamps();
         });
     }
