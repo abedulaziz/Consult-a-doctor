@@ -8,6 +8,7 @@ use App\Http\Controllers\JWTController;
 use App\Http\Controllers\DoctorsController;
 use App\Http\Controllers\Account_requestsController;
 use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\FollowingsController;
 
 
 /*
@@ -49,3 +50,8 @@ Route::get("/{specialization}/doctors", [DoctorsController::class, "specialityDo
 
 // get doctor's blogs
 Route::get("/doctors/{doctor_id}/blogs", [BlogsController::class, "getBlogs"]);
+
+Route::group(["middleware" => "verifyAuth"], function () {
+    Route::post("/doctors/{doctor_id}/follow", [FollowingsController::class, "followDoctor"]);
+    Route::post("/doctors/{doctor_id}/unfollow", [FollowingsController::class, "unFollowDoctor"]);
+});

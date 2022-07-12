@@ -16,3 +16,4 @@ class BlogsController extends Controller
         ], 200);
     }
 }
+
