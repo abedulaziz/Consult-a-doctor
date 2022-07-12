@@ -22,7 +22,7 @@ class Account_requestsController extends Controller
         $validator = Validator::make($request->all(), [
             'fname' => 'required|string|min:2|max:50',
             'lname' => 'required|string|min:2|max:50',
-            'email' => 'required|string|email|max:100|unique:users',
+            'email' => 'required|string|email|max:100|unique:users|unique:account_requests',
             'password' => 'required|string|confirmed|min:6',
             'date_of_birth' => 'required|date',
             'gender' => ["required", new Enum(Gender::class)],
@@ -36,18 +36,10 @@ class Account_requestsController extends Controller
             return response()->json($validator->errors(), 400);
         }
 
-        Account_request::create([
-            "fname" => $request->fname,
-            "lname" => $request->lname,
-            "email" => $request->email,
-            "password" => Hash::make($request->password),
-            "gender" => $request->gender,
-            "date_of_birth" => $request->date_of_birth,
-            "profile_pic" => $request->profile_pic,
-            "speciality" => $request->speciality,
-            "about" => $request->about,
-            "university" => $request->university,
-        ]);
+        $account = new Account_request(request()->all());
+        $account->password = Hash::make($request->password);
+
+        $account->save();
 
         return response()->json([
             "message" => "Request sent successfuly"
