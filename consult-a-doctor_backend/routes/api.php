@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JWTController;
 use App\Http\Controllers\DoctorsController;
 use App\Http\Controllers\Account_requestsController;
+use App\Http\Controllers\BlogsController;
 
 
 /*
@@ -46,3 +47,5 @@ Route::get("/doctors/{doctor_id}", [DoctorsController::class, "getDoctorInfo"]);
 // get selected specialization's doctors
 Route::get("/{specialization}/doctors", [DoctorsController::class, "specialityDoctors"]);
 
+// get doctor's blogs
+Route::get("/doctors/{doctor_id}/blogs", [BlogsController::class, "getBlogs"]);
