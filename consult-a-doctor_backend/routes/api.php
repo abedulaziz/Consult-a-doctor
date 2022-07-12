@@ -2,9 +2,12 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+// controllers
 use App\Http\Controllers\JWTController;
 use App\Http\Controllers\DoctorsController;
 use App\Http\Controllers\Account_requestsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -37,5 +40,9 @@ Route::get("/doctors/top-5", [DoctorsController::class, 'getTopDoctors']);
 // add doctor account request on the waiting-list
 Route::post("/doctors/create-account-request", [Account_requestsController::class, 'doctorSignUp']);
 
-// get selected specialization doctors
+// get selected doctor's info
+Route::get("/doctors/{doctor_id}", [DoctorsController::class, "getDoctorInfo"]);
+
+// get selected specialization's doctors
 Route::get("/{specialization}/doctors", [DoctorsController::class, "specialityDoctors"]);
+

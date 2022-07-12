@@ -48,4 +48,18 @@ class DoctorsController extends Controller
         ], 200);
     }
 
+
+    public function getDoctorInfo($doctor_id) {
+
+        $doctor_info =Doctor_specific::find($doctor_id)->getDoctorSpecific;
+        $doctor_specific = Doctor_specific::select("speciality", "rate", "about", "background_img", "university")->where("doctor_id", $doctor_id)->get();
+
+        return response()->json([
+            "isAccountOwner" => auth()->id() == $doctor_id ? true: false,
+            "doctor_info" => $doctor_info,
+            "doctor_specifics" => $doctor_specific
+        ], 200);
+
+    }
+
 }
