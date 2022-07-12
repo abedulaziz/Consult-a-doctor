@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JWTController;
+use App\Http\Controllers\DoctorsController;
+use App\Http\Controllers\Account_requestsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +30,10 @@ Route::group(['middleware' => 'api'], function($router) {
     Route::post('/profile', [JWTController::class, 'profile']);
 });
 
+
+// get top 5 doctors
+Route::get("/doctors/top-5", [DoctorsController::class, 'getTopDoctors']);
+
+// add doctor account request on the waiting-list
+Route::post("/doctors/create-account-request", [Account_requestsController::class, 'doctorSignUp']);
 
