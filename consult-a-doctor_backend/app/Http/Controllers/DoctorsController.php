@@ -16,11 +16,35 @@ class DoctorsController extends Controller
 
             $doctor->fname = $user_info->fname;
             $doctor->lname = $user_info->lname;
+            $doctor->profile_pic = $user_info->profile_pic;
         }
 
         return response()->json([
             "isAuthorized" => auth()->id() ? true:false,
             "topDoctors" => $topFive
+        ], 200);
+    }
+
+    public function specialityDoctors($specialization) {
+        $doctors = null;
+
+        if ($specialization == "all") {
+            $doctors = Doctor_specific::select("doctor_id", "speciality", "rate", "about")->get();
+        }
+        else $doctors = Doctor_specific::select("doctor_id", "speciality", "rate", "about")->where("speciality", $specialization)->get();
+
+
+        foreach($doctors as $doctor) {
+            $user_info = Doctor_specific::find($doctor->doctor_id)->getDoctorSpecific;
+
+            $doctor->fname = $user_info->fname;
+            $doctor->lname = $user_info->lname;
+            $doctor->profile_pic = $user_info->profile_pic;
+        }
+
+        return response()->json([
+            "isAuthorized" => auth()->id() ? true:false,
+            "doctors" => $doctors
         ], 200);
     }
 
