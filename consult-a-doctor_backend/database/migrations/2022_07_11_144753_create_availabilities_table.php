@@ -16,8 +16,11 @@ return new class extends Migration
         Schema::create('availabilities', function (Blueprint $table) {
             $table->id();
             $table->integer("doctor_id");
-            $table->time("from");
-            $table->time("to");
+            $table->JSON("monday");
+            $table->JSON("tuesday");
+            $table->JSON("wednesday");
+            $table->JSON("thursday");
+            $table->JSON("friday");
             $table->date("date");
             $table->timestamps();
         });
