@@ -21,6 +21,8 @@ class AppointmentFactory extends Factory
             'patient_id' => $this->faker->numberBetween(1, 20),
             'title' => $this->faker->words(3, true),
             'date' => $this->faker->date(),
+            'from' => $this->faker->time(),
+            'to' => $this->faker->time(),
             'duration' => 5000
         ];
     }
