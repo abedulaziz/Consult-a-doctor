@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
+use App\Models\Doctor_specific;
+
 class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -67,6 +69,7 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
-
-
+    public function getDoctorSpecifics() {
+        return $this->hasOne(Doctor_specific::class, "doctor_id");
+    }
 }
