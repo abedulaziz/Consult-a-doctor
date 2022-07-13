@@ -54,4 +54,14 @@ class UsersController extends Controller
             "message" => "Information updated successfully",
         ]);
     }
+
+
+    public function getAvailablePeriods($doctor_id) {
+
+        $doctorAvailability = User::find($doctor_id)->getDoctorAvailabilities->select("monday", "tuesday", "wednesday", "thursday", "friday")->where("doctor_id", $doctor_id)->get();
+
+        return response()->json([
+            "available_periods" => $doctorAvailability
+        ]);
+    }
 }

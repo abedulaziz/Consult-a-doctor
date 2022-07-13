@@ -20,7 +20,9 @@ class VerifyAuthenticationAndOwnership
         if (auth()->id()) {
 
             if (auth()->id() != $request->route("doctor_id")) return $next($request);
-            else return response("Unvalid action", 401);
+            else return response()->json([
+                "message" => "Unauthorized action"
+            ], 403);
         }
 
         return response()->json([
