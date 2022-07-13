@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 use App\Models\Doctor_specific;
+use App\Models\Availability;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -71,5 +72,9 @@ class User extends Authenticatable implements JWTSubject
 
     public function getDoctorSpecifics() {
         return $this->hasOne(Doctor_specific::class, "doctor_id");
+    }
+
+    public function getDoctorAvailabilities() {
+        return $this->hasOne(Availability::class, "doctor_id");
     }
 }
