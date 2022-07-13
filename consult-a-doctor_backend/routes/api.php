@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 // controllers
 use App\Http\Controllers\JWTController;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\DoctorsController;
 use App\Http\Controllers\Account_requestsController;
 use App\Http\Controllers\BlogsController;
@@ -37,21 +38,27 @@ Route::group(['middleware' => 'api'], function($router) {
 
 
 // get top 5 doctors
-Route::get("/doctors/top-5", [DoctorsController::class, 'getTopDoctors']);
+Route::get("/users/top-five-doctors", [DoctorsController::class, 'getTopDoctors']);
 
 // add doctor account request on the waiting-list
-Route::post("/doctors/create-account-request", [Account_requestsController::class, 'doctorSignUp']);
+Route::post("/users/doctor-account-request", [Account_requestsController::class, 'doctorSignUp']);
 
 // get selected doctor's info
-Route::get("/doctors/{doctor_id}", [DoctorsController::class, "getDoctorInfo"]);
+Route::get("/users/{doctor_id}", [DoctorsController::class, "getDoctorInfo"]);
 
 // get selected specialization's doctors
 Route::get("/{specialization}/doctors", [DoctorsController::class, "specialityDoctors"]);
 
 // get doctor's blogs
-Route::get("/doctors/{doctor_id}/blogs", [BlogsController::class, "getBlogs"]);
+Route::get("/users/{doctor_id}/blogs", [BlogsController::class, "getBlogs"]);
 
+// routes grouped under a middleware that requires the user not to be the owner of the account when visiting a profile page
 Route::group(["middleware" => "verifyAuth"], function () {
-    Route::post("/doctors/{doctor_id}/follow", [FollowingsController::class, "followDoctor"]);
-    Route::post("/doctors/{doctor_id}/unfollow", [FollowingsController::class, "unFollowDoctor"]);
+    Route::post("/users/{doctor_id}/follow", [FollowingsController::class, "followDoctor"]);
+    Route::post("/users/{doctor_id}/unfollow", [FollowingsController::class, "unFollowDoctor"]);
 });
+
+Route::group(["middleware" => "verifyOwnership"], function () {
+    Route::post("/users/{user_id}/update-info", [UsersController::class, "updateUserInfo"]);
+});
+

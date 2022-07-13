@@ -10,6 +10,12 @@ class Doctor_specific extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        "about",
+        "background_img",
+        "university"
+    ];
+
     public function getDoctorSpecific() {
         return $this->hasOne(User::class, "id");
     }
