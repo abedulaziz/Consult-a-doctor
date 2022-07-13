@@ -22,6 +22,9 @@ class VerifyAuthenticationAndOwnership
             if (auth()->id() != $request->route("doctor_id")) return $next($request);
             else return response("Unvalid action", 401);
         }
-        return response("Unvalid token", 401);
+
+        return response()->json([
+            "message" => "Unvalid token"
+        ], 401);
     }
 }
