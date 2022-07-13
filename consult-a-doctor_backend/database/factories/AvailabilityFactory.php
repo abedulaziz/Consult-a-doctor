@@ -19,31 +19,35 @@ class AvailabilityFactory extends Factory
         return [
             'doctor_id' => $this->faker->numberBetween(1, 20),
             'monday' => [
-                "period" => [
+                [
+                    "from" => $this->faker->randomElement(["08:30:00", "09:28:00", "10:30:00"]),
+                    "to" => $this->faker->randomElement(["18:30:00", "19:03:00", "20:00:00"])
+                ],
+                [
                     "from" => $this->faker->randomElement(["08:30:00", "09:28:00", "10:30:00"]),
                     "to" => $this->faker->randomElement(["18:30:00", "19:03:00", "20:00:00"])
                 ]
             ],
             'tuesday' => [
-                "period" => [
+                [
                     "from" => $this->faker->randomElement(["08:30:00", "09:28:00", "10:30:00"]),
                     "to" => $this->faker->randomElement(["18:30:00", "19:03:00", "20:00:00"])
                 ]
             ],
             'wednesday' => [
-                "period" => [
+                [
                     "from" => $this->faker->randomElement(["08:30:00", "09:28:00", "10:30:00"]),
                     "to" => $this->faker->randomElement(["18:30:00", "19:03:00", "20:00:00"])
                 ]
             ],
             'thursday' => [
-                "period" => [
+                [
                     "from" => $this->faker->randomElement(["08:30:00", "09:28:00", "10:30:00"]),
                     "to" => $this->faker->randomElement(["18:30:00", "19:03:00", "20:00:00"])
                 ]
             ],
             'friday' => [
-                "period" => [
+                [
                     "from" => $this->faker->randomElement(["08:30:00", "09:28:00", "10:30:00"]),
                     "to" => $this->faker->randomElement(["18:30:00", "19:03:00", "20:00:00"])
                 ]

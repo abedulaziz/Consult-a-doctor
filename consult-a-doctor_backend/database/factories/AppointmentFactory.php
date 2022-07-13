@@ -23,7 +23,7 @@ class AppointmentFactory extends Factory
             'date' => $this->faker->date(),
             'from' => $this->faker->time(),
             'to' => $this->faker->time(),
-            'duration' => 5000
+            'duration' => 5
         ];
     }
 }
