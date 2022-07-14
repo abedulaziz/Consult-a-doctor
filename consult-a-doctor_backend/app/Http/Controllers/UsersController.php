@@ -56,12 +56,69 @@ class UsersController extends Controller
     }
 
 
-    public function getAvailablePeriods($doctor_id) {
+    public function getWorkPeriods($doctor_id) {
 
-        $doctorAvailability = User::find($doctor_id)->getDoctorAvailabilities->select("monday", "tuesday", "wednesday", "thursday", "friday")->where("doctor_id", $doctor_id)->get();
+        $doctorWorkPeriods = User::find($doctor_id)->getDoctorAvailabilities->select("monday", "tuesday", "wednesday", "thursday", "friday")->where("doctor_id", $doctor_id)->limit(1)->get();
 
         return response()->json([
-            "available_periods" => $doctorAvailability
+            "work_periods" => $doctorWorkPeriods
+        ]);
+    }
+
+    public function checkAvailability(Request $req, $doctor_id) {
+        $day = $req->day;
+
+        $workPeriods = User::find($doctor_id)->getDoctorAvailabilities->$day;
+        $selectedDayAppoints = User::find($doctor_id)->getDoctorAppoints->where("doctor_id", $doctor_id)->where("date", $req->date);
+
+        $availablePeriods = array();
+        foreach($workPeriods as $period) {
+            
+        }
+
+        return response()->json([
+            "available_periods" => $selectedDayAppoints
+        ]);
+    }
+
+
+
+
+
+    public function getAvailablePeriods($doctor_id, Request $req) {
+        $day = $req->day;
+
+        $workPeriods = User::find($doctor_id)->getDoctorAvailabilities->$day;
+
+        $selectedDayAppoints = User::find($doctor_id)->getDoctorAppoints->where("doctor_id", $doctor_id)->where("date", $req->date);
+
+        function isTimeValid($workPeriods, $req) {
+
+            foreach($workPeriods as $period) {
+
+                if($period["from"] < $req->time and $period["to"] > $req->time) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        if(!isTimeValid($workPeriods, $req)) {
+            return response()->json([
+                "message" => "Unvalid time"
+            ]);
+        }
+
+
+
+
+
+
+
+        $newtimestamp = strtotime('05:05:03 + 160 minutes');
+        echo date('H:i:s', $newtimestamp);
+
+        return response()->json([
+            "available_periods" => $selectedDayAppoints
         ]);
     }
 }
