@@ -11,6 +11,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 
 use App\Models\Doctor_specific;
 use App\Models\Availability;
+use App\Models\Appointment;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -76,5 +77,9 @@ class User extends Authenticatable implements JWTSubject
 
     public function getDoctorAvailabilities() {
         return $this->hasOne(Availability::class, "doctor_id");
+    }
+
+    public function getDoctorAppoints() {
+        return $this->hasMany(Appointment::class, "doctor_id");
     }
 }

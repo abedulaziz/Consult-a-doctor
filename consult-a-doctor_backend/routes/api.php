@@ -56,7 +56,9 @@ Route::get("/users/{doctor_id}/blogs", [BlogsController::class, "getBlogs"]);
 Route::group(["middleware" => "verifyAuth"], function () {
     Route::post("/users/{doctor_id}/follow", [FollowingsController::class, "followDoctor"]);
     Route::post("/users/{doctor_id}/unfollow", [FollowingsController::class, "unFollowDoctor"]);
-    Route::get("/users/{doctor_id}/available-periods", [UsersController::class, "getAvailablePeriods"]);
+    Route::get("/users/{doctor_id}/work-periods", [UsersController::class, "getWorkPeriods"]);
+    Route::post("/users/{doctor_id}/check-availability", [UsersController::class, "checkAvailability"]);
+    Route::post("/users/{doctor_id}/available-periods", [UsersController::class, "getAvailablePeriods"]);
 });
 
 Route::group(["middleware" => "verifyOwnership"], function () {
