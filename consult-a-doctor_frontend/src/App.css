@@ -1,38 +1,103 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+:root {
+  --main-theme-color: #022E7A;
+  --second-theme-color: #90B7FC;
+  --grayish-text-color: #757575;
+  --light-text-color: #FFF;
+  --dark-text-color: #000;
+  --star-color: #FFF500;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*{
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  padding-left: 7vw;
+  padding-right: 7vw;
+  margin: auto;
+}
+
+h1, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h2.sec-heading {
+  padding: 0;
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 30px;
+}
+
+/* ------------------------------------------------ */
+/* ----------------- start header ----------------- */
+/* ------------------------------------------------ */
+
+header {
+
+}
+
+header .header-content {
   display: flex;
-  flex-direction: column;
+  padding: 20px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+header .header-content > * {
+  display: flex;
+  /* justify-content: center; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+header .header-content > *:first-child {
+  margin-right: auto;
+}
+header .header-content > *:last-child {
+  margin-left: auto;
+}
+
+header .header-content .brand {
+  min-width: 200px;
+  max-width: 300px
+}
+
+header .header-content nav {
+  gap: 15px;
+}
+
+header .header-content .brand .logo img {
+  width: 100%;
+}
+
+header .header-content nav >div a{
+  color: var(--dark-text-color);
+  text-decoration: none;
+  font-weight: 400;
+}
+
+header .header-content .account_status button{
+  padding: 10px 15px;
+  border: none;
+  background-color: inherit;
+  color: var(--main-theme-color);
+  font-weight: 400;
+  font-size: 16px;
+  font-family: 'Ubuntu', sans-serif;
+  cursor: pointer;
+}
+
+header .header-content .account_status .sign-up_button {
+  background: var(--main-theme-color);
+  color: var(--light-text-color);
+  border-radius: 4px;
 }

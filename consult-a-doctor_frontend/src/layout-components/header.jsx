@@ -1,5 +1,10 @@
 import React from 'react'
 
+// helper components
+import NavItem from '../helper-components/navItem';
+
+import logo from '../assets/brand/transparent_background_logo.png';
+
 const Header = () => {
   return (
     <header>
@@ -9,8 +14,22 @@ const Header = () => {
 
           <div className="brand">
             <div className="logo">
-              <img src="../../assets/brand/transparent_background_logo.png" alt="" />
+              <img src={logo} alt="consult a doctor" />
             </div>
+          </div>
+
+          <nav>
+
+            <NavItem path="/" className="home" content="Home" />
+            <NavItem path="/specializations" className="specializations" content="Specializations" />
+            <NavItem path="/doctors" className="doctors" content="Doctors" />
+            <NavItem path="/appointments" className="appointments" content="My Appointments" />
+
+          </nav>
+
+          <div className="account_status">
+            <button className='sign-in_button'>Sign in</button>
+            <button className='sign-up_button'>Sign up</button>
           </div>
         
         </div>
