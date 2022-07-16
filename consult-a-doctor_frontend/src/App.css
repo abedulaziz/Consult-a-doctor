@@ -260,3 +260,87 @@ header .header-content .account_status .sign-up_button {
 /* ------------------------------------------------ */
 /* ----------------- end doctor support ----------------- */
 /* ------------------------------------------------ */
+
+/* ------------------------------------------------ */
+/* ----------------- start top doctors ----------------- */
+/* ------------------------------------------------ */
+
+.top_doctors {
+  margin: 20px 0;
+}
+
+.side_padding_container {
+  padding-left: 7vw;
+  padding-right: 10px;
+}
+
+.top_doctors .top_doctors-content {
+  display: flex;
+  gap: 20px;
+}
+
+.top_doctors .top_doctors-content .top_doctors_text {
+  flex:1;
+  padding-top: 40px;
+}
+
+.top_doctors .top_doctors-content .top_doctors_text .description {
+  color: var(--grayish-text-color);
+}
+
+.top_doctors .top_doctors-content .top_doctors-details {
+  flex: 3;
+  display: flex;
+  gap: 15px;
+  align-items: flex-end;
+}
+
+.top_doctors .top_doctors-content .top_doctors-details .top_doctor {
+  flex: 1;
+}
+
+.top_doctors .top_doctors-content .top_doctors-details .top_doctor .img_wrapper {
+  width: 100%;
+  height: calc(75vw /4 + 5vw);
+  box-shadow: 0 0 7px gray;
+}
+
+.top_doctors .top_doctors-content .top_doctors-details .top_doctor .img_wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50%;
+}
+
+.top_doctors .top_doctors-content .top_doctors-details .top_doctor .details{
+  padding: 4px 15px;
+  display: none;
+}
+
+.top_doctors .top_doctors-content .top_doctor.active .details {
+  display: block !important;
+}
+
+.top_doctors .top_doctors-content .top_doctors-details .top_doctor .details .speciality-age {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--grayish-text-color)
+}
+
+.top_doctors .top_doctors-content .top_doctors-details .top_doctor .details >div:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.top_doctors .top_doctors-content .top_doctors-details .top_doctor .details .age {
+  color: #000;
+  font-size: 17px;
+}
+
+.top_doctors .top_doctors-content .top_doctors-details .top_doctor .details .rate img{
+  width: 20px;
+}
+
+/* ------------------------------------------------ */
+/* ----------------- end top doctor ----------------- */
+/* ------------------------------------------------ */

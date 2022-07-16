@@ -9,9 +9,15 @@ import HandsThumbsUp from '../assets/icons/HandThumbsUp.svg';
 // backgrounds
 import DoctorsSupportImg from '../assets/backgrounds/doctors_support.png';
 
+import Doctor1 from '../assets/backgrounds/doctor1.jpg'
+import Doctor2 from '../assets/backgrounds/doctor2.jpg'
+import Doctor3 from '../assets/backgrounds/doctor3.jpg'
+import Doctor4 from '../assets/backgrounds/doctor4.jpg'
+
 // helper components
 import Meta from '../helper-components/meta';
 import Feature from '../helper-components/feature';
+import TopDoctor from '../helper-components/topDoctor';
 
 // layout components
 import Header from '../layout-components/header';
@@ -85,6 +91,28 @@ const Home = () => {
                 During your walkthrough, you can search and book meetings with doctors as much as you want.<br />
                 All doctors here are available and always ready to help.<br />
                 </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        {/* top doctors section */}
+        <div className="top_doctors">
+          <div className="side_padding_container">
+            <div className="top_doctors-content">
+
+              <div className="top_doctors_text">
+                <h2 className="heading">Top Doctors</h2>
+                <p className="description">Get to know our top rated doctors according to patient evaluations.</p>
+              </div>
+
+              <div className="top_doctors-details">
+                <TopDoctor fullName="John Doe" age="34" speciality="Cardiology" doctorImg={Doctor1} />
+                <TopDoctor fullName="Rayan Smith" age="43" speciality="Oncology" doctorImg={Doctor2} isActive={true} />
+                <TopDoctor fullName="Johnson Wallet" age="55" speciality="Neurology" doctorImg={Doctor3} />
+                <TopDoctor fullName="Bissaka Rose" age="28" speciality="Denistry" doctorImg={Doctor4} />
+
               </div>
 
             </div>
