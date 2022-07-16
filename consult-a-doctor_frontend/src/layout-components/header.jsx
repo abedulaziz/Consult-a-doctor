@@ -3,7 +3,7 @@ import React from 'react'
 // helper components
 import NavItem from '../helper-components/navItem';
 
-import logo from '../assets/brand/transparent_background_logo.png';
+import logo from '../assets/brand/transparent_background_brand.png';
 
 const Header = () => {
   return (

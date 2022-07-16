@@ -21,6 +21,7 @@ import TopDoctor from '../helper-components/topDoctor';
 
 // layout components
 import Header from '../layout-components/header';
+import Footer from '../layout-components/footer';
 
 const Home = () => {
   return (
@@ -120,6 +121,8 @@ const Home = () => {
         </div>
 
       </main>
+
+      <Footer />
     </div>
   )
 }

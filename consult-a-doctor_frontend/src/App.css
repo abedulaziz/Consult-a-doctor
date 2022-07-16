@@ -41,6 +41,11 @@ h2.sec-heading {
   margin-bottom: 30px;
 }
 
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
 /* ------------------------------------------------ */
 /* ----------------- start header ----------------- */
 /* ------------------------------------------------ */
@@ -302,7 +307,7 @@ header .header-content .account_status .sign-up_button {
 .top_doctors .top_doctors-content .top_doctors-details .top_doctor .img_wrapper {
   width: 100%;
   height: calc(75vw /4 + 5vw);
-  box-shadow: 0 0 7px gray;
+  box-shadow: 0 0 7px var(--main-theme-color);
 }
 
 .top_doctors .top_doctors-content .top_doctors-details .top_doctor .img_wrapper img {
@@ -342,5 +347,71 @@ header .header-content .account_status .sign-up_button {
 }
 
 /* ------------------------------------------------ */
-/* ----------------- end top doctor ----------------- */
+/* ----------------- end top doctors ----------------- */
+/* ------------------------------------------------ */
+
+/* ------------------------------------------------ */
+/* ----------------- start footer ----------------- */
+/* ------------------------------------------------ */
+
+footer {
+  padding: 30px 0;
+  background-color: var(--main-theme-color);
+  color: var(--light-text-color)
+}
+
+footer .footer_content .sections{
+  display: flex;
+  gap: 20px;
+}
+
+footer .footer_content .sections >div {
+  flex: 1;
+}
+
+footer .footer_content .sections >div .section {
+  margin-bottom: 30px;
+}
+
+footer .footer_content .sections >div .section h3 {
+  color: var(--second-theme-color);
+  font-size: 26px;
+  font-weight: 400;
+}
+
+footer .footer_content .sections >div .section ul li {
+  margin-bottom: 10px;
+}
+
+footer .footer_content .sections >div .section ul li a{
+  color: var(--light-text-color);
+  text-decoration: none;
+}
+
+footer .footer_content .buttom_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer .footer_content .buttom_footer .logo {
+  width: 60px;
+}
+
+footer .footer_content .buttom_footer .logo img {
+  width: 100%;
+}
+
+footer .footer_content .buttom_footer .social-media ul{
+  display: flex;
+  gap: 15px;
+}
+
+footer .footer_content .buttom_footer .social-media ul li {
+  cursor: pointer;
+}
+
+
+/* ------------------------------------------------ */
+/* ----------------- end footer ----------------- */
 /* ------------------------------------------------ */
