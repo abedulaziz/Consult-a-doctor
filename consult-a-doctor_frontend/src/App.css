@@ -7,6 +7,7 @@
   --light-text-color: #FFF;
   --dark-text-color: #000;
   --star-color: #FFF500;
+  --grayish-background-color: #F8F8F8;
 }
 
 *{
@@ -169,4 +170,54 @@ header .header-content .account_status .sign-up_button {
 
 /* ------------------------------------------------ */
 /* ----------------- end homepage ----------------- */
+/* ------------------------------------------------ */
+
+
+/* ------------------------------------------------ */
+/* ----------------- start features ----------------- */
+/* ------------------------------------------------ */
+
+.features {
+  background-color: var(--grayish-background-color);
+}
+
+.features .features-content {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+  top: -30px;
+}
+
+.features .features-content .feature {
+  flex: 1;
+  box-shadow: 3px 3px 8px gray;
+  height: calc((86vw / 3) - (40px / 3) - 3px);
+  padding: 20px;
+  border-radius: 2px;
+  background-color: var(--light-text-color);
+}
+
+.features .features-content .feature > * {
+  margin-bottom: 20px;
+}
+
+.features .features-content .feature img {
+  width: 60px;
+}
+
+.features .features-content .feature .feature_head {
+  margin-bottom: 20px;
+  color: var(--second-theme-color);
+}
+
+.features .features-content .feature .description {
+  color: var(--grayish-text-color)
+}
+
+
+/* ------------------------------------------------ */
+/* ----------------- end features ----------------- */
 /* ------------------------------------------------ */
