@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSquareCheck } from '@fortawesome/free-solid-svg-icons'
-
 // icons
 import CheckTwoSqure from '../assets/icons/CheckTwoSquare.svg';
 import PersonVideo from '../assets/icons/PersonVideo.svg';
 import Development from '../assets/icons/Development.svg';
 import HandsThumbsUp from '../assets/icons/HandThumbsUp.svg';
+
+// backgrounds
+import DoctorsSupportImg from '../assets/backgrounds/doctors_support.png';
 
 // helper components
 import Meta from '../helper-components/meta';
@@ -74,7 +74,18 @@ const Home = () => {
           <div className="container">
             <div className="supp-content">
 
-              
+              <div className="side_img">
+                <img src={DoctorsSupportImg} />
+              </div>
+
+              <div className="supp_text">
+                <h2 className="heading">Doctor support</h2>
+                <p className="description">
+                You can find doctors from different nationalities and specialties in our community!<br />
+                During your walkthrough, you can search and book meetings with doctors as much as you want.<br />
+                All doctors here are available and always ready to help.<br />
+                </p>
+              </div>
 
             </div>
           </div>

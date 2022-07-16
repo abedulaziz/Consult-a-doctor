@@ -186,7 +186,6 @@ header .header-content .account_status .sign-up_button {
   gap: 20px;
   justify-content: space-between;
   text-align: center;
-  margin-bottom: 30px;
   position: relative;
   top: -30px;
 }
@@ -220,4 +219,44 @@ header .header-content .account_status .sign-up_button {
 
 /* ------------------------------------------------ */
 /* ----------------- end features ----------------- */
+/* ------------------------------------------------ */
+
+/* ------------------------------------------------ */
+/* ----------------- start doctor support ----------------- */
+/* ------------------------------------------------ */
+
+.doctor_supp {
+  background-color: var(--grayish-background-color);
+  padding: 20px 0;
+}
+
+.doctor_supp .supp-content {
+  display: flex;
+  gap: 5%;
+}
+
+.doctor_supp .supp-content > div{
+  flex: 1
+}
+
+.doctor_supp .supp-content .side_img img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.doctor_supp .supp-content .supp_text {
+  margin-top: 30px;
+}
+
+.doctor_supp .supp-content .supp_text .description {
+  line-height: 1.5;
+  color: var(--grayish-text-color)
+}
+
+.doctor_supp .supp-content .supp_text .description br {
+  margin-bottom: 12px;
+}
+
+/* ------------------------------------------------ */
+/* ----------------- end doctor support ----------------- */
 /* ------------------------------------------------ */
