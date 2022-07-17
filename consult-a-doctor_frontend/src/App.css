@@ -57,17 +57,19 @@ header {
   top: 0;
   left: 0;
   right: 0;
+  z-index: 9;
+  padding: 20px 0;
+  transition: padding .5s ease-out, background-color .3s ease-out;
 }
 
 header .header-content {
   display: flex;
-  padding: 20px 0;
   align-items: center;
 }
 
 header .header-content > * {
   display: flex;
-  /* justify-content: center; */
+  align-items: center;
 }
 
 header .header-content > *:first-child {
@@ -78,22 +80,28 @@ header .header-content > *:last-child {
 }
 
 header .header-content .brand {
-  min-width: 200px;
-  max-width: 300px
+  min-width: 170px;
+  max-width: 250px
 }
 
 header .header-content nav {
-  gap: 15px;
+  gap: 20px;
 }
 
 header .header-content .brand .logo img {
   width: 100%;
 }
 
-header .header-content nav >div a{
+header .header-content nav a{
   color: var(--dark-text-color);
   text-decoration: none;
   font-weight: 400;
+  font-size: 16px;
+  transition: color .3s ease;
+}
+
+header .header-content nav a.active{
+  border-bottom: 1px solid var(--main-theme-color);
 }
 
 header .header-content .account_status button{
@@ -113,13 +121,62 @@ header .header-content .account_status .sign-up_button {
   border-radius: 4px;
 }
 
+header .menu {
+  display:none;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+
+/* media queries */
+@media (max-width: 970px) {
+  header .header-content nav {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: var(--light-text-color);
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  header .header-content nav > a{
+    font-size: 25px;
+  }
+
+  header .header-content nav > a div{
+    position: relative;
+    top: 50%;
+    padding: 20px 0;
+    transform: translateY(-200%);
+    transition: background-color .3s ;
+  }
+
+  header .header-content nav a:hover div{
+    background-color: var(--main-theme-color);
+  }
+
+  header .header-content nav  a:hover  {
+    color: var(--light-text-color) !important;
+  }
+
+  header .menu {
+    display: block;
+    position: relative;
+    z-index: 9;
+  }
+}
+
+
 /* ------------------------------------------------ */
 /* ----------------- end header ----------------- */
 /* ------------------------------------------------ */
 
 
 /* ------------------------------------------------ */
-/* ----------------- start homepage ----------------- */
+/* ----------------- start hero ----------------- */
 /* ------------------------------------------------ */
 
 .hero {
@@ -173,8 +230,15 @@ header .header-content .account_status .sign-up_button {
   display: inline;
 }
 
+/* media queries */
+@media (max-width: 650px) {
+  .hero .hero-content {
+    max-width: 90%;
+  }
+}
+
 /* ------------------------------------------------ */
-/* ----------------- end homepage ----------------- */
+/* ----------------- end hero ----------------- */
 /* ------------------------------------------------ */
 
 
@@ -184,6 +248,7 @@ header .header-content .account_status .sign-up_button {
 
 .features {
   background-color: var(--grayish-background-color);
+  display: flex;
 }
 
 .features .features-content {
@@ -193,6 +258,7 @@ header .header-content .account_status .sign-up_button {
   text-align: center;
   position: relative;
   top: -30px;
+  max-width: 1095px;
 }
 
 .features .features-content .feature {
@@ -221,6 +287,23 @@ header .header-content .account_status .sign-up_button {
   color: var(--grayish-text-color)
 }
 
+
+@media (max-width: 994px) {
+  .features .features-content {
+    flex-direction:column;
+    align-items: center;
+  }
+  .features .features-content .feature {
+    max-width: 400px;
+  }
+}
+
+@media (min-width: 1273px) {
+  .features .features-content .feature {
+    max-height: 348px;
+  }
+
+}
 
 /* ------------------------------------------------ */
 /* ----------------- end features ----------------- */
@@ -271,7 +354,7 @@ header .header-content .account_status .sign-up_button {
 /* ------------------------------------------------ */
 
 .top_doctors {
-  margin: 20px 0;
+  margin: 30px 0;
 }
 
 .side_padding_container {
@@ -344,6 +427,30 @@ header .header-content .account_status .sign-up_button {
 
 .top_doctors .top_doctors-content .top_doctors-details .top_doctor .details .rate img{
   width: 20px;
+}
+
+/* media queries */
+
+@media (max-width: 870px) {
+  .top_doctors .top_doctors-content {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .top_doctors .top_doctors-content .top_doctors_text {
+    text-align: center;
+  }
+  .top_doctors .top_doctors-content .top_doctors-details .top_doctor .img_wrapper{
+    height: calc(100vw /4 + 8vw);
+  }
+}
+
+@media (max-width: 633px) {
+  .top_doctors .top_doctors-content {
+    flex-wrap: wrap;
+  }
+  .top_doctors .top_doctors-content .top_doctors-details .top_doctor {
+    width: 80%;
+  }
 }
 
 /* ------------------------------------------------ */
