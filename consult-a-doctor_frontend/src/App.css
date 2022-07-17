@@ -668,6 +668,26 @@ header .menu {
   color: var(--second-theme-color);
 }
 
+/* media queries */
+@media (max-width: 905px) {
+  .doctors .doctors_content .doctor-cards .card {
+    flex-basis: calc((100% /3) - (20px / 3));
+  }
+}
+
+@media (max-width: 745px) {
+  .doctors .doctors_content .doctor-cards .card {
+    flex-basis: calc(50% - (10px / 2));
+  }
+}
+
+@media (max-width: 500px) {
+  .doctors .doctors_content .doctor-cards .card {
+    flex-basis: 100%;
+  }
+}
+
+
 /* ------------------------------------------------ */
 /* ----------------- end doctors ----------------- */
 /* ------------------------------------------------ */
