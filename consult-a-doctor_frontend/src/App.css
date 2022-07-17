@@ -92,23 +92,24 @@ header .header-content .brand {
   max-width: 250px
 }
 
-header .header-content nav {
+header .header-content nav .nav-wrapper{
+  display: flex;
   gap: 20px;
 }
 
 header .header-content .brand .logo img {
   width: 100%;
+  height: 56px;
 }
 
 header .header-content nav a{
   color: var(--dark-text-color);
-  text-decoration: none;
   font-weight: 400;
   font-size: 16px;
   transition: color .3s ease;
 }
 
-header .header-content nav a.active{
+header .header-content nav a.active div{
   border-bottom: 1px solid var(--main-theme-color);
 }
 
@@ -121,6 +122,7 @@ header .header-content .account_status button{
   font-size: 16px;
   font-family: 'Ubuntu', sans-serif;
   cursor: pointer;
+  min-width: max-content;
 }
 
 header .header-content .account_status .sign-up_button {
@@ -150,23 +152,41 @@ header .menu {
     text-align: center;
   }
 
-  header .header-content nav > a{
-    font-size: 25px;
+  header .header-content nav .nav-wrapper{
+    flex-direction: column;
+    top:50%;
+    position: relative;
+    transform: translateY(-50%);
   }
 
-  header .header-content nav > a div{
+  header .header-content nav .nav-wrapper a.active div {
+    border: none;
     position: relative;
-    top: 50%;
-    padding: 20px 0;
-    transform: translateY(-200%);
+  }
+
+  header .header-content nav .nav-wrapper a.active div::before {
+    position: absolute;
+    bottom: 0;
+    width: 200px;
+    height: 1px;
+    background-color: var(--main-theme-color);
+    content: "";
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  header .header-content nav .nav-wrapper > a {
+    font-size: 25px;
     transition: background-color .3s ;
   }
+  
+  header .header-content nav .nav-wrapper > a div {
+    padding: 20px 0;
 
-  header .header-content nav a:hover div{
-    background-color: var(--main-theme-color);
   }
 
-  header .header-content nav  a:hover  {
+  header .header-content nav .nav-wrapper div:hover {
+    background-color: var(--main-theme-color);
     color: var(--light-text-color) !important;
   }
 
@@ -174,6 +194,12 @@ header .menu {
     display: block;
     position: relative;
     z-index: 9;
+  }
+}
+
+@media (max-width: 590px) {
+  header .header-content .brand {
+    min-width:max-content;
   }
 }
 

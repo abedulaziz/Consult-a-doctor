@@ -7,21 +7,34 @@ import NavItem from '../helper-components/navItem';
 // icons
 import {ReactComponent as Menu} from '../assets/icons/menu.svg';
 
-import logo from '../assets/brand/transparent_background_brand.png';
+import Logo from '../assets/brand/transparent_background_brand.png';
+import MobileLogo from '../assets/brand/transparent_background_logo.png';
 
 const Header = () => {
   const header = React.useRef(null);
   const NavBar = React.useRef(null);
 
+  const [logo, setLogo] = React.useState(MobileLogo)
+
+  React.useEffect(() => {
+    // window.screen.width < 590 ? setLogo(MobileLogo) : setLogo(Logo)
+
+  }, [])
+
   window.addEventListener("scroll", () => {
 
     if (window.pageYOffset > 0) {
-      header.current.style.padding = "15px 0"
-      header.current.style.backgroundColor = "var(--light-text-color)"
+
+      if (header.current !== null) {
+        header.current.style.padding = "15px 0"
+        header.current.style.backgroundColor = "var(--light-text-color)"
+      }
     }
     else {
-      header.current.style.padding = "20px 0"
-      header.current.style.backgroundColor = "transparent"
+      if (header.current !== null) {
+        header.current.style.padding = "20px 0"
+        header.current.style.backgroundColor = "transparent"
+      }
     }
   });
 
@@ -42,16 +55,20 @@ const Header = () => {
 
           <div className="brand">
             <div className="logo">
-              <img src={logo} alt="consult a doctor" />
+              <img src={ logo } alt="consult a doctor" />
             </div>
           </div>
-
+          
           <nav ref={NavBar}>
 
-            <NavItem path="/" className="home-link" content="Home" />
-            <NavItem path="/doctor/specializations" className="specializations-link" content="Specializations" />
-            <NavItem path="/doctor/accounts" className="doctors-link" content="Doctors" />
-            <NavItem path="/my-appointments-link" className="appointments" content="My Appointments" />
+            <div className="nav-wrapper">
+
+              <NavItem path="/" className="home-link" content="Home" />
+              <NavItem path="/doctor/specializations" className="specializations-link" content="Specializations" />
+              <NavItem path="/doctor/accounts" className="doctors-link" content="Doctors" />
+              <NavItem path="/my-appointments-link" className="appointments" content="My Appointments" />
+
+            </div>
 
           </nav>
 
