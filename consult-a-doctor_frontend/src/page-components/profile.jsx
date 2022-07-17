@@ -21,8 +21,8 @@ const Profile = () => {
         <div className="profile_background">
 
           <div className="background-info_wrapper">
+            <div className="empty_left_box"></div>
             <div className="info-and-book_meeting">
-
               <div className="doctor_info">
                 <h2>John Doe</h2>
                 <p className="university">Heuston, Florida</p>
