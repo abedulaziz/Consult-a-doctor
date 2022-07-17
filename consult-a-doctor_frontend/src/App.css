@@ -458,6 +458,88 @@ header .menu {
 /* ------------------------------------------------ */
 
 /* ------------------------------------------------ */
+/* ----------------- start specializations ----------------- */
+/* ------------------------------------------------ */
+
+.specs {
+  padding-top: 100px;
+  text-align: center;
+}
+
+.specs .spec_content .heading {
+  margin-bottom: 30px;
+}
+
+.specs .spec_content .heading h2 {
+  margin:10px 0 5px;
+  font-size: 31px;
+  font-weight: 300;
+}
+
+.specs .spec_content .heading p {
+  color: var(--grayish-text-color);
+}
+
+.specs .spec_content .specs-container {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.specs .spec_content .specs-container > div {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex-basis: calc(50% - 15px);
+}
+
+/* .specs .spec_content .specs-container .specialization:nth-child(2) {
+} */
+
+.specs .spec_content .specs-container .right-side-specs {
+  margin-top: 8%;
+  
+}
+
+.specs .spec_content .specs-container .specialization {
+  position: relative;
+  height: calc((86vw - 25vw) /2);
+  width: 100%;
+  background-color: var(--grayish-background-color);
+}
+
+.specs .spec_content .specs-container .specialization img {
+  width: 100%;
+  height: 100%;
+  object-position: 50%;
+  object-fit: cover;
+}
+
+.specs .spec_content .specs-container .specialization .overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.361);
+}
+
+.specs .spec_content .specs-container .specialization span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 27px;
+  font-weight: 500;
+  z-index: 9;
+  color: var(--light-text-color);
+}
+
+/* ------------------------------------------------ */
+/* ----------------- end specializations ----------------- */
+/* ------------------------------------------------ */
+
+/* ------------------------------------------------ */
 /* ----------------- start footer ----------------- */
 /* ------------------------------------------------ */
 
