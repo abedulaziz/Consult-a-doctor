@@ -750,7 +750,7 @@ header .menu {
 
 .profile_background .info-and-book_meeting .doctor_info h2 {
   font-size: 35px;
-  margin: 0 0 5px;
+  margin: 0;
   font-weight: 300;
 }
 
@@ -802,19 +802,20 @@ header .menu {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% top;
+  object-position: 50% 10%;
 }
 
 .doctor-details .doctor-card .profile_img .follow {
   position: absolute;
   left: 10px;
   bottom: 10px;
-  background-color: var(--grayish-background-color);
+  background-color: var(--light-text-color);
   padding: 7px 15px;
   border-radius: 50px;
   color:#000;
   display: flex;
   gap: 5px;
+  cursor: pointer;
 }
 
 .doctor-details .doctor-card .profile_img .follow svg {
@@ -863,10 +864,43 @@ header .menu {
   color: var(--second-theme-color);
 }
 
-.doctor-details .posts {
+.doctor-details .posts .posts_header{
+  margin: 20px 0;
+  font-weight: 300;
+  font-size: 26px;
+}
+
+.doctor-details .posts .post{
   width: 55vw;
   margin-left: auto;
+  box-shadow: 0 3px 10px gray;
+  margin-bottom: 20px;
+  padding: 20px;
 }
+
+.doctor-details .posts .post .heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--grayish-text-color);
+  margin-bottom: 8px;
+}
+
+.doctor-details .posts .post .heading .profile_pic {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.doctor-details .posts .post .heading .profile_pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% top;
+  background-color: var(--grayish-background-color);
+}
+
 
 /* ------------------------------------------------ */
 /* ----------------- end profile ----------------- */

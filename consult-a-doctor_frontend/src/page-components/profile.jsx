@@ -78,6 +78,7 @@ const Profile = () => {
             </div>
 
             <div className="posts">
+              <h3 className="posts_header">Posts</h3>
               <Post profilePic={Doctor1} fullName="John Doe" />
               <Post profilePic={Doctor1} fullName="John Doe" />
               <Post profilePic={Doctor1} fullName="John Doe" />
