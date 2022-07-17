@@ -17,7 +17,7 @@ const Header = () => {
   const [logo, setLogo] = React.useState(MobileLogo)
 
   React.useEffect(() => {
-    // window.screen.width < 590 ? setLogo(MobileLogo) : setLogo(Logo)
+    window.screen.width < 590 ? setLogo(MobileLogo) : setLogo(Logo)
 
   }, [])
 
