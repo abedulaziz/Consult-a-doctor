@@ -28,6 +28,10 @@ body {
   margin: auto;
 }
 
+main {
+  margin-bottom: 20px;
+}
+
 h1, h3, h4, h5, h6, p {
   margin: 0;
   padding: 0;
@@ -44,6 +48,10 @@ h2.sec-heading {
 ul {
   list-style-type: none;
   padding: 0;
+}
+
+a {
+  text-decoration: none;
 }
 
 /* ------------------------------------------------ */
@@ -466,17 +474,17 @@ header .menu {
   text-align: center;
 }
 
-.specs .spec_content .heading {
+.specs .spec_content .heading, .doctors .doctors_content .heading {
   margin-bottom: 30px;
 }
 
-.specs .spec_content .heading h2 {
+.specs .spec_content .heading h2, .doctors .doctors_content .heading h2 {
   margin:10px 0 5px;
   font-size: 31px;
   font-weight: 300;
 }
 
-.specs .spec_content .heading p {
+.specs .spec_content .heading p, .doctors .doctors_content .heading p{
   color: var(--grayish-text-color);
 }
 
@@ -548,6 +556,120 @@ header .menu {
 
 /* ------------------------------------------------ */
 /* ----------------- end specializations ----------------- */
+/* ------------------------------------------------ */
+
+/* ------------------------------------------------ */
+/* ----------------- start doctors ----------------- */
+/* ------------------------------------------------ */
+
+.doctors {
+  padding-top: 100px;
+  text-align: center;
+}
+
+.doctors .doctors_content .search-panel {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  border: 2px solid gray;
+  border-radius: 50px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.doctors .doctors_content .search-panel .search-box {
+  background-color: var(--main-theme-color);
+  border-radius: 50px;
+  overflow: hidden;
+  padding: 10px 5px 10px 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.doctors .doctors_content .search-panel .search-box svg {
+  color: white;
+}
+
+.doctors .doctors_content .search-panel .search-box input{
+  border: none;
+  color: var(--light-text-color);
+  width: 200px;
+  background-color: inherit;
+  outline: none;
+}
+
+.doctors .doctors_content .search-panel .sorting label {
+  color: var(--second-theme-color);
+}
+
+.doctors .doctors_content .search-panel .sorting select{
+  background-color: inherit;
+  border: none;
+  background-color: var(--grayish-background-color);
+  border-radius: 50px;
+  padding: 10px 5px;
+}
+
+.doctors .doctors_content .doctor-cards {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.doctors .doctors_content .doctor-cards .card {
+  flex-basis: calc(25% - (30px / 4));
+  background-color: var(--light-text-color);
+  box-shadow: 0 0 4px gray;
+  border-radius: 2px;
+  padding: 10px;
+  text-align: center;
+}
+
+.doctors .doctors_content .doctor-cards .card .img_wrapper {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto
+}
+
+.doctors .doctors_content .doctor-cards .card .img_wrapper img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+  object-position: 50% top;
+}
+
+.doctors .doctors_content .doctor-cards .card .doctor-info .fullname {
+  margin-top: 7px;
+}
+
+.doctors .doctors_content .doctor-cards .card .doctor-info .rate svg {
+  width: 20px;
+}
+
+.doctors .doctors_content .doctor-cards .card .doctor-info .followers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.doctors .doctors_content .doctor-cards .card .doctor-info .followers svg{
+  width: 25px;
+  height: 25px;
+}
+
+.doctors .doctors_content .doctor-cards .card .doctor-info .profile_link {
+  margin-top: 10px;
+}
+
+.doctors .doctors_content .doctor-cards .card .doctor-info .profile_link a {
+  color: var(--second-theme-color);
+}
+
+/* ------------------------------------------------ */
+/* ----------------- end doctors ----------------- */
 /* ------------------------------------------------ */
 
 /* ------------------------------------------------ */
