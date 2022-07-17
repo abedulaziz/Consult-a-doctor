@@ -48,10 +48,10 @@ const Header = () => {
 
           <nav ref={NavBar}>
 
-            <NavItem path="/" className="home" content="Home" />
-            <NavItem path="/doctor/specializations" className="specializations" content="Specializations" />
-            <NavItem path="/doctor/specializations/accounts" className="doctors" content="Doctors" />
-            <NavItem path="/my-appointments" className="appointments" content="My Appointments" />
+            <NavItem path="/" className="home-link" content="Home" />
+            <NavItem path="/doctor/specializations" className="specializations-link" content="Specializations" />
+            <NavItem path="/doctor/accounts" className="doctors-link" content="Doctors" />
+            <NavItem path="/my-appointments-link" className="appointments" content="My Appointments" />
 
           </nav>
 
