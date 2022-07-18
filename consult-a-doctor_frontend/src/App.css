@@ -1025,3 +1025,156 @@ footer .footer_content .buttom_footer .social-media ul li {
 /* ------------------------------------------------ */
 /* ----------------- end footer ----------------- */
 /* ------------------------------------------------ */
+
+
+/* ------------------------------------------------ */
+/* ----------------- start sign-in, sign-up ----------------- */
+/* ------------------------------------------------ */
+
+.background {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(216, 216, 216);
+}
+
+.regis_box {
+  box-shadow: 0 0 20px gray;
+  width: calc(100% - 6vw);
+  min-height: 90vh;
+  margin:auto;
+  display: flex;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  /* max-width: max-content; */
+}
+
+.regis_box > div {
+  padding: 10vh 6vw
+}
+
+.regis_box .left-section {
+  flex: 1.4;
+  background-color: #FFF;
+}
+
+.regis_box .left-section .content > * {
+  margin-bottom: 30px;
+}
+
+.regis_box .left-section .content .brand-statement {
+  color: var(--grayish-text-color);
+  font-weight: 600;
+}
+
+.regis_box .left-section .content .social-media_section {
+  margin-top: 100px;
+
+}
+
+.regis_box .left-section .content .social-media ul{
+  display: flex;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.regis_box .left-section .brand img {
+  width: 100%;
+  max-width: 400px;
+}
+
+.regis_box .right-section {
+  flex:1;
+  background-color: var(--main-theme-color);
+  color: var(--light-text-color);
+}
+
+.regis_box .right-section .heading {
+  margin-bottom: 40px;
+}
+
+.regis_box .right-section .heading h3 {
+  font-size: 30px;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.regis_box .right-section .heading p {
+  font-weight: 400;
+  color: var(--second-theme-color);
+}
+
+.regis_box .right-section .regis_form > div:not(.button_wrapper) {
+  margin-bottom: 30px;
+}
+
+.regis_box .right-section .regis_form > div {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.regis_box .right-section .regis_form > div input {
+  border: none;
+  border-bottom: 1px solid #FFF;
+  color: var(--light-text-color);
+  background-color: inherit;
+  width: 100%;
+  font-size: 17px;
+  padding-bottom: 3px;
+  outline: none;
+}
+
+.regis_box .right-section .regis_form .dob span {
+  min-width: max-content;
+}
+
+.regis_box .right-section .regis_form .gender .selected_gender{
+  display: flex;
+  gap: 10px;
+}
+
+.regis_box .right-section .regis_form .button_wrapper {
+  justify-content: center;
+}
+
+.regis_box .right-section .regis_form .button_wrapper .regis_button {
+  padding: 10px;
+  width: 100%;
+  background-color: var(--second-theme-color);
+  border: none;
+  box-shadow: 0 0 5px #000;
+  border-radius: 3px;
+  font-weight: 400;
+  font-size: 15px;
+  transition: background-color .3s;
+  cursor: pointer;
+  max-width: 350px;
+}
+
+
+.regis_box .right-section .regis_form .button_wrapper .regis_button:hover {
+  background-color: #6e9cec;
+}
+
+.regis_box .right-section .regis_link {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 200;
+  font-size: 15px;
+  color: rgb(168, 168, 168);
+}
+
+.regis_box .right-section .doctor_sign-up {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.regis_box .right-section .regis_link a {
+  color: var(--second-theme-color);
+  font-weight: 400;
+}
+
+/* ------------------------------------------------ */
+/* ----------------- end sign-in ----------------- */
+/* ------------------------------------------------ */

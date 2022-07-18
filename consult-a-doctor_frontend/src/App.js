@@ -7,6 +7,7 @@ import Specializations from './page-components/specializations';
 import Doctors from './page-components/doctors';
 import Profile from './page-components/profile';
 import SignIn from './page-components/signIn';
+import SignUp from './page-components/signUp';
 
 import './App.css';
 
@@ -21,7 +22,7 @@ function App() {
           <Route path='/doctor/:doctor_id/profile' element={<Profile />}></Route>
 
           <Route path='/sign-in' element={<SignIn />}></Route>
-          {/* <Route path='/sign-up' element={<SignUp />}></Route>  */}
+          <Route path='/sign-up' element={<SignUp />}></Route> 
         </Routes>
       </Router>
     </div>
