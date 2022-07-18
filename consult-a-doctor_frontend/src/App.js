@@ -8,6 +8,7 @@ import Doctors from './page-components/doctors';
 import Profile from './page-components/profile';
 import SignIn from './page-components/signIn';
 import SignUp from './page-components/signUp';
+import Appointments from './page-components/appointments';
 
 import './App.css';
 
@@ -19,6 +20,7 @@ function App() {
           <Route path='/' element={<Home />}></Route>
           <Route path='/doctor/specializations' element={<Specializations />}></Route>
           <Route path='/doctor/accounts' element={<Doctors />}></Route>
+          <Route path='/my-appointments' element={<Appointments />}></Route>
           <Route path='/doctor/:doctor_id/profile' element={<Profile />}></Route>
 
           <Route path='/sign-in' element={<SignIn />}></Route>

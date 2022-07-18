@@ -961,6 +961,70 @@ header .menu {
 /* ------------------------------------------------ */
 
 /* ------------------------------------------------ */
+/* ----------------- start appointments ----------------- */
+/* ------------------------------------------------ */
+
+.appointments {
+  margin: 99.53333px 0 20px;
+}
+
+.appointments .appoin_content .heading h2{
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.appointments .appoin_content .appoin-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4vw;
+}
+
+.appointments .appoin_content .appoin-cards .appointment {
+  box-shadow: 0 0 7px gray;
+  flex-basis: calc((100% /3) - (8vw / 3) - 1px);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.appointments .appoin_content .appoin-cards .appointment .wrapper {
+  display: flex;
+}
+
+.appointments .appoin_content .appoin-cards .appointment .heading {
+  margin-bottom: 20px;
+}
+
+.appointments .appoin_content .appoin-cards .appointment .details {
+  flex-grow: 3;
+}
+
+.appointments .appoin_content .appoin-cards .appointment .options {
+  align-self: flex-end;
+  color: var(--main-theme-color);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.appointments .appoin_content .appoin-cards .appointment .details > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.appointments .appoin_content .appoin-cards .appointment .details > div:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.appointments .appoin_content .appoin-cards .appointment .details > div p {
+  color: var(--grayish-text-color);
+}
+
+
+/* ------------------------------------------------ */
+/* ----------------- end appointments ----------------- */
+/* ------------------------------------------------ */
+
+/* ------------------------------------------------ */
 /* ----------------- start footer ----------------- */
 /* ------------------------------------------------ */
 
@@ -1188,3 +1252,4 @@ footer .footer_content .buttom_footer .social-media ul li {
 /* ------------------------------------------------ */
 /* ----------------- end sign-in ----------------- */
 /* ------------------------------------------------ */
+
