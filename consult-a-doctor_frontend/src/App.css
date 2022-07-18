@@ -966,6 +966,7 @@ header .menu {
 
 .appointments {
   margin: 99.53333px 0 20px;
+  min-height: 50vh;
 }
 
 .appointments .appoin_content .heading h2{
@@ -1017,6 +1018,19 @@ header .menu {
 
 .appointments .appoin_content .appoin-cards .appointment .details > div p {
   color: var(--grayish-text-color);
+}
+
+/* media queries */
+@media (max-width: 950px) {
+  .appointments .appoin_content .appoin-cards .appointment {
+    flex-basis: calc(50% - 4vw);
+  }
+}
+
+@media (max-width: 633px) {
+  .appointments .appoin_content .appoin-cards .appointment {
+    flex-basis: 100%;
+  }
 }
 
 
