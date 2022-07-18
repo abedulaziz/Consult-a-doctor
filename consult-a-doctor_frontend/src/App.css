@@ -735,7 +735,7 @@ header .menu {
 .profile_background .background-info_wrapper {
   display: flex;
   align-items: flex-end;
-  justify-content: end;
+  justify-content: flex-end;
   height: 100%;
   padding: 0 7vw;
 }
@@ -1173,6 +1173,16 @@ footer .footer_content .buttom_footer .social-media ul li {
 .regis_box .right-section .regis_link a {
   color: var(--second-theme-color);
   font-weight: 400;
+}
+
+/* media queries */
+@media (max-width: 670px) {
+  .regis_box {
+    min-height: max-content;
+  }
+  .regis_box .left-section {
+    display: none;
+  }
 }
 
 /* ------------------------------------------------ */
