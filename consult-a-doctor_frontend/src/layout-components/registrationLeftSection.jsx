@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom';
 
 // brand
 import Logo from '../assets/brand/transparent_background_brand.png';
@@ -15,7 +16,7 @@ const RegistrationLeftSection = () => {
       <div className="content">
 
         <div className="brand">
-          <img src={ Logo } alt="" />
+          <Link to="/"><img src={ Logo } alt="" /></Link>
         </div>
         <p className='brand-statement'>Ease of use - Experienced doctors - Trusted advices</p>
         <div className="social-media_section">

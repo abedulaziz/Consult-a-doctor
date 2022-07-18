@@ -66,7 +66,7 @@ const Header = () => {
               <NavItem path="/" className="home-link" content="Home" />
               <NavItem path="/doctor/specializations" className="specializations-link" content="Specializations" />
               <NavItem path="/doctor/accounts" className="doctors-link" content="Doctors" />
-              <NavItem path="/my-appointments-link" className="appointments" content="My Appointments" />
+              <NavItem path="/my-appointments" className="appointments-link" content="My Appointments" />
 
             </div>
 
