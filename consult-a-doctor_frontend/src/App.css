@@ -54,6 +54,11 @@ a {
   text-decoration: none;
 }
 
+.error {
+  font-size: 14px;
+  color: rgb(255, 89, 89);
+}
+
 /* ------------------------------------------------ */
 /* ----------------- start header ----------------- */
 /* ------------------------------------------------ */
@@ -1112,7 +1117,7 @@ footer .footer_content .buttom_footer .social-media ul li {
 .background {
   width: 100%;
   height: 100vh;
-  background-color: rgb(216, 216, 216);
+  background-color: rgb(237, 238, 238);
 }
 
 .regis_box {
@@ -1134,6 +1139,8 @@ footer .footer_content .buttom_footer .social-media ul li {
 .regis_box .left-section {
   flex: 1.4;
   background-color: #FFF;
+  background-size: cover;
+  box-shadow: inset 0 0 0 2000px rgba(255, 255, 255, 0.649);
 }
 
 .regis_box .left-section .content > * {
@@ -1186,10 +1193,20 @@ footer .footer_content .buttom_footer .social-media ul li {
   margin-bottom: 30px;
 }
 
-.regis_box .right-section .regis_form > div {
+.regis_box .right-section .regis_form > div:not(.gender, .dob) {
   display: flex;
   gap: 30px;
   align-items: center;
+}
+
+.regis_box .right-section .regis_form .gender .gender_wrapper, .regis_box .right-section .regis_form .dob_wrapper  {
+  display: flex;
+  gap: 30px;
+  flex: 1;
+}
+
+.regis_box .right-section .regis_form > div >div {
+  width: 100%;
 }
 
 .regis_box .right-section .regis_form > div input {
@@ -1203,8 +1220,9 @@ footer .footer_content .buttom_footer .social-media ul li {
   outline: none;
 }
 
-.regis_box .right-section .regis_form .dob span {
+.regis_box .right-section .regis_form .dob span, .regis_box .right-section .regis_form .gender span {
   min-width: max-content;
+  color: #8b9fc2;
 }
 
 .regis_box .right-section .regis_form .gender .selected_gender{
@@ -1264,6 +1282,6 @@ footer .footer_content .buttom_footer .social-media ul li {
 }
 
 /* ------------------------------------------------ */
-/* ----------------- end sign-in ----------------- */
+/* ----------------- end sign-in, sign-up ----------------- */
 /* ------------------------------------------------ */
 

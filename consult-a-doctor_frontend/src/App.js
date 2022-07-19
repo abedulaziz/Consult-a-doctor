@@ -9,6 +9,7 @@ import Profile from './page-components/profile';
 import SignIn from './page-components/signIn';
 import SignUp from './page-components/signUp';
 import Appointments from './page-components/appointments';
+import DoctorSignUp from './page-components/doctorSignUp';
 
 import './App.css';
 
@@ -25,6 +26,7 @@ function App() {
 
           <Route path='/sign-in' element={<SignIn />}></Route>
           <Route path='/sign-up' element={<SignUp />}></Route> 
+          <Route path='/doctor/sign-up' element={<DoctorSignUp />}></Route> 
         </Routes>
       </Router>
     </div>
