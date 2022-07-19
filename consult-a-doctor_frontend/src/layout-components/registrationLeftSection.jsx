@@ -4,15 +4,25 @@ import {Link} from 'react-router-dom';
 // brand
 import Logo from '../assets/brand/transparent_background_brand.png';
 
+// backgrounds
+import DoctorSignUpBackground from '../assets/backgrounds/doctor_sign-up_background.jpg'
+
 // icons
 import Facebook from '../assets/icons/facebook.svg';
 import Instagram from '../assets/icons/instagram.svg';
 import Twitter from '../assets/icons/twitter.svg';
 import Linkedin from '../assets/icons/linkedin.svg';
 
-const RegistrationLeftSection = () => {
+const RegistrationLeftSection = ({isDoctorSignUp = false}) => {
+  const leftSection = React.useRef(null);
+  React.useEffect(() => {
+    if (isDoctorSignUp) {
+      leftSection.current.style.backgroundImage = `url(${DoctorSignUpBackground})`
+    }
+  }, [])
+
   return (
-    <div className="left-section">
+    <div className="left-section" ref={leftSection}>
       <div className="content">
 
         <div className="brand">

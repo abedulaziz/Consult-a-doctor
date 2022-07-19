@@ -21,11 +21,11 @@ const Appointments = () => {
             </div>
 
             <div className="appoin-cards">
-              {/* <Appointment doctor_name="John Doe" duration="11:00 - 13:00" date="Feb 17, 2022" />
+              <Appointment doctor_name="John Doe" duration="11:00 - 13:00" date="Feb 17, 2022" />
               <Appointment doctor_name="Mickel Smith" duration="14:00 - 14:30" date="March 14, 2022" />
               <Appointment doctor_name="Wallac Johnson" duration="01:00 - 03:00" date="March 5, 2022" />
               <Appointment doctor_name="Wan Bissaka" duration="12:00 - 13:00" date="Feb 22, 2022" />
-              <Appointment doctor_name="Marco Asensio" duration="20:00 - 21:00" date="December 17, 2022" /> */}
+              <Appointment doctor_name="Marco Asensio" duration="20:00 - 21:00" date="December 17, 2022" />
             </div>
 
           </div>
