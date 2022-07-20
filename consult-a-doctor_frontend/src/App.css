@@ -1116,19 +1116,20 @@ footer .footer_content .buttom_footer .social-media ul li {
 
 .background {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-color: rgb(237, 238, 238);
+  padding: 30px 0;
 }
 
 .regis_box {
   box-shadow: 0 0 20px gray;
   width: calc(100% - 6vw);
   min-height: 90vh;
-  margin:auto;
+  margin: auto;
   display: flex;
-  position: relative;
+  /* position: relative; */
   top: 50%;
-  transform: translateY(-50%);
+  /* transform: translateY(-50%); */
   /* max-width: max-content; */
 }
 
@@ -1193,11 +1194,55 @@ footer .footer_content .buttom_footer .social-media ul li {
   margin-bottom: 30px;
 }
 
-.regis_box .right-section .regis_form > div:not(.gender, .dob) {
+.regis_box .right-section .regis_form > div:not(.gender, .dob, .availabilities) {
   display: flex;
   gap: 30px;
   align-items: center;
 }
+
+.regis_box .right-section .regis_form .availabilities .avail_title{
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.regis_box .right-section .regis_form .availabilities .setting_avail {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.regis_box .right-section .regis_form .availabilities .setting_avail .week-day {
+  flex-basis: 75px;
+  display: flex;
+  align-items: center;
+}
+
+.regis_box .right-section .regis_form .availabilities .setting_avail .week-day input {
+  flex-basis: fit-content;
+  flex-basis: -moz-fit-content;
+  
+}
+
+.regis_box .right-section .regis_form .availabilities .setting_avail .times .time-interval {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.regis_box .right-section .regis_form .availabilities .setting_avail .times select {
+  padding: 10px 15px;
+  background-color: #FFF;
+  border: 1px solid gray;
+  border-radius: 7px;
+}
+
+.regis_box .right-section .regis_form .availabilities .setting_avail .add-time {
+  margin-left: auto;
+  cursor: pointer;
+}
+
+
 
 .regis_box .right-section .regis_form .gender .gender_wrapper, .regis_box .right-section .regis_form .dob_wrapper  {
   display: flex;
@@ -1248,7 +1293,7 @@ footer .footer_content .buttom_footer .social-media ul li {
   max-width: 350px;
 }
 
-.regis_box .right-section .regis_form .button_wrapper .sign-up_next_step {
+.regis_box .right-section .regis_form .button_wrapper .change_step {
   padding: 10px 10px;
   background-color: var(--second-theme-color);
   border: none;
@@ -1259,6 +1304,11 @@ footer .footer_content .buttom_footer .social-media ul li {
   border-radius: 50%;
   margin-bottom: 10px;
   cursor: pointer;
+}
+
+.regis_box .right-section .regis_form .button_wrapper .sign-up_previous_step {
+  transform: rotate(180deg);
+  margin-top: 20px;
 }
 
 
