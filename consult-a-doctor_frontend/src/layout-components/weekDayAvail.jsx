@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { fillInputs, nextStage, previousStage } from '../redux/slices/doctorSignUpSlice'
+import { fillInputs, addInterval } from '../redux/slices/doctorSignUpSlice'
 
 import {useForm} from 'react-hook-form';
 import moment from 'moment';
@@ -19,7 +19,7 @@ const WeekDayAvail = ({weekDay, name, id}) => {
   const dispatch = useDispatch()
   const weekDayAvail = availabilities[name]
 
-  console.log(weekDayAvail);
+  // console.log(weekDayAvail);
 
 
 
@@ -35,13 +35,13 @@ const WeekDayAvail = ({weekDay, name, id}) => {
         <div className="times">
 
           {weekDayAvail.map((interval, i) => 
-            <TimeInterval key={i} from={interval.from} to={interval.to} />
+            <TimeInterval weekDay={name} key={i} from={interval[0]} to={interval[1]} />
           )}
 
         </div>
 
         <div className="add-time">
-          <Plus />
+          <Plus onClick={() => dispatch(addInterval(name))} />
         </div>
       </div>
       

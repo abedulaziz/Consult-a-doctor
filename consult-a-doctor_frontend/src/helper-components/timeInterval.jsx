@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { deleteInterval } from '../redux/slices/doctorSignUpSlice'
 
 import moment from 'moment';
 
@@ -7,7 +8,7 @@ import moment from 'moment';
 // icons
 import {ReactComponent as Trash} from '../assets/icons/trash-2.svg';
 
-const TimeInterval = ({from, to}) => {
+const TimeInterval = ({weekDay, from, to}) => {
   const availabilities = useSelector((state) => state.doctorSignUp.value.availabilities)
   const dispatch = useDispatch()
 
@@ -15,12 +16,10 @@ const TimeInterval = ({from, to}) => {
   const timeTo = React.useRef(null)
   const timeInterval = React.useRef(null)
 
-  // const {register, handleSubmit, formState: {errors}} = useForm();
+  const weekDays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
 
 
-  const deleteTime = () => {
-    timeInterval.current.remove();
-  }
+  // console.log(timeInterval.current.parentNode);
 
   const validateTime = () => {
     let hourFrom = timeFrom.current.value;
@@ -35,7 +34,7 @@ const TimeInterval = ({from, to}) => {
 
 
   return (
-    <div className="time-interval">
+    <div ref={timeInterval} className="time-interval">
 
       <select ref={timeFrom} name="time-from" id="from" value={from} onChange={validateTime}>
         <option value="00:00">00:00</option>
@@ -94,7 +93,11 @@ const TimeInterval = ({from, to}) => {
       </select>
 
       <div className="trash">
-        <Trash onClick={() => deleteTime()}/>
+        <Trash onClick={() =>{
+          dispatch(deleteInterval({day:weekDay, from: timeFrom.current.value, to: timeTo.current.value}))
+          console.log(availabilities)
+          }
+        }  />
       </div>
     </div>
   )

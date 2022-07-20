@@ -12,34 +12,13 @@ const initialState = {
     about: "",
     gender: "",
     availabilities: {
-      sunday: [{
-        from: "00:00",
-        to: "00:00"
-      }],
-      monday: [{
-        from: "00:00",
-        to: "00:00"
-      }],
-      tuesday: [{
-        from: "00:00",
-        to: "00:00"
-      }],
-      wednesday: [{
-        from: "00:00",
-        to: "00:00"
-      }],
-      thursday: [{
-        from: "00:00",
-        to: "00:00"
-      }],
-      friday: [{
-        from: "00:00",
-        to: "00:00"
-      }],
-      saturday: [{
-        from: "00:00",
-        to: "00:00"
-      }]
+      sunday: [["00:00", "00:00"]],
+      monday: [["00:00", "00:00"]],
+      tuesday: [["00:00", "00:00"]],
+      wednesday: [["00:00", "00:00"]],
+      thursday: [["00:00", "00:00"]],
+      friday: [["00:00", "00:00"]],
+      saturday: [["00:00", "00:00"]],
     }
   },
   stage: 1
@@ -61,12 +40,21 @@ export const doctorSignUpSlice = createSlice({
     },
 
     addInterval: (state, action) => {
-      
+      state.value.availabilities[action.payload].push(["00:00", "00:00"])
+
+    },
+
+    deleteInterval: (state, action) => {
+      const weekDay = state.value.availabilities[action.payload.day];
+
+      weekDay.filter(time => time[0] != action.payload.from || time[1] != action.payload.to)
+
+
     }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { fillInputs, nextStage, previousStage } = doctorSignUpSlice.actions
+export const { fillInputs, nextStage, previousStage, addInterval, deleteInterval } = doctorSignUpSlice.actions
 
 export default doctorSignUpSlice.reducer

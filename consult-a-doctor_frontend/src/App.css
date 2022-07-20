@@ -1210,6 +1210,7 @@ footer .footer_content .buttom_footer .social-media ul li {
   align-items: center;
   gap: 20px;
   margin-bottom: 10px;
+  border-bottom: 1px solid rgb(117, 117, 117);
 }
 
 .regis_box .right-section .regis_form .availabilities .setting_avail .week-day {
@@ -1235,6 +1236,7 @@ footer .footer_content .buttom_footer .social-media ul li {
   background-color: #FFF;
   border: 1px solid gray;
   border-radius: 7px;
+  margin-bottom: 5px;
 }
 
 .regis_box .right-section .regis_form .availabilities .setting_avail .add-time {
