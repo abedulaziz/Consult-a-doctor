@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { fillInputs, incrementStage } from '../redux/slices/doctorSignUpSlice'
+import { fillInputs, nextStage, previousStage } from '../redux/slices/doctorSignUpSlice'
 import {useForm} from 'react-hook-form';
 
 // icons
@@ -19,11 +19,9 @@ const SignUpForm = ({isDoctorSignUp = false}) => {
 
   const nextSignUpStep = (data) => {
     dispatch(fillInputs(data))
-    dispatch(incrementStage())
+    dispatch(nextStage())
     
-    
-
-
+  
   }
 
 
@@ -79,11 +77,11 @@ const SignUpForm = ({isDoctorSignUp = false}) => {
       <div className="button_wrapper">
 
       {isDoctorSignUp ?
-        <button className="sign-up_next_step">
+        <button className="sign-up_next_step change_step">
           <ChevronsRight title="Next" />
         </button>  
         : 
-        <button className="sign-up_button regis_button" >Request account</button>
+        <button className="sign-up_button regis_button" >Register</button>
         }
         
       </div>
