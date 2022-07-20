@@ -1,19 +1,34 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { fillInputs, incrementStage } from '../redux/slices/doctorSignUpSlice'
 import {useForm} from 'react-hook-form';
 
+// icons
+import {ReactComponent as ChevronsRight} from '../assets/icons/chevrons-right.svg';
+
 const SignUpForm = ({isDoctorSignUp = false}) => {
+  const registrationData = useSelector((state) => state.doctorSignUp)
+  const dispatch = useDispatch()
+
+  // console.log(registrationData)
+
+  console.log(registrationData);
+
   const {register, handleSubmit, formState: {errors}} = useForm();
 
-  console.log(errors);
+
+  const nextSignUpStep = (data) => {
+    dispatch(fillInputs(data))
+    dispatch(incrementStage())
+    
+    
 
 
-  const nextStep = (data) => {
-    console.log(data);
   }
 
 
   return (
-    <form onSubmit={ handleSubmit((data) => nextStep(data)) } id='signUp' className='regis_form'>
+    <form onSubmit={ handleSubmit((data) => nextSignUpStep(data)) } id='signUp' className='regis_form'>
       <div className="fullname">
         <div className="fname_wrapper">
           <input {...register("fname", {required: "First name is required", minLength: {value: 2, message:"Minimum length is 2"}})} type="text" name="fname" placeholder='First name' />
@@ -62,9 +77,15 @@ const SignUpForm = ({isDoctorSignUp = false}) => {
         <p className="error">{errors.gender?.message}</p>
       </div>
       <div className="button_wrapper">
-        <button className="sign-up_button regis_button" onClick={(ev) => isDoctorSignUp && nextStep(ev)}>
-          {isDoctorSignUp ? "Next" : "Register"}
-        </button>
+
+      {isDoctorSignUp ?
+        <button className="sign-up_next_step">
+          <ChevronsRight title="Next" />
+        </button>  
+        : 
+        <button className="sign-up_button regis_button" >Request account</button>
+        }
+        
       </div>
     </form>
   )

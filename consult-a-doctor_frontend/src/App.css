@@ -1248,6 +1248,19 @@ footer .footer_content .buttom_footer .social-media ul li {
   max-width: 350px;
 }
 
+.regis_box .right-section .regis_form .button_wrapper .sign-up_next_step {
+  padding: 10px 10px;
+  background-color: var(--second-theme-color);
+  border: none;
+  border-radius: 3px;
+  font-size: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
 
 .regis_box .right-section .regis_form .button_wrapper .regis_button:hover {
   background-color: #6e9cec;
