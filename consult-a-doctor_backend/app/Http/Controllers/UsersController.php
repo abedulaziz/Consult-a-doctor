@@ -36,7 +36,6 @@ class UsersController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'about' => 'required|string|min:10|max:100',
-                'background_img' => 'required|image',
                 'university' => 'required|string'
             ]);
             if ($validator->fails()) {
@@ -45,7 +44,6 @@ class UsersController extends Controller
 
             $user->getDoctorSpecifics->update([
                 "about" => $request->about,
-                "background_img" => $request->background_img,
                 "university" => $request->university,
             ]);
         }
@@ -58,26 +56,29 @@ class UsersController extends Controller
 
     public function getWorkPeriods($doctor_id) {
 
-        $doctorWorkPeriods = User::find($doctor_id)->getDoctorAvailabilities->select("monday", "tuesday", "wednesday", "thursday", "friday")->where("doctor_id", $doctor_id)->limit(1)->get();
+        $doctorWorkPeriods = User::find($doctor_id)->getDoctorAvailabilities->select("week_day", "from", "to")->where("doctor_id", $doctor_id)->get();
 
         return response()->json([
             "work_periods" => $doctorWorkPeriods
         ]);
     }
 
-    public function checkAvailability(Request $req, $doctor_id) {
-        $day = $req->day;
+    public function checkDayAvailability(Request $req, $doctor_id) {
+        $week_day = $req->week_day;
 
-        $workPeriods = User::find($doctor_id)->getDoctorAvailabilities->$day;
-        $selectedDayAppoints = User::find($doctor_id)->getDoctorAppoints->where("doctor_id", $doctor_id)->where("date", $req->date);
+        $workPeriods = User::find($doctor_id)->getDoctorAvailabilities()->where("week_day", $week_day)->select("from", "to")->orderBy("from", "asc")->get();
+        $selectedDayAppoints = User::find($doctor_id)->getDoctorAppoints()->where("date", $req->date)->select("from", "to", )->orderBy("from", "asc")->get();
 
-        $availablePeriods = array();
-        foreach($workPeriods as $period) {
-            
-        }
+
+        $newtimestamp = strtotime("01:00:00" .'+ 1 hours');
+        echo date('H:i:s', $newtimestamp);
+
+
+        getAvailableDurations($workPeriods, $selectedDayAppoints);
+
 
         return response()->json([
-            "available_periods" => $selectedDayAppoints
+            "available_periods" => [$workPeriods, $selectedDayAppoints]
         ]);
     }
 
@@ -109,11 +110,6 @@ class UsersController extends Controller
         }
 
 
-
-
-
-
-
         $newtimestamp = strtotime('05:05:03 + 160 minutes');
         echo date('H:i:s', $newtimestamp);
 
@@ -121,4 +117,43 @@ class UsersController extends Controller
             "available_periods" => $selectedDayAppoints
         ]);
     }
+
+
+
+}
+
+
+function getAvailableDurations($workPeriods, $dayAppointments) {
+
+    $availDurations = array();
+    $appoinIndex = 0;
+
+
+    foreach( $workPeriods as $period) {
+        $start = $period->from;
+
+        while ($start < $period->to) {
+            $addedHour = date('H:i:s', strtotime($start . '+ 1 hours'));
+            $crntAppoin = $dayAppointments[$appoinIndex];
+
+            if ($start <= $crntAppoin->from) {
+
+                if ($addedHour <= $crntAppoin->from && $addedHour < $period->to) {
+                    array_push($availDurations, array($start, $addedHour));
+                    $start = $addedHour;
+                }
+                else {
+                    array_push($availDurations, array($start, $crntAppoin->from));
+                    $start = $crntAppoin->to;
+                    $appoinIndex++;
+                }
+                echo $start . " ";
+            }
+            else {
+                $start = $crntAppoin->to;
+                $appoinIndex++;
+            }
+        }
+    }
+    return $availDurations;
 }
