@@ -1127,10 +1127,7 @@ footer .footer_content .buttom_footer .social-media ul li {
   min-height: 90vh;
   margin: auto;
   display: flex;
-  /* position: relative; */
   top: 50%;
-  /* transform: translateY(-50%); */
-  /* max-width: max-content; */
 }
 
 .regis_box > div {
@@ -1350,3 +1347,36 @@ footer .footer_content .buttom_footer .social-media ul li {
 /* ----------------- end sign-in, sign-up ----------------- */
 /* ------------------------------------------------ */
 
+
+/* ------------------------------------------------ */
+/* ----------------- start meeting ----------------- */
+/* ------------------------------------------------ */
+
+.screens {
+  background-color: #202124;
+  min-height: 100vh;
+  padding-top: 40px;
+}
+
+.screens .screens_wrapper {
+  display: flex;
+  gap: 40px;
+  margin: auto 3vw;
+}
+
+.screens .screens_wrapper .video_wrapper {
+  flex-basis: 50%;
+  border: 1px solid var(--main-theme-color)
+}
+
+
+.screens .screens_wrapper video {
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* ------------------------------------------------ */
+/* ----------------- end meeting ----------------- */
+/* ------------------------------------------------ */
