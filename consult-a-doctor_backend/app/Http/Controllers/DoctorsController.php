@@ -9,19 +9,22 @@ class DoctorsController extends Controller
 {
     public function getTopDoctors() {
 
-        $topFive = Doctor_specific::select("doctor_id", "speciality", "rate")->orderByDesc("rate")->take(5)->get();
+        $topFour = Doctor_specific::select("doctor_id", "speciality", "rate")->orderByDesc("rate")->take(4)->get();
 
-        foreach($topFive as $doctor) {
-            $user_info = Doctor_specific::find($doctor->doctor_id)->getDoctorSpecific;
+        foreach($topFour as $doctor) {
+            $user_info = Doctor_specific::find($doctor->doctor_id)->getDoctorSpecific()->select("fname", "lname", "profile_pic", "date_of_birth")->get();
 
-            $doctor->fname = $user_info->fname;
-            $doctor->lname = $user_info->lname;
-            $doctor->profile_pic = $user_info->profile_pic;
+            $doctor->fname = $user_info[0]->fname;
+            $doctor->lname = $user_info[0]->lname;
+            $doctor->profile_pic = $user_info[0]->profile_pic;
+
+            $age = date_diff(date_create($user_info[0]->date_of_birth), date_create(date("Y-m-d")))->y;
+            $doctor->age = $age;
         }
 
         return response()->json([
             "isAuthorized" => auth()->id() ? true:false,
-            "topDoctors" => $topFive
+            "topDoctors" => $topFour
         ], 200);
     }
 
