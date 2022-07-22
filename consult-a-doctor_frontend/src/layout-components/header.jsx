@@ -1,8 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { useSelector } from 'react-redux'
 
 // helper components
 import NavItem from '../helper-components/navItem';
+
+// backgrounds
+import Doctor1 from '../assets/backgrounds/doctor1.jpg';
 
 // icons
 import {ReactComponent as Menu} from '../assets/icons/menu.svg';
@@ -13,6 +17,8 @@ import MobileLogo from '../assets/brand/transparent_background_logo.png';
 const Header = () => {
   const header = React.useRef(null);
   const NavBar = React.useRef(null);
+
+  const token = useSelector((state) => state.userInfo.value.JWT)
 
   const [logo, setLogo] = React.useState(MobileLogo)
 
@@ -73,11 +79,25 @@ const Header = () => {
           </nav>
 
           <div className="account_status">
+
+          {token ? 
+          <div className='profile-pic'>
+            <div className="pic_wrapper">
+              <img src={Doctor1} alt="profile" />
+            </div>
+            <div className="menu">
+              <Menu onClick={() => displayNav()} />
+            </div>
+          </div>
+          :
+          <>
             <Link to="/sign-in"><button className='sign-in_button'>Sign in</button></Link>
             <Link to="/sign-up"><button className='sign-up_button'>Sign up</button></Link>
             <div className="menu">
               <Menu onClick={() => displayNav()} />
             </div>
+          </>
+          }
           </div>
         
         </div>
