@@ -466,6 +466,7 @@ header .menu {
 .top_doctors .top_doctors-content .top_doctors-details .top_doctor .details{
   padding: 4px 15px;
   display: none;
+  height: 150px;
 }
 
 .top_doctors .top_doctors-content .top_doctor.active .details {

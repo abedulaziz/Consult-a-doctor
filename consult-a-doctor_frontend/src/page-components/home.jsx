@@ -27,6 +27,7 @@ import Footer from "../layout-components/footer";
 
 const Home = () => {
   const [topDoctors, setTopDoctors] = React.useState(null);
+  const topDoctorsSection = React.useRef(null)
 
   React.useEffect(() => {
     try {
@@ -39,6 +40,21 @@ const Home = () => {
     } catch (err) {
       console(err);
     }
+
+
+    // top doctors section animation
+    console.log(topDoctorsSection.current);
+    const parent = topDoctorsSection.current
+    setInterval(() => {
+      parent.appendChild(parent.childNodes[0])
+      parent.childNodes.forEach(child => {
+        child.classList.remove("active")
+      });
+      
+      parent.childNodes[0].style.order = "5"
+      parent.childNodes[1].classList.add("active")
+    }, 3000);
+
   }, []);
 
   return (
@@ -123,7 +139,7 @@ const Home = () => {
                 <p className="description">Get to know our top rated doctors according to patient evaluations.</p>
               </div>
 
-              <div className="top_doctors-details">
+              <div ref={topDoctorsSection} className="top_doctors-details">
                 {topDoctors &&
                   topDoctors.map((doctor) => (
                     <TopDoctor
