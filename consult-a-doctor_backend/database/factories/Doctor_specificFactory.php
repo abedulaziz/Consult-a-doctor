@@ -18,7 +18,7 @@ class Doctor_specificFactory extends Factory
     {
         return [
             'doctor_id' => $this->faker->numberBetween(1, 20),
-            'speciality' => $this->faker->randomElement(["cardiology", "ear, nose, and throat", "endocrinology and metabolic disorders", "oncology", "denistry", "neurology", "nephrology", "orthopedics", "family medicine", "internal medicine", "allergy and immunology", "gastroenterology and hepatology"]),
+            'speciality_id' => $this->faker->numberBetween(1, 7),
             'rate' => $this->faker->randomFloat(1, 1, 5),
             'about' => $this->faker->text(30),
             'background_img' =>"1234213512354",
