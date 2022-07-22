@@ -1,20 +1,36 @@
 import React from 'react'
 
+import axios from 'axios';
+
 // layout components
 import Header from '../layout-components/header';
 import Footer from '../layout-components/footer';
 import Specialization from '../layout-components/specialization';
 
-// backgrounds
-import CardiologyBackground from '../assets/backgrounds/invasive-cardiology.jpg';
-import EarNoseThroatBackground from '../assets/backgrounds/ear-nose-throat.jpg';
-import EndocrinologyBackground from '../assets/backgrounds/Endocrinology-2.jpg';
-import OncologyBackground from '../assets/backgrounds/medical-concept-cancer-abstract-background-3d-illustration-t-cells-cancer-cells_200694-399.webp';
-import DenistryBackground from '../assets/backgrounds/concept-image-dental_43058-70.webp';
-import NeurologyBackground from '../assets/backgrounds/Neurology.jpg';
-import NephrologyBackground from '../assets/backgrounds/360_F_195435406_vMIYvw5DvHThnIURvIRotx2nPkkvMI18.jpg';
 
 const Specializations = () => {
+
+  const [specializations, setSpecializations] = React.useState(null);
+
+  React.useEffect(() => {
+
+    try {
+      const getSpecializations = async() => {
+  
+        const specRqust = await axios.get("/specializations")
+  
+        console.log(specRqust);
+        setSpecializations(specRqust.data.specializations)
+  
+      }
+      getSpecializations()
+      
+    } catch (err) {
+      console.log(err);
+    }
+  }, [])
+
+
   return (
     <>
       <Header />
@@ -30,15 +46,19 @@ const Specializations = () => {
 
               <div className="specs-container">
                 <div className="left-side-specs">
-                  <Specialization specName="Cardiology" img={CardiologyBackground} />
-                  <Specialization specName="Endocrinology and metabolic disorders" img={EndocrinologyBackground} />
-                  <Specialization specName="Denistry" img={DenistryBackground} />
-                  <Specialization specName="Nephrology" img={NephrologyBackground} />
+                  {specializations && specializations.map((spec, index) => {
+                    if (index % 2 === 0) {
+                      return <Specialization key={spec.id} specName={spec.name} img={spec.background_image} />
+                    }
+                  })}
                 </div>
                 <div className="right-side-specs">
-                  <Specialization specName="Ear, nose, and throat" img={EarNoseThroatBackground} />
-                  <Specialization specName="Oncology" img={OncologyBackground} />
-                  <Specialization specName="Neurology" img={NeurologyBackground} />
+                {specializations && specializations.map((spec, index) => {
+                    if (index % 2 !== 0) {
+                      return <Specialization key={spec.id} specName={spec.name} img={spec.background_image} />
+                    }
+                  })}
+
                 </div>
               </div>
 
