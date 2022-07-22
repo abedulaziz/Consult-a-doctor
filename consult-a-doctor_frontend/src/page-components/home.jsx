@@ -129,7 +129,7 @@ const Home = () => {
                     <TopDoctor
                       key={doctor.doctor_id}
                       fullName={doctor.fname + " " + doctor.lname}
-                      age={doctor.rate}
+                      age={doctor.age}
                       speciality={doctor.speciality}
                       doctorImg={doctor.profile_pic}
                     />
