@@ -24,7 +24,7 @@ class UserFactory extends Factory
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'gender' => $this->faker->randomElement(["male", "female"]),
             'date_of_birth' => $this->faker->date(),
-            'profile_pic' => "3234123512351`",
+            'profile_pic' => $this->faker->imageUrl(640, 480, 'animals', true),
             'type' => $this->faker->randomElement(["patient", "doctor", "admin"]),
         ];
     }
