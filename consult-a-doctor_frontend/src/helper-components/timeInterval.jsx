@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { deleteInterval } from '../redux/slices/doctorSignUpSlice'
+import { deleteInterval, updateInterval } from '../redux/slices/doctorSignUpSlice'
 
 import moment from 'moment';
 
@@ -21,22 +21,26 @@ const TimeInterval = ({weekDay, from, to}) => {
 
   // console.log(timeInterval.current.parentNode);
 
-  const validateTime = () => {
+  const ValidateTime = () => {
     let hourFrom = timeFrom.current.value;
     let hourTo = timeTo.current.value;
 
+    let parent = timeFrom.current.closest(".times");
 
+    let timeIntervalIndex = Array.prototype.indexOf.call(parent.children, timeFrom.current.parentNode)
 
     if (hourFrom >= hourTo) {
       timeTo.current.value = moment(hourFrom, "HH:mm").add(1, "hour").format("HH:mm")
+      
     }
+    dispatch(updateInterval({day: weekDay, intervalIndex: timeIntervalIndex, from: hourFrom, to: timeTo.current.value}))
   }
 
 
   return (
     <div ref={timeInterval} className="time-interval">
 
-      <select ref={timeFrom} name="time-from" id="from" value={from} onChange={validateTime}>
+      <select ref={timeFrom} name="time-from" id="from" value={from} onChange={() => ValidateTime()}>
         <option value="00:00">00:00</option>
         <option value="01:00">01:00</option>
         <option value="02:00">02:00</option>
@@ -65,7 +69,7 @@ const TimeInterval = ({weekDay, from, to}) => {
 
       <span className="separator"> - </span>
 
-      <select ref={timeTo} name="to" id="to" value={to} onChange={validateTime}>
+      <select ref={timeTo} name="to" id="to" value={to} onChange={() => ValidateTime()}>
         <option value="00:00">00:00</option>
         <option value="01:00">01:00</option>
         <option value="02:00">02:00</option>
