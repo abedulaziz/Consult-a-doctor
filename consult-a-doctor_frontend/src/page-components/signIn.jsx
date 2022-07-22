@@ -1,15 +1,36 @@
 import React from 'react';
 
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {useForm} from 'react-hook-form';
 
 // layout components
 import RegistrationLeftSection from '../layout-components/registrationLeftSection';
 
+import axios from 'axios';
 
 const SignIn = () => {
+  let navigate = useNavigate()
+  const regisError = React.useRef(null)
 
   const {register, handleSubmit, formState: {errors}} = useForm();
+
+  const checkData = async(data) => {
+    try {
+      const signInRqust = await axios.post("login", {
+        email: data.email,
+        password: data.password
+      })
+      const signInRspnse = signInRqust
+      console.log(signInRspnse);
+
+      navigate('/')
+      
+    } catch (err) {
+      regisError.current.classList.add("regis_error")
+      regisError.current.textContent = "Incorrect email or password."
+
+    }
+  }
 
   return (
     <div className='background'>
@@ -24,7 +45,7 @@ const SignIn = () => {
           </div>
 
 
-          <form onSubmit={handleSubmit((data) => console.log(data))} id='signIn' className='regis_form'>
+          <form onSubmit={handleSubmit((data) => checkData(data))} id='signIn' className='regis_form'>
             <div className="email">
 
               <div className="email_wrapper">
@@ -35,9 +56,10 @@ const SignIn = () => {
             </div>
 
             <div className="password">
-            
+
               <div className="password_wrapper">
-                <input {...register("password", {required: "Password is required", pattern:{value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm, message:"Please enter a valid password"}})} type="password" name="password" id="password" placeholder='password' />
+                <input {...register("password", {required: "Password is required"})} type="password" name="password" id="password" placeholder='password' />
+                {/* , pattern:{value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm, message:"Please enter a valid password"} */}
                 <p className="error">{errors.password?.message}</p>
               </div>
 
@@ -45,6 +67,7 @@ const SignIn = () => {
             <div className="button_wrapper">
               <button className="log-in_button regis_button">Log in</button>
             </div>
+            <div ref={regisError}></div>
           </form>
           <div className="sign-up_link regis_link">
             Don't have an existing account? <Link to="/sign-up">Sign up</Link>

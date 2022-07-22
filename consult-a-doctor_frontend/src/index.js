@@ -5,6 +5,8 @@ import { Provider } from "react-redux";
 import App from './App';
 import store from './redux/store';
 import reportWebVitals from './reportWebVitals';
+import axios from 'axios';
+axios.defaults.baseURL = "http://127.0.0.1:8000/api/"
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

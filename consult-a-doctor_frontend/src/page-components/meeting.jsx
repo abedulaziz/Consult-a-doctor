@@ -1,5 +1,5 @@
 import React from 'react'
-import Agora from '../agora-rtm-sdk-1.4.5.js';
+// import Agora from '../agora-rtm-sdk-1.4.5.js';
 
 
 
@@ -33,7 +33,7 @@ const Meeting = () => {
 
     let localStream, remoteStream, peerConnection;
     const init = async() => {
-      client = await Agora.AgoraRTM.createInstance(APP_ID)
+      // client = await Agora.AgoraRTM.createInstance(APP_ID)
       await client.login({uid, token})
 
       channel = client.createChannel("main")
