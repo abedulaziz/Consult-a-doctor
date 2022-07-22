@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Specialization = ({specName, img}) => {
+const Specialization = ({onClick, specName, img}) => {
   return (
-    <div className='specialization'>
+    <div className='specialization' onClick={onClick}>
       <img src={img}/>
       <span>{ specName }</span>
       <div className="overlay"></div>
