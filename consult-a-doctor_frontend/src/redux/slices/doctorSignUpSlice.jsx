@@ -43,18 +43,24 @@ export const doctorSignUpSlice = createSlice({
       state.value.availabilities[action.payload].push(["00:00", "00:00"])
 
     },
+    updateInterval: (state, action) => {
+      let index = action.payload.intervalIndex;
+
+      const timeInterval = state.value.availabilities[action.payload.day][index]
+      timeInterval[0] = action.payload.from
+      timeInterval[1] = action.payload.to
+    },
 
     deleteInterval: (state, action) => {
       const weekDay = state.value.availabilities[action.payload.day];
 
-      weekDay.filter(time => time[0] != action.payload.from || time[1] != action.payload.to)
-
+      state.value.availabilities[action.payload.day] = weekDay.filter(time => time[0] != action.payload.from || time[1] != action.payload.to)
 
     }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { fillInputs, nextStage, previousStage, addInterval, deleteInterval } = doctorSignUpSlice.actions
+export const { fillInputs, nextStage, previousStage, addInterval, deleteInterval, updateInterval } = doctorSignUpSlice.actions
 
 export default doctorSignUpSlice.reducer

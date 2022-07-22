@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fillInputs, addInterval } from '../redux/slices/doctorSignUpSlice'
 
-import {useForm} from 'react-hook-form';
+// import {useForm} from 'react-hook-form';
 import moment from 'moment';
 
 // helper components
