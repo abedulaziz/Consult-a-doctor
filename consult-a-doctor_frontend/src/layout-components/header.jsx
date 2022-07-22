@@ -81,14 +81,16 @@ const Header = () => {
           <div className="account_status">
 
           {token ? 
-          <div className='profile-pic'>
-            <div className="pic_wrapper">
-              <img src={Doctor1} alt="profile" />
+          <>
+            <div className='profile-pic'>
+              <div className="pic_wrapper">
+                <img src={Doctor1} alt="profile" />
+              </div>
             </div>
             <div className="menu">
               <Menu onClick={() => displayNav()} />
             </div>
-          </div>
+          </>
           :
           <>
             <Link to="/sign-in"><button className='sign-in_button'>Sign in</button></Link>
