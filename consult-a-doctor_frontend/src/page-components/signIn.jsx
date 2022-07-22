@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import { insertInfo } from '../redux/slices/userSlice'
 
 import {Link, useNavigate} from 'react-router-dom';
 import {useForm} from 'react-hook-form';
@@ -9,19 +11,23 @@ import RegistrationLeftSection from '../layout-components/registrationLeftSectio
 import axios from 'axios';
 
 const SignIn = () => {
+  const userInfo = useSelector((state) => state.userInfo)
+  const dispatch = useDispatch()
+
   let navigate = useNavigate()
   const regisError = React.useRef(null)
 
   const {register, handleSubmit, formState: {errors}} = useForm();
-
+  
   const checkData = async(data) => {
     try {
       const signInRqust = await axios.post("login", {
         email: data.email,
         password: data.password
       })
-      const signInRspnse = signInRqust
-      console.log(signInRspnse);
+      console.log(signInRqust);
+
+      dispatch(insertInfo({access_token: signInRqust.data.access_token, user_id: signInRqust.data.user_id}))
 
       navigate('/')
       
