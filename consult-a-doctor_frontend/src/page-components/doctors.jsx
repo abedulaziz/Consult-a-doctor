@@ -19,6 +19,7 @@ import { ReactComponent as SearchIcon } from "../assets/icons/search.svg";
 
 const Doctors = () => {
   const [doctors, setDoctors] = React.useState(null);
+  const [searchValue, setSearchValue] = React.useState("")
 
   let { specialization_id } = useParams();
 
@@ -34,16 +35,6 @@ const Doctors = () => {
       console.log(err);
     }
   }, []);
-
-  const filterDoctors = (ev) => {
-    let value = ev.target.value
-    setDoctors(
-      doctorData.filter((doctor) => {
-        doctor.fname === value
-      })
-    )
-  }
-
 
 
   return (
@@ -62,7 +53,7 @@ const Doctors = () => {
               <div className="search-panel">
                 <div className="search-box">
                   <SearchIcon />
-                  <input onChange={(ev) => filterDoctors(ev)} type="text" placeholder="Search" />
+                  <input onChange={(ev) => setSearchValue(ev.target.value)} type="text" placeholder="Search" />
                 </div>
 
                 <div className="sorting">
@@ -76,12 +67,16 @@ const Doctors = () => {
               </div>
 
               <div className="doctor-cards">
-                {doctors &&
-                  doctors.map((doctor) => <DoctorCard key={doctor.doctor_id} profile_pic={doctor.profile_pic} fullname={doctor.fname + " " + doctor.lname} followers="23" />)}
-                {/* <DoctorCard profile_pic={Doctor1} fullname="John Doe" followers="57" />
-                <DoctorCard profile_pic={Doctor3} fullname="Wan Bissaka" followers="42" />
-                <DoctorCard profile_pic={Doctor4} fullname="Rayan Johnson" followers="22" />
-                <DoctorCard profile_pic={Doctor2} fullname="Will Smith" followers="34" /> */}
+
+                {
+                  doctors && doctors.filter(doctor => {
+                  let fullname = doctor.fname + " " + doctor.lname;
+                  return fullname.match(new RegExp(searchValue, "i"))
+                })
+                .map(doctor => 
+                  <DoctorCard key={doctor.doctor_id} profile_pic={doctor.profile_pic} fullname={doctor.fname + " " + doctor.lname} followers="23" />
+                )}
+                
               </div>
             </div>
           </div>
