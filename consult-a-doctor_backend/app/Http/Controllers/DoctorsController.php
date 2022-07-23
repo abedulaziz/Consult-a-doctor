@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Doctor_specific;
 
 class DoctorsController extends Controller
@@ -28,22 +29,15 @@ class DoctorsController extends Controller
         ], 200);
     }
 
-    public function specialityDoctors($specialization) {
+    public function specialityDoctors($specialization_id) {
         $doctors = null;
 
-        if ($specialization == "all") {
-            $doctors = Doctor_specific::select("doctor_id", "speciality", "rate", "about")->get();
+        if ($specialization_id == "all") {
+            $doctors = $doctors = DB::table("specializations")->join("doctor_specifics", "specializations.id", "doctor_specifics.speciality_id")->select("doctor_id", "rate", "about", "name")->get();
+
         }
-        else $doctors = Doctor_specific::select("doctor_id", "speciality", "rate", "about")->where("speciality", $specialization)->get();
+        else $doctors = DB::table("specializations")->join("doctor_specifics", "specializations.id", "=", "doctor_specifics.speciality_id")->join("users", "users.id", "=", "doctor_specifics.doctor_id")->select("fname", "lname", "doctor_id", "rate", "about", "name", "profile_pic")->where("speciality_id", $specialization_id)->get();
 
-
-        foreach($doctors as $doctor) {
-            $user_info = Doctor_specific::find($doctor->doctor_id)->getDoctorSpecific;
-
-            $doctor->fname = $user_info->fname;
-            $doctor->lname = $user_info->lname;
-            $doctor->profile_pic = $user_info->profile_pic;
-        }
 
         return response()->json([
             "isAuthorized" => auth()->id() ? true:false,

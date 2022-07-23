@@ -48,7 +48,7 @@ Route::post("/users/doctor-account-request", [Account_requestsController::class,
 Route::get("/users/{doctor_id}", [DoctorsController::class, "getDoctorInfo"]);
 
 // get selected specialization's doctors
-Route::get("/{specialization}/doctors", [DoctorsController::class, "specialityDoctors"]);
+Route::get("/{specialization_id}/doctors", [DoctorsController::class, "specialityDoctors"]);
 
 //get specializations
 Route::get("/specializations", [SpecializationsController::class, "getSpecializations"]);
