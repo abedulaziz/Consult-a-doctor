@@ -1415,6 +1415,7 @@ footer .footer_content .buttom_footer .social-media ul li {
   color: var(--light-text-color);
   text-align: center;
   padding: 0;
+  position: relative;
 }
 
 .admin_panel_head a {
@@ -1438,6 +1439,80 @@ footer .footer_content .buttom_footer .social-media ul li {
 .admin_panel_head .container > div a.active div{
   border-bottom: 3px solid var(--second-theme-color);
 }
+
+.admin_spec .spec_content {
+  margin-top: 20px;
+}
+
+.admin_spec .spec_content .spec {
+  display: flex;
+  margin-bottom: 20px;
+  gap: 2vw
+} 
+
+.admin_spec .spec_content .spec .img_wrapper{
+  width: 60vw;
+  height: 35vw;
+  position: relative;
+}
+
+.admin_spec .spec_content .spec .img_wrapper img {
+  width: 100%;
+  height: 100%;
+  object-position: 50%;
+  object-fit: cover;
+}
+
+.admin_spec .spec_content .spec .img_wrapper .overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.361);
+}
+
+.admin_spec .spec_content .spec .img_wrapper span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 27px;
+  font-weight: 500;
+  z-index: 7;
+  color: var(--light-text-color);
+}
+
+
+.admin_spec .spec_content .spec .options {
+  width: 200px;
+}
+
+.admin_spec .spec_content .spec .options > div {
+  width: 150px;
+  height: 150px;
+  min-width: 100px;
+  margin: auto;
+  border: 1px solid gray;
+  position: relative;
+}
+
+.admin_spec .spec_content .spec .options .delete {
+  background-color: #F96969;
+}
+
+.admin_spec .spec_content .spec .options .icon_wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.admin_spec .spec_content .spec .options .icon_wrapper svg {
+  width: 40px;
+}
+
 
 
 /* ------------------------------------------------ */

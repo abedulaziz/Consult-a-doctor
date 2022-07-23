@@ -1,8 +1,8 @@
 import React from 'react'
 
 // icons
-import Edit from '../assets/icons/edit.svg';
-import Trash from '../assets/icons/trash-2.svg';
+import {ReactComponent as Edit} from '../assets/icons/edit.svg';
+import {ReactComponent as Trash} from '../assets/icons/red-trash.svg';
 
 const AdminSpec = ({img, specName}) => {
   return (
@@ -17,12 +17,16 @@ const AdminSpec = ({img, specName}) => {
       <div className="options">
 
         <div className="edit">
-          <img src={Edit} alt="edit" />
-          <span>Edit</span>
+          <div className="icon_wrapper">
+            <Edit />
+            <div>Edit</div>
+          </div>
         </div>
         <div className="delete">
-          <img src={Trash} alt="delete" />
-          <span>Delete</span>
+          <div className="icon_wrapper">
+            <Trash />
+            <div>Delete</div>
+          </div>
         </div>
 
       </div>
