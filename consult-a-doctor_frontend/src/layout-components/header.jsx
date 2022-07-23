@@ -18,7 +18,7 @@ const Header = () => {
   const header = React.useRef(null);
   const NavBar = React.useRef(null);
 
-  const token = useSelector((state) => state.userInfo.value.JWT)
+  const userInfo = useSelector((state) => state.userInfo.value)
 
   const [logo, setLogo] = React.useState(MobileLogo)
 
@@ -71,8 +71,8 @@ const Header = () => {
 
               <NavItem path="/" className="home-link" content="Home" />
               <NavItem path="/doctor/specializations" className="specializations-link" content="Specializations" />
-              <NavItem path="/doctor/accounts" className="doctors-link" content="Doctors" />
-              <NavItem path="/my-appointments" className="appointments-link" content="My Appointments" />
+              <NavItem path="/doctor/all/accounts" className="doctors-link" content="Doctors" />
+              <NavItem path={ userInfo.user_id ? `/${userInfo.user_id}/appointments` : "/sign-in"} className="appointments-link" content="My Appointments" />
 
             </div>
 
@@ -80,7 +80,7 @@ const Header = () => {
 
           <div className="account_status">
 
-          {token ? 
+          {userInfo.JWT ? 
           <>
             <div className='profile-pic'>
               <div className="pic_wrapper">
