@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\Appointment;
 
 class UsersController extends Controller
 {
@@ -119,6 +121,23 @@ class UsersController extends Controller
     }
 
 
+    public function getUserAppointments($user_id) {
+
+        $userAppoinAsPatient = DB::table("users")
+        ->join("appointments", "users.id", "=", "appointments.doctor_id")
+        ->where("patient_id",  $user_id)
+        ->select("fname", "lname" , "from", "to", "date", "title", "duration")->get();
+
+        $userAppoinAsDoctor = DB::table("users")
+        ->join("appointments", "users.id", "=", "appointments.patient_id")
+        ->where("doctor_id",  $user_id)
+        ->select("fname", "lname" , "from", "to", "date", "title", "duration")->get();
+
+        return response()->json([
+            "appointmentsAsPatient" => $userAppoinAsPatient,
+            "appointmentsAsDoctor" => $userAppoinAsDoctor
+        ]);
+    }
 
 }
 
