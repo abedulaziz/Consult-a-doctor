@@ -13,6 +13,10 @@ import Appointments from './page-components/appointments';
 import DoctorSignUp from './page-components/doctorSignUp';
 import Meeting from './page-components/meeting';
 
+// admin components
+import AdminSpecializations from './admin/adminSpecializations';
+import DoctorRequests from './admin/doctorRequests';
+
 import './App.css';
 
 function App() {
@@ -30,6 +34,15 @@ function App() {
           <Route path='/sign-in' element={<SignIn />}></Route>
           <Route path='/sign-up' element={<SignUp />}></Route> 
           <Route path='/doctor/sign-up' element={<DoctorSignUp />}></Route>
+        </Routes>
+      </Router>
+
+      <Router>
+        <Routes>
+
+          <Route path='/admin/specializations' element={<AdminSpecializations />} ></Route>
+          <Route path='/admin/doctor_requests' element={<DoctorRequests />} ></Route>
+
         </Routes>
       </Router>
     </div>
