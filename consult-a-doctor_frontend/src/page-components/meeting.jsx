@@ -1,6 +1,8 @@
 import React from 'react'
 
 import VideoPlayer from '../WebRTC-components/videoPlayer';
+import Options from '../WebRTC-components/options';
+import Notifications from '../WebRTC-components/notifications';
 
 const Meeting = () => {
 
@@ -20,6 +22,9 @@ const Meeting = () => {
       </div>
 
       <VideoPlayer />
+      <Options>
+        <Notifications />
+      </Options>
     </>
   )
 }
