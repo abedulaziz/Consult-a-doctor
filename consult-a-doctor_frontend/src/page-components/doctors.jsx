@@ -7,11 +7,6 @@ import Header from "../layout-components/header";
 import Footer from "../layout-components/footer";
 import DoctorCard from "../layout-components/doctorCard";
 
-// profile pics
-import Doctor1 from "../assets/backgrounds/doctor1.jpg";
-import Doctor2 from "../assets/backgrounds/doctor2.jpg";
-import Doctor3 from "../assets/backgrounds/doctor3.jpg";
-import Doctor4 from "../assets/backgrounds/doctor4.jpg";
 
 // icons
 import { ReactComponent as SearchIcon } from "../assets/icons/search.svg";
@@ -37,6 +32,45 @@ const Doctors = () => {
   }, []);
 
 
+
+  const sortDoctors = (ev) => {
+    
+    // setDoctors(doctors.sort((a, b) => {
+    //   let aFullname = a.fname + " " + a.lname
+    //   let bFullname = b.fname + " " + b.lname
+    //   console.log(ev.target.value);
+
+    //   switch (ev.target.value) {
+    //     case "alphabetically":
+    //       return aFullname < bFullname ? -1 : 1;
+    //       break;
+      
+    //     default:
+    //       break;
+    //   }
+
+    // }))
+    let hah = doctors.sort((a, b) => 
+      a.fname + a.lname < b.fname + b.lname ? -1 : 1
+    )
+
+    console.log(hah, doctors);
+
+    switch (ev.target.value) {
+      case "alphabetically":
+        setDoctors(hah)
+        break;
+      case "rating":
+        // sortedArray = b.fname + " " + b.lname
+        break;
+    
+      default:
+        break;
+    }
+    console.log(doctors);
+  }
+
+
   return (
     <>
       <Header />
@@ -58,7 +92,7 @@ const Doctors = () => {
 
                 <div className="sorting">
                   <label htmlFor="sortDoctors">Sort by: </label>
-                  <select name="sorting" id="sortDoctors">
+                  <select name="sorting" id="sortDoctors" onChange={(ev) => sortDoctors(ev)}>
                     <option value="alphabetically">Alphabetical order</option>
                     <option value="rating">Rate</option>
                     <option value="rating">Number of followers</option>
@@ -70,13 +104,14 @@ const Doctors = () => {
 
                 {
                   doctors && doctors.filter(doctor => {
+                    console.log("haha")
                   let fullname = doctor.fname + " " + doctor.lname;
                   return fullname.match(new RegExp(searchValue, "i"))
                 })
                 .map(doctor => 
                   <DoctorCard key={doctor.doctor_id} profile_pic={doctor.profile_pic} fullname={doctor.fname + " " + doctor.lname} followers="23" />
                 )}
-                
+
               </div>
             </div>
           </div>
