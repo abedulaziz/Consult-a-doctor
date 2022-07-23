@@ -1,6 +1,8 @@
 import React from 'react'
 
 import Header from './header';
+import AdminSpec from './adminSpec';
+
 
 const AdminSpecializations = () => {
   return (
@@ -9,7 +11,14 @@ const AdminSpecializations = () => {
 
       <div className="container">
 
+      <div className="spec_addition">
+
+      </div>
+
         <div className="spec_content">
+          <AdminSpec />
+          <AdminSpec />
+          <AdminSpec />
 
         </div>
 
