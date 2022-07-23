@@ -126,12 +126,12 @@ class UsersController extends Controller
         $userAppoinAsPatient = DB::table("users")
         ->join("appointments", "users.id", "=", "appointments.doctor_id")
         ->where("patient_id",  $user_id)
-        ->select("fname", "lname" , "from", "to", "date", "title", "duration")->get();
+        ->select("appointments.id", "fname", "lname" , "from", "to", "date", "title", "duration")->get();
 
         $userAppoinAsDoctor = DB::table("users")
         ->join("appointments", "users.id", "=", "appointments.patient_id")
         ->where("doctor_id",  $user_id)
-        ->select("fname", "lname" , "from", "to", "date", "title", "duration")->get();
+        ->select("appointments.id", "fname", "lname" , "from", "to", "date", "title", "duration")->get();
 
         return response()->json([
             "appointmentsAsPatient" => $userAppoinAsPatient,
