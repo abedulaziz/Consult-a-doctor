@@ -3,13 +3,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   stream: null,
-  myVideo,
-  userVideo,
   me: null,
   call: null,
   callAccepted: false,
   callEnded: false,
-  
+  name: ""
 }
 
 
