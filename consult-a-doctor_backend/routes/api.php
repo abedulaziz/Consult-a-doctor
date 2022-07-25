@@ -45,7 +45,7 @@ Route::get("/users/top-five-doctors", [DoctorsController::class, 'getTopDoctors'
 Route::post("/users/doctor-account-request", [Account_requestsController::class, 'doctorSignUp']);
 
 // get selected doctor's info
-Route::get("/users/{doctor_id}", [DoctorsController::class, "getDoctorInfo"]);
+Route::get("/users/{doctor_id}/doctor-info", [DoctorsController::class, "getDoctorInfo"]);
 
 // get selected specialization's doctors
 Route::get("/{specialization_id}/doctors", [DoctorsController::class, "specialityDoctors"]);
@@ -61,6 +61,7 @@ Route::group(["middleware" => "verifyAuth"], function () {
     Route::post("/users/{doctor_id}/follow", [FollowingsController::class, "followDoctor"]);
     Route::post("/users/{doctor_id}/unfollow", [FollowingsController::class, "unFollowDoctor"]);
     Route::get("/users/{doctor_id}/work-periods", [UsersController::class, "getWorkPeriods"]);
+    Route::get("/users/{user_id}/user-info", [UsersController::class, "getUserInfo"]);
     Route::post("/users/{doctor_id}/check-availability", [UsersController::class, "checkDayAvailability"]);
     Route::post("/users/{doctor_id}/available-periods", [UsersController::class, "getAvailablePeriods"]);
 });

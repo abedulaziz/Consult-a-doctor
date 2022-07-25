@@ -139,6 +139,14 @@ class UsersController extends Controller
         ]);
     }
 
+    public function getUserInfo($user_id) {
+        $userInfo = User::select("fname", "lname", "email", "date_of_birth", "type")->find($user_id);
+
+        return response()->json([
+            "user_info" => $userInfo
+        ]);
+    }
+
 }
 
 
