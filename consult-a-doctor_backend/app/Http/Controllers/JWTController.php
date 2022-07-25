@@ -81,7 +81,11 @@ class JWTController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        return $this->createNewToken($token);
+        return response()->json([
+            "access_token" => $token,
+            "user_id" => auth()->id(),
+            "profile_pic" => auth()->user()->profile_pic
+        ]);
     }
 
     /**
@@ -132,12 +136,4 @@ class JWTController extends Controller
         ]);
     }
 
-
-    // create new JWT token
-    public function createNewToken($token) {
-        return response()->json([
-            "access_token" => $token,
-            "user_id" => auth()->id()
-        ]);
-    }
 }
