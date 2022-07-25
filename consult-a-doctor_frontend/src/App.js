@@ -17,6 +17,8 @@ import Meeting from './page-components/meeting';
 import AdminSpecializations from './admin/adminSpecializations';
 import DoctorRequests from './admin/doctorRequests';
 
+import { ContextProvider } from './WebRTC-components/SocketContext';
+
 import './App.css';
 
 function App() {
@@ -29,22 +31,17 @@ function App() {
           <Route path='/doctor/:specialization_id/accounts' element={<Doctors />}></Route>
           <Route path='/:user_id/appointments' element={<Appointments />}></Route>
           <Route path='/doctor/:doctor_id/profile' element={<Profile />}></Route>
-          <Route path='/meeting' element={<Meeting />}></Route>
-
-          <Route path='/sign-in' element={<SignIn />}></Route>
+          
+          <Route path='/meeting' element={<ContextProvider><Meeting /></ContextProvider>}></Route>
+          
+          <Route path='/sign-in' element={<SignIn /> }></Route>
           <Route path='/sign-up' element={<SignUp />}></Route> 
           <Route path='/doctor/sign-up' element={<DoctorSignUp />}></Route>
-        </Routes>
-      </Router>
-
-      <Router>
-        <Routes>
-
           <Route path='/admin/specializations' element={<AdminSpecializations />} ></Route>
           <Route path='/admin/doctor_requests' element={<DoctorRequests />} ></Route>
-
         </Routes>
       </Router>
+
     </div>
   );
 }
