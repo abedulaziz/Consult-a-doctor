@@ -11,7 +11,6 @@ import RegistrationLeftSection from '../layout-components/registrationLeftSectio
 import axios from 'axios';
 
 const SignIn = () => {
-  const userInfo = useSelector((state) => state.userInfo)
   const dispatch = useDispatch()
 
   let navigate = useNavigate()
@@ -26,8 +25,8 @@ const SignIn = () => {
         password: data.password
       })
       console.log(signInRqust);
-
-      dispatch(insertInfo({access_token: signInRqust.data.access_token, user_id: signInRqust.data.user_id}))
+      const userInfo = signInRqust.data
+      dispatch(insertInfo({access_token: userInfo.access_token, user_id: userInfo.user_id, profile_pic: userInfo.profile_pic}))
 
       navigate('/')
       
