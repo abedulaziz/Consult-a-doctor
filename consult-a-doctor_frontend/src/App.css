@@ -1378,7 +1378,6 @@ footer .footer_content .buttom_footer .social-media ul li {
 /* ------------------------------------------------ */
 
 .screens {
-  background-color: #202124;
   min-height: 100vh;
   padding-top: 40px;
 }
@@ -1391,7 +1390,6 @@ footer .footer_content .buttom_footer .social-media ul li {
 
 .screens .screens_wrapper .video_wrapper {
   flex-basis: 50%;
-  border: 1px solid var(--main-theme-color)
 }
 
 
@@ -1399,6 +1397,36 @@ footer .footer_content .buttom_footer .social-media ul li {
   background-color: #000;
   width: 100%;
   height: 100%;
+}
+
+.screens .screens_wrapper .videos_container {
+  display: flex;
+  gap: 4vw;
+  width: 100%;
+}
+
+.screens .screens_wrapper .videos_container > div {
+  flex-basis: 41vw;
+  height: 25vw;
+}
+
+.screens .screens_wrapper .videos_container .video_wrapper {
+  height: 100%;
+}
+
+.screens .screens_wrapper .videos_container > div video {
+  width: 100%;
+  height: 100%;
+  background-color: #a9a9a9;
+  border-radius: 5px;
+}
+
+.screens .options {
+  background-color: red;
+  position: fixed;
+  bottom: 3vh;
+  width: calc(100vw - 14vw);
+  height: 100px;
 }
 
 
