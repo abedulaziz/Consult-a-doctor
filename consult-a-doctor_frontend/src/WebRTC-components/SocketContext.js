@@ -26,19 +26,26 @@ const ContextProvider = ({ children }) => {
   const connectionRef= React.useRef()
 
   React.useEffect(() => {
-    const getMedia = async() => {
-      const mediaRequest = await navigator.mediaDevices.getUserMedia({video: true, audio: true})
-      setStream(mediaRequest)
-      myVideo.current.srcObject = mediaRequest
-    }   
-    getMedia()
 
-    socket.on("me", (id) => setMe(id))
+    try {
+      const getMedia = async() => {
+        const mediaRequest = await navigator.mediaDevices.getUserMedia({video: true, audio: true})
+        setStream(mediaRequest)
+        myVideo.current.srcObject = mediaRequest
+        
+      }   
+      getMedia()
+  
+      socket.on("me", (id) => setMe(id))
+  
+      socket.on("callUser", ({from, name: callerName, signal}) => {
+        
+        setCall({isReceivedCall: true, from, name: callerName, signal})
+      })
+    } catch (error) {
+      console.log(error)
+    }
 
-    socket.on("callUser", ({from, name: callerName, signal}) => {
-      
-      setCall({isReceivedCall: true, from, name: callerName, signal})
-    })
 
   }, [])
 

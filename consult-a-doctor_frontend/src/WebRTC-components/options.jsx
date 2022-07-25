@@ -53,11 +53,6 @@ const Options = ({ children }) => {
   return (
     <div className='options'>
 
-        {/* <CopyToClipboard text={me}>
-          <button>Copy Your ID</button>
-
-        </CopyToClipboard> */}
-
       <div>
         {callAccepted && !callEnded ? (
           <>
@@ -82,9 +77,15 @@ const Options = ({ children }) => {
             )
             :
             (
-              <div className="call_wrapper" onClick={() => callUser(me)}>
+              <div className="call_wrapper" onClick={() => callUser(idToCall)}>
                 <Phone />
                 <div id='callUser'>Call</div>
+
+
+                {/* <CopyToClipboard text={idToCall}> */}
+                  <input onChange={(e) => setIdToCall(e.target.value)} />
+
+                {/* </CopyToClipboard> */}
               </div>
             )}
 
