@@ -2,17 +2,11 @@ import React, { createContext } from 'react';
 import {io} from 'socket.io-client';
 import Peer from 'simple-peer';
 
-
-import { useSelector, useDispatch } from 'react-redux';
-import {setDataProperty} from '../redux/slices/webRTCDataSlice'
-
 const SocketContext = createContext();
 
 const socket = io("http://localhost:5000");
 
 const ContextProvider = ({ children }) => {
-  const webRTCData = useSelector((state) => state.webRTCData)
-  // const dispatch = useDispatch()
 
   const [stream, setStream] = React.useState(null);
   const [me, setMe] = React.useState("");

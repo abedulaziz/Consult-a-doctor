@@ -11,14 +11,14 @@ const VideoPlayer = () => {
       <div className="my-video">
         <p className="name">{call.name || "Name"}</p>
         <div className="video_wrapper">
-          <video ref={myVideo} playsInline autoPlay muted></video>
+          <video ref={myVideo} playsInline autoPlay ></video>
         </div>
       </div>
 
       <div className="user-video">
         <p className="name">{call.name || "Name"}</p>
         <div className="video_wrapper">
-          <video ref={userVideo} playsInline autoPlay muted ></video>
+          <video ref={userVideo} playsInline autoPlay  ></video>
         </div>
       </div>
 

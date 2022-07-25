@@ -1,6 +1,5 @@
 import React, {useContext, useRef} from 'react'
 
-import {CopyToClipboard} from 'react-copy-to-clipboard'
 import { SocketContext } from './SocketContext';
 
 // icons
