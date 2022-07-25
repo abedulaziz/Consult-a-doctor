@@ -2,6 +2,7 @@ import React, { createContext } from 'react';
 import {io} from 'socket.io-client';
 import Peer from 'simple-peer';
 
+
 import { useSelector, useDispatch } from 'react-redux';
 import {setDataProperty} from '../redux/slices/webRTCDataSlice'
 
@@ -10,7 +11,7 @@ const SocketContext = createContext();
 const socket = io("http://localhost:5000");
 
 const ContextProvider = ({ children }) => {
-  // const webRTCData = useSelector((state) => state.webRTCData)
+  const webRTCData = useSelector((state) => state.webRTCData)
   // const dispatch = useDispatch()
 
   const [stream, setStream] = React.useState(null);
@@ -27,16 +28,14 @@ const ContextProvider = ({ children }) => {
   React.useEffect(() => {
     const getMedia = async() => {
       const mediaRequest = await navigator.mediaDevices.getUserMedia({video: true, audio: true})
-
-      console.log(mediaRequest)
       setStream(mediaRequest)
       myVideo.current.srcObject = mediaRequest
-    }
+    }   
     getMedia()
 
-    socket.on("me", (id) => me)
+    socket.on("me", (id) => setMe(id))
 
-    socket.on("calluser", ({from, name: callerName, signal}) => {
+    socket.on("callUser", ({from, name: callerName, signal}) => {
       
       setCall({isReceivedCall: true, from, name: callerName, signal})
     })
@@ -45,15 +44,19 @@ const ContextProvider = ({ children }) => {
 
   const answerCall = () => {
     setCallAccepted(true)
+    console.log(userVideo);
 
-    const peer = new Peer({ initiator: false, trickle: false, steam: stream})
+    const peer = new Peer({ initiator: false, trickle: false, stream})
     
     peer.on("signal", data => {
-      socket.emit("answercall", {signal: data, to: call.from})
+      socket.emit("answerCall", {signal: data, to: call.from})
     })
 
     peer.on("stream", currentStream => {
+      
       userVideo.current.srcObject = currentStream
+
+      console.log(userVideo.current.srcObject, currentStream)
     })
     peer.signal(call.signal)
 
@@ -61,17 +64,17 @@ const ContextProvider = ({ children }) => {
   }
 
   const callUser = (id) => {
-    const peer = new Peer({ initiator: true, trickle: false, steam: stream})
-
+    const peer = new Peer({ initiator: true, trickle: false, stream})
+    
     peer.on("signal", data => {
-      socket.emit("calluser", {userToCall: id, signalData: data, from: me, name: name})
+      socket.emit("callUser", {userToCall: id, signalData: data, from: me, name})
     })
-
+    
     peer.on("stream", currentStream => {
       userVideo.current.srcObject = currentStream
     })
-
-    socket.on("callaccepted", signal => {
+    
+    socket.on("callAccepted", signal => {
       setCallAccepted(true)
 
       peer.signal(signal)
@@ -81,11 +84,12 @@ const ContextProvider = ({ children }) => {
   }
 
   const leaveCall = () => {
-    setCallEnded(true)
-    connectionRef.current.destroy()
+    setCallEnded(true);
 
-    window.location.reload()
-  }
+    connectionRef.current.destroy();
+
+    window.location.reload();
+  };
 
   return (
     <SocketContext.Provider value={{
@@ -102,8 +106,6 @@ const ContextProvider = ({ children }) => {
       answerCall,
       callUser,
       leaveCall,
-
-
     }}>
     {children}
     </SocketContext.Provider>
