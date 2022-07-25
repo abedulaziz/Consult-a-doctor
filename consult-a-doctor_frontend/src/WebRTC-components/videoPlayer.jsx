@@ -11,7 +11,7 @@ const VideoPlayer = () => {
       <div className="my-video">
         <p className="name">{call.name || "Name"}</p>
         <div className="video_wrapper">
-          <video ref={myVideo} playsInline autoPlay ></video>
+          <video ref={myVideo} playsInline autoPlay muted></video>
         </div>
       </div>
 

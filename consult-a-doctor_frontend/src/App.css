@@ -1435,7 +1435,29 @@ footer .footer_content .buttom_footer .social-media ul li {
 .screens .options .option_buttons {
   display:flex;
   gap: 20px;
-  
+}
+
+.screens .options .option_buttons > div {
+  position: relative;
+  cursor: pointer;
+}
+
+.screens .options .option_buttons > div.media-off:not(.call_status) {
+  background-color: #ff3030;
+}
+
+.screens .options .option_buttons .call_status {
+  background-color: #ff3030;
+  width: 80px;
+  border-radius: 50px;
+}
+
+.screens .options .option_buttons > div svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 22px;
 }
 
 .screens .options .option_buttons > div {
