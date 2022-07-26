@@ -10,6 +10,7 @@ import Footer from '../layout-components/footer';
 
 // icons
 import {ReactComponent as Heart} from '../assets/icons/heart.svg';
+import {ReactComponent as Plus} from '../assets/icons/plus.svg';
 
 // layout components
 import Post from '../layout-components/post';
@@ -22,6 +23,8 @@ const Profile = () => {
   const [blogs, setBlogs] = useState([])
   const [followers, setFollowers] = useState(0)
   const [followings, setFollowings] = useState(0)
+
+  const [isAccountOwner, setIsAccountOwner] = useState(false);
 
   let {doctor_id} = useParams();
 
@@ -42,6 +45,8 @@ const Profile = () => {
       setFollowers(doctorInfoRqust.data.followers)
       setFollowings(doctorInfoRqust.data.followings)
 
+      setIsAccountOwner(doctorInfoRqust.isAccountOwner)
+
     }
     getDoctorInfo()
   }, [])
@@ -60,9 +65,12 @@ const Profile = () => {
                 <p className="university">{university}</p>
               </div>
 
-              <div className="book-meeting">
-                <button>Book a meeting</button>
-              </div>
+              {!isAccountOwner && 
+                <div className="book-meeting">
+                  <button>Book a meeting</button>
+                </div>
+              }
+
 
             </div>
 
@@ -78,10 +86,12 @@ const Profile = () => {
 
                 <div className="profile_img">
                   <img src={profilePic} alt="profile picture" />
-                  <div className="follow">
+                  {!isAccountOwner && <div className="follow">
                     <span>FOLLOW</span>
                     <Heart />
                   </div>
+                  }
+
                 </div>
 
                 <div className="details_wrapper">
@@ -110,11 +120,18 @@ const Profile = () => {
             </div>
 
             <div className="posts">
-              <h3 className="posts_header">Posts</h3>
-              {blogs && blogs.map((blog, index)=> {
-                let date = new Date(blog.created_at)
-                return <Post key={index} profilePic={userInfo.profilePic} fullName={fullname} content={blog.content} createdAt={`${date.getFullYear()}/${date.getMonth()}/${date.getDay()}`} />
-              })}
+              <div className="heading">
+                <h3 className="posts_header">Posts</h3>
+                {isAccountOwner && <button className='add-blog'><Plus /> <span>Add blog</span></button>}
+
+              </div>
+              <div className="posts_container">
+                
+                {blogs && blogs.map((blog, index)=> {
+                  let date = new Date(blog.created_at)
+                  return <Post key={index} profilePic={userInfo.profilePic} fullName={fullname} content={blog.content} createdAt={`${date.getFullYear()}/${date.getMonth()}/${date.getDay()}`} />
+                })}
+              </div>
             </div>
 
           </div>
