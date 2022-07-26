@@ -40,13 +40,17 @@ class DoctorsController extends Controller
 
     public function getDoctorInfo($doctor_id) {
 
-        $doctor_info =Doctor_specific::find($doctor_id)->getDoctorSpecific;
-        $doctor_specific = Doctor_specific::select("speciality", "rate", "about", "background_img", "university")->where("doctor_id", $doctor_id)->get();
+        $doctor_info = DB::table("users")
+        ->select("fname", "lname", "email", "date_of_birth", "profile_pic", "rate", "about", "background_img", "university", "specializations.name")
+        ->join("doctor_specifics", "users.id", "=", "doctor_specifics.doctor_id")
+        ->join("specializations", "doctor_specifics.speciality_id", "=", "specializations.id")
+        ->where("users.id", $doctor_id)
+        ->get()->first();
+
 
         return response()->json([
             "isAccountOwner" => auth()->id() == $doctor_id ? true: false,
             "doctor_info" => $doctor_info,
-            "doctor_specifics" => $doctor_specific
         ], 200);
 
     }
