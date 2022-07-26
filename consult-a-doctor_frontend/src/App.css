@@ -128,6 +128,10 @@ header .header-content nav a.active div{
   border-bottom: 1px solid var(--main-theme-color);
 }
 
+header .account_status {
+  position: relative;
+}
+
 header .header-content .account_status button{
   padding: 10px 15px;
   border: none;
@@ -154,6 +158,36 @@ header .header-content .account_status .sign-up_button {
 }
 
 .profile-pic .pic_wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 10%;
+  min-width: max-content;
+}
+
+header .account_status .profile-widget {
+  position: absolute;
+  right: 0;
+  top: 50px;
+  background: var(--main-theme-color);
+  padding: 20px;
+  border-radius: 5px;
+  color: var(--light-text-color)
+}
+
+header .account_status .profile-widget > div:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+header .account_status .profile-widget .profile-img_wrapper {
+  width :100px;
+  height: 100px;
+  margin: auto;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+header .account_status .profile-widget .profile-img_wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
