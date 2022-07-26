@@ -1,6 +1,7 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import { useSelector } from 'react-redux'
+import axios from 'axios';
 
 // helper components
 import NavItem from '../helper-components/navItem';
@@ -17,6 +18,8 @@ import MobileLogo from '../assets/brand/transparent_background_logo.png';
 const Header = () => {
   const header = React.useRef(null);
   const NavBar = React.useRef(null);
+  const [userProfileWidget, setUserProfileWidget] = React.useState(null)
+  const navigate = useNavigate()
 
   const userInfo = useSelector((state) => state.userInfo.value)
 
@@ -53,6 +56,52 @@ const Header = () => {
     else NavBar.current.style.display = "none"
   }
 
+  const getProfileInfo = async() => {
+
+    try {
+      const userInfoRqust = await axios.get(`users/${userInfo.user_id}/user-info`, {
+        headers: {
+          Authorization: `Bearer ${userInfo.JWT}`
+        }
+      })
+
+      console.log(userInfoRqust)
+      const info = userInfoRqust.data.user_info
+
+      if (info.type === "doctor") {
+        navigate(`/doctor/${userInfo.user_id}/profile`)
+      }
+      else {
+        if (!userProfileWidget)
+        setUserProfileWidget(
+          <div className="profile-widget">
+            <div className="profile-img_wrapper">
+              <img src={userInfo.profile_pic} />
+            </div>
+
+            <div className="first_name">
+              First name: {info.fname}
+            </div>
+            <div className="last_name">
+              Last name: {info.lname}
+            </div>
+            <div className="email">
+              Email: {info.email}
+            </div>
+            <div className="age">
+              Age: {new Date().getFullYear() - new Date(info.date_of_birth).getFullYear()} years old
+            </div>
+          </div>
+        )
+        else setUserProfileWidget(null)
+      }
+
+
+    } catch (err) {
+      
+    }
+  }
+
   return (
     <header className='page_heading' ref={header}>
 
@@ -82,14 +131,15 @@ const Header = () => {
 
           {userInfo.JWT ? 
           <>
-            <div className='profile-pic'>
+            <div className='profile-pic' onClick={() => getProfileInfo()}>
               <div className="pic_wrapper">
-                <img src={Doctor1} alt="profile" />
+                <img src={userInfo.profile_pic} alt="profile" />
               </div>
             </div>
             <div className="menu">
               <Menu onClick={() => displayNav()} />
             </div>
+            {userProfileWidget}
           </>
           :
           <>
