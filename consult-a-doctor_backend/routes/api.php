@@ -69,5 +69,6 @@ Route::group(["middleware" => "verifyOwnership"], function () {
     Route::get("/users/{user_id}/user-info", [UsersController::class, "getUserInfo"]);
     Route::post("/users/{user_id}/update-info", [UsersController::class, "updateUserInfo"]);
     Route::get("/users/{user_id}/appointments", [UsersController::class, "getUserAppointments"]);
+    Route::post("/users/{user_id}/add-blog", [BlogsController::class, "addBlog"]);
 });
 

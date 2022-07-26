@@ -15,5 +15,18 @@ class BlogsController extends Controller
             "blogs" => $blogs
         ], 200);
     }
+
+
+    public function addBlog(Request $request, $user_id) {
+
+        Blog::create([
+            "doctor_id" => $user_id,
+            "content" => $request->content,
+        ]);
+
+        return response()->json([
+            "message" => "Success"
+        ], 200);
+    }
 }
 
