@@ -950,6 +950,25 @@ header .menu {
   font-size: 26px;
 }
 
+.doctor-details .posts .heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.doctor-details .posts .heading .add-blog {
+  padding: 10px 20px;
+  background-color:rgb(30, 27, 27);
+  border: none;
+  color: var(--light-text-color);
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 5px
+}
+
 .doctor-details .posts .post{
   box-shadow: 0 3px 10px gray;
   margin-bottom: 20px;
