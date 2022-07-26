@@ -155,6 +155,7 @@ header .header-content .account_status .sign-up_button {
   height: 40px;
   border-radius: 50%;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .profile-pic .pic_wrapper img {
@@ -981,6 +982,11 @@ header .menu {
 
 .doctor-details .posts .post .heading .fullname {
   font-size: 22px;
+}
+
+.doctor-details .posts .post .heading .created_at{
+  font-size: 14px;
+  color:#9c9c9c;
 }
 
 /* media queries */
