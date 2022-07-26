@@ -51,11 +51,18 @@ class DoctorsController extends Controller
         ->select("content", "created_at")
         ->where("doctor_id", $doctor_id)->get();
 
+        $followers = DB::table("followings")
+        ->select("follower_id")->where("doctor_id", $doctor_id)->count();
+
+        $following = DB::table("followings")
+        ->select("doctor_id")->where("follower_id", $doctor_id)->count();
 
         return response()->json([
             "isAccountOwner" => auth()->id() == $doctor_id ? true: false,
             "doctor_info" => $doctorInfo,
-            "doctor_blogs" => $doctorBlogs
+            "doctor_blogs" => $doctorBlogs,
+            "followers" => $followers,
+            "followings" => $following
         ], 200);
 
     }
