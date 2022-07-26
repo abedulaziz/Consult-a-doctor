@@ -1,21 +1,27 @@
 import React, {useState} from 'react'
-import {useSelector} from 'react-redux'
-import {useParams} from 'react-router-dom';
+import {useParams, useNavigate} from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'
 
 import axios from 'axios';
 
 // layout components
 import Header from '../layout-components/header';
 import Footer from '../layout-components/footer';
+import Post from '../layout-components/post';
 
 // icons
 import {ReactComponent as Heart} from '../assets/icons/heart.svg';
 import {ReactComponent as Plus} from '../assets/icons/plus.svg';
 
-// layout components
-import Post from '../layout-components/post';
+// helper components
+import AddBlogPopup from '../helper-components/addBlogPopup';
+import { setPopupVisibility } from '../redux/slices/addBlogPopupSlice';
+
 
 const Profile = () => {
+  const dispatch = useDispatch()
+
+  let navigate = useNavigate()
   const [fullname, setFullname] = useState("")
   const [university, setUniversity] = useState("")
   const [about, setAbout] = useState("")
@@ -26,30 +32,45 @@ const Profile = () => {
 
   const [isAccountOwner, setIsAccountOwner] = useState(false);
 
-  let {doctor_id} = useParams();
-
   const userInfo = useSelector((state) => state.userInfo.value)
+  const {doctor_id} = useParams()
 
   React.useEffect(() => {
-    const getDoctorInfo = async() => {
-      const doctorInfoRqust = await axios.get(`users/${doctor_id}/doctor-info`)
-      console.log(doctorInfoRqust);
+    // !userInfo.JWT && navigate("/sign-in")
+    // if (!userInfo.JWT) {
+    //   return navigate("/sign-in")
+    // }
 
-      let doctorInfo = doctorInfoRqust.data.doctor_info
+    try {
+      const getDoctorInfo = async() => {
+        const doctorInfoRqust = await axios.get(`users/${doctor_id}/doctor-info`, {
+          headers: {
+            Authorization: `Bearer ${userInfo.JWT}`
+          }
+        })
+        console.log(doctorInfoRqust.data);
 
-      setFullname(doctorInfo.fname + " "+ doctorInfo.lname)
-      setUniversity(doctorInfo.university)
-      setAbout(doctorInfo.about)
-      setProfilePic(doctorInfo.profile_pic)
-      setBlogs(doctorInfoRqust.data.doctor_blogs)
-      setFollowers(doctorInfoRqust.data.followers)
-      setFollowings(doctorInfoRqust.data.followings)
+        const doctorInfo = doctorInfoRqust.data.doctor_info
+  
+        setFullname(doctorInfo.fname + " "+ doctorInfo.lname)
+        setUniversity(doctorInfo.university)
+        setAbout(doctorInfo.about)
+        setProfilePic(doctorInfo.profile_pic)
+        setBlogs(doctorInfoRqust.data.doctor_blogs)
+        setFollowers(doctorInfoRqust.data.followers)
+        setFollowings(doctorInfoRqust.data.followings)
 
-      setIsAccountOwner(doctorInfoRqust.isAccountOwner)
+        setIsAccountOwner(doctorInfoRqust.data.isAccountOwner)
 
+
+      }
+      getDoctorInfo()
+
+    } catch (error) {
+      console.log(error)
     }
-    getDoctorInfo()
   }, [])
+
 
   return (
     <>
@@ -122,7 +143,7 @@ const Profile = () => {
             <div className="posts">
               <div className="heading">
                 <h3 className="posts_header">Posts</h3>
-                {isAccountOwner && <button className='add-blog'><Plus /> <span>Add blog</span></button>}
+                {(isAccountOwner) && <button className='add-blog' onClick={() => dispatch(setPopupVisibility("is-visible"))}><Plus /> <span>Add blog</span></button>}
 
               </div>
               <div className="posts_container">
@@ -136,6 +157,7 @@ const Profile = () => {
 
           </div>
         </div>
+        {isAccountOwner && <AddBlogPopup />}
       </main>
       <Footer />
     </>
