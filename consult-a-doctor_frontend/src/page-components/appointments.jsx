@@ -13,13 +13,16 @@ const Appointments = () => {
   const [appoinAsDoctor, setAppoinAsDoctor] = React.useState(null);
   const [appoinAsPatient, setAppoinAsPatient] = React.useState(null);
 
-  const userID = useSelector((state) => state.userInfo.user_id);
-  console.log(userID);
+  const userInfo = useSelector((state) => state.userInfo.value);
 
   React.useEffect(() => {
     try {
       const getAppointments = async () => {
-        const appoinRqust = await axios.get(`/users/${userID}/appointments`);
+        const appoinRqust = await axios.get(`/users/${userInfo.user_id}/appointments`, {
+          headers: {
+            Authorization: `Bearer ${userInfo.JWT}`
+          }
+        });
 
         console.log(appoinRqust);
         setAppoinAsDoctor(appoinRqust.data.appointmentsAsDoctor);
