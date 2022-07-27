@@ -1,8 +1,10 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fillInputs, nextStage, previousStage } from "../redux/slices/doctorSignUpSlice";
+import { insertInfo } from "../redux/slices/userSlice";
+import {useNavigate} from 'react-router-dom';
 import { useForm } from "react-hook-form";
-
+import axios from 'axios';
 
 // icons
 import { ReactComponent as ChevronsRight } from "../assets/icons/chevrons-right.svg";
@@ -11,7 +13,7 @@ const SignUpForm = ({ isDoctorSignUp = false }) => {
   const registrationData = useSelector((state) => state.doctorSignUp);
   const password = React.useRef(null)
   const dispatch = useDispatch();
-  console.log(password);
+  const navigate = useNavigate()
 
   const {
     register,
@@ -19,7 +21,7 @@ const SignUpForm = ({ isDoctorSignUp = false }) => {
     formState: { errors },
   } = useForm();
 
-  const nextSignUpStep = (data) => {
+  const nextSignUpStep = async(data) => {
     if (isDoctorSignUp) {
       dispatch(fillInputs(data));
       dispatch(nextStage());
@@ -27,7 +29,24 @@ const SignUpForm = ({ isDoctorSignUp = false }) => {
     }
     else {
 
+      try {
+        const registerRqust =  await axios.post(`register`, data)
+        const regisInfo = registerRqust.data
+
+        dispatch(insertInfo({
+          access_token: regisInfo.access_token, 
+          user_id: regisInfo.user_id,
+          profile_pic: regisInfo.profile_pic
+        }))
+        navigate("/")
+
+        console.log(registerRqust);
+      } catch (err) {
+        console.log(err);
+        alert("Email or/and password is incorrect.")
+      }
     }
+    
     console.log(registrationData);
   };
 
