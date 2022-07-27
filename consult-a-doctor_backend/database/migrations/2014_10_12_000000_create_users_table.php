@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->enum('gender', array("male", "female"));
             $table->date('date_of_birth');
-            $table->binary('profile_pic');
+            $table->binary('profile_pic')->nullable();
             $table->enum('type', array("patient", "doctor", "admin"));
             $table->timestamps();
         });
