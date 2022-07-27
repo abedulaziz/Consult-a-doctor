@@ -1282,6 +1282,26 @@ footer .footer_content .buttom_footer .social-media ul li {
   align-items: center;
 }
 
+.regis_box .right-section .regis_form .speciality select {
+  width: 100%;
+  background-color: #FFF;
+  border: 1px solid gray;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.regis_box .right-section .regis_form .about textarea{
+  width: 100%;
+  height: 100px;
+  resize: none;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid gray;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
 .regis_box .right-section .regis_form .availabilities .avail_title{
   font-size: 18px;
   margin-bottom: 20px;
@@ -1298,13 +1318,12 @@ footer .footer_content .buttom_footer .social-media ul li {
 .regis_box .right-section .regis_form .availabilities .setting_avail .week-day {
   flex-basis: 75px;
   display: flex;
-  align-items: center;
+  min-width: 74px;
 }
 
 .regis_box .right-section .regis_form .availabilities .setting_avail .week-day input {
-  flex-basis: fit-content;
-  flex-basis: -moz-fit-content;
-  
+  min-width: max-content;
+  width: 23px;
 }
 
 .regis_box .right-section .regis_form .availabilities .setting_avail .times .time-interval {
