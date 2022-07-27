@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { weekdays } from 'moment'
 
 const initialState = {
   value: {
@@ -6,11 +7,10 @@ const initialState = {
     lname: "",
     email: "",
     password: "",
-    dob: "",
+    date_of_birth: "",
     gender: "",
     university: "",
     about: "",
-    gender: "",
     availabilities: {
       sunday: [["00:00", "00:00"]],
       monday: [["00:00", "00:00"]],
@@ -53,8 +53,8 @@ export const doctorSignUpSlice = createSlice({
 
     deleteInterval: (state, action) => {
       const weekDay = state.value.availabilities[action.payload.day];
-
-      state.value.availabilities[action.payload.day] = weekDay.filter(time => time[0] != action.payload.from || time[1] != action.payload.to)
+      if (weekDay.length > 1)
+      state.value.availabilities[action.payload.day] = weekDay.splice(weekDay.indexOf(["00:00", "00:00"]))
 
     }
   },

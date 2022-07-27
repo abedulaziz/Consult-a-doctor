@@ -6,9 +6,6 @@ import axios from 'axios';
 // helper components
 import NavItem from '../helper-components/navItem';
 
-// backgrounds
-import Doctor1 from '../assets/backgrounds/doctor1.jpg';
-
 // icons
 import {ReactComponent as Menu} from '../assets/icons/menu.svg';
 
