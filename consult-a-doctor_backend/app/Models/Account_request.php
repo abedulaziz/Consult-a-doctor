@@ -16,7 +16,7 @@ class Account_request extends Model
         'password',
         'date_of_birth',
         'gender',
-        "profile_pic",
+        "availabilities",
         "speciality",
         "about",
         "university"

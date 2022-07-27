@@ -32,14 +32,15 @@ class Account_requestsController extends Controller
             'availabilities' => 'required|json'
         ]);
 
+
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
 
-        $account = new Account_request(request()->all());
-        $account->password = Hash::make($request->password);
+        $request->password = Hash::make($request->password);
+        Account_request::create(request()->all());
 
-        $account->save();
+        // $account->save();
 
         return response()->json([
             "message" => "Request sent successfuly"
