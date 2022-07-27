@@ -22,7 +22,7 @@ const Doctors = () => {
     try {
       const getSpecDoctors = async () => {
         const doctorsRqust = await axios.get(`/${specialization_id}/doctors`);
-
+        console.log(doctorsRqust)
         setDoctors(doctorsRqust.data.doctors);
       };
       getSpecDoctors();
@@ -109,7 +109,7 @@ const Doctors = () => {
                   return fullname.match(new RegExp(searchValue, "i"))
                 })
                 .map(doctor => 
-                  <DoctorCard key={doctor.doctor_id} profile_pic={doctor.profile_pic} fullname={doctor.fname + " " + doctor.lname} followers="23" />
+                  <DoctorCard doctor_id={doctor.doctor_id} key={doctor.doctor_id} profile_pic={doctor.profile_pic} fullname={doctor.fname + " " + doctor.lname} followers="23" />
                 )}
 
               </div>

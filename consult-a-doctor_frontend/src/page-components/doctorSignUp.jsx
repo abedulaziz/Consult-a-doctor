@@ -23,7 +23,7 @@ const DoctorSignUp = () => {
             <p>create doctor account to help patients and gain money</p>
           </div>
 
-          { signUpStage === 2? <SignUpForm isDoctorSignUp={true} /> : <DoctorSignUpStageTwo /> }
+          { signUpStage === 1? <SignUpForm isDoctorSignUp={true} /> : <DoctorSignUpStageTwo /> }
           <div className="sign-in_link regis_link">
             Already have an account? <Link to="/sign-in">Log in</Link>
           </div>

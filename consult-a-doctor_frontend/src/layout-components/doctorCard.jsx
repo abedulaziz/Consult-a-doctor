@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 import {ReactComponent as Star} from '../assets/icons/star.svg';
 import {ReactComponent as PersonCheck} from '../assets/icons/PersonCheck.svg';
 
-const DoctorCard = ({profile_pic, fullname, followers}) => {
+const DoctorCard = ({doctor_id, profile_pic, fullname, followers}) => {
   return (
     <div className='card'>
 
@@ -29,7 +29,7 @@ const DoctorCard = ({profile_pic, fullname, followers}) => {
         </div>
 
         <div className="profile_link">
-          <Link to="/profile">Go to profile</Link>
+          <Link to={`/doctor/${doctor_id}/profile`} >Go to profile</Link>
         </div>
       </div>
 
