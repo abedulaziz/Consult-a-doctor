@@ -26,10 +26,10 @@ class Account_requestsController extends Controller
             'password' => 'required|string|confirmed|min:6',
             'date_of_birth' => 'required|date',
             'gender' => ["required", new Enum(Gender::class)],
-            'profile_pic' => 'required|string',
             'speciality' => 'required|string',
             'about' => 'required|string',
-            'university' => 'required|string'
+            'university' => 'required|string',
+            'availabilities' => 'required|json'
         ]);
 
         if ($validator->fails()) {

@@ -21,10 +21,10 @@ return new class extends Migration
             $table->string('password');
             $table->enum('gender', array("male", "female"));
             $table->date('date_of_birth');
-            $table->binary('profile_pic');
-            $table->enum("speciality", array("cardiology", "ear, nose, and throat", "endocrinology and metabolic disorders", "oncology", "denistry", "neurology", "nephrology", "orthopedics", "family medicine", "internal medicine", "allergy and immunology", "gastroenterology and hepatology"));
+            $table->string("speciality");
             $table->text('about');
             $table->string('university');
+            $table->JSON('availabilities');
             $table->timestamps();
         });
     }
