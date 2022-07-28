@@ -8,6 +8,7 @@ import axios from "axios";
 import Header from "../layout-components/header";
 import Footer from "../layout-components/footer";
 import Post from "../layout-components/post";
+import ScheduleMeeting from "../layout-components/scheduleMeeting";
 
 // icons
 import { ReactComponent as Heart } from "../assets/icons/heart.svg";
@@ -15,6 +16,7 @@ import { ReactComponent as Plus } from "../assets/icons/plus.svg";
 
 // helper components
 import AddBlogPopup from "../helper-components/addBlogPopup";
+
 import { setPopupVisibility } from "../redux/slices/addBlogPopupSlice";
 
 const Profile = () => {
@@ -155,6 +157,7 @@ const Profile = () => {
           </div>
         </div>
         {isAccountOwner && <AddBlogPopup />}
+        {!isAccountOwner && <ScheduleMeeting />}
       </main>
       <Footer />
     </>
