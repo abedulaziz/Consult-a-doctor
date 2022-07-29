@@ -32,7 +32,7 @@ function App() {
           <Route path='/:user_id/appointments' element={<Appointments />}></Route>
           <Route path='/doctor/:doctor_id/profile' element={<Profile />}></Route>
           
-          <Route path='/meeting' element={<ContextProvider><Meeting /></ContextProvider>}></Route>
+          <Route path='/meetings/:meeting_id' element={<ContextProvider><Meeting /></ContextProvider>}></Route>
           
           <Route path='/sign-in' element={<SignIn /> }></Route>
           <Route path='/sign-up' element={<SignUp />}></Route> 

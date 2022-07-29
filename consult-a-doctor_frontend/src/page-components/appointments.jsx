@@ -49,6 +49,7 @@ const Appointments = () => {
               {appoinAsDoctor &&
                 appoinAsDoctor.map((appointment) => (
                   <Appointment
+                    meeting_id={appointment.id}
                     key={appointment.id}
                     doctor_name={appointment.fname + " " + appointment.lname}
                     duration={appointment.from.substring(-3) + " - " + appointment.to.substring(-3)}
@@ -58,6 +59,7 @@ const Appointments = () => {
               {appoinAsPatient &&
                 appoinAsPatient.map((appointment) => (
                   <Appointment
+                    meeting_id={appointment.id}
                     key={appointment.id}
                     doctor_name={appointment.fname + " " + appointment.lname}
                     duration={appointment.from.substring(-3) + " - " + appointment.to.substring(-3)}
