@@ -32,7 +32,7 @@ const Home = () => {
   React.useEffect(() => {
     try {
       const getTopDoctors = async () => {
-        const topDoctorsRqust = await axios.get("/users/top-five-doctors");
+        const topDoctorsRqust = await axios.get("/users/top-four-doctors");
         console.log(topDoctorsRqust);
         setTopDoctors(topDoctorsRqust.data.topDoctors);
       };
