@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->integer("doctor_id");
             $table->integer("patient_id");
+            $table->string("patient_meeting_id")->nullable();
+            $table->string("doctor_meeting_id")->nullable();
             $table->string("title");
             $table->date("date");
             $table->time("from");

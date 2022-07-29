@@ -12,7 +12,7 @@ class DoctorsController extends Controller
 
         $topFour = DB::table("users")
         ->join("doctor_specifics", "users.id", "=", "doctor_specifics.doctor_id")
-        ->join("specializations", "doctor_specifics.doctor_id", "=", "specializations.id")
+        ->join("specializations", "doctor_specifics.speciality_id", "=", "specializations.id")
         ->select("doctor_id", "name", "rate", "fname", "lname", "profile_pic", "date_of_birth")->orderByDesc("rate")->take(4)->get();
 
         return response()->json([
