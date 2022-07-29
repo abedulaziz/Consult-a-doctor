@@ -1873,3 +1873,52 @@ footer .footer_content .buttom_footer .social-media ul li {
 .is-visible .cd-popup-container {
   transform: translateY(0);
 }
+
+/* ------------------------------------------------ */
+/* ----------------- end add blog popup ----------------- */
+/* ------------------------------------------------ */
+
+
+/* ------------------------------------------------ */
+/* ----------------- start action status ----------------- */
+/* ------------------------------------------------ */
+
+.action-status {
+  padding: 10px 0;
+  position: fixed;
+  width: 100%;
+  background-color: red;
+  top: -60px;
+  text-align: center;
+  transition :top .5s linear;
+  z-index: 9999;
+  color: var(--light-text-color);
+}
+
+.action-status.green {
+  background-color: greenyellow;
+}
+.action_status.red {
+  background-color: #ff3030;
+}
+
+.action-status.active {
+  animation: show_status 8s
+}
+
+@keyframes show_status {
+  10% {
+    top: 0;
+  }
+  90% {
+    top: 0
+  }
+  100% {
+    top: -60px
+  }
+}
+
+
+/* ------------------------------------------------ */
+/* ----------------- end action status ----------------- */
+/* ------------------------------------------------ */
