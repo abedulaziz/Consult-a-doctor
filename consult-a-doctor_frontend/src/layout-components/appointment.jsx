@@ -1,10 +1,13 @@
 import React from 'react'
+import {useNavigate} from 'react-router-dom';
 
 // icons
 import {ReactComponent as Clock} from '../assets/icons/clock.svg';
 import {ReactComponent as Calender} from '../assets/icons/calendar.svg';
 
-const Appointment = ({doctor_name, duration, date}) => {
+const Appointment = ({meeting_id, doctor_name, duration, date}) => {
+  const navigate = useNavigate()
+
   return (
     <div className='appointment'>
       <div className="heading">
@@ -32,7 +35,7 @@ const Appointment = ({doctor_name, duration, date}) => {
         </div>
 
         <div className="options">
-          <div className="join">Join</div>
+          <div className="join" onClick={() => navigate(`/meetings/${meeting_id}`)}>Join</div>
         </div>
 
       </div>
