@@ -13,6 +13,9 @@ import Appointments from './page-components/appointments';
 import DoctorSignUp from './page-components/doctorSignUp';
 import Meeting from './page-components/meeting';
 
+// helper components
+import ActionStatus from './helper-components/actionStatus';
+
 // admin components
 import AdminSpecializations from './admin/adminSpecializations';
 import DoctorRequests from './admin/doctorRequests';
@@ -24,6 +27,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+      <ActionStatus />
       <Router>
         <Routes>
           <Route path='/' element={<Home />}></Route>

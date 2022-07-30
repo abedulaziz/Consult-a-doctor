@@ -16,7 +16,7 @@ const Appointment = ({ meeting_id, doctor_name, duration, date }) => {
          navigate(`/meetings/${meeting_id}`)
       }
       else {
-         message.textContent = "Sorry, today is not the date of the meeting"
+         message.textContent = "Sorry, today is not this date of the meeting"
          message.classList.add("red", "active")
          setTimeout(() => {
             message.classList.remove("active", "red")
