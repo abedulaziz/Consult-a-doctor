@@ -1770,6 +1770,7 @@ footer .footer_content .buttom_footer .social-media ul li {
 .admin_background {
   background-color: #f0f5fb;
   height: 100vh;
+  padding-left: 300px;
 }
 
 .admin_background .sidebar {
@@ -1777,7 +1778,10 @@ footer .footer_content .buttom_footer .social-media ul li {
   height: 100vh;
   background-color: #FFF;
   position: fixed;
-  padding: 20px
+  padding: 20px;
+  left: 0;
+  position: fixed;
+  top: 0;
 }
 
 .admin_background .sidebar .logo .sidebar_logo {
@@ -1791,9 +1795,6 @@ footer .footer_content .buttom_footer .social-media ul li {
   width: 40%;
 }
 
-.admin_background .sidebar .nav-Links {
-
-}
 .admin_background .sidebar .nav-Links > a {
   color: #000;
 }
@@ -1817,6 +1818,56 @@ footer .footer_content .buttom_footer .social-media ul li {
   background-color: rgba(178, 178, 178, 0.274);
 }
 
+.admin_background .header {
+  margin: 0 20px;
+}
+
+
+.admin_background .header .head_container {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.admin_background .header .head_container .options .search-box {
+  padding: 10px;
+  background-color: #FFF;
+  border-radius: 50px;
+}
+
+
+.admin_background .header .head_container .options .search-box > * {
+  vertical-align: middle;
+}
+
+.admin_background .header .head_container .options .search-box svg {
+  margin-right: 10px;
+}
+
+.admin_background .header .head_container .options .search-box #search {
+  border: none;
+  background-color: inherit;
+  /* color: #FFF; */
+  outline: none;
+}
+
+.admin_background .header .head_container .profile_info > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.admin_background .header .head_container .profile_info .profile_pic_wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: 10px;
+  background-color: #000;
+}
+
+.admin_background .header .head_container .profile_info .profile-img_wrapper img {
+  width: 100%;
+  height: 100%;
+}
 
 
 /* ------------------------------------------------ */

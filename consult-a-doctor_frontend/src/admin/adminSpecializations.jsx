@@ -1,29 +1,22 @@
 import React from 'react'
 
-import Header from './header';
-import AdminSpec from './adminSpec';
+import Sidebar from './layout/sidebar';
+import Header from './layout/header';
+
 
 
 const AdminSpecializations = () => {
   return (
-    <div className='admin_spec'>
+
+    <div className="admin_background">
       <Header />
 
-      <div className="container">
+      <div className='admin_spec'>
+        <Sidebar />
 
-      <div className="spec_addition">
 
-      </div>
-
-        <div className="spec_content">
-          <AdminSpec />
-          <AdminSpec />
-          <AdminSpec />
-
-        </div>
 
       </div>
-
     </div>
   )
 }
