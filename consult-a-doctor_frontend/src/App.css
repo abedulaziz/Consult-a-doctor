@@ -8,6 +8,8 @@
   --dark-text-color: #000;
   --star-color: #fff500;
   --grayish-background-color: #f8f8f8;
+
+  --admin-theme-color: #001f54;
 }
 
 * {
@@ -1664,113 +1666,15 @@ footer .footer_content .buttom_footer .social-media ul li {
 /* ----------------- start admin panel ----------------- */
 /* ------------------------------------------------ */
 
-/* .admin_panel_head {
-  background-color: var(--main-theme-color);
-  color: var(--light-text-color);
-  text-align: center;
-  padding: 0;
-  position: relative;
-}
-
-.admin_panel_head a {
-  color: #fff;
-}
-
-.admin_panel_head .container {
-  display: flex;
-}
-
-.admin_panel_head .container > div {
-  flex-basis: 50%;
-}
-
-.admin_panel_head .container > div div {
-  max-width: max-content;
-  padding: 20px;
-  margin: auto;
-}
-
-.admin_panel_head .container > div a.active div {
-  border-bottom: 3px solid var(--second-theme-color);
-}
-
-.admin_spec .spec_content {
-  margin-top: 20px;
-}
-
-.admin_spec .spec_content .spec {
-  display: flex;
-  margin-bottom: 20px;
-  gap: 2vw;
-}
-
-.admin_spec .spec_content .spec .img_wrapper {
-  width: 60vw;
-  height: 35vw;
-  position: relative;
-}
-
-.admin_spec .spec_content .spec .img_wrapper img {
-  width: 100%;
-  height: 100%;
-  object-position: 50%;
-  object-fit: cover;
-}
-
-.admin_spec .spec_content .spec .img_wrapper .overlay {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.361);
-}
-
-.admin_spec .spec_content .spec .img_wrapper span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 27px;
-  font-weight: 500;
-  z-index: 7;
-  color: var(--light-text-color);
-}
-
-.admin_spec .spec_content .spec .options {
-  width: 200px;
-}
-
-.admin_spec .spec_content .spec .options > div {
-  width: 150px;
-  height: 150px;
-  min-width: 100px;
-  margin: auto;
-  border: 1px solid gray;
-  position: relative;
-}
-
-.admin_spec .spec_content .spec .options .delete {
-  background-color: #f96969;
-}
-
-.admin_spec .spec_content .spec .options .icon_wrapper {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.admin_spec .spec_content .spec .options .icon_wrapper svg {
-  width: 40px;
-} */
-
 
 .admin_background {
   background-color: #f0f5fb;
   height: 100vh;
   padding-left: 300px;
+}
+
+.admin_background .container {
+  padding: 2vw;
 }
 
 .admin_background .sidebar {
@@ -1800,7 +1704,7 @@ footer .footer_content .buttom_footer .social-media ul li {
 }
 
 .admin_background .sidebar .nav-Links > a.active > div{
-  background-color: #001f54;
+  background-color: var(--admin-theme-color);
   color: #FFF;
 }
 
@@ -1817,11 +1721,6 @@ footer .footer_content .buttom_footer .social-media ul li {
 .admin_background .sidebar .nav-Links > a:not(.active) >div:hover {
   background-color: rgba(178, 178, 178, 0.274);
 }
-
-.admin_background .header {
-  margin: 0 20px;
-}
-
 
 .admin_background .header .head_container {
   padding: 10px 0;
@@ -1867,6 +1766,66 @@ footer .footer_content .buttom_footer .social-media ul li {
 .admin_background .header .head_container .profile_info .profile-img_wrapper img {
   width: 100%;
   height: 100%;
+}
+
+.admin_background .adding_spec {
+  display: flex;
+  margin-top: 30px;
+  background-color: #FFF;
+  padding: 25px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+}
+
+.admin_background .adding_spec p {
+  color: var(--grayish-text-color);
+  font-size: 17px;
+  margin-top: 5px;
+}
+
+
+.admin_background .adding_spec .add_spec_icon {
+  width: 50px;
+  height: 50px;
+  background-color: var(--admin-theme-color);
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 0 5px 3px rgba(93, 93, 93, 0.59);
+  cursor: pointer;
+}
+
+.admin_background .adding_spec .add_spec_icon svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.admin_background .content_table {
+  background-color: #FFF;
+  margin-top: 20px;
+  padding: 25px;
+}
+
+.admin_background .content_table .table_header {
+  margin-bottom: 20px;
+}
+
+.admin_background .content_table table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.admin_background .content_table table th, tr {
+  border-bottom: 1px solid rgb(159, 159, 159);
+}
+
+.admin_background .content_table table td {
+  padding: 8px 0;
+  color: rgb(71, 71, 71);
 }
 
 
