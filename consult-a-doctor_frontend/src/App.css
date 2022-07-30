@@ -1664,7 +1664,7 @@ footer .footer_content .buttom_footer .social-media ul li {
 /* ----------------- start admin panel ----------------- */
 /* ------------------------------------------------ */
 
-.admin_panel_head {
+/* .admin_panel_head {
   background-color: var(--main-theme-color);
   color: var(--light-text-color);
   text-align: center;
@@ -1764,7 +1764,60 @@ footer .footer_content .buttom_footer .social-media ul li {
 
 .admin_spec .spec_content .spec .options .icon_wrapper svg {
   width: 40px;
+} */
+
+
+.admin_background {
+  background-color: #f0f5fb;
+  height: 100vh;
 }
+
+.admin_background .sidebar {
+  width: 300px;
+  height: 100vh;
+  background-color: #FFF;
+  position: fixed;
+  padding: 20px
+}
+
+.admin_background .sidebar .logo .sidebar_logo {
+  width: 100%;
+}
+
+.admin_background .sidebar .separator {
+  height: 1px;
+  background-color: rgb(178, 178, 178);
+  margin: 20px auto;
+  width: 40%;
+}
+
+.admin_background .sidebar .nav-Links {
+
+}
+.admin_background .sidebar .nav-Links > a {
+  color: #000;
+}
+
+.admin_background .sidebar .nav-Links > a.active > div{
+  background-color: #001f54;
+  color: #FFF;
+}
+
+.admin_background .sidebar .nav-Links > a >div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 50px;
+  padding: 10px 5px 10px 20px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.admin_background .sidebar .nav-Links > a:not(.active) >div:hover {
+  background-color: rgba(178, 178, 178, 0.274);
+}
+
+
 
 /* ------------------------------------------------ */
 /* ----------------- end admin panel ----------------- */
