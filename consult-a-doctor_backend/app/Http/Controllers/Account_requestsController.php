@@ -49,7 +49,7 @@ class Account_requestsController extends Controller
 
     public function getAccountRequests() {
 
-        $accountReq = Account_request::select("fname", "lname", "email", "gender", "date_of_birth", "speciality", "about", "university", "created_at")->get();
+        $accountReq = Account_request::select("id", "fname", "lname", "email", "gender", "date_of_birth", "speciality", "about", "university", "created_at")->get();
 
 
         return response()->json([
