@@ -24,7 +24,7 @@ const Header = () => {
 
   React.useEffect(() => {
     window.screen.width < 590 ? setLogo(MobileLogo) : setLogo(Logo)
-
+    
   }, [])
 
   window.addEventListener("scroll", () => {

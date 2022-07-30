@@ -1,68 +1,74 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 
-import Sidebar from './layout/sidebar';
-import Header from './layout/header';
+import axios from "axios";
+
+// layout components
+import Sidebar from "./layout/sidebar";
+import Header from "./layout/header";
+
+// helper components
+import SpecTableRow from "./admin_helper_components/specializationTableRow";
 
 // icons
-import {ReactComponent as Plus} from '../assets/icons/plus.svg';
-
-
+import { ReactComponent as Plus } from "../assets/icons/plus.svg";
 
 const AdminSpecializations = () => {
-  return (
+   const [specializationsInfo, setSpecializationsInfo] = useState(null);
 
-    <div className="admin_background">
-      <Sidebar />
-      <div className="container">
+   useEffect(() => {
+      try {
+         const getSpecializations = async () => {
+            const specRqust = await axios.get("/specializations");
+            console.log(specRqust);
 
-      <Header />
+            const specializations = specRqust.data.specializations;
+            setSpecializationsInfo(specializations);
+         };
+         getSpecializations();
+      } catch (err) {
+         console.log(err);
+      }
+   }, []);
 
-      <div className='adding_spec'>
+   return (
+      <div className="admin_background">
+         <Sidebar />
+         <div className="container">
+            <Header />
 
-        <div className="text">
-          <h3>Add New Specialization</h3>
-          <p>Specializations added here will be global and doctors can commit to.</p>
-        </div>
+            <div className="adding_spec">
+               <div className="text">
+                  <h3>Add New Specialization</h3>
+                  <p>Specializations added here will be global and doctors can commit to.</p>
+               </div>
 
-        <div className="add_spec_icon">
-          <Plus />
-        </div>
+               <div className="add_spec_icon">
+                  <Plus />
+               </div>
+            </div>
 
+            <div className="content_table">
+               <h3 className="table_header">All specializations</h3>
+               <table>
+                  <thead>
+                     <th>ID</th>
+                     <th>Specialization</th>
+                     <th>Doctors</th>
+                     <th>Created at</th>
+                     <th>Updated at</th>
+                     <th>Edition</th>
+                  </thead>
+                  <tbody>
+                     {specializationsInfo &&
+                        specializationsInfo.map((spec) => (
+                           <SpecTableRow ID={spec.id} spec_name={spec.name} doctorsCount={spec.speciality_doctors_count} created_at={spec.created_at} updated_at={spec.updated_at} />
+                        ))}
+                  </tbody>
+               </table>
+            </div>
+         </div>
       </div>
+   );
+};
 
-      <div className="content_table">
-        <h3 className='table_header'>All specializations</h3>
-        <table>
-          <thead>
-            <th>ID</th>
-            <th>Specialization</th>
-            <th>Doctors</th>
-            <th>Created at</th>
-            <th>Updated at</th>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Cardiology</td>
-              <td>34</td>
-              <td>03/22/2014</td>
-              <td>02/01/2015</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Oncology</td>
-              <td>22</td>
-              <td>04/05/2018</td>
-              <td>05/02/2011</td>
-            </tr>
-          </tbody>
-        </table>
-
-      </div>
-
-      </div>
-    </div>
-  )
-}
-
-export default AdminSpecializations
+export default AdminSpecializations;
