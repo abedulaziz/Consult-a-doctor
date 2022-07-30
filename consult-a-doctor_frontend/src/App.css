@@ -208,6 +208,14 @@ header .menu {
    cursor: pointer;
 }
 
+header .languages #language {
+  background-color: white;
+  padding: 7px;
+  border: none;
+  margin-left: 10px;
+  border-radius: 4px;
+}
+
 /* media queries */
 @media (max-width: 970px) {
    header .header-content nav {

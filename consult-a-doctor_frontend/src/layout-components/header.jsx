@@ -147,6 +147,13 @@ const Header = () => {
             </div>
           </>
           }
+          <div className="languages">
+            <select name="language" id="language">
+              <option selected value="en">EN</option>
+              <option value="ar">AR</option>
+              <option value="fr">FR</option>
+            </select>
+          </div>
           </div>
         
         </div>
