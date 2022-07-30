@@ -72,11 +72,62 @@ class UsersController extends Controller
         $selectedDayAppoints = User::find($doctor_id)->getDoctorAppoints()->where("date", $req->date)->select("from", "to", )->orderBy("from", "asc")->get();
 
 
-        $newtimestamp = strtotime("01:00:00" .'+ 1 hours');
-        echo date('H:i:s', $newtimestamp);
+        // $newtimestamp = strtotime("01:00:00" .'+ 1 hours');
+        // echo date('H:i:s', $newtimestamp);
 
+        $workPeriod = [
+            [
+                "from" => "09:00:00", "to" => "11:00:00"
+            ],
+            [
+                "from" => "14:00:00","to" => "17:00:00"
+            ]
+        ];
 
-        getAvailableDurations($workPeriods, $selectedDayAppoints);
+        $selectedDayAppoints = [["from" => "10:00:00", "to"=> "10:05:00"], ["from" => "12:00:00", "to" => "12:30:00"]];
+
+        function getAvailabilities($workPeriods, $selectedDayAppoints) {
+
+            $availDurations = array();
+            $appoinIndex = 0;
+
+            foreach( $workPeriods as $period) {
+                $start = $period->from;
+
+                while ($start < $period->to) {
+                    $addedHour = date('H:i:s', strtotime($start . '+ 1 hours'));
+                    $crntAppoin = $selectedDayAppoints[$appoinIndex];
+
+                    if ($start <= $crntAppoin->from) {
+
+                        if ($addedHour <= $crntAppoin->from && $addedHour < $period->to) {
+                            array_push($availDurations, array($start, $addedHour));
+                            $start = $addedHour;
+
+                        }
+                        else {
+                            array_push($availDurations, array($start, $crntAppoin->from));
+                            $start = $crntAppoin->to;
+                            $appoinIndex++;
+                        }
+                    }
+                    else {
+                        $start = $crntAppoin->to;
+                        $appoinIndex++;
+                    }
+                }
+            }
+        }
+        getAvailabilities($workPeriods, $selectedDayAppoints);
+
+        // expected output: [[
+        //     "from" => "09:00:00", "to" => "10:00:00",
+        //     "from" => "10:05:00", "to" => "11:00:00",
+        //     "from" => "14:00:00", "to" => "17:00:00"
+        // ]];
+
+        echo $availDurations;
+        return $availDurations;
 
 
         return response()->json([
@@ -152,35 +203,5 @@ class UsersController extends Controller
 
 function getAvailableDurations($workPeriods, $dayAppointments) {
 
-    $availDurations = array();
-    $appoinIndex = 0;
 
-
-    foreach( $workPeriods as $period) {
-        $start = $period->from;
-
-        while ($start < $period->to) {
-            $addedHour = date('H:i:s', strtotime($start . '+ 1 hours'));
-            $crntAppoin = $dayAppointments[$appoinIndex];
-
-            if ($start <= $crntAppoin->from) {
-
-                if ($addedHour <= $crntAppoin->from && $addedHour < $period->to) {
-                    array_push($availDurations, array($start, $addedHour));
-                    $start = $addedHour;
-                }
-                else {
-                    array_push($availDurations, array($start, $crntAppoin->from));
-                    $start = $crntAppoin->to;
-                    $appoinIndex++;
-                }
-                echo $start . " ";
-            }
-            else {
-                $start = $crntAppoin->to;
-                $appoinIndex++;
-            }
-        }
-    }
-    return $availDurations;
 }

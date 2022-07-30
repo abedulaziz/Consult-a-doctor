@@ -39,7 +39,7 @@ Route::group(['middleware' => 'api'], function($router) {
 
 
 // get top 5 doctors
-Route::get("/users/top-five-doctors", [DoctorsController::class, 'getTopDoctors']);
+Route::get("/users/top-four-doctors", [DoctorsController::class, 'getTopDoctors']);
 
 // add doctor account request on the waiting-list
 Route::post("/users/doctor-account-request", [Account_requestsController::class, 'doctorSignUp']);
