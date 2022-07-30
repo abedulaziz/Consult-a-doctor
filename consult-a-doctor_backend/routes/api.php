@@ -44,6 +44,9 @@ Route::get("/users/top-four-doctors", [DoctorsController::class, 'getTopDoctors'
 // add doctor account request on the waiting-list
 Route::post("/users/doctor-account-request", [Account_requestsController::class, 'doctorSignUp']);
 
+// get doctor account requests
+Route::get("/users/get-doctor-account-requests", [Account_requestsController::class, 'getAccountRequests']);
+
 
 // get selected specialization's doctors
 Route::get("/{specialization_id}/doctors", [DoctorsController::class, "specialityDoctors"]);

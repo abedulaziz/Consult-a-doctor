@@ -46,4 +46,14 @@ class Account_requestsController extends Controller
             "message" => "Request sent successfuly"
         ]);
     }
+
+    public function getAccountRequests() {
+
+        $accountReq = Account_request::select("fname", "lname", "email", "gender", "date_of_birth", "speciality", "about", "university", "created_at")->get();
+
+
+        return response()->json([
+            "account_requests" => $accountReq
+        ]);
+    }
 }
