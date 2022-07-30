@@ -1,13 +1,13 @@
 import React from "react";
 
 // icons
-import { ReactComponent as AccountRequestIcon } from '../assets/icons/account_request.svg';
-import { ReactComponent as SpecializationsIcon } from '../assets/icons/specializations.svg';
+import { ReactComponent as AccountRequestIcon } from '../../assets/icons/account_request.svg';
+import { ReactComponent as SpecializationsIcon } from '../../assets/icons/specializations.svg';
 
 // helper components
-import NavItem from "./admin_helper_components/sidebar_nav_Item";
+import NavItem from "../admin_helper_components/sidebar_nav_Item";
 
-import Logo from "../assets/brand/transparent_background_brand.png";
+import Logo from "../../assets/brand/transparent_background_brand.png";
 
 const Sidebar = () => {
    return (
