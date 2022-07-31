@@ -7,8 +7,8 @@
       "my_appointments": "My Appointments"
     },
     "registration": {
-      "sign_in": "Sign in",
-      "sign_up": "Sign up"
+      "sign_in_button": "Sign in",
+      "sign_up_button": "Sign up"
     },
     "current_lan": "en"
   },
@@ -43,6 +43,21 @@
     "top_doctors": {
       "header": "Top Doctors",
       "desc": "Get to know our top rated doctors according to patient evaluations."
+    }
+  },
+  "footer": {
+    "registration_sec": {
+      "normal_user_sign_up": "Sign-up as a normal user",
+      "doctor_sign_up": "Sign-up as a doctor"
+    },
+    "loggin_in_sec": {
+      "log_in": "Sign-in to your account"
+    },
+    "sections": {
+      "home_link": "Home",
+      "specializations_link": "Specializations",
+      "doctors_link": "Doctors",
+      "my_appointments": "My Appointments"
     }
   }
 }

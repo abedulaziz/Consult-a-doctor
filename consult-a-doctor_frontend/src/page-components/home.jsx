@@ -2,7 +2,7 @@ import React from "react";
 
 import axios from "axios";
 
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation, Trans } from "react-i18next";
 
 // icons
 import CheckTwoSqure from "../assets/icons/CheckTwoSquare.svg";
@@ -24,140 +24,141 @@ import Footer from "../layout-components/footer";
 import { t } from "i18next";
 
 const Home = () => {
-  const [topDoctors, setTopDoctors] = React.useState(null);
-  const topDoctorsSection = React.useRef(null)
+   const [topDoctors, setTopDoctors] = React.useState(null);
+   const topDoctorsSection = React.useRef(null);
 
-  React.useEffect(() => {
-    try {
-      const getTopDoctors = async () => {
-        const topDoctorsRqust = await axios.get("/users/top-four-doctors");
-        console.log(topDoctorsRqust);
-        setTopDoctors(topDoctorsRqust.data.topDoctors);
-      };
-      getTopDoctors();
-    } catch (err) {
-      console(err);
-    }
+   React.useEffect(() => {
+      try {
+         const getTopDoctors = async () => {
+            const topDoctorsRqust = await axios.get("/users/top-four-doctors");
+            console.log(topDoctorsRqust);
+            setTopDoctors(topDoctorsRqust.data.topDoctors);
+         };
+         getTopDoctors();
+      } catch (err) {
+         console(err);
+      }
 
+      // top doctors section animation
+      console.log(topDoctorsSection.current);
+      const parent = topDoctorsSection.current;
+      setInterval(() => {
+         parent.appendChild(parent.childNodes[0]);
+         parent.childNodes.forEach((child) => {
+            child.classList.remove("active");
+         });
 
-    // top doctors section animation
-    console.log(topDoctorsSection.current);
-    const parent = topDoctorsSection.current
-    setInterval(() => {
-      parent.appendChild(parent.childNodes[0])
-      parent.childNodes.forEach(child => {
-        child.classList.remove("active")
-      });
-      
-      parent.childNodes[0].style.order = "5"
-      parent.childNodes[1].classList.add("active")
-    }, 3000);
+         parent.childNodes[0].style.order = "5";
+         parent.childNodes[1].classList.add("active");
+      }, 3000);
+   }, []);
 
-  }, []);
+   return (
+      <div>
+         <Meta />
 
-  return (
-    <div>
-      <Meta />
+         <Header />
+         <main>
+            {/* hero section */}
+            <div className="hero">
+               <div className="container">
+                  <div className="hero-content">
+                     <div className="heading">
+                        <h1>
+                           {/* Reach our doctors <span className="theme-colored">now!</span> */}
+                           <Trans components={{ span: <span /> }}>lang.homepage.hero.header</Trans>
+                        </h1>
+                        <p>{t("lang.homepage.hero.desc")}</p>
+                     </div>
 
-      <Header />
-      <main>
-        {/* hero section */}
-        <div className="hero">
-          <div className="container">
-            <div className="hero-content">
-              <div className="heading">
-                <h1>
-                  {/* Reach our doctors <span className="theme-colored">now!</span> */}
-                  <Trans components={{span: <span />}}>lan.homepage.hero.header</Trans>
-                </h1>
-                <p>{t("lan.homepage.hero.desc")}</p>
-              </div>
-
-              <ul className="hero_features">
-                <li>
-                  <img src={CheckTwoSqure} />
-                  <p>{t("lan.homepage.hero.specifics.specific_1")}</p>
-                </li>
-                <li>
-                  <img src={CheckTwoSqure} />
-                  <p>{t("lan.homepage.hero.specifics.specific_2")}</p>
-                </li>
-                <li>
-                  <img src={CheckTwoSqure} />
-                  <p>{t("lan.homepage.hero.specifics.specific_3")}</p>
-                </li>
-              </ul>
+                     <ul className="hero_features">
+                        <li>
+                           <img src={CheckTwoSqure} />
+                           <p>{t("lang.homepage.hero.specifics.specific_1")}</p>
+                        </li>
+                        <li>
+                           <img src={CheckTwoSqure} />
+                           <p>{t("lang.homepage.hero.specifics.specific_2")}</p>
+                        </li>
+                        <li>
+                           <img src={CheckTwoSqure} />
+                           <p>{t("lang.homepage.hero.specifics.specific_3")}</p>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
             </div>
-          </div>
-        </div>
 
-        {/* features section */}
-        <div className="features">
-          <div className="container">
-            <div className="features-content">
-              <Feature icon={PersonVideo} header="Online Consultants" description="Book a meeting with your doctor and make an online video chat." />
-              <Feature
-                icon={Development}
-                header="Doctor Development"
-                description="If you are a doctor, you will benefit from the experiences gained from patients in addition to benefiting materially."
-              />
-              <Feature icon={HandsThumbsUp} header="Follow Doctors" description="Follow doctors accounts where they do share their experiences and thoughts in their field." />
+            {/* features section */}
+            <div className="features">
+               <div className="container">
+                  <div className="features-content">
+                     <Feature
+                        icon={PersonVideo}
+                        header={t("lang.homepage.features.section_1.header")}
+                        description={t("lang.homepage.features.section_1.desc")}
+                     />
+                     <Feature
+                        icon={Development}
+                        header={t("lang.homepage.features.section_2.header")}
+                        description={t("lang.homepage.features.section_2.desc")}
+                     />
+                     <Feature
+                        icon={HandsThumbsUp}
+                        header={t("lang.homepage.features.section_3.header")}
+                        description={t("lang.homepage.features.section_3.desc")}
+                     />
+                  </div>
+               </div>
             </div>
-          </div>
-        </div>
 
-        {/* doctor support section */}
-        <div className="doctor_supp">
-          <div className="container">
-            <div className="supp-content">
-              <div className="side_img">
-                <img src={DoctorsSupportImg} />
-              </div>
+            {/* doctor support section */}
+            <div className="doctor_supp">
+               <div className="container">
+                  <div className="supp-content">
+                     <div className="side_img">
+                        <img src={DoctorsSupportImg} />
+                     </div>
 
-              <div className="supp_text">
-                <h2 className="heading">Doctor support</h2>
-                <p className="description">
-                  You can find doctors from different nationalities and specialties in our community!
-                  <br />
-                  During your walkthrough, you can search and book meetings with doctors as much as you want.
-                  <br />
-                  All doctors here are available and always ready to help.
-                  <br />
-                </p>
-              </div>
+                     <div className="supp_text">
+                        <h2 className="heading">{t("lang.homepage.doctor_support.header")}</h2>
+                        <p className="description">
+                           <Trans components={{br: <br />}}>{t("lang.homepage.doctor_support.desc")}</Trans>
+                        </p>
+                     </div>
+                  </div>
+               </div>
             </div>
-          </div>
-        </div>
 
-        {/* top doctors section */}
-        <div className="top_doctors">
-          <div className="side_padding_container">
-            <div className="top_doctors-content">
-              <div className="top_doctors_text">
-                <h2 className="heading">Top Doctors</h2>
-                <p className="description">Get to know our top rated doctors according to patient evaluations.</p>
-              </div>
+            {/* top doctors section */}
+            <div className="top_doctors">
+               <div className="side_padding_container">
+                  <div className="top_doctors-content">
+                     <div className="top_doctors_text">
+                        <h2 className="heading">{t("lang.homepage.top_doctors.header")}</h2>
+                        <p className="description">{t("lang.homepage.top_doctors.desc")}</p>
+                     </div>
 
-              <div ref={topDoctorsSection} className="top_doctors-details">
-                {topDoctors &&
-                  topDoctors.map((doctor) => (
-                    <TopDoctor
-                      key={doctor.doctor_id}
-                      fullName={doctor.fname + " " + doctor.lname}
-                      age={doctor.age}
-                      speciality={doctor.speciality}
-                      doctorImg={doctor.profile_pic}
-                    />
-                  ))}
-              </div>
+                     <div ref={topDoctorsSection} className="top_doctors-details">
+                        {topDoctors &&
+                           topDoctors.map((doctor) => (
+                              <TopDoctor
+                                 key={doctor.doctor_id}
+                                 fullName={doctor.fname + " " + doctor.lname}
+                                 age={doctor.age}
+                                 speciality={doctor.speciality}
+                                 doctorImg={doctor.profile_pic}
+                              />
+                           ))}
+                     </div>
+                  </div>
+               </div>
             </div>
-          </div>
-        </div>
-      </main>
+         </main>
 
-      <Footer />
-    </div>
-  );
+         <Footer />
+      </div>
+   );
 };
 
 export default Home;
