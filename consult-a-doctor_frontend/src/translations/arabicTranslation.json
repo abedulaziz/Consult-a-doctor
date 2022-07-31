@@ -7,20 +7,57 @@
       "my_appointments": "مواعيدي"
     },
     "registration": {
-      "sign_in": "تسجيل الدخول",
-      "sign_up": "اشتراك"
+      "sign_in_button": "تسجيل الدخول",
+      "sign_up_button": "اشتراك"
     },
     "current_lan": "ar"
   },
   "homepage": {
     "hero": {
       "header": "تواصل مع أطبائنا <span className='theme-colored'>الآن</span>",
-      "desc": "Join our community and book a meeting with one of our doctors and discuss your issue.",
+      "desc": "انضم إلى مجتمعنا وابحث مع أحد أطبائنا وناقش مشكلتك",
       "specifics": {
-        "specific_1": "Secret and safe consultants",
-        "specific_2": "Experienced doctors",
-        "specific_3": "Low cost meetings"
+        "specific_1": "استشارات سرية و امنة",
+        "specific_2": "أطباء ذو خبرة",
+        "specific_3": "حجوزات منخفضة التكلفة"
       }
+    },
+    "features": {
+      "section_1": {
+        "header": "استشارة الكترونية",
+        "desc": "قم بحجز موعد لمقابلة طبيبك الكترونيا عبر تقنية محادثة الفيديو"
+      },
+      "section_2": {
+        "header": "تطورك واستفادتك كطبيب",
+        "desc": "اذا كنت طبيبا، ستزيد من خبرتك بعد التعامل مع المرضى بالضافة الى الفائدة المادية التي ستحصل عليها"
+      },
+      "section_3": {
+        "header": "تايع الأطباء",
+        "desc": "تابع حسابات الأطباء لتتمكن من رؤية ما ينشرونه من خبراتهم و اراءهم في مجالات اختصاصاتهم"
+      }
+    },
+    "doctor_support": {
+      "header": "دعم الطبيب",
+      "desc": "يمكنك العثور على أطباء من مختلف الجنسيات و التخصصات في مجتمعنا!<br />أثناء تجولك، يمكنك البحث عن الاطباء وحجز مواعيد معهم بقدر ما تريد<br />جميع الأطباء هنا متاحون ومستعدون دائما للمساعدة<br />"
+    },
+    "top_doctors": {
+      "header": "Top Doctors",
+      "desc": "Get to know our top rated doctors according to patient evaluations."
+    }
+  },
+  "footer": {
+    "registration_sec": {
+      "normal_user_sign_up": "انشئ حسابك كمستخدم عادي",
+      "doctor_sign_up": "انشئ حسابك حسابك كطبيب"
+    },
+    "loggin_in_sec": {
+      "log_in": "تسجيل الدخول في حسابك"
+    },
+    "sections": {
+      "home_link": "الرئيسية",
+      "specializations_link": "الاختصاصات",
+      "doctors_link": "الاطباء",
+      "my_appointments": "مواعيدي"
     }
   }
 }
