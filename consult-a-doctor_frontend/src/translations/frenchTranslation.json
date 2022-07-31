@@ -45,6 +45,10 @@
       "desc": "Apprenez à connaître nos meilleurs médecins en fonction des avis des patients."
     }
   },
+  "specializations": {
+    "header": "Spécialisations",
+    "desc": "Choisissez la spécialisation du médecin."
+  },
   "footer": {
     "registration_sec": {
       "header": "Inscription",

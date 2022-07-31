@@ -15,11 +15,11 @@
   "homepage": {
     "hero": {
       "header": "Reach our doctors <span className='theme-colored'>now!</span>",
-      "desc": "Join our community and book a meeting with one of our doctors and discuss your issue.",
+      "desc": "Join our community and book a meeting with one of our specialists and discuss your issue.",
       "specifics": {
-        "specific_1": "Secret and safe consultants",
+        "specific_1": "Confidential and safe consultations",
         "specific_2": "Experienced doctors",
-        "specific_3": "Low cost meetings"
+        "specific_3": "Low cost sessions"
       }
     },
     "features": {
@@ -38,25 +38,29 @@
     },
     "doctor_support": {
       "header": "Doctor support",
-      "desc": "You can find doctors from different nationalities and specialties in our community!<br />During your walkthrough, you can search and book meetings with doctors as much as you want.<br />All doctors here are available and always ready to help.<br />"
+      "desc": "You can find doctors from different nationalities and specialties in our community!<br />During your walkthrough, you can search and book meetings with doctors with ease.<br />All doctors here are available and always ready to help.<br />"
     },
     "top_doctors": {
       "header": "Top Doctors",
       "desc": "Get to know our top rated doctors according to patient evaluations."
     }
   },
+  "specializations": {
+    "header": "Specializations",
+    "desc": "Choose the doctor's specialization."
+  },
   "footer": {
     "registration_sec": {
       "header": "Registration",
       "links": {
-        "normal_user_sign_up": "Sign-up as a normal user",
-        "doctor_sign_up": "Sign-up as a doctor"
+        "normal_user_sign_up": "Sign up as a normal user",
+        "doctor_sign_up": "Register as a doctor"
       }
     },
     "log_in_sec": {
-      "header": "log-in",
+      "header": "login",
       "links": {
-        "log_in": "Sign-in to your account"
+        "log_in": "Sign in to your account"
       }
     },
     "sections": {

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useNavigate } from "react-router-dom";
-
+import { t } from "i18next";
 import axios from "axios";
 
 // layout components
@@ -36,8 +36,8 @@ const Specializations = () => {
           <div className="container">
             <div className="spec_content">
               <div className="heading">
-                <h2>Specializations</h2>
-                <p>Choose the specialization the doctor you are seeking belongs to</p>
+                <h2>{t("lang.specializations.header")} </h2>
+                <p>{t("lang.specializations.desc")}</p>
               </div>
 
               <div className="specs-container">
