@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { insertInfo } from '../redux/slices/userSlice'
 
+import { useTranslation, Trans } from 'react-i18next';
+
 import {Link, useNavigate} from 'react-router-dom';
 import {useForm} from 'react-hook-form';
 
@@ -11,6 +13,7 @@ import RegistrationLeftSection from '../layout-components/registrationLeftSectio
 import axios from 'axios';
 
 const SignIn = () => {
+  const {t} = useTranslation()
   const dispatch = useDispatch()
 
   let navigate = useNavigate()
@@ -45,8 +48,8 @@ const SignIn = () => {
 
         <div className="right-section">
           <div className="heading">
-            <h3>Sign in</h3>
-            <p>Log-in to your account</p>
+            <h3>{t("lang.sign_in.sign_in_sec.header")}</h3>
+            <p>{t("lang.sign_in.sign_in_sec.desc")}</p>
           </div>
 
 
@@ -54,7 +57,7 @@ const SignIn = () => {
             <div className="email">
 
               <div className="email_wrapper">
-                <input {...register("email", {required: "Email is required", pattern:{value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, message:"Invalid email"}})}  type="text" name="email" id="email" placeholder='email' />
+                <input {...register("email", {required: "Email is required", pattern:{value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, message:"Invalid email"}})}  type="text" name="email" id="email" placeholder={t("lang.sign_in.sign_in_sec.form.email")} />
                 <p className="error">{errors.email?.message}</p>
               </div>
 
@@ -63,19 +66,22 @@ const SignIn = () => {
             <div className="password">
 
               <div className="password_wrapper">
-                <input {...register("password", {required: "Password is required"})} type="password" name="password" id="password" placeholder='password' />
+                <input {...register("password", {required: "Password is required"})} type="password" name="password" id="password" placeholder={t("lang.sign_in.sign_in_sec.form.password")} />
                 {/* , pattern:{value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm, message:"Please enter a valid password"} */}
                 <p className="error">{errors.password?.message}</p>
               </div>
 
             </div>
             <div className="button_wrapper">
-              <button className="log-in_button regis_button">Log in</button>
+              <button className="log-in_button regis_button">{t("lang.sign_in.sign_in_sec.form.button")}</button>
             </div>
             <div ref={regisError}></div>
           </form>
           <div className="sign-up_link regis_link">
-            Don't have an existing account? <Link to="/sign-up">Sign up</Link>
+          <Trans components={{Link: <Link /> }} >
+            lang.sign_in.sign_up_link
+          </Trans>
+            
           </div>
         </div>
 

@@ -64,6 +64,22 @@
       }
     }
   },
+  "sign_in": {
+    "left_section": {
+      "brand_statement": "Ease of use - Experienced doctors - Trusted advice",
+      "social_media": "Check our social media"
+    },
+    "sign_in_sec": {
+      "header": "Sign in",
+      "desc": "Log-in to your account",
+      "form": {
+        "email": "Email",
+        "password": "Password",
+        "button": "Log in"
+      }
+    },
+    "sign_up_link": "Don't have an existing account? <Link to='/sign-up'>Sign up</Link>"
+  },
   "footer": {
     "registration_sec": {
       "header": "Registration",
