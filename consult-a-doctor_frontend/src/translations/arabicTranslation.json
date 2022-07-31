@@ -49,6 +49,21 @@
     "header": "الإختصاصات",
     "desc": "إختر إختصاص الطبيب الذي تبحث عنه."
   },
+  "doctors": {
+    "header": "الأطباء",
+    "desc": "تعرف على قائمة من الأطباء ذوو الخبرة في العديد من التخصصات.",
+    "search_panel": {
+      "search_box_placeholder": "بحث",
+      "sorting_sec": {
+        "label": "تصنيف حسب: ",
+        "options": {
+          "option_1": "الترتيب الابجدي",
+          "option_2": "التقييم",
+          "option_3": "عدد المتابعين"
+        }
+      }
+    }
+  },
   "footer": {
     "registration_sec": {
       "header": "إنشاء حساب",

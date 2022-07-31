@@ -49,6 +49,21 @@
     "header": "Spécialisations",
     "desc": "Choisissez la spécialisation du médecin."
   },
+  "doctors": {
+    "header": "médecins",
+    "desc": "Découvrez une liste de médecins expérimentés dans de nombreuses spécialités et réservez facilement des rendez-vous.",
+    "search_panel": {
+      "search_box_placeholder": "Chercher",
+      "sorting_sec": {
+        "label": "Trier par: ",
+        "options": {
+          "option_1": "Ordre alphabétique",
+          "option_2": "Évaluation",
+          "option_3": "Nombre d'abonnés"
+        }
+      }
+    }
+  },
   "footer": {
     "registration_sec": {
       "header": "Inscription",

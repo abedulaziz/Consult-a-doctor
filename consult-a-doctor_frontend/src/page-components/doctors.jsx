@@ -2,6 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
+import { t } from "i18next";
+
 // layout components
 import Header from "../layout-components/header";
 import Footer from "../layout-components/footer";
@@ -80,22 +82,22 @@ const Doctors = () => {
           <div className="container">
             <div className="doctors_content">
               <div className="heading">
-                <h2>Doctors</h2>
-                <p>Discover a list of experienced doctors in many specialities and book meetings now!</p>
+                <h2>{t("lang.doctors.header")}</h2>
+                <p>{t("lang.doctors.desc")}</p>
               </div>
 
               <div className="search-panel">
                 <div className="search-box">
                   <SearchIcon />
-                  <input onChange={(ev) => setSearchValue(ev.target.value)} type="text" placeholder="Search" />
+                  <input onChange={(ev) => setSearchValue(ev.target.value)} type="text" placeholder={t("lang.doctors.search_panel.search_box_placeholder")} />
                 </div>
 
                 <div className="sorting">
-                  <label htmlFor="sortDoctors">Sort by: </label>
+                  <label htmlFor="sortDoctors">{t("lang.doctors.search_panel.sorting_sec.label")}</label>
                   <select name="sorting" id="sortDoctors" onChange={(ev) => sortDoctors(ev)}>
-                    <option value="alphabetically">Alphabetical order</option>
-                    <option value="rating">Rate</option>
-                    <option value="rating">Number of followers</option>
+                    <option value="alphabetically">{t("lang.doctors.search_panel.sorting_sec.options.option_1")}</option>
+                    <option value="rating">{t("lang.doctors.search_panel.sorting_sec.options.option_2")}</option>
+                    <option value="rating">{t("lang.doctors.search_panel.sorting_sec.options.option_3")}</option>
                   </select>
                 </div>
               </div>

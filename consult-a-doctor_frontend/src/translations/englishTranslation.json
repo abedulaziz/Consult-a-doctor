@@ -49,6 +49,21 @@
     "header": "Specializations",
     "desc": "Choose the doctor's specialization."
   },
+  "doctors": {
+    "header": "Doctors",
+    "desc": "Discover a list of experienced doctors in many specialities and book meetings easily.",
+    "search_panel": {
+      "search_box_placeholder": "Search",
+      "sorting_sec": {
+        "label": "Sort by: ",
+        "options": {
+          "option_1": "Alphabetical order",
+          "option_2": "Evaluation",
+          "option_3": "Number of followers"
+        }
+      }
+    }
+  },
   "footer": {
     "registration_sec": {
       "header": "Registration",
