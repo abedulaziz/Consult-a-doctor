@@ -4,6 +4,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 import ArabicTranslation from './translations/arabicTranslation';
 import EnglishTranslation from './translations/englishTranslation';
+import FrenchTranslation from './translations/frenchTranslation';
 
 
 
@@ -25,6 +26,11 @@ i18n
       ar: {
         translation: {
           lang: ArabicTranslation
+        }
+      },
+      fr: {
+        translation: {
+          lang: FrenchTranslation
         }
       }
     }

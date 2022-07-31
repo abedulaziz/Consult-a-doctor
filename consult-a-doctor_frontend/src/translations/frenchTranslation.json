@@ -1,0 +1,72 @@
+{
+  "header": {
+    "nav_links": {
+      "home_link": "domicile",
+      "specializations_link": "Spécialisations",
+      "doctors_link": "Médecins",
+      "my_appointments": "Mes rendez-vous"
+    },
+    "registration": {
+      "sign_in_button": "Connexion",
+      "sign_up_button": "S'inscrire"
+    },
+    "current_lan": "fr"
+  },
+  "homepage": {
+    "hero": {
+      "header": "Contactez nos médecins dès <span className='theme-colored'>maintenant!</span>",
+      "desc": "Rejoignez notre communauté, discutez avec l'un de nos médecins et discutez de votre problème.",
+      "specifics": {
+        "specific_1": "Des conseillers confidentiels et sécurisés",
+        "specific_2": "Médecins expérimentés",
+        "specific_3": "Des réunions à petit prix"
+      }
+    },
+    "features": {
+      "section_1": {
+        "header": "consultation en ligne",
+        "desc": "prenez rendez-vous avec votre médecin pour passer un appel vidéo en ligne."
+      },
+      "section_2": {
+        "header": "médecin développement",
+        "desc": "si vous êtes médecin, vous bénéficierez de l'expérience acquise auprès des patients en plus des avantages matériels"
+      },
+      "section_3": {
+        "header": "suivre les médecins",
+        "desc": "suivre les témoignages de médecins où ils partagent leurs expériences et réflexions dans leur domaine"
+      }
+    },
+    "doctor_support": {
+      "header": "Assistance médicale",
+      "desc": "Vous pouvez trouver des médecins de différentes nationalités et Spécialités dans notre communauté!<br />Pendant que vous êtes en déplacement, vous pouvez rechercher et réserver des reunions Avec des médecins autant que vous voulez.<br />Tous les médecins ici sont disponibles et toujours prêts à aider.<br />"
+    },
+    "top_doctors": {
+      "header": "Meilleurs médecins",
+      "desc": "Apprenez à connaître nos meilleurs médecins en fonction des avis des patients."
+    }
+  },
+  "footer": {
+    "registration_sec": {
+      "header": "Inscription",
+      "links": {
+        "normal_user_sign_up": "Inscrivez-vous en tant qu'utilisateur normal",
+        "doctor_sign_up": "Inscrivez-vous en tant que médecin"
+      }
+    },
+    "log_in_sec": {
+      "header": "le login",
+      "links": {
+        "log_in": "Connectez-vous à votre compte"
+      }
+    },
+    "sections": {
+      "header": "Section",
+      "links": {
+        "home_link": "domicile",
+        "specializations_link": "Spécialisations",
+        "doctors_link": "Médecins",
+        "my_appointments": "Mes rendez-vous"
+      }
+    }
+  }
+}
