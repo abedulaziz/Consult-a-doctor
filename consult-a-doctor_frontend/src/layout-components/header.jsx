@@ -15,6 +15,7 @@ import MobileLogo from '../assets/brand/transparent_background_logo.png';
 
 const Header = () => {
   const { t, i18n } = useTranslation();
+  document.dir = i18n.dir()
   const header = React.useRef(null);
   const NavBar = React.useRef(null);
   const [userProfileWidget, setUserProfileWidget] = React.useState(null)
@@ -127,6 +128,16 @@ const Header = () => {
           </nav>
 
           <div className="account_status">
+          <div className="languages">
+            <select name="language" id="language" onChange={(ev) =>{
+              i18n.changeLanguage(ev.target.value)
+              window.location.reload()
+            }}>
+              <option selected={t("lang.header.current_lan") === "en" && "selected"} value="en">English</option>
+              <option selected={t("lang.header.current_lan") === "ar" && "selected"}  value="ar">العربية</option>
+              <option selected={t("lang.header.current_lan") === "fr" && "selected"}  value="fr">Français</option>
+            </select>
+          </div>
 
           {userInfo.JWT ? 
           <>
@@ -149,13 +160,7 @@ const Header = () => {
             </div>
           </>
           }
-          <div className="languages">
-            <select name="language" id="language" onChange={(ev) => i18n.changeLanguage(ev.target.value)}>
-              <option selected={t("lang.header.current_lan") === "en" && "selected"} value="en">EN</option>
-              <option selected={t("lang.header.current_lan") === "ar" && "selected"}  value="ar">AR</option>
-              <option selected={t("lang.header.current_lan") === "fr" && "selected"}  value="fr">FR</option>
-            </select>
-          </div>
+
           </div>
         
         </div>
