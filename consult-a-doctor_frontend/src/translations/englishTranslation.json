@@ -47,17 +47,26 @@
   },
   "footer": {
     "registration_sec": {
-      "normal_user_sign_up": "Sign-up as a normal user",
-      "doctor_sign_up": "Sign-up as a doctor"
+      "header": "Registration",
+      "links": {
+        "normal_user_sign_up": "Sign-up as a normal user",
+        "doctor_sign_up": "Sign-up as a doctor"
+      }
     },
-    "loggin_in_sec": {
-      "log_in": "Sign-in to your account"
+    "log_in_sec": {
+      "header": "log-in",
+      "links": {
+        "log_in": "Sign-in to your account"
+      }
     },
     "sections": {
-      "home_link": "Home",
-      "specializations_link": "Specializations",
-      "doctors_link": "Doctors",
-      "my_appointments": "My Appointments"
+      "header": "Section",
+      "links": {
+        "home_link": "Home",
+        "specializations_link": "Specializations",
+        "doctors_link": "Doctors",
+        "my_appointments": "My Appointments"
+      }
     }
   }
 }

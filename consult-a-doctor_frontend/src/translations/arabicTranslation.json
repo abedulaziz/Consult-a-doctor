@@ -47,17 +47,36 @@
   },
   "footer": {
     "registration_sec": {
-      "normal_user_sign_up": "انشئ حسابك كمستخدم عادي",
-      "doctor_sign_up": "انشئ حسابك حسابك كطبيب"
+      "header": "انشاء حساب",
+      "links": {
+        "normal_user_sign_up": "انشئ حسابك كمستخدم عادي",
+        "doctor_sign_up": "انشئ حسابك حسابك كطبيب"
+      }
     },
-    "loggin_in_sec": {
-      "log_in": "تسجيل الدخول في حسابك"
+    "log_in_sec": {
+      "header": "تسجيل الدخول",
+      "links": {
+        "log_in": "تسجيل الدخول في حسابك"
+      }
     },
     "sections": {
-      "home_link": "الرئيسية",
-      "specializations_link": "الاختصاصات",
-      "doctors_link": "الاطباء",
-      "my_appointments": "مواعيدي"
+      "header": "الاقسام",
+      "links": {
+        "home_link": "الرئيسية",
+        "specializations_link": "الاختصاصات",
+        "doctors_link": "الاطباء",
+        "my_appointments": "مواعيدي"
+      }
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
