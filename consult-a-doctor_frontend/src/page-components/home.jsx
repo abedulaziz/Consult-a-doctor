@@ -2,6 +2,8 @@ import React from "react";
 
 import axios from "axios";
 
+import { useTranslation, Trans } from 'react-i18next';
+
 // icons
 import CheckTwoSqure from "../assets/icons/CheckTwoSquare.svg";
 import PersonVideo from "../assets/icons/PersonVideo.svg";
@@ -11,11 +13,6 @@ import HandsThumbsUp from "../assets/icons/HandThumbsUp.svg";
 // backgrounds
 import DoctorsSupportImg from "../assets/backgrounds/doctors_support.png";
 
-import Doctor1 from "../assets/backgrounds/doctor1.jpg";
-import Doctor2 from "../assets/backgrounds/doctor2.jpg";
-import Doctor3 from "../assets/backgrounds/doctor3.jpg";
-import Doctor4 from "../assets/backgrounds/doctor4.jpg";
-
 // helper components
 import Meta from "../helper-components/meta";
 import Feature from "../helper-components/feature";
@@ -24,6 +21,7 @@ import TopDoctor from "../helper-components/topDoctor";
 // layout components
 import Header from "../layout-components/header";
 import Footer from "../layout-components/footer";
+import { t } from "i18next";
 
 const Home = () => {
   const [topDoctors, setTopDoctors] = React.useState(null);
@@ -69,23 +67,24 @@ const Home = () => {
             <div className="hero-content">
               <div className="heading">
                 <h1>
-                  Reach our doctors <span className="theme-colored">now!</span>
+                  {/* Reach our doctors <span className="theme-colored">now!</span> */}
+                  <Trans components={{span: <span />}}>lan.homepage.hero.header</Trans>
                 </h1>
-                <p>Join our community and book a meeting with one of our doctors and discuss your issue.</p>
+                <p>{t("lan.homepage.hero.desc")}</p>
               </div>
 
               <ul className="hero_features">
                 <li>
                   <img src={CheckTwoSqure} />
-                  <p>Secret and safe consultants</p>
+                  <p>{t("lan.homepage.hero.specifics.specific_1")}</p>
                 </li>
                 <li>
                   <img src={CheckTwoSqure} />
-                  <p>Experienced doctors</p>
+                  <p>{t("lan.homepage.hero.specifics.specific_2")}</p>
                 </li>
                 <li>
                   <img src={CheckTwoSqure} />
-                  <p>Low cost meetings</p>
+                  <p>{t("lan.homepage.hero.specifics.specific_3")}</p>
                 </li>
               </ul>
             </div>
