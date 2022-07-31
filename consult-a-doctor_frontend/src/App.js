@@ -1,6 +1,7 @@
 
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-// import ScriptTag from 'react-script-tag';
+
+import { useTranslation } from 'react-i18next';
 
 // page components
 import Home from './page-components/home';
@@ -25,6 +26,8 @@ import { ContextProvider } from './WebRTC-components/SocketContext';
 import './App.css';
 
 function App() {
+  const { i18n } = useTranslation();
+  document.dir = i18n.dir()
   return (
     <div className="App">
       <ActionStatus />

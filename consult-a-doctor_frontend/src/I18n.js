@@ -5,7 +5,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import ArabicTranslation from './translations/arabicTranslation';
 import EnglishTranslation from './translations/englishTranslation';
 
-console.log(EnglishTranslation.homepage)
+
 
 i18n
   .use(LanguageDetector)
@@ -19,12 +19,12 @@ i18n
     resources: {
       en: {
         translation:{
-          lan: EnglishTranslation
+          lang: EnglishTranslation
         }
       },
       ar: {
         translation: {
-          lan: ArabicTranslation
+          lang: ArabicTranslation
         }
       }
     }
