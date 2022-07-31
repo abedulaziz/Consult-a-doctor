@@ -3,6 +3,7 @@ import {Link, useNavigate} from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import axios from 'axios';
 
+import { useTranslation, Trans } from 'react-i18next';
 // helper components
 import NavItem from '../helper-components/navItem';
 
@@ -13,6 +14,7 @@ import Logo from '../assets/brand/transparent_background_brand.png';
 import MobileLogo from '../assets/brand/transparent_background_logo.png';
 
 const Header = () => {
+  const { t, i18n } = useTranslation();
   const header = React.useRef(null);
   const NavBar = React.useRef(null);
   const [userProfileWidget, setUserProfileWidget] = React.useState(null)
@@ -115,10 +117,10 @@ const Header = () => {
 
             <div className="nav-wrapper">
 
-              <NavItem path="/" className="home-link" content="Home" />
-              <NavItem path="/doctor/specializations" className="specializations-link" content="Specializations" />
-              <NavItem path="/doctor/all/accounts" className="doctors-link" content="Doctors" />
-              <NavItem path={ userInfo.user_id ? `/${userInfo.user_id}/appointments` : "/sign-in"} className="appointments-link" content="My Appointments" />
+              <NavItem path="/" className="home-link" content={t("lang.header.nav_links.home_link")} />
+              <NavItem path="/doctor/specializations" className="specializations-link" content={t("lang.header.nav_links.specializations_link")} />
+              <NavItem path="/doctor/all/accounts" className="doctors-link" content={t("lang.header.nav_links.doctors_link")} />
+              <NavItem path={ userInfo.user_id ? `/${userInfo.user_id}/appointments` : "/sign-in"} className="appointments-link" content={t("lang.header.nav_links.my_appointments")} />
 
             </div>
 
@@ -140,18 +142,18 @@ const Header = () => {
           </>
           :
           <>
-            <Link to="/sign-in"><button className='sign-in_button'>Sign in</button></Link>
-            <Link to="/sign-up"><button className='sign-up_button'>Sign up</button></Link>
+            <Link to="/sign-in"><button className='sign-in_button'>{t("lang.header.registration.sign_in_button")}</button></Link>
+            <Link to="/sign-up"><button className='sign-up_button'>{t("lang.header.registration.sign_up_button")}</button></Link>
             <div className="menu">
               <Menu onClick={() => displayNav()} />
             </div>
           </>
           }
           <div className="languages">
-            <select name="language" id="language">
-              <option selected value="en">EN</option>
-              <option value="ar">AR</option>
-              <option value="fr">FR</option>
+            <select name="language" id="language" onChange={(ev) => i18n.changeLanguage(ev.target.value)}>
+              <option selected={t("lang.header.current_lan") === "en" && "selected"} value="en">EN</option>
+              <option selected={t("lang.header.current_lan") === "ar" && "selected"}  value="ar">AR</option>
+              <option selected={t("lang.header.current_lan") === "fr" && "selected"}  value="fr">FR</option>
             </select>
           </div>
           </div>
