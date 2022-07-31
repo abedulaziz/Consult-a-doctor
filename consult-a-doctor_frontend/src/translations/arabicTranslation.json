@@ -1,6 +1,26 @@
-
 {
+  "header": {
+    "nav_links": {
+      "home_link": "الرئيسية",
+      "specializations_link": "الاختصاصات",
+      "doctors_link": "الاطباء",
+      "my_appointments": "مواعيدي"
+    },
+    "registration": {
+      "sign_in": "تسجيل الدخول",
+      "sign_up": "اشتراك"
+    },
+    "current_lan": "ar"
+  },
   "homepage": {
-    "hero": "اهلا وسهلا"
+    "hero": {
+      "header": "تواصل مع أطبائنا <span className='theme-colored'>الآن</span>",
+      "desc": "Join our community and book a meeting with one of our doctors and discuss your issue.",
+      "specifics": {
+        "specific_1": "Secret and safe consultants",
+        "specific_2": "Experienced doctors",
+        "specific_3": "Low cost meetings"
+      }
+    }
   }
 }
