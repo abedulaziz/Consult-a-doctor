@@ -129,13 +129,11 @@ const Header = () => {
 
           <div className="account_status">
           <div className="languages">
-            <select name="language" id="language" onChange={(ev) =>{
-              i18n.changeLanguage(ev.target.value)
-              window.location.reload()
-            }}>
-              <option selected={t("lang.header.current_lan") === "en" && "selected"} value="en">English</option>
-              <option selected={t("lang.header.current_lan") === "ar" && "selected"}  value="ar">العربية</option>
-              <option selected={t("lang.header.current_lan") === "fr" && "selected"}  value="fr">Français</option>
+            {console.log(t("lang.header.current_lan"))}
+            <select name="language" defaultValue={t("lang.header.current_lan")} id="language" onChange={(ev) => i18n.changeLanguage(ev.target.value)}>
+              <option value="en">English</option>
+              <option value="ar">العربية</option>
+              <option value="fr">Français</option>
             </select>
           </div>
 

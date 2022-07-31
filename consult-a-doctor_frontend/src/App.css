@@ -474,8 +474,8 @@ header .languages #language {
    padding-right: 10px;
 }
 .side_padding_container:dir(rtl) {
-   padding-left: 7vw;
-   padding-right: 10px;
+   padding-right: 7vw;
+   padding-left: 10px;
 }
 
 .top_doctors .top_doctors-content {
