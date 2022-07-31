@@ -209,11 +209,11 @@ header .menu {
 }
 
 header .languages #language {
-  background-color: white;
-  padding: 7px;
-  border: none;
-  margin-left: 10px;
-  border-radius: 4px;
+   background-color: white;
+   padding: 7px;
+   border: none;
+   margin-left: 10px;
+   border-radius: 4px;
 }
 
 /* media queries */
