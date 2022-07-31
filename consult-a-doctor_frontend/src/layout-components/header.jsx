@@ -15,7 +15,6 @@ import MobileLogo from '../assets/brand/transparent_background_logo.png';
 
 const Header = () => {
   const { t, i18n } = useTranslation();
-  document.dir = i18n.dir()
   const header = React.useRef(null);
   const NavBar = React.useRef(null);
   const [userProfileWidget, setUserProfileWidget] = React.useState(null)

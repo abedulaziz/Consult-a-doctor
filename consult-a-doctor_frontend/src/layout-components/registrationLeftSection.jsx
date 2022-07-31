@@ -1,6 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
 
+import {t} from 'i18next';
+
 // brand
 import Logo from '../assets/brand/transparent_background_brand.png';
 
@@ -28,9 +30,9 @@ const RegistrationLeftSection = ({isDoctorSignUp = false}) => {
         <div className="brand">
           <Link to="/"><img src={ Logo } alt="" /></Link>
         </div>
-        <p className='brand-statement'>Ease of use - Experienced doctors - Trusted advices</p>
+        <p className='brand-statement'>{t("lang.sign_in.left_section.brand_statement")}</p>
         <div className="social-media_section">
-          <p>Check our social media</p>
+          <p>{t("lang.sign_in.left_section.social_media")}</p>
           <div className="social-media">
             <ul>
               <li className="facebook"><img src={ Facebook } alt="facebook" /></li>

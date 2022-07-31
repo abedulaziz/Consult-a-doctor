@@ -64,6 +64,22 @@
       }
     }
   },
+  "sign_in": {
+    "left_section": {
+      "brand_statement": "Facilité d'utilisation - Médecins expérimentés - Conseils de confiance",
+      "social_media": "Consultez nos réseaux sociaux"
+    },
+    "sign_in_sec": {
+      "header": "Connexion",
+      "desc": "Connectez-vous à votre compte",
+      "form": {
+        "email": "E-mail",
+        "password": "Mot de passe",
+        "button": "Connexion"
+      }
+    },
+    "sign_up_link": "Vous n'avez pas de compte existant? <Link to='/sign-up'>S'inscrire</Link>"
+  },
   "footer": {
     "registration_sec": {
       "header": "Inscription",

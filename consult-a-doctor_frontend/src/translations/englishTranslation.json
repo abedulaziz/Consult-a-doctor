@@ -73,7 +73,7 @@
       "header": "Sign in",
       "desc": "Log-in to your account",
       "form": {
-        "email": "Email",
+        "email": "E-mail",
         "password": "Password",
         "button": "Log in"
       }
