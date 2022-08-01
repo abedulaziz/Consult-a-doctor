@@ -12,110 +12,122 @@ import { ReactComponent as ChevronsRight } from "../assets/icons/chevrons-right.
 import axios from "axios";
 
 const DoctorSignUpStageTwo = () => {
-  const [specializations, setSpecializations] = React.useState(null);
+   const [specializations, setSpecializations] = React.useState(null);
 
-  const weekDays = React.useRef(null);
-  const registrationData = useSelector((state) => state.doctorSignUp);
-  const dispatch = useDispatch();
+   const weekDays = React.useRef(null);
+   const registrationData = useSelector((state) => state.doctorSignUp);
+   const dispatch = useDispatch();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+   const {
+      register,
+      handleSubmit,
+      formState: { errors },
+   } = useForm();
 
-  const requestDoctorAccount = async (data) => {
-    const validAvailabilities = { ...registrationData.value.availabilities };
-    for (let weekDay in validAvailabilities) {
-      if (weekDays.current.querySelector("#" + weekDay).checked) {
-        validAvailabilities[weekDay] = validAvailabilities[weekDay].filter((time) => !(time[0] === "00:00" && time[1] === "00:00"));
-      } else {
-        delete validAvailabilities[weekDay];
+   const requestDoctorAccount = async (data) => {
+      const validAvailabilities = { ...registrationData.value.availabilities };
+      for (let weekDay in validAvailabilities) {
+         if (weekDays.current.querySelector("#" + weekDay).checked) {
+            validAvailabilities[weekDay] = validAvailabilities[weekDay].filter((time) => !(time[0] === "00:00" && time[1] === "00:00"));
+         } else {
+            delete validAvailabilities[weekDay];
+         }
       }
-    }
 
-    const doctorAccountRqust = { ...registrationData.value };
-    doctorAccountRqust.availabilities = JSON.stringify(validAvailabilities);
-    doctorAccountRqust.university = data.university;
-    doctorAccountRqust.speciality = data.speciality;
-    doctorAccountRqust.about = data.about;
+      const doctorAccountRqust = { ...registrationData.value };
+      doctorAccountRqust.availabilities = JSON.stringify(validAvailabilities);
+      doctorAccountRqust.university = data.university;
+      doctorAccountRqust.speciality = data.speciality;
+      doctorAccountRqust.about = data.about;
 
-    console.log(doctorAccountRqust);
+      console.log(doctorAccountRqust);
 
-    try {
-      await axios.post("users/doctor-account-request", doctorAccountRqust);
+      try {
+         await axios.post("users/doctor-account-request", doctorAccountRqust);
 
-      alert("Your doctor account request has been sent.");
-    } catch (err) {
-      console.log(err);
-    }
-  };
+         alert("Your doctor account request has been sent.");
+      } catch (err) {
+         console.log(err);
+      }
+   };
 
-  React.useEffect(() => {
-    const getSpecializations = async () => {
-      const SpecRqust = await axios.get("/specializations");
+   React.useEffect(() => {
+      const getSpecializations = async () => {
+         const SpecRqust = await axios.get("/specializations");
 
-      console.log(SpecRqust);
-      setSpecializations(SpecRqust.data.specializations);
-    };
-    getSpecializations();
-  }, []);
+         console.log(SpecRqust);
+         setSpecializations(SpecRqust.data.specializations);
+      };
+      getSpecializations();
+   }, []);
 
-  return (
-    <form onSubmit={handleSubmit((data) => requestDoctorAccount(data))} id="signUp" className="regis_form">
-      <div className="university">
-        <div className="university_wrapper">
-          <input {...register("university", { required: "Please mention your university" })} type="text" name="university" id="university" placeholder="University" />
-          <p className="error">{errors.university?.message}</p>
-        </div>
-      </div>
-      <div className="speciality">
-        <div className="speciality_wrapper">
-          <h4>What is your speciality?</h4>
-          <select {...register("speciality", { required: "Speciality field is required" })} type="text" name="speciality" id="speciality" placeholder="Speciality">
-            {specializations &&
-              specializations.map((spec) => (
-                <option key={spec.id} value={spec.name}>
-                  {spec.name}
-                </option>
-              ))}
-          </select>
-          <p className="error">{errors.speciality?.message}</p>
-        </div>
-      </div>
-      <div className="about">
-        <div className="about_wrapper">
-          <h4>Your about</h4>
-          <textarea {...register("about", { required: "This field is required" })} name="about" id="about" placeholder="About"></textarea>
-          <p className="error">{errors.about?.message}</p>
-        </div>
-      </div>
+   return (
+      <form onSubmit={handleSubmit((data) => requestDoctorAccount(data))} id="signUp" className="regis_form">
+         <div className="university">
+            <div className="university_wrapper">
+               <input
+                  {...register("university", { required: "Please mention your university" })}
+                  type="text"
+                  name="university"
+                  id="university"
+                  placeholder="University"
+               />
+               <p className="error">{errors.university?.message}</p>
+            </div>
+         </div>
+         <div className="speciality">
+            <div className="speciality_wrapper">
+               <h4>What is your speciality?</h4>
+               <select
+                  {...register("speciality", { required: "Speciality field is required" })}
+                  type="text"
+                  name="speciality"
+                  id="speciality"
+                  placeholder="Speciality"
+               >
+                  {specializations &&
+                     specializations.map((spec) => (
+                        <option key={spec.id} value={spec.name}>
+                           {spec.name}
+                        </option>
+                     ))}
+               </select>
+               <p className="error">{errors.speciality?.message}</p>
+            </div>
+         </div>
+         <div className="about">
+            <div className="about_wrapper">
+               <h4>Your about</h4>
+               <textarea {...register("about", { required: "This field is required" })} name="about" id="about" placeholder="About"></textarea>
+               <p className="error">{errors.about?.message}</p>
+            </div>
+         </div>
 
-      <div className="availabilities">
-        <h4 className="avail_title">Set your weekly hours availabilities</h4>
-        <div className="week-days" ref={weekDays}>
-          <WeekDayAvail weekDay="SUN" name="sunday" id="sunday" />
-          <WeekDayAvail weekDay="MON" name="monday" id="monday" />
-          <WeekDayAvail weekDay="TUE" name="tuesday" id="tuesday" />
-          <WeekDayAvail weekDay="WED" name="wednesday" id="wednesday" />
-          <WeekDayAvail weekDay="THU" name="thursday" id="thursday" />
-          <WeekDayAvail weekDay="FRI" name="friday" id="friday" />
-          <WeekDayAvail weekDay="SAT" name="saturday" id="saturday" />
-        </div>
-        <p className="error"></p>
-      </div>
+         <div className="availabilities">
+            <h4 className="avail_title">Set your weekly hours availabilities</h4>
+            <div className="week-days" ref={weekDays}>
+               <WeekDayAvail weekDay="SUN" name="sunday" id="sunday" />
+               <WeekDayAvail weekDay="MON" name="monday" id="monday" />
+               <WeekDayAvail weekDay="TUE" name="tuesday" id="tuesday" />
+               <WeekDayAvail weekDay="WED" name="wednesday" id="wednesday" />
+               <WeekDayAvail weekDay="THU" name="thursday" id="thursday" />
+               <WeekDayAvail weekDay="FRI" name="friday" id="friday" />
+               <WeekDayAvail weekDay="SAT" name="saturday" id="saturday" />
+            </div>
+            <p className="error"></p>
+         </div>
 
-      <div className="button_wrapper">
-        <button className="regis_button submit_doctor_sign-up">Request Account</button>
-      </div>
+         <div className="button_wrapper">
+            <button className="regis_button submit_doctor_sign-up">Request Account</button>
+         </div>
 
-      <div className="button_wrapper">
-        <div onClick={() => dispatch(previousStage())} className="sign-up_previous_step change_step">
-          <ChevronsRight title="Next" />
-        </div>
-      </div>
-    </form>
-  );
+         <div className="button_wrapper">
+            <div onClick={() => dispatch(previousStage())} className="sign-up_previous_step change_step">
+               <ChevronsRight title="Next" />
+            </div>
+         </div>
+      </form>
+   );
 };
 
 export default DoctorSignUpStageTwo;

@@ -28,8 +28,8 @@ const SignUp = () => {
             </Trans>
           </div>
           <div className="regis_link doctor_sign-up">
-          <Trans components={{Link: <Link />}}>
-              lang.sign_up.doctor_sign_up_link
+            <Trans components={{Link: <Link />}}>
+                lang.sign_up.doctor_sign_up_link
             </Trans>
           </div>
         </div>
