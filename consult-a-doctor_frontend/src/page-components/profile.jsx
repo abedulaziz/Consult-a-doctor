@@ -9,6 +9,7 @@ import Header from "../layout-components/header";
 import Footer from "../layout-components/footer";
 import Post from "../layout-components/post";
 import ScheduleMeeting from "../layout-components/scheduleMeeting";
+import SignUpForm from '../layout-components/signUpForm'
 
 // icons
 import { ReactComponent as Heart } from "../assets/icons/heart.svg";
@@ -158,6 +159,7 @@ const Profile = () => {
         </div>
         {isAccountOwner && <AddBlogPopup />}
         {!isAccountOwner && <ScheduleMeeting />}
+        {!isAccountOwner && <SignUpForm />}
       </main>
       <Footer />
     </>
