@@ -11,6 +11,7 @@ use App\Http\Controllers\DoctorsController;
 use App\Http\Controllers\Account_requestsController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\FollowingsController;
+use App\Http\Controllers\AppointmentsController;
 
 
 /*
@@ -64,6 +65,7 @@ Route::group(["middleware" => "verifyAuth"], function () {
     Route::get("/users/{doctor_id}/work-periods", [UsersController::class, "getWorkPeriods"]);
     Route::post("/users/{doctor_id}/check-availability", [UsersController::class, "checkDayAvailability"]);
     Route::post("/users/{doctor_id}/available-periods", [UsersController::class, "getAvailablePeriods"]);
+    Route::post("/meetings/{meeting_id}", [AppointmentsController::class, "meetingData"]);
     // get selected doctor's info
     Route::get("/users/{doctor_id}/doctor-info", [DoctorsController::class, "getDoctorInfo"]);
 });
@@ -73,6 +75,7 @@ Route::group(["middleware" => "verifyOwnership"], function () {
     Route::put("/users/{user_id}/update-info", [UsersController::class, "updateUserInfo"]);
     Route::get("/users/{user_id}/appointments", [UsersController::class, "getUserAppointments"]);
     Route::post("/users/{user_id}/add-blog", [BlogsController::class, "addBlog"]);
+    Route::post("/users/{user_id}/upload-profile-picture", [UsersController::class, "uploadProfilePic"]);
 });
 
 
