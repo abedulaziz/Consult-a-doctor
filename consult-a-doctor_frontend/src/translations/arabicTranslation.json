@@ -80,6 +80,26 @@
     },
     "sign_up_link": "ليس لديك حساب؟ <Link to='/sign-up'>إشترك هنا</Link>"
   },
+  "sign_up": {
+    "header": "إنشاء حساب جديد",
+    "desc": "كن عضوا في مجتمعنا",
+    "user_info_form": {
+      "fname": "الإسم الاول",
+      "lname": "الإسم الأخير",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "password_confirm": "تأكيد كلمة المرور",
+      "dob": "تاريخ الولادة: ",
+      "gender": {
+        "label": "الجنس: ",
+        "option_1": "ذكر",
+        "option_2": "أنثى"
+      },
+      "button": "تسجيل الحساب"
+    },
+    "sign_in_link": "لديك حساب؟ <Link to='/sign-in'>سجل الدخول الى حسابك</Link>",
+    "doctor_sign_up_link": "هل انت طبيب؟ <Link to='/doctor/sign-up'>أنشئ حسابك هنا</Link>"
+  },
   "footer": {
     "registration_sec": {
       "header": "إنشاء حساب",

@@ -80,6 +80,26 @@
     },
     "sign_up_link": "Vous n'avez pas de compte existant? <Link to='/sign-up'>S'inscrire</Link>"
   },
+  "sign_up": {
+    "header": "S'inscrire",
+    "desc": "Devenez membre de notre communauté",
+    "user_info_form": {
+      "fname": "Prénom",
+      "lname": "Nom de famille",
+      "email": "E-mail",
+      "password": "Mot de passe",
+      "password_confirm": "Confirmation mot de passe",
+      "dob": "Date de naissance: ",
+      "gender": {
+        "label": "Le genre: ",
+        "option_1": "Mâle",
+        "option_2": "Femelle"
+      },
+      "button": "S'inscrire"
+    },
+    "sign_in_link": "Vous avez déjà un compte? <Link to='/sign-in'>Connexion</Link>",
+    "doctor_sign_up_link": "Etes-vous un docteur? <Link to='/doctor/sign-up'>Inscrivez-vous ici</Link>"
+  },
   "footer": {
     "registration_sec": {
       "header": "Inscription",

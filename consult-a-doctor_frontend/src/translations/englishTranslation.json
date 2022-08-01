@@ -80,6 +80,26 @@
     },
     "sign_up_link": "Don't have an existing account? <Link to='/sign-up'>Sign up</Link>"
   },
+  "sign_up": {
+    "header": "Sign up",
+    "desc": "Become a member in our community",
+    "user_info_form": {
+      "fname": "First name",
+      "lname": "Last name",
+      "email": "E-mail",
+      "password": "Password",
+      "password_confirm": "Password confirmation",
+      "dob": "Date of birth: ",
+      "gender": {
+        "label": "Gender: ",
+        "option_1": "Male",
+        "option_2": "Female"
+      },
+      "button": "Register"
+    },
+    "sign_in_link": "Already have an account? <Link to='/sign-in'>Log in</Link>",
+    "doctor_sign_up_link": "Are you a doctor? <Link to='/doctor/sign-up'>Sign-up here</Link>"
+  },
   "footer": {
     "registration_sec": {
       "header": "Registration",

@@ -5,8 +5,10 @@ import {Link} from 'react-router-dom';
 import RegistrationLeftSection from '../layout-components/registrationLeftSection';
 import SignUpForm from '../layout-components/signUpForm';
 
+import {useTranslation, Trans} from 'react-i18next';
 
 const SignUp = () => {
+  const {t} = useTranslation()
   return (
     <div className='background'>
       <div className="sign-up_box regis_box">
@@ -14,17 +16,21 @@ const SignUp = () => {
         <RegistrationLeftSection />
         <div className="right-section">
           <div className="heading">
-            <h3>Sign up</h3>
-            <p>Become a member in our community</p>
+            <h3>{t("lang.sign_up.header")}</h3>
+            <p>{t("lang.sign_up.desc")}</p>
           </div>
 
 
           <SignUpForm />
           <div className="sign-in_link regis_link">
-            Already have an account? <Link to="/sign-in">Log in</Link>
+            <Trans components={{Link: <Link />}}>
+              lang.sign_up.sign_in_link
+            </Trans>
           </div>
           <div className="regis_link doctor_sign-up">
-            Are you a doctor? <Link to="/doctor/sign-up">sign-up here?</Link>
+          <Trans components={{Link: <Link />}}>
+              lang.sign_up.doctor_sign_up_link
+            </Trans>
           </div>
         </div>
 
