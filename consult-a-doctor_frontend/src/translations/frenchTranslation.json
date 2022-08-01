@@ -1,127 +1,143 @@
 {
-  "header": {
-    "nav_links": {
-      "home_link": "domicile",
-      "specializations_link": "Spécialisations",
-      "doctors_link": "Médecins",
-      "my_appointments": "Mes rendez-vous"
-    },
-    "registration": {
-      "sign_in_button": "Connexion",
-      "sign_up_button": "S'inscrire"
-    },
-    "current_lan": "fr"
-  },
-  "homepage": {
-    "hero": {
-      "header": "Contactez nos médecins dès <span className='theme-colored'>maintenant!</span>",
-      "desc": "Rejoignez notre communauté, discutez avec l'un de nos médecins et discutez de votre problème.",
-      "specifics": {
-        "specific_1": "Des conseillers confidentiels et sécurisés",
-        "specific_2": "Médecins expérimentés",
-        "specific_3": "Des réunions à petit prix"
-      }
-    },
-    "features": {
-      "section_1": {
-        "header": "consultation en ligne",
-        "desc": "prenez rendez-vous avec votre médecin pour passer un appel vidéo en ligne."
+   "header": {
+      "nav_links": {
+         "home_link": "domicile",
+         "specializations_link": "Spécialisations",
+         "doctors_link": "Médecins",
+         "my_appointments": "Mes rendez-vous"
       },
-      "section_2": {
-        "header": "médecin développement",
-        "desc": "si vous êtes médecin, vous bénéficierez de l'expérience acquise auprès des patients en plus des avantages matériels"
+      "registration": {
+         "sign_in_button": "Connexion",
+         "sign_up_button": "S'inscrire"
       },
-      "section_3": {
-        "header": "suivre les médecins",
-        "desc": "suivre les témoignages de médecins où ils partagent leurs expériences et réflexions dans leur domaine"
-      }
-    },
-    "doctor_support": {
-      "header": "Assistance médicale",
-      "desc": "Vous pouvez trouver des médecins de différentes nationalités et Spécialités dans notre communauté!<br />Pendant que vous êtes en déplacement, vous pouvez rechercher et réserver des reunions Avec des médecins autant que vous voulez.<br />Tous les médecins ici sont disponibles et toujours prêts à aider.<br />"
-    },
-    "top_doctors": {
-      "header": "Meilleurs médecins",
-      "desc": "Apprenez à connaître nos meilleurs médecins en fonction des avis des patients."
-    }
-  },
-  "specializations": {
-    "header": "Spécialisations",
-    "desc": "Choisissez la spécialisation du médecin."
-  },
-  "doctors": {
-    "header": "médecins",
-    "desc": "Découvrez une liste de médecins expérimentés dans de nombreuses spécialités et réservez facilement des rendez-vous.",
-    "search_panel": {
-      "search_box_placeholder": "Chercher",
-      "sorting_sec": {
-        "label": "Trier par: ",
-        "options": {
-          "option_1": "Ordre alphabétique",
-          "option_2": "Évaluation",
-          "option_3": "Nombre d'abonnés"
-        }
-      }
-    }
-  },
-  "sign_in": {
-    "left_section": {
-      "brand_statement": "Facilité d'utilisation - Médecins expérimentés - Conseils de confiance",
-      "social_media": "Consultez nos réseaux sociaux"
-    },
-    "sign_in_sec": {
-      "header": "Connexion",
-      "desc": "Connectez-vous à votre compte",
-      "form": {
-        "email": "E-mail",
-        "password": "Mot de passe",
-        "button": "Connexion"
-      }
-    },
-    "sign_up_link": "Vous n'avez pas de compte existant? <Link to='/sign-up'>S'inscrire</Link>"
-  },
-  "sign_up": {
-    "header": "S'inscrire",
-    "desc": "Devenez membre de notre communauté",
-    "user_info_form": {
-      "fname": "Prénom",
-      "lname": "Nom de famille",
-      "email": "E-mail",
-      "password": "Mot de passe",
-      "password_confirm": "Confirmation mot de passe",
-      "dob": "Date de naissance: ",
-      "gender": {
-        "label": "Le genre: ",
-        "option_1": "Mâle",
-        "option_2": "Femelle"
+      "current_lan": "fr"
+   },
+   "homepage": {
+      "hero": {
+         "header": "Contactez nos médecins dès <span className='theme-colored'>maintenant!</span>",
+         "desc": "Rejoignez notre communauté, discutez avec l'un de nos médecins et discutez de votre problème.",
+         "specifics": {
+            "specific_1": "Des conseillers confidentiels et sécurisés",
+            "specific_2": "Médecins expérimentés",
+            "specific_3": "Des réunions à petit prix"
+         }
       },
-      "button": "S'inscrire"
-    },
-    "sign_in_link": "Vous avez déjà un compte? <Link to='/sign-in'>Connexion</Link>",
-    "doctor_sign_up_link": "Etes-vous un docteur? <Link to='/doctor/sign-up'>Inscrivez-vous ici</Link>"
-  },
-  "footer": {
-    "registration_sec": {
-      "header": "Inscription",
-      "links": {
-        "normal_user_sign_up": "Inscrivez-vous en tant qu'utilisateur normal",
-        "doctor_sign_up": "Inscrivez-vous en tant que médecin"
+      "features": {
+         "section_1": {
+            "header": "consultation en ligne",
+            "desc": "prenez rendez-vous avec votre médecin pour passer un appel vidéo en ligne."
+         },
+         "section_2": {
+            "header": "médecin développement",
+            "desc": "si vous êtes médecin, vous bénéficierez de l'expérience acquise auprès des patients en plus des avantages matériels"
+         },
+         "section_3": {
+            "header": "suivre les médecins",
+            "desc": "suivre les témoignages de médecins où ils partagent leurs expériences et réflexions dans leur domaine"
+         }
+      },
+      "doctor_support": {
+         "header": "Assistance médicale",
+         "desc": "Vous pouvez trouver des médecins de différentes nationalités et Spécialités dans notre communauté!<br />Pendant que vous êtes en déplacement, vous pouvez rechercher et réserver des reunions Avec des médecins autant que vous voulez.<br />Tous les médecins ici sont disponibles et toujours prêts à aider.<br />"
+      },
+      "top_doctors": {
+         "header": "Meilleurs médecins",
+         "desc": "Apprenez à connaître nos meilleurs médecins en fonction des avis des patients."
       }
-    },
-    "log_in_sec": {
-      "header": "le login",
-      "links": {
-        "log_in": "Connectez-vous à votre compte"
+   },
+   "specializations": {
+      "header": "Spécialisations",
+      "desc": "Choisissez la spécialisation du médecin."
+   },
+   "doctors": {
+      "header": "médecins",
+      "desc": "Découvrez une liste de médecins expérimentés dans de nombreuses spécialités et réservez facilement des rendez-vous.",
+      "search_panel": {
+         "search_box_placeholder": "Chercher",
+         "sorting_sec": {
+            "label": "Trier par: ",
+            "options": {
+               "option_1": "Ordre alphabétique",
+               "option_2": "Évaluation",
+               "option_3": "Nombre d'abonnés"
+            }
+         }
       }
-    },
-    "sections": {
-      "header": "Section",
-      "links": {
-        "home_link": "domicile",
-        "specializations_link": "Spécialisations",
-        "doctors_link": "Médecins",
-        "my_appointments": "Mes rendez-vous"
+   },
+   "sign_in": {
+      "left_section": {
+         "brand_statement": "Facilité d'utilisation - Médecins expérimentés - Conseils de confiance",
+         "social_media": "Consultez nos réseaux sociaux"
+      },
+      "sign_in_sec": {
+         "header": "Connexion",
+         "desc": "Connectez-vous à votre compte",
+         "form": {
+            "email": "E-mail",
+            "password": "Mot de passe",
+            "button": "Connexion"
+         }
+      },
+      "sign_up_link": "Vous n'avez pas de compte existant? <Link to='/sign-up'>S'inscrire</Link>"
+   },
+   "sign_up": {
+      "header": "S'inscrire",
+      "desc": "Devenez membre de notre communauté",
+      "user_info_form": {
+         "fname": "Prénom",
+         "lname": "Nom de famille",
+         "email": "E-mail",
+         "password": "Mot de passe",
+         "password_confirm": "Confirmation mot de passe",
+         "dob": "Date de naissance: ",
+         "gender": {
+            "label": "Le genre: ",
+            "option_1": "Mâle",
+            "option_2": "Femelle"
+         },
+         "button": "S'inscrire"
+      },
+      "sign_in_link": "Vous avez déjà un compte? <Link to='/sign-in'>Connexion</Link>",
+      "doctor_sign_up_link": "Etes-vous un docteur? <Link to='/doctor/sign-up'>Inscrivez-vous ici</Link>"
+   },
+   "doctor_sign_up": {
+      "header": "S'inscrire",
+      "desc": "créer un compte médecin pour aider les patients et gagner de l'argent",
+      "sign_in_link": "Vous avez déjà un compte? <Link to='/sign-in'>Connexion</Link>",
+      "normal_user_sign_up": "Utilisateur normal? <Link to='/sign-up'>Inscrivez-vous ici</Link>",
+      "second_step_regis": {
+         "university": "Université",
+         "speciality_label": "Quelle est ta spécialité?",
+         "about": {
+            "label": "Votre sujet",
+            "about_placeholder": "À propos de"
+         },
+         "avail_label": "Définissez vos disponibilités horaires hebdomadaires",
+         "button": "Demander un compte"
       }
-    }
-  }
+   },
+   "footer": {
+      "registration_sec": {
+         "header": "Inscription",
+         "links": {
+            "normal_user_sign_up": "Inscrivez-vous en tant qu'utilisateur normal",
+            "doctor_sign_up": "Inscrivez-vous en tant que médecin"
+         }
+      },
+      "log_in_sec": {
+         "header": "le login",
+         "links": {
+            "log_in": "Connectez-vous à votre compte"
+         }
+      },
+      "sections": {
+         "header": "Section",
+         "links": {
+            "home_link": "domicile",
+            "specializations_link": "Spécialisations",
+            "doctors_link": "Médecins",
+            "my_appointments": "Mes rendez-vous"
+         }
+      }
+   }
 }

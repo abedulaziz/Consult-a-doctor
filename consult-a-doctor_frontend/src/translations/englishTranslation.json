@@ -1,127 +1,143 @@
 {
-  "header": {
-    "nav_links": {
-      "home_link": "Home",
-      "specializations_link": "Specializations",
-      "doctors_link": "Doctors",
-      "my_appointments": "My Appointments"
-    },
-    "registration": {
-      "sign_in_button": "Sign in",
-      "sign_up_button": "Sign up"
-    },
-    "current_lan": "en"
-  },
-  "homepage": {
-    "hero": {
-      "header": "Reach our doctors <span className='theme-colored'>now!</span>",
-      "desc": "Join our community and book a meeting with one of our specialists and discuss your issue.",
-      "specifics": {
-        "specific_1": "Confidential and safe consultations",
-        "specific_2": "Experienced doctors",
-        "specific_3": "Low cost sessions"
-      }
-    },
-    "features": {
-      "section_1": {
-        "header": "Online Consultants",
-        "desc": "Book a meeting with your doctor and make an online video chat."
+   "header": {
+      "nav_links": {
+         "home_link": "Home",
+         "specializations_link": "Specializations",
+         "doctors_link": "Doctors",
+         "my_appointments": "My Appointments"
       },
-      "section_2": {
-        "header": "Doctor Development",
-        "desc": "If you are a doctor, you will benefit from the experiences gained from patients in addition to benefiting materially."
+      "registration": {
+         "sign_in_button": "Sign in",
+         "sign_up_button": "Sign up"
       },
-      "section_3": {
-        "header": "Follow Doctors",
-        "desc": "Follow doctors accounts where they do share their experiences and thoughts in their field."
-      }
-    },
-    "doctor_support": {
-      "header": "Doctor support",
-      "desc": "You can find doctors from different nationalities and specialties in our community!<br />During your walkthrough, you can search and book meetings with doctors with ease.<br />All doctors here are available and always ready to help.<br />"
-    },
-    "top_doctors": {
-      "header": "Top Doctors",
-      "desc": "Get to know our top rated doctors according to patient evaluations."
-    }
-  },
-  "specializations": {
-    "header": "Specializations",
-    "desc": "Choose the doctor's specialization."
-  },
-  "doctors": {
-    "header": "Doctors",
-    "desc": "Discover a list of experienced doctors in many specialities and book meetings easily.",
-    "search_panel": {
-      "search_box_placeholder": "Search",
-      "sorting_sec": {
-        "label": "Sort by: ",
-        "options": {
-          "option_1": "Alphabetical order",
-          "option_2": "Evaluation",
-          "option_3": "Number of followers"
-        }
-      }
-    }
-  },
-  "sign_in": {
-    "left_section": {
-      "brand_statement": "Ease of use - Experienced doctors - Trusted advice",
-      "social_media": "Check our social media"
-    },
-    "sign_in_sec": {
-      "header": "Sign in",
-      "desc": "Log-in to your account",
-      "form": {
-        "email": "E-mail",
-        "password": "Password",
-        "button": "Log in"
-      }
-    },
-    "sign_up_link": "Don't have an existing account? <Link to='/sign-up'>Sign up</Link>"
-  },
-  "sign_up": {
-    "header": "Sign up",
-    "desc": "Become a member in our community",
-    "user_info_form": {
-      "fname": "First name",
-      "lname": "Last name",
-      "email": "E-mail",
-      "password": "Password",
-      "password_confirm": "Password confirmation",
-      "dob": "Date of birth: ",
-      "gender": {
-        "label": "Gender: ",
-        "option_1": "Male",
-        "option_2": "Female"
+      "current_lan": "en"
+   },
+   "homepage": {
+      "hero": {
+         "header": "Reach our doctors <span className='theme-colored'>now!</span>",
+         "desc": "Join our community and book a meeting with one of our specialists and discuss your issue.",
+         "specifics": {
+            "specific_1": "Confidential and safe consultations",
+            "specific_2": "Experienced doctors",
+            "specific_3": "Low cost sessions"
+         }
       },
-      "button": "Register"
-    },
-    "sign_in_link": "Already have an account? <Link to='/sign-in'>Log in</Link>",
-    "doctor_sign_up_link": "Are you a doctor? <Link to='/doctor/sign-up'>Sign-up here</Link>"
-  },
-  "footer": {
-    "registration_sec": {
-      "header": "Registration",
-      "links": {
-        "normal_user_sign_up": "Sign up as a normal user",
-        "doctor_sign_up": "Register as a doctor"
+      "features": {
+         "section_1": {
+            "header": "Online Consultants",
+            "desc": "Book a meeting with your doctor and make an online video chat."
+         },
+         "section_2": {
+            "header": "Doctor Development",
+            "desc": "If you are a doctor, you will benefit from the experiences gained from patients in addition to benefiting materially."
+         },
+         "section_3": {
+            "header": "Follow Doctors",
+            "desc": "Follow doctors accounts where they do share their experiences and thoughts in their field."
+         }
+      },
+      "doctor_support": {
+         "header": "Doctor support",
+         "desc": "You can find doctors from different nationalities and specialties in our community!<br />During your walkthrough, you can search and book meetings with doctors with ease.<br />All doctors here are available and always ready to help.<br />"
+      },
+      "top_doctors": {
+         "header": "Top Doctors",
+         "desc": "Get to know our top rated doctors according to patient evaluations."
       }
-    },
-    "log_in_sec": {
-      "header": "login",
-      "links": {
-        "log_in": "Sign in to your account"
+   },
+   "specializations": {
+      "header": "Specializations",
+      "desc": "Choose the doctor's specialization."
+   },
+   "doctors": {
+      "header": "Doctors",
+      "desc": "Discover a list of experienced doctors in many specialities and book meetings easily.",
+      "search_panel": {
+         "search_box_placeholder": "Search",
+         "sorting_sec": {
+            "label": "Sort by: ",
+            "options": {
+               "option_1": "Alphabetical order",
+               "option_2": "Evaluation",
+               "option_3": "Number of followers"
+            }
+         }
       }
-    },
-    "sections": {
-      "header": "Section",
-      "links": {
-        "home_link": "Home",
-        "specializations_link": "Specializations",
-        "doctors_link": "Doctors",
-        "my_appointments": "My Appointments"
+   },
+   "sign_in": {
+      "left_section": {
+         "brand_statement": "Ease of use - Experienced doctors - Trusted advice",
+         "social_media": "Check our social media"
+      },
+      "sign_in_sec": {
+         "header": "Sign in",
+         "desc": "Log-in to your account",
+         "form": {
+            "email": "E-mail",
+            "password": "Password",
+            "button": "Log in"
+         }
+      },
+      "sign_up_link": "Don't have an existing account? <Link to='/sign-up'>Sign up</Link>"
+   },
+   "sign_up": {
+      "header": "Sign up",
+      "desc": "Become a member in our community",
+      "user_info_form": {
+         "fname": "First name",
+         "lname": "Last name",
+         "email": "E-mail",
+         "password": "Password",
+         "password_confirm": "Password confirmation",
+         "dob": "Date of birth: ",
+         "gender": {
+            "label": "Gender: ",
+            "option_1": "Male",
+            "option_2": "Female"
+         },
+         "button": "Register"
+      },
+      "sign_in_link": "Already have an account? <Link to='/sign-in'>Log in</Link>",
+      "doctor_sign_up_link": "Are you a doctor? <Link to='/doctor/sign-up'>Sign-up here</Link>"
+   },
+   "doctor_sign_up": {
+      "header": "Sign up",
+      "desc": "create doctor account to help patients and gain money",
+      "sign_in_link": "Already have an account? <Link to='/sign-in'>Log in</Link>",
+      "normal_user_sign_up": "Normal user? <Link to='/sign-up'>sign-up here?</Link>",
+      "second_step_regis": {
+         "university": "University",
+         "speciality_label": "What is your speciality?",
+         "about": {
+            "label": "Your about",
+            "about_placeholder": "About"
+         },
+         "avail_label": "Set your weekly hours availabilities",
+         "button": "Request account"
       }
-    }
-  }
+   },
+   "footer": {
+      "registration_sec": {
+         "header": "Registration",
+         "links": {
+            "normal_user_sign_up": "Sign up as a normal user",
+            "doctor_sign_up": "Register as a doctor"
+         }
+      },
+      "log_in_sec": {
+         "header": "login",
+         "links": {
+            "log_in": "Sign in to your account"
+         }
+      },
+      "sections": {
+         "header": "Section",
+         "links": {
+            "home_link": "Home",
+            "specializations_link": "Specializations",
+            "doctors_link": "Doctors",
+            "my_appointments": "My Appointments"
+         }
+      }
+   }
 }

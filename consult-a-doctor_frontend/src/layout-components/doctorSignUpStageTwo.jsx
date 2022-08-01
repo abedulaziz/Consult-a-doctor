@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { deleteInterval, fillInputs, previousStage } from "../redux/slices/doctorSignUpSlice";
 import { useForm } from "react-hook-form";
 
+import { useTranslation, Trans } from "react-i18next";
+
 // helper components
 import WeekDayAvail from "./weekDayAvail";
 
@@ -12,6 +14,7 @@ import { ReactComponent as ChevronsRight } from "../assets/icons/chevrons-right.
 import axios from "axios";
 
 const DoctorSignUpStageTwo = () => {
+   const {t} = useTranslation()
    const [specializations, setSpecializations] = React.useState(null);
 
    const weekDays = React.useRef(null);
@@ -70,14 +73,14 @@ const DoctorSignUpStageTwo = () => {
                   type="text"
                   name="university"
                   id="university"
-                  placeholder="University"
+                  placeholder={t("lang.doctor_sign_up.second_step_regis.university")}
                />
                <p className="error">{errors.university?.message}</p>
             </div>
          </div>
          <div className="speciality">
             <div className="speciality_wrapper">
-               <h4>What is your speciality?</h4>
+               <h4>{t("lang.doctor_sign_up.second_step_regis.speciality_label")}</h4>
                <select
                   {...register("speciality", { required: "Speciality field is required" })}
                   type="text"
@@ -97,14 +100,14 @@ const DoctorSignUpStageTwo = () => {
          </div>
          <div className="about">
             <div className="about_wrapper">
-               <h4>Your about</h4>
-               <textarea {...register("about", { required: "This field is required" })} name="about" id="about" placeholder="About"></textarea>
+               <h4>{t("lang.doctor_sign_up.second_step_regis.about.label")}</h4>
+               <textarea {...register("about", { required: "This field is required" })} name="about" id="about" placeholder={t("lang.doctor_sign_up.second_step_regis.about.about_placeholder")}></textarea>
                <p className="error">{errors.about?.message}</p>
             </div>
          </div>
 
          <div className="availabilities">
-            <h4 className="avail_title">Set your weekly hours availabilities</h4>
+            <h4 className="avail_title">{t("lang.doctor_sign_up.second_step_regis.avail_label")}</h4>
             <div className="week-days" ref={weekDays}>
                <WeekDayAvail weekDay="SUN" name="sunday" id="sunday" />
                <WeekDayAvail weekDay="MON" name="monday" id="monday" />
@@ -118,7 +121,7 @@ const DoctorSignUpStageTwo = () => {
          </div>
 
          <div className="button_wrapper">
-            <button className="regis_button submit_doctor_sign-up">Request Account</button>
+            <button className="regis_button submit_doctor_sign-up">{t("lang.doctor_sign_up.second_step_regis.button")}</button>
          </div>
 
          <div className="button_wrapper">

@@ -1,137 +1,143 @@
 {
-  "header": {
-    "nav_links": {
-      "home_link": "الرئيسية",
-      "specializations_link": "الاختصاصات",
-      "doctors_link": "الأطباء",
-      "my_appointments": "مواعيدي"
-    },
-    "registration": {
-      "sign_in_button": "تسجيل الدخول",
-      "sign_up_button": "الاشتراك"
-    },
-    "current_lan": "ar"
-  },
-  "homepage": {
-    "hero": {
-      "header": "تواصل مع أطبائنا <span className='theme-colored'>الآن</span>",
-      "desc": "انضم إلى مجتمعنا واحجز مع أحد أخصائيينا وناقش مشكلتك",
-      "specifics": {
-        "specific_1": "استشارات سرية و آمنة",
-        "specific_2": "أطباء ذوو خبرة",
-        "specific_3": "جلسات بتكاليف مدروسة"
-      }
-    },
-    "features": {
-      "section_1": {
-        "header": "استشارة إلكترونية",
-        "desc": "قم بحجز موعد مع طبيبك إلكترونيا عبر تقنية محادثة الفيديو"
+   "header": {
+      "nav_links": {
+         "home_link": "الرئيسية",
+         "specializations_link": "الاختصاصات",
+         "doctors_link": "الأطباء",
+         "my_appointments": "مواعيدي"
       },
-      "section_2": {
-        "header": "تطورك واستفادتك كطبيب",
-        "desc": "إذا كنت طبيبا، ستزيد من خبرتك بعد التعامل مع المرضى بالإضافة الى الفائدة المادية التي ستحصل عليها"
+      "registration": {
+         "sign_in_button": "تسجيل الدخول",
+         "sign_up_button": "الاشتراك"
       },
-      "section_3": {
-        "header": "تابع الأطباء",
-        "desc": "تابع حسابات الأطباء لتتمكن من رؤية ما ينشرونه من خبراتهم وأراءهم في مجالات اختصاصهم."
-      }
-    },
-    "doctor_support": {
-      "header": "المساعدة الطبية",
-      "desc": "يمكنك العثور على أطباء من مختلف الجنسيات و التخصصات في مجتمعنا!<br />أثناء تجولك، يمكنك البحث عن الاطباء وحجز مواعيد معهم بسهولة<br />جميع الأطباء متاحون ومستعدون دائما للمساعدة<br />"
-    },
-    "top_doctors": {
-      "header": "افضل الاطباء",
-      "desc": "تعرف على أفضل الأطباء لدينا وفقًا لتقييم المرضى"
-    }
-  },
-  "specializations": {
-    "header": "الإختصاصات",
-    "desc": "إختر إختصاص الطبيب الذي تبحث عنه."
-  },
-  "doctors": {
-    "header": "الأطباء",
-    "desc": "تعرف على قائمة من الأطباء ذوو الخبرة في العديد من التخصصات.",
-    "search_panel": {
-      "search_box_placeholder": "بحث",
-      "sorting_sec": {
-        "label": "تصنيف حسب: ",
-        "options": {
-          "option_1": "الترتيب الابجدي",
-          "option_2": "التقييم",
-          "option_3": "عدد المتابعين"
-        }
-      }
-    }
-  },
-  "sign_in": {
-    "left_section": {
-      "brand_statement": "سهولة في الإستخدام - أطباء ذوو خبرة - إستشارة موثوقة",
-      "social_media": "زر حسابانتا على مواقع التواصل الإجتماعي"
-    },
-    "sign_in_sec": {
-      "header": "تسجيل الدخول",
-      "desc": "سجل الدخول في حسابك",
-      "form": {
-        "email": "البريد الإلكتروني",
-        "password": "كلمة المرور",
-        "button": "تسجيل الدخول"
-      }
-    },
-    "sign_up_link": "ليس لديك حساب؟ <Link to='/sign-up'>إشترك هنا</Link>"
-  },
-  "sign_up": {
-    "header": "إنشاء حساب جديد",
-    "desc": "كن عضوا في مجتمعنا",
-    "user_info_form": {
-      "fname": "الإسم الاول",
-      "lname": "الإسم الأخير",
-      "email": "البريد الإلكتروني",
-      "password": "كلمة المرور",
-      "password_confirm": "تأكيد كلمة المرور",
-      "dob": "تاريخ الولادة: ",
-      "gender": {
-        "label": "الجنس: ",
-        "option_1": "ذكر",
-        "option_2": "أنثى"
+      "current_lan": "ar"
+   },
+   "homepage": {
+      "hero": {
+         "header": "تواصل مع أطبائنا <span className='theme-colored'>الآن</span>",
+         "desc": "انضم إلى مجتمعنا واحجز مع أحد أخصائيينا وناقش مشكلتك",
+         "specifics": {
+            "specific_1": "استشارات سرية و آمنة",
+            "specific_2": "أطباء ذوو خبرة",
+            "specific_3": "جلسات بتكاليف مدروسة"
+         }
       },
-      "button": "تسجيل الحساب"
-    },
-    "sign_in_link": "لديك حساب؟ <Link to='/sign-in'>سجل الدخول الى حسابك</Link>",
-    "doctor_sign_up_link": "هل انت طبيب؟ <Link to='/doctor/sign-up'>أنشئ حسابك هنا</Link>"
-  },
-  "footer": {
-    "registration_sec": {
-      "header": "إنشاء حساب",
-      "links": {
-        "normal_user_sign_up": "أنشئ حسابك كمستخدم عادي",
-        "doctor_sign_up": "انشئ حسابك كطبيب"
+      "features": {
+         "section_1": {
+            "header": "استشارة إلكترونية",
+            "desc": "قم بحجز موعد مع طبيبك إلكترونيا عبر تقنية محادثة الفيديو"
+         },
+         "section_2": {
+            "header": "تطورك واستفادتك كطبيب",
+            "desc": "إذا كنت طبيبا، ستزيد من خبرتك بعد التعامل مع المرضى بالإضافة الى الفائدة المادية التي ستحصل عليها"
+         },
+         "section_3": {
+            "header": "تابع الأطباء",
+            "desc": "تابع حسابات الأطباء لتتمكن من رؤية ما ينشرونه من خبراتهم وأراءهم في مجالات اختصاصهم."
+         }
+      },
+      "doctor_support": {
+         "header": "المساعدة الطبية",
+         "desc": "يمكنك العثور على أطباء من مختلف الجنسيات و التخصصات في مجتمعنا!<br />أثناء تجولك، يمكنك البحث عن الاطباء وحجز مواعيد معهم بسهولة<br />جميع الأطباء متاحون ومستعدون دائما للمساعدة<br />"
+      },
+      "top_doctors": {
+         "header": "افضل الاطباء",
+         "desc": "تعرف على أفضل الأطباء لدينا وفقًا لتقييم المرضى"
       }
-    },
-    "log_in_sec": {
-      "header": "تسجيل الدخول",
-      "links": {
-        "log_in": "تسجيل الدخول في حسابك"
+   },
+   "specializations": {
+      "header": "الإختصاصات",
+      "desc": "إختر إختصاص الطبيب الذي تبحث عنه."
+   },
+   "doctors": {
+      "header": "الأطباء",
+      "desc": "تعرف على قائمة من الأطباء ذوو الخبرة في العديد من التخصصات.",
+      "search_panel": {
+         "search_box_placeholder": "بحث",
+         "sorting_sec": {
+            "label": "تصنيف حسب: ",
+            "options": {
+               "option_1": "الترتيب الابجدي",
+               "option_2": "التقييم",
+               "option_3": "عدد المتابعين"
+            }
+         }
       }
-    },
-    "sections": {
-      "header": "الأقسام",
-      "links": {
-        "home_link": "الرئيسية",
-        "specializations_link": "الإختصاصات",
-        "doctors_link": "الأطباء",
-        "my_appointments": "مواعيدي"
+   },
+   "sign_in": {
+      "left_section": {
+         "brand_statement": "سهولة في الإستخدام - أطباء ذوو خبرة - إستشارة موثوقة",
+         "social_media": "زر حسابانتا على مواقع التواصل الإجتماعي"
+      },
+      "sign_in_sec": {
+         "header": "تسجيل الدخول",
+         "desc": "سجل الدخول في حسابك",
+         "form": {
+            "email": "البريد الإلكتروني",
+            "password": "كلمة المرور",
+            "button": "تسجيل الدخول"
+         }
+      },
+      "sign_up_link": "ليس لديك حساب؟ <Link to='/sign-up'>إشترك هنا</Link>"
+   },
+   "sign_up": {
+      "header": "إنشاء حساب جديد",
+      "desc": "كن عضوا في مجتمعنا",
+      "user_info_form": {
+         "fname": "الإسم الاول",
+         "lname": "الإسم الأخير",
+         "email": "البريد الإلكتروني",
+         "password": "كلمة المرور",
+         "password_confirm": "تأكيد كلمة المرور",
+         "dob": "تاريخ الولادة: ",
+         "gender": {
+            "label": "الجنس: ",
+            "option_1": "ذكر",
+            "option_2": "أنثى"
+         },
+         "button": "تسجيل الحساب"
+      },
+      "sign_in_link": "لديك حساب؟ <Link to='/sign-in'>سجل الدخول الى حسابك</Link>",
+      "doctor_sign_up_link": "هل انت طبيب؟ <Link to='/doctor/sign-up'>أنشئ حسابك هنا</Link>"
+   },
+   "doctor_sign_up": {
+      "header": "تسجيل حساب",
+      "desc": "أنشئ حساب طبيب لمساعدة المرضى والتنفع ماديا",
+      "sign_in_link": "لديك حساب؟ <Link to='/sign-in'>سجل الدخول الى حسابك</Link>",
+      "normal_user_sign_up": "مستخدم عادي؟ <Link to='/sign-up'>أنشئ حسابك هنا</Link>",
+      "second_step_regis": {
+         "university": "الجامعة",
+         "speciality_label": "ما هو اختصاصك؟",
+         "about": {
+            "label": "معلومات عنك",
+            "about_placeholder": "معلومات إضافية عنك"
+         },
+         "avail_label": "حدد ساعات العمل الأسبوعية المتاحة",
+         "button": "أطلب الموقع"
       }
-    }
-  }
+   },
+   "footer": {
+      "registration_sec": {
+         "header": "إنشاء حساب",
+         "links": {
+            "normal_user_sign_up": "أنشئ حسابك كمستخدم عادي",
+            "doctor_sign_up": "انشئ حسابك كطبيب"
+         }
+      },
+      "log_in_sec": {
+         "header": "تسجيل الدخول",
+         "links": {
+            "log_in": "تسجيل الدخول في حسابك"
+         }
+      },
+      "sections": {
+         "header": "الأقسام",
+         "links": {
+            "home_link": "الرئيسية",
+            "specializations_link": "الإختصاصات",
+            "doctors_link": "الأطباء",
+            "my_appointments": "مواعيدي"
+         }
+      }
+   }
 }
-
-
-
-
-
-
-
-
-
-
