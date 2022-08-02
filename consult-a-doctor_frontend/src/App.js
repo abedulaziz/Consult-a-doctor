@@ -1,6 +1,5 @@
 
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-
 import { useTranslation } from 'react-i18next';
 
 // page components
@@ -21,7 +20,7 @@ import ActionStatus from './helper-components/actionStatus';
 import AdminSpecializations from './admin/adminSpecializations';
 import DoctorRequests from './admin/doctorRequests';
 
-import { ContextProvider } from './WebRTC-components/SocketContext';
+// import { ContextProvider } from './WebRTC-components/SocketContext';
 
 import './App.css';
 
@@ -38,9 +37,12 @@ function App() {
           <Route path='/doctor/:specialization_id/accounts' element={<Doctors />}></Route>
           <Route path='/:user_id/appointments' element={<Appointments />}></Route>
           <Route path='/doctor/:doctor_id/profile' element={<Profile />}></Route>
-          
-          <Route path='/meetings/:meeting_id' element={<ContextProvider><Meeting /></ContextProvider>}></Route>
-          
+
+
+          <Route path='/meetings/:meeting_id' element={<Meeting />}>
+            
+          </Route>
+
           <Route path='/sign-in' element={<SignIn /> }></Route>
           <Route path='/sign-up' element={<SignUp />}></Route> 
           <Route path='/doctor/sign-up' element={<DoctorSignUp />}></Route>

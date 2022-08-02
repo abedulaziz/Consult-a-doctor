@@ -23,7 +23,7 @@ const DoctorSignUp = () => {
                   <p>{t("lang.doctor_sign_up.desc")}</p>
                </div>
 
-               {signUpStage === 2 ? <SignUpForm isDoctorSignUp={true} /> : <DoctorSignUpStageTwo />}
+               {signUpStage === 1 ? <SignUpForm isDoctorSignUp={true} /> : <DoctorSignUpStageTwo />}
                <div className="sign-in_link regis_link">
                   <Trans components={{ Link: <Link /> }}>
                     lang.doctor_sign_up.sign_in_link
