@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import {useSelector} from 'react-redux'
+import { useSelector } from "react-redux";
 import axios from "axios";
 
 import { SocketContext, ContextProvider } from "../WebRTC-components/SocketContext";
@@ -10,32 +10,41 @@ import Options from "../WebRTC-components/options";
 import Notifications from "../WebRTC-components/notifications";
 
 const Meeting = () => {
-   const { me, name, stream } = useContext(SocketContext);
+   const { me, name, setMyName, stream, setMeetingToName, setMeetingToMeetingID } = useContext(SocketContext);
    console.log(me);
    const { meeting_id } = useParams();
-   const JWT = useSelector((state) => state.userInfo.value.JWT);
+   const currentUserInfo = useSelector((state) => state.userInfo.value);
+
 
    useEffect(() => {
-
       const sendMeetingID = async () => {
          try {
-            const meetingIDRqust =await axios.post(
+            const meetingIDRqust = await axios.post(
                `meetings/${meeting_id}`,
                { user_meeting_id: me },
                {
                   headers: {
-                     Authorization: `Bearer ${JWT}`
+                     Authorization: `Bearer ${currentUserInfo.JWT}`,
                   },
                }
             );
-            
-            console.log(meetingIDRqust)
+            const meetingInfo = meetingIDRqust.data.meeting_info;
+
+            console.log(meetingIDRqust);
+            setMeetingToMeetingID(meetingIDRqust.data.second_party_meeting_id);
+
+            if (meetingInfo[0].id == currentUserInfo.ID) {
+               setMyName(meetingInfo[0].fname + " " + meetingInfo[0].lname);
+               setMeetingToName(meetingInfo[1].fname + " " + meetingInfo[1].lname);
+            } else {
+               setMyName(meetingInfo[1].fname + " " + meetingInfo[1].lname);
+               setMeetingToName(meetingInfo[0].fname + " " + meetingInfo[0].lname);
+            }
          } catch (err) {
-            console.log(err)
+            console.log(err);
          }
       };
       sendMeetingID();
-   
    }, []);
 
    return (
