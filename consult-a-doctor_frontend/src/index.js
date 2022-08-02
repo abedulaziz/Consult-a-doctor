@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import App from "./App";
 import store from "./redux/store";
+import {ContextProvider} from './WebRTC-components/SocketContext';
 // import reportWebVitals from './reportWebVitals';
 import axios from "axios";
 import "./I18n";
@@ -12,7 +13,10 @@ axios.defaults.baseURL = "http://127.0.0.1:8000/api/";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
    <Provider store={store}>
-      <App />
+      <ContextProvider>
+         <App />
+
+      </ContextProvider>
    </Provider>
 );
 
