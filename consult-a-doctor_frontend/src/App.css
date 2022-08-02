@@ -1553,14 +1553,16 @@ footer .footer_content .buttom_footer .social-media ul li {
 /* ------------------------------------------------ */
 
 .screens {
-   min-height: 100vh;
+   height: 100vh;
    padding-top: 40px;
+   background-color: #040a22;
 }
 
 .screens .screens_wrapper {
    display: flex;
    gap: 40px;
    margin: auto 3vw;
+   height: calc(100% - 100px - 40px);
 }
 
 .screens .screens_wrapper .video_wrapper {
@@ -1574,14 +1576,23 @@ footer .footer_content .buttom_footer .social-media ul li {
 }
 
 .screens .screens_wrapper .videos_container {
-   display: flex;
-   gap: 4vw;
+   /* display: flex;
+   gap: 4vw; */
    width: 100%;
+   position: relative;
 }
 
-.screens .screens_wrapper .videos_container > div {
-   flex-basis: 41vw;
-   height: 25vw;
+.screens .screens_wrapper .videos_container .my-video {
+   position: absolute;
+   width: 25vw;
+   height: 15vw;
+   right: 10px;
+   bottom: 10px;
+}
+
+.screens .screens_wrapper .videos_container .user-video {
+   width: 100%;
+   height: 100%
 }
 
 .screens .screens_wrapper .videos_container .video_wrapper {
@@ -1591,12 +1602,16 @@ footer .footer_content .buttom_footer .social-media ul li {
 .screens .screens_wrapper .videos_container > div video {
    width: 100%;
    height: 100%;
-   background-color: #a9a9a9;
+   background-color: #181e36;
    border-radius: 5px;
 }
 
+.screens .screens_wrapper .my-video > div video {
+   background-color: #363c47;
+
+}
+
 .screens .options {
-   border: 1px solid;
    position: fixed;
    bottom: 3vh;
    width: calc(100vw - 14vw);
@@ -1604,6 +1619,10 @@ footer .footer_content .buttom_footer .social-media ul li {
    display: flex;
    justify-content: center;
    align-items: center;
+   left: 50%;
+   transform: translate;
+   transform: translateX(-50%);
+   margin: auto
 }
 
 .screens .options .option_buttons {
