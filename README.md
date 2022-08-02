@@ -2,9 +2,9 @@
 
 <div align="center">
 
-> Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.  
+> Consult a doctor is a platform where the distance between patients and doctors is very close and the communication in seamless.
 
-**[PROJECT PHILOSOPHY](https://github.com/julescript/well_app#-project-philosophy) • [WIREFRAMES](https://github.com/julescript/well_app#-wireframes) • [TECH STACK](https://github.com/julescript/well_app#-tech-stack) • [IMPLEMENTATION](https://github.com/julescript/well_app#-impplementation) • [HOW TO RUN?](https://github.com/julescript/well_app#-how-to-run)**
+**[PROJECT PHILOSOPHY](https://github.com/abedulaziz/Consult-a-doctor#-project-philosophy) • [WIREFRAMES](https://github.com/abedulaziz/Consult-a-doctor#-wireframes) • [TECH STACK](https://github.com/abedulaziz/Consult-a-doctor#-tech-stack) • [IMPLEMENTATION](https://github.com/abedulaziz/Consult-a-doctor#-impplementation) • [HOW TO RUN?](https://github.com/abedulaziz/Consult-a-doctor#-how-to-run)**
 
 </div>
 
@@ -13,9 +13,10 @@
 
 <img src="./readme/title2.svg"/>
 
-> The Well app is a mental health and mindfulness app built on top of the science of positive psychology. The Well app is more than just another meditation or journaling app; it encourages you to enhance and reflect on your day with structured, guided activities.
-> 
-> There are 5 daily tasks that the Well app asks you to complete each day: record 3 gratitudes, write a journal entry, perform 3 acts of kindness, exercise for 20 minutes, and meditate for 15 minutes.
+
+> Consult a doctor is a medical web application targets patients and doctors to benefit each of them. You can consider the application as your always-ready doctor.
+>
+> There are several specializations available in the app. Patients or doctors are able to create video chat rooms with doctors and discuss their medical issue.
 
 ### User Stories
 - As a user, I want to browsse ablums, so that I can find quick links
