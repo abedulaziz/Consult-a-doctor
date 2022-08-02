@@ -13,16 +13,14 @@ import { ReactComponent as MiceOff } from "../assets/icons/mic-off.svg";
 
 const Options = ({ children }) => {
   const meetingID = useParams().meeting_id
-  console.log(meetingID)
   const [video, setVideo] = React.useState(<Video />);
   const [mic, setMice] = React.useState(<Mice />);
 
   const videoButton = React.useRef(null);
   const audioButton = React.useRef(null);
 
-  const { me, myVideo, name, setName, callAccepted, callEnded, call, leaveCall,                                                                                                                                                                                               callUser } = useContext(SocketContext);
+  const { me, myVideo, meetingToMeetingID, callAccepted, callEnded, call, leaveCall, callUser } = useContext(SocketContext);
   const [idToCall, setIdToCall] = React.useState("");
-  console.log(me)
   const changeMyStreamSet = (ev) => {
     const mediaSetting = {
       video: videoButton.current.classList.contains("media-off") ? false : true,
@@ -71,12 +69,12 @@ const Options = ({ children }) => {
             {call.isReceivedCall && !callAccepted ? (
               children
             ) : (
-              <div className="call_wrapper" onClick={() => callUser(idToCall)}>
+              <div className="call_wrapper" onClick={() => callUser(meetingToMeetingID)}>
                 <Phone />
                 <div id="callUser">Call</div>
 
                 {/* <CopyToClipboard text={idToCall}> */}
-                <input onChange={(e) => setIdToCall(e.target.value)} />
+                {/* <input onChange={(e) => setIdToCall(e.target.value)} /> */}
 
                 {/* </CopyToClipboard> */}
               </div>

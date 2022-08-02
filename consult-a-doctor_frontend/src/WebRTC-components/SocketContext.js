@@ -1,20 +1,24 @@
-import React, { createContext } from 'react';
+import React, { createContext, useState } from 'react';
 import {io} from 'socket.io-client';
 import Peer from 'simple-peer';
 
 const SocketContext = createContext();
 
-// const socket = io("http://localhost:5000");
-const socket = null;
+const socket = io("http://localhost:5000");
+// const socket = null;
 
 const ContextProvider = ({ children }) => {
 
-  const [stream, setStream] = React.useState(null);
-  const [me, setMe] = React.useState("");
-  const [call, setCall] = React.useState({});
-  const [callAccepted, setCallAccepted] = React.useState(false);
-  const [callEnded, setCallEnded] = React.useState(false);
-  const [name, setName] = React.useState("");
+  const [stream, setStream] = useState(null);
+  const [me, setMe] = useState("");
+  const [call, setCall] = useState({});
+  const [callAccepted, setCallAccepted] = useState(false);
+  const [callEnded, setCallEnded] = useState(false);
+  const [name, setName] = useState("");
+  const [meetingToName, setMeetingToName] = useState("")
+  const [myName, setMyName] = useState("")
+  const [meetingToMeetingID, setMeetingToMeetingID] = useState(null)
+  
 
   const myVideo = React.useRef()
   const userVideo= React.useRef()
@@ -108,6 +112,12 @@ const ContextProvider = ({ children }) => {
       answerCall,
       callUser,
       leaveCall,
+      meetingToName,
+      setMeetingToName,
+      myName,
+      setMyName,
+      meetingToMeetingID,
+      setMeetingToMeetingID
     }}>
     {children}
     </SocketContext.Provider>
