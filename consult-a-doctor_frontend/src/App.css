@@ -1149,8 +1149,8 @@ header .languages #language {
    left: 50%;
    transform: translate(-50%, -50%);
    border-radius: 5px;
-   padding-top: 50px;
    padding: 50px 60px;
+   padding-bottom: 10px;
 }
 
 .edit_profile .heading {
@@ -1195,9 +1195,20 @@ header .languages #language {
     border: 2px dashed #000;
     border-radius: 15px;
     position: relative;
+    overflow: hidden;
 }
 
-.edit_profile .form_wrapper .edit_pictures .file_wrapper input[type=file] {
+.edit_profile .form_wrapper .edit_pictures .file_wrapper img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    left: 0;
+    top: 0;
+}
+
+.edit_profile .form_wrapper .edit_pictures .file_wrapper input[type="file"] {
     width: 100%;
     height: 100%;
     border: none;
@@ -1214,16 +1225,27 @@ header .languages #language {
     height:calc(100% - 30px);
     margin: 15px;
     border-radius: 15px;
+    font-size: 16px;
+    color: var(--grayish-text-color);
+    position: relative;
+}
+
+.edit_profile .form_wrapper .edit_pictures .file_wrapper .dotted_wrapper .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: max-content;
 }
 
 .edit_profile .form_wrapper .edit_pictures .profile_pic_wrapper {
     flex-basis: 150px;
-    height: 200px;
+    height: 250px;
 }
 
 .edit_profile .form_wrapper .edit_pictures .background_pic_wrapper {
     width: calc(100% - 150px - 30px);
-    height: 200px
+    height: 250px
 }
 
 
@@ -1245,6 +1267,12 @@ header .languages #language {
     width: 100%;
     height: 100%;
     border-radius: 50%;
+}
+
+.edit_profile .form_wrapper form .button_wrapper #submitChanges{
+    background-color: var(--main-theme-color);
+    color: #FFF;
+    width: 100%
 }
 
 

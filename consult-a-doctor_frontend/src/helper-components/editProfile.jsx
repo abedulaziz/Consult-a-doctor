@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { insertInfo } from "../redux/slices/userSlice";
 import { changePopupVisib, setDoctorFullname } from "../redux/slices/bookMeetingSlice";
+import { setElement } from "../redux/slices/editProfileSlice";
 
 // import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -45,6 +46,8 @@ const EditProfile = () => {
    return (
       <div className="edit_profile">
          <div className="form_wrapper">
+            <a href="#" className="cd-popup-close img-replace" onClick={() => dispatch(setElement(null)) }></a>
+
             <div className="profile_pic">
                <img src={bookMeeting.profile_pic} />
             </div>
