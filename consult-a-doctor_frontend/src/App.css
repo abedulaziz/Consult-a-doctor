@@ -226,7 +226,7 @@ header .languages #language {
    background-color: white;
    padding: 7px;
    border: none;
-   margin-left: 10px;
+   margin:0 10px;
    border-radius: 4px;
 }
 
@@ -989,8 +989,22 @@ header .languages #language {
    align-items: center;
 }
 
+.doctor-details .posts .heading .profile_options {
+   display: flex;
+   gap: 10px
+}
+
+.doctor-details .posts .heading .edit-profile {
+   background-color: var(--main-theme-color);
+   border: none;
+   border-radius: 3px;
+   padding: 5px;
+   min-width: 50px;
+   cursor: pointer;
+}
+
 .doctor-details .posts .heading .add-blog {
-   padding: 10px 20px;
+   padding: 10px 10px;
    background-color: rgb(30, 27, 27);
    border: none;
    color: var(--light-text-color);
@@ -1053,6 +1067,10 @@ header .languages #language {
    width: 100%;
    height: 100vh;
 }
+.layer.active {
+   display: block;
+   opacity: 1
+}
 
 .schedule-meeting {
    position: fixed;
@@ -1111,6 +1129,124 @@ header .languages #language {
    margin-right: 10px;
    background-color: rgba(153, 153, 153, 0.496);
 }
+
+.edit_profile {
+   background-color: rgba(0, 0, 0, 0.511);
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100vh;
+   z-index: 9999;
+}
+
+.edit_profile .form_wrapper {
+   margin: auto;
+   width: 700px;
+   background-color: #FFF;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   border-radius: 5px;
+   padding-top: 50px;
+   padding: 50px 60px;
+}
+
+.edit_profile .heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.edit_profile .form_wrapper form >div {
+   margin-bottom: 20px;
+   position: relative;
+   display: flex;
+   gap: 10px;
+   align-items: center;
+}
+
+.edit_profile .form_wrapper form label {
+    min-width: max-content;
+}
+
+.edit_profile .form_wrapper form input {
+   color: #000;
+   border-bottom: 1px solid black;
+   border-bottom: 1px solid rgb(157, 157, 157);
+}
+
+.edit_profile .form_wrapper .edit_pictures {
+    display: flex;
+    gap: 30px;
+    /* margin-bottom: 20px; */
+}
+
+.edit_profile .form_wrapper .edit_pictures label {
+    padding-bottom: 10px;
+    text-align: center;
+    width: 100%;
+    height: 15%;
+    display: block;
+}
+
+.edit_profile .form_wrapper .edit_pictures .file_wrapper {
+    height: 85%;
+    border: 2px dashed #000;
+    border-radius: 15px;
+    position: relative;
+}
+
+.edit_profile .form_wrapper .edit_pictures .file_wrapper input[type=file] {
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: absolute;
+    padding: 0;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.edit_profile .form_wrapper .edit_pictures .file_wrapper .dotted_wrapper {
+    border: 2px dashed #000;
+    height:calc(100% - 30px);
+    margin: 15px;
+    border-radius: 15px;
+}
+
+.edit_profile .form_wrapper .edit_pictures .profile_pic_wrapper {
+    flex-basis: 150px;
+    height: 200px;
+}
+
+.edit_profile .form_wrapper .edit_pictures .background_pic_wrapper {
+    width: calc(100% - 150px - 30px);
+    height: 200px
+}
+
+
+
+.edit_profile .form_wrapper .profile_pic {
+   width: 100px;
+   height: 100px;
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%);
+   top: -40px;
+   padding: 5px;
+   border-radius: 50%;
+   background-color: #FFF;
+   overflow: hidden;
+}
+
+.edit_profile .form_wrapper .profile_pic img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
 
 /* media queries */
 
@@ -1454,7 +1590,7 @@ footer .footer_content .buttom_footer .social-media ul li {
    width: 100%;
 }
 
-.regis_box .right-section .regis_form > div input {
+.regis_box .right-section .regis_form > div input, .edit_profile .form_wrapper input {
    border: none;
    border-bottom: 1px solid #fff;
    color: var(--light-text-color);
@@ -1476,11 +1612,11 @@ footer .footer_content .buttom_footer .social-media ul li {
    gap: 10px;
 }
 
-.regis_box .right-section .regis_form .button_wrapper {
+.regis_box .right-section .regis_form .button_wrapper, .edit_profile .form_wrapper form .button_wrapper {
    justify-content: center;
 }
 
-.regis_box .right-section .regis_form .button_wrapper .regis_button {
+.regis_box .right-section .regis_form .button_wrapper .regis_button, .edit_profile .form_wrapper #submitChanges {
    padding: 10px;
    width: 100%;
    background-color: var(--second-theme-color);
