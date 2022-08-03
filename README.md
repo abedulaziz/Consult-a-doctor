@@ -19,9 +19,9 @@
 > There are several specializations available in the app. Patients or doctors are able to create video chat rooms with doctors and discuss their medical issue.
 
 ### User Stories
-- As a user, I want to browsse ablums, so that I can find quick links
-- As a user, I want to browsse ablums, so that I can find quick links
-- As a user, I want to browsse ablums, so that I can find quick links
+- As a patient, I want to book meetings with doctors and inquire my medical issue 
+- As a doctor, I want to benefit materially from the meetings and add blogs on my profile concerning my medical speciality
+- As an admin, I want to add/remove specializations and accept/deny doctor account requests
 
 <br><br>
 
@@ -32,11 +32,11 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 
 | Landing  | Home/Search  |
 | -----------------| -----|
-| ![Landing](https://github.com/julescript/spotifyndr/blob/master/demo/Landing_Page.jpg) | ![Home/Search](https://github.com/julescript/spotifyndr/blob/master/demo/Search_Page.jpg) |
+| ![Landing](./consult-a-doctor_frontend/src/assets/readme_pictures/figma-landing_page.png) | ![Profile](./consult-a-doctor_frontend/src/assets/readme_pictures/figma-profile.png) |
 
-| Artists results  | Artist's Albums  |
+<!-- | Artists results  | Artist's Albums  |
 | -----------------| -----|
-| ![Artists results](https://github.com/julescript/spotifyndr/blob/master/demo/Artists_Page.jpg) | ![Artist's Albums](https://github.com/julescript/spotifyndr/blob/master/demo/Albums_Page.jpg) |
+| ![Artists results](https://github.com/julescript/spotifyndr/blob/master/demo/Artists_Page.jpg) | ![Artist's Albums](https://github.com/julescript/spotifyndr/blob/master/demo/Albums_Page.jpg) | -->
 
 
 <br><br>
@@ -60,7 +60,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 | Landing  | Home/Search  |
 | -----------------| -----|
-| ![Landing](https://github.com/julescript/spotifyndr/blob/master/demo/Landing_Page.jpg) | ![Home/Search](https://github.com/julescript/spotifyndr/blob/master/demo/Search_Page.jpg) |
+| ![Landing](./consult-a-doctor_frontend/src/assets/readme_pictures/app-landing_page.png) | ![Profile](./consult-a-doctor_frontend/src/assets/readme_pictures/app-profile.png) |
 
 
 <br><br>
