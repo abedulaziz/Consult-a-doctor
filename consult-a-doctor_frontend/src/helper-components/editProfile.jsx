@@ -28,6 +28,20 @@ const EditProfile = () => {
       formState: { errors },
    } = useForm();
 
+
+   const displaySelectedImage = (ev) => {
+
+    const selectedImage = ev.target.files[0]
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      let base64String = reader.result;
+
+      ev.target.previousElementSibling.src = base64String
+    }
+    reader.readAsDataURL(selectedImage)
+   }
+
    return (
       <div className="edit_profile">
          <div className="form_wrapper">
@@ -67,16 +81,22 @@ const EditProfile = () => {
                   <div className="profile_pic_wrapper">
                      <label htmlFor="profilePic">Profile picture</label>
                      <div className="file_wrapper">
-                        <div className="dotted_wrapper">Pick a picture</div>
-                        <input type="file" name="profile_pic" id="profilePic" />
+                        <div className="dotted_wrapper">
+                           <span className="centered">Pick a picture</span>
+                        </div>
+                        <img src="" alt="" />
+                        <input type="file" accept="image/*" name="profile_pic" id="profilePic" onChange={(ev) => displaySelectedImage(ev)}/>
                      </div>
                   </div>
 
                   <div className="background_pic_wrapper">
                      <label htmlFor="background_pic">Background image</label>
                      <div className="file_wrapper">
-                        <div className="dotted_wrapper">Pick a picture</div>
-                        <input type="file" name="background_pic" id="backgroundPic" />
+                        <div className="dotted_wrapper">
+                           <span className="centered">Pick a picture</span>
+                        </div>
+                        <img src="" alt="" />
+                        <input type="file" accept="image/*" name="background_pic" id="backgroundPic" onChange={(ev) => displaySelectedImage(ev)} />
                      </div>
                   </div>
                </div>
