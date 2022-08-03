@@ -32,7 +32,7 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 
 | Landing  | Home/Search  |
 | -----------------| -----|
-| ![Landing](./consult-a-doctor_frontend/src/assets/readme_pictures/figma-landing_page.png) | ![Profile](./consult-a-doctor_frontend/src/assets/readme_pictures/figma-profile.png) |
+| ![Landing](./readme/wireframes/figma-landing_page.png) | ![Profile](./readme/wireframes/figma-profile.png) |
 
 <!-- | Artists results  | Artist's Albums  |
 | -----------------| -----|
@@ -60,7 +60,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 | Landing  | Home/Search  |
 | -----------------| -----|
-| ![Landing](./consult-a-doctor_frontend/src/assets/readme_pictures/app-landing_page.png) | ![Profile](./consult-a-doctor_frontend/src/assets/readme_pictures/app-profile.png) |
+| ![Landing](./readme/wireframes/app-landing_page.png) | ![Profile](./readme/wireframes/app-profile.png) |
 
 
 <br><br>
