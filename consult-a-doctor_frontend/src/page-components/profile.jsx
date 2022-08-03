@@ -9,17 +9,20 @@ import Header from "../layout-components/header";
 import Footer from "../layout-components/footer";
 import Post from "../layout-components/post";
 import ScheduleMeeting from "../layout-components/scheduleMeeting";
-import SignUpForm from "../layout-components/signUpForm";
+import EditProfile from "../helper-components/editProfile";
 
 // icons
 import { ReactComponent as Heart } from "../assets/icons/heart.svg";
 import { ReactComponent as Plus } from "../assets/icons/plus.svg";
+import { ReactComponent as Edit } from "../assets/icons/edit-profile.svg";
 
 // helper components
 import AddBlogPopup from "../helper-components/addBlogPopup";
 
 import { setPopupVisibility } from "../redux/slices/addBlogPopupSlice";
-import { changePopupVisib, setDoctorFullname } from "../redux/slices/bookMeetingSlice";
+import { changePopupVisib, setName, setDoctorProfilePic } from "../redux/slices/bookMeetingSlice";
+
+import Doctor1 from '../assets/backgrounds/doctor1.jpg';
 
 const Profile = () => {
    const dispatch = useDispatch();
@@ -27,7 +30,6 @@ const Profile = () => {
    let navigate = useNavigate();
    const [university, setUniversity] = useState("");
    const [about, setAbout] = useState("");
-   const [profilePic, setProfilePic] = useState(null);
    const [blogs, setBlogs] = useState([]);
    const [followers, setFollowers] = useState(0);
    const [followings, setFollowings] = useState(0);
@@ -56,10 +58,12 @@ const Profile = () => {
             const doctorInfo = doctorInfoRqust.data.doctor_info;
 
             // setFullname(doctorInfo.fname + " " + doctorInfo.lname);
-            dispatch(setDoctorFullname(doctorInfo.fname + " " + doctorInfo.lname));
+            dispatch(setName({prop: "fname", value: doctorInfo.fname}));
+            dispatch(setName({prop: "lname", value: doctorInfo.lname}));
+            dispatch(setDoctorProfilePic(doctorInfo.profile_pic));
+
             setUniversity(doctorInfo.university);
             setAbout(doctorInfo.about);
-            setProfilePic(doctorInfo.profile_pic);
             setBlogs(doctorInfoRqust.data.doctor_blogs);
             setFollowers(doctorInfoRqust.data.followers);
             setFollowings(doctorInfoRqust.data.followings);
@@ -81,7 +85,7 @@ const Profile = () => {
                   <div className="empty_left_box"></div>
                   <div className="info-and-book_meeting">
                      <div className="doctor_info">
-                        <h2>{bookMeeting.doctorFullname}</h2>
+                        <h2>{bookMeeting.fname + " " + bookMeeting.lname}</h2>
                         <p className="university">{university}</p>
                      </div>
 
@@ -99,7 +103,7 @@ const Profile = () => {
                   <div className="card-container">
                      <div className="doctor-card">
                         <div className="profile_img">
-                           <img src={profilePic} alt="profile picture" />
+                           <img src={bookMeeting.profile_pic} alt="profile picture" />
                            {!isAccountOwner && (
                               <div className="follow">
                                  <span>FOLLOW</span>
@@ -136,9 +140,15 @@ const Profile = () => {
                      <div className="heading">
                         <h3 className="posts_header">Posts</h3>
                         {isAccountOwner && (
-                           <button className="add-blog" onClick={() => dispatch(setPopupVisibility("is-visible"))}>
-                              <Plus /> <span>Add blog</span>
-                           </button>
+                          <div className="profile_options">
+                            <button className="edit-profile" title="Edit profile">
+                                <Edit /> 
+                            </button>
+                            <button className="add-blog" onClick={() => dispatch(setPopupVisibility("is-visible"))}>
+                                <Plus /> <span>Add blog</span>
+                            </button>
+
+                          </div>
                         )}
                      </div>
                      <div className="posts_container">
@@ -148,8 +158,8 @@ const Profile = () => {
                               return (
                                  <Post
                                     key={index}
-                                    profilePic={userInfo.profilePic}
-                                    fullName={bookMeeting.doctorFullname}
+                                    profilePic={Doctor1}
+                                    fullName={bookMeeting.fname + " " + bookMeeting.lname}
                                     content={blog.content}
                                     createdAt={`${date.getFullYear()}/${date.getMonth()}/${date.getDay()}`}
                                  />
@@ -160,8 +170,8 @@ const Profile = () => {
                </div>
             </div>
             {isAccountOwner && <AddBlogPopup />}
+            {!isAccountOwner && <EditProfile />}
             {!isAccountOwner && <ScheduleMeeting />}
-            {/* {!isAccountOwner && <SignUpForm />} */}
          </main>
          <Footer />
       </>
