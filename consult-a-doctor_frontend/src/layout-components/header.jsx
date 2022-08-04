@@ -128,7 +128,6 @@ const Header = () => {
 
           <div className="account_status">
           <div className="languages">
-            {console.log(t("lang.header.current_lan"))}
             <select name="language" defaultValue={t("lang.header.current_lan")} id="language" onChange={(ev) => i18n.changeLanguage(ev.target.value)}>
               <option value="en">English</option>
               <option value="ar">العربية</option>
