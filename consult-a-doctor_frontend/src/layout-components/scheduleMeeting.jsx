@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setBookMeetingPopup } from "../redux/slices/popupControllerSlice";
 
@@ -7,13 +7,16 @@ import TimeDuration from "../helper-components/timeDuration";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 
-import message from '../helper-components/message'
+import message from "../helper-components/message";
 
 const ScheduleMeeting = ({ doctor_id }) => {
    const weekDays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
    const [bookMeetingStage, setBookMeetingStage] = useState(1);
    const [availableTimes, setAvailableTimes] = useState(null);
    const [scheduledTimes, setScheduledTiems] = useState(null);
+   const [selectedDuration, setSelectedDuration] = useState(null);
+
+   const selectedMeetingTime = useRef(null)
 
    const userInfo = useSelector((state) => state.userInfo.value);
    const {
@@ -36,21 +39,41 @@ const ScheduleMeeting = ({ doctor_id }) => {
             },
             {
                headers: {
-                  Authorization: `Bearer ${userInfo.JWT}`
+                  Authorization: `Bearer ${userInfo.JWT}`,
                },
             }
          );
          console.log(workPeriodsRqust.data);
 
-         
-
          setAvailableTimes(workPeriodsRqust.data.available_periods);
          setScheduledTiems(workPeriodsRqust.data.other_appointments);
-
+         setBookMeetingStage(2);
       } catch (err) {
-        message(err.response.data.message, "red")
+         message(err.response.data.message, "red");
       }
    };
+
+   const validateMeetingReq = (ev) => {
+      ev.preventDefault();
+
+      if (selectedDuration && selectedMeetingTime) {
+
+      }
+   };
+
+   const handleDurationClicked = (ev) => {
+    const target = ev.currentTarget
+    const siblings = target.parentElement.childNodes
+
+    for (let sibling of siblings){
+      sibling.style.backgroundColor = "rgb(221, 220, 220)";
+      sibling.style.color = "#000";
+    }
+
+    target.style.backgroundColor = "var(--main-theme-color)"
+    target.style.color = "#FFF";
+    setSelectedDuration(target.dataset.duration)
+  }
 
    return (
       <>
@@ -85,29 +108,33 @@ const ScheduleMeeting = ({ doctor_id }) => {
                   <div className="meeting_submission">
                      <h4 className="heading">Select a duration</h4>
                      <ul className="durations">
-                        <li>5 min - 10$</li>
-                        <li>10 min - 20$</li>
-                        <li>20 min - 30$</li>
+                        <li data-duration="5"  onClick={(ev) => handleDurationClicked(ev) }>5 min - 10$</li>
+                        <li data-duration="10" onClick={(ev) => handleDurationClicked(ev)}>10 min - 20$</li>
+                        <li data-duration="20" onClick={(ev) => handleDurationClicked(ev)}>20 min - 30$</li>
                      </ul>
                      <div className="schedule_time">
                         <h4 className="heading">meeting time: </h4>
+                        <p className="desc">Please select time that doesn't conflict with scheduled times if existed</p>
                         <div className="input_wrapper">
-                           <input type="time" name="meeting_time" id="meetingTime" />
+                           <select ref={selectedMeetingTime} type="time" name="meeting_time" id="meetingTime">
+                              {availableTimes && availableTimes.map((availTime) => <option value={availTime.from}>{availTime.from}</option>)}
+                           </select>
                         </div>
                      </div>
 
                      <div className="doctor_times">
-                        <div className="available_times">
-                           <h5>Available times</h5>
-                           <ul>{availableTimes && availableTimes.map((availTime, i) => <TimeDuration key={i} from={availTime.from} to={availTime.to} />)}</ul>
-                        </div>
+
                         <div className="booked_times">
                            <h5>Schuduled times</h5>
-                           <ul>{scheduledTimes && scheduledTimes.map((takenTime, i) => <TimeDuration key={i} from={takenTime.from} to={takenTime.to} />)}</ul>
+                           <ul className="unavailable_list">
+                              {scheduledTimes && scheduledTimes.map((takenTime, i) => <TimeDuration key={i} from={takenTime.from} to={takenTime.to} />)}
+                           </ul>
                         </div>
                      </div>
                      <div className="submit-date">
-                        <button id="scheduleMeetNextStage">Confirm meeting</button>
+                        <button id="scheduleMeetNextStage" onClick={(ev) => validateMeetingReq(ev)}>
+                           Confirm meeting
+                        </button>
                      </div>
                   </div>
                )}
