@@ -2,11 +2,13 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setBookMeetingPopup } from "../redux/slices/popupControllerSlice";
 
+import axios from 'axios';
 import { useForm } from "react-hook-form";
 
-const ScheduleMeeting = () => {
-   const userInfo = useSelector((state) => state.userInfo.value);
+const ScheduleMeeting = ({doctor_id}) => {
+   const weekDays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
 
+   const userInfo = useSelector((state) => state.userInfo.value);
    const {
       register,
       handleSubmit,
@@ -15,8 +17,29 @@ const ScheduleMeeting = () => {
    // const bookMeeting = useSelector((state) => state.bookMeeting.value);
    const dispatch = useDispatch();
 
-   const checkDayAvailability = (data) => {
+   const checkDayAvailability = async(data) => {
 
+      const weekDay = weekDays[new Date(data.meeting_date).getDay()]
+
+      try {
+
+        const workPeriodsRqust = await axios.post(`users/${doctor_id}/check-availability`,{
+          week_day: weekDay,
+          date: data.meeting_date
+        }, {
+        headers: {
+        Authorization: `Bearer ${userInfo.JWT}`,
+        },
+      });
+      console.log(workPeriodsRqust.data);
+
+
+
+      } catch (err) {
+        if (err.response.data.message == "Unvalid token") {
+        //  navigate("/sign-in");
+      }
+      }
    };
 
    return (
