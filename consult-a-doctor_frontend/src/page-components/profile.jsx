@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import Loader from "../helper-components/loader";
 
 import axios from "axios";
 
@@ -21,11 +22,12 @@ import AddBlogPopup from "../helper-components/addBlogPopup";
 
 import { setPopupVisibility } from "../redux/slices/addBlogPopupSlice";
 import { changePopupVisib, setName, setDoctorProfilePic } from "../redux/slices/bookMeetingSlice";
-import { setEditProfilePopup, setAddBlogPopup } from "../redux/slices/popupControllerSlice";
+import { setEditProfilePopup, setAddBlogPopup, setBookMeetingPopup } from "../redux/slices/popupControllerSlice";
 
-import Doctor1 from '../assets/backgrounds/doctor1.jpg';
+import Doctor1 from "../assets/backgrounds/doctor1.jpg";
 
 const Profile = () => {
+   const [loader, setLoader] = useState(<Loader />);
    const dispatch = useDispatch();
 
    let navigate = useNavigate();
@@ -39,17 +41,12 @@ const Profile = () => {
 
    const userInfo = useSelector((state) => state.userInfo.value);
    const bookMeeting = useSelector((state) => state.bookMeeting.value);
-   const popupController = useSelector(state => state.popupController.value)
+   const popupController = useSelector((state) => state.popupController.value);
    const { doctor_id } = useParams();
 
    React.useEffect(() => {
-      // !userInfo.JWT && navigate("/sign-in")
-      // if (!userInfo.JWT) {
-      //   return navigate("/sign-in")
-      // }
-
-      try {
-         const getDoctorInfo = async () => {
+      const getDoctorInfo = async () => {
+         try {
             const doctorInfoRqust = await axios.get(`users/${doctor_id}/doctor-info`, {
                headers: {
                   Authorization: `Bearer ${userInfo.JWT}`,
@@ -60,8 +57,8 @@ const Profile = () => {
             const doctorInfo = doctorInfoRqust.data.doctor_info;
 
             // setFullname(doctorInfo.fname + " " + doctorInfo.lname);
-            dispatch(setName({prop: "fname", value: doctorInfo.fname}));
-            dispatch(setName({prop: "lname", value: doctorInfo.lname}));
+            dispatch(setName({ prop: "fname", value: doctorInfo.fname }));
+            dispatch(setName({ prop: "lname", value: doctorInfo.lname }));
             dispatch(setDoctorProfilePic(doctorInfo.profile_pic));
 
             setUniversity(doctorInfo.university);
@@ -71,15 +68,19 @@ const Profile = () => {
             setFollowings(doctorInfoRqust.data.followings);
 
             setIsAccountOwner(doctorInfoRqust.data.isAccountOwner);
-         };
-         getDoctorInfo();
-      } catch (error) {
-         console.log(error);
-      }
+            setLoader(null);
+         } catch (err) {
+            if (err.response.data.message == "Unvalid token") {
+               navigate("/sign-in");
+            }
+         }
+      };
+      getDoctorInfo();
    }, []);
 
    return (
       <>
+         {loader}
          <Header />
          <main>
             <div className="profile_background">
@@ -93,7 +94,7 @@ const Profile = () => {
 
                      {!isAccountOwner && (
                         <div className="book-meeting">
-                           <button>Book a meeting</button>
+                           <button onClick={() => dispatch(setBookMeetingPopup(<ScheduleMeeting doctor_id={doctor_id} />))}>Book a meeting</button>
                         </div>
                      )}
                   </div>
@@ -142,15 +143,14 @@ const Profile = () => {
                      <div className="heading">
                         <h3 className="posts_header">Posts</h3>
                         {isAccountOwner && (
-                          <div className="profile_options">
-                            <button className="edit-profile" title="Edit profile" onClick={() => dispatch(setEditProfilePopup(<EditProfile />))}>
-                                <Edit /> 
-                            </button>
-                            <button className="add-blog" onClick={() => dispatch(setAddBlogPopup(<AddBlogPopup />))}>
-                                <Plus /> <span>Add blog</span>
-                            </button>
-
-                          </div>
+                           <div className="profile_options">
+                              <button className="edit-profile" title="Edit profile" onClick={() => dispatch(setEditProfilePopup(<EditProfile />))}>
+                                 <Edit />
+                              </button>
+                              <button className="add-blog" onClick={() => dispatch(setAddBlogPopup(<AddBlogPopup />))}>
+                                 <Plus /> <span>Add blog</span>
+                              </button>
+                           </div>
                         )}
                      </div>
                      <div className="posts_container">
@@ -171,9 +171,10 @@ const Profile = () => {
                   </div>
                </div>
             </div>
+
             {popupController.editProfilePopup}
             {popupController.addBlogPopup}
-
+            {popupController.bookMeetingPopup}
          </main>
          <Footer />
       </>
