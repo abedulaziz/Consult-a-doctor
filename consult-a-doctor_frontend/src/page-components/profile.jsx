@@ -21,6 +21,7 @@ import AddBlogPopup from "../helper-components/addBlogPopup";
 
 import { setPopupVisibility } from "../redux/slices/addBlogPopupSlice";
 import { changePopupVisib, setName, setDoctorProfilePic } from "../redux/slices/bookMeetingSlice";
+import { setEditProfilePopup, setAddBlogPopup } from "../redux/slices/popupControllerSlice";
 
 import Doctor1 from '../assets/backgrounds/doctor1.jpg';
 
@@ -38,6 +39,7 @@ const Profile = () => {
 
    const userInfo = useSelector((state) => state.userInfo.value);
    const bookMeeting = useSelector((state) => state.bookMeeting.value);
+   const popupController = useSelector(state => state.popupController.value)
    const { doctor_id } = useParams();
 
    React.useEffect(() => {
@@ -91,7 +93,7 @@ const Profile = () => {
 
                      {!isAccountOwner && (
                         <div className="book-meeting">
-                           <button onClick={() => dispatch(changePopupVisib(true))}>Book a meeting</button>
+                           <button>Book a meeting</button>
                         </div>
                      )}
                   </div>
@@ -141,10 +143,10 @@ const Profile = () => {
                         <h3 className="posts_header">Posts</h3>
                         {isAccountOwner && (
                           <div className="profile_options">
-                            <button className="edit-profile" title="Edit profile">
+                            <button className="edit-profile" title="Edit profile" onClick={() => dispatch(setEditProfilePopup(<EditProfile />))}>
                                 <Edit /> 
                             </button>
-                            <button className="add-blog" onClick={() => dispatch(setPopupVisibility("is-visible"))}>
+                            <button className="add-blog" onClick={() => dispatch(setAddBlogPopup(<AddBlogPopup />))}>
                                 <Plus /> <span>Add blog</span>
                             </button>
 
@@ -169,9 +171,9 @@ const Profile = () => {
                   </div>
                </div>
             </div>
-            {isAccountOwner && <AddBlogPopup />}
-            {!isAccountOwner && <EditProfile />}
-            {!isAccountOwner && <ScheduleMeeting />}
+            {popupController.editProfilePopup}
+            {popupController.addBlogPopup}
+
          </main>
          <Footer />
       </>
