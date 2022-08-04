@@ -65,11 +65,12 @@ class UsersController extends Controller
         ]);
     }
 
+    // check the availability of the doctor on the selected date
     public function checkDayAvailability(Request $req, $doctor_id) {
         $week_day = $req->week_day;
 
         $workPeriods = User::find($doctor_id)->getDoctorAvailabilities()->where("week_day", $week_day)->select("from", "to")->orderBy("from", "asc")->get();
-        $selectedDayAppoints = Appointment::where("patient_id", $doctor_id)->orWhere("doctor_id", $doctor_id)->where("date", $req->date)->select("from", "to", )->orderBy("from", "asc")->get();
+        $selectedDayAppoints = Appointment::where([["date", $req->date], ["patient_id", $doctor_id]])->orWhere([["date", $req->date], ["doctor_id", $doctor_id]])->select("from", "to", )->orderBy("from", "asc")->get();
 
         if (!$workPeriods) return response()->json(["message" => "Doctor is not available on this time."]);
 
@@ -79,9 +80,6 @@ class UsersController extends Controller
             "other_appointments" => $selectedDayAppoints
         ]);
     }
-
-
-
 
 
     public function getAvailablePeriods($doctor_id, Request $req) {
