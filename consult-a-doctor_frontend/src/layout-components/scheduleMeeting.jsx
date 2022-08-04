@@ -1,35 +1,36 @@
-import React from 'react'
-import {useSelector, useDispatch} from 'react-redux'
-import { changePopupVisib } from "../redux/slices/bookMeetingSlice";
-
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setBookMeetingPopup } from "../redux/slices/popupControllerSlice";
 
 const ScheduleMeeting = () => {
-  
-  const bookMeeting = useSelector((state) => state.bookMeeting.value);
-  const dispatch = useDispatch()
+   const userInfo = useSelector((state) => state.userInfo.value);
+   // const bookMeeting = useSelector((state) => state.bookMeeting.value);
+   const dispatch = useDispatch();
 
-  return (
-    <div className={"layer " + (bookMeeting.isPopupActive && " active")}>
+   return (
+      <div className="edit_profile">
+         <div className="form_wrapper">
+            <span href="#" className="cd-popup-close img-replace" onClick={() => dispatch(setBookMeetingPopup(null))}></span>
 
-      <div className='schedule-meeting'>
-        <div className="popup_header">
-          <h2 className="heading">Schedule a meeting</h2>
-          <p>schedule a meeting with <span style={{color: "var(--main-theme-color)"}}>{bookMeeting.doctorFullname}</span></p>
-        </div>
+            <div className="profile_pic">
+               <img src={userInfo.profile_pic} />
+            </div>
+            {/* <div className="schedule-meeting"> */}
+            <div className="popup_header">
+               <h2 className="heading">Schedule a meeting</h2>
+            </div>
 
-        <div className="meeting_date">
-          <label htmlFor="meetingDate">Pick date for the meeting</label>
-          <input type="date" name="meeting_date" id="meetingDate" />
-        </div>
+            <div className="meeting_date">
+               <label htmlFor="meetingDate">Pick a date for the meeting</label>
+               <input type="date" name="meeting_date" id="meetingDate" />
+            </div>
 
-        <a href="#" className="cd-popup-close img-replace" onClick={() => dispatch(changePopupVisib(false))}></a>
-        <div className="submit-date">
-          <button>Next</button>
-        </div>
-
+            <div className="submit-date">
+               <button id="scheduleMeetNextStage">Next</button>
+            </div>
+         </div>
       </div>
-    </div>
-  )
-}
+   );
+};
 
-export default ScheduleMeeting
+export default ScheduleMeeting;

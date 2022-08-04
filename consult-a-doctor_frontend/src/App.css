@@ -1057,8 +1057,6 @@ header .languages #language {
 }
 
 .layer {
-   opacity: 0;
-   display: none;
    position: fixed;
    z-index: 9999;
    left: 0;
@@ -1066,10 +1064,6 @@ header .languages #language {
    background-color: rgba(0, 0, 0, 0.511);
    width: 100%;
    height: 100vh;
-}
-.layer.active {
-   display: block;
-   opacity: 1
 }
 
 .schedule-meeting {
@@ -1102,14 +1096,28 @@ header .languages #language {
    color: var(--grayish-text-color);
 }
 
-.schedule-meeting .meeting_date label {
+.edit_profile .meeting_date {
+   margin-bottom: 15px;
+}
+
+.edit_profile .meeting_date label {
    display: block;
    margin-bottom: 6px;
 }
 
-.schedule-meeting .meeting_date #meetingDate {
+.edit_profile .meeting_date #meetingDate {
    width: 100%;
    padding: 10px;
+   border: 1px solid gray;
+   border-radius: 3px;
+   color:rgb(30, 27, 27)
+}
+
+.edit_profile #scheduleMeetNextStage {
+   text-align: center;
+   position: relative;
+   display: block;
+   margin: auto !important;
 }
 
 .schedule-meeting .submit-date button {
@@ -1123,11 +1131,6 @@ header .languages #language {
    font-weight: 600;
    font-size: 14px;
    cursor: pointer;
-}
-
-.schedule-meeting .submit-date .cancel {
-   margin-right: 10px;
-   background-color: rgba(153, 153, 153, 0.496);
 }
 
 .edit_profile {
@@ -1150,7 +1153,7 @@ header .languages #language {
    transform: translate(-50%, -50%);
    border-radius: 5px;
    padding: 50px 60px;
-   padding-bottom: 10px;
+   padding-bottom: 20px;
 }
 
 .edit_profile .heading {
@@ -2070,7 +2073,7 @@ tr {
     text-align: center;
 }
 
-.submit_blog #submit_blog {
+.submit_blog #submit_blog, .edit_profile #scheduleMeetNextStage {
     padding: 15px 20px;
     background-color: var(--main-theme-color);
     border: none;
@@ -2082,12 +2085,14 @@ tr {
     cursor: pointer;
 }
 
+
 .cd-popup-close {
    position: absolute;
    top: 8px;
    right: 8px;
    width: 30px;
    height: 30px;
+   cursor: pointer;
 }
 .cd-popup-close::before,
 .cd-popup-close::after {
@@ -2152,4 +2157,29 @@ tr {
 
 /* ------------------------------------------------ */
 /* ----------------- end action status ----------------- */
+/* ------------------------------------------------ */
+
+/* ------------------------------------------------ */
+/* ----------------- start loader ----------------- */
+/* ------------------------------------------------ */
+
+.loader-background {
+   position: fixed;
+   width: 100%;
+   height: 100vh;
+   background-color: #FFF;
+   z-index: 99999;
+   top: 0;
+   left: 0;
+}
+
+.loader-background .rings_wrapper {
+   left: 50%;
+   top: 50%;
+   position: absolute;
+   transform: translate(-50%, -50%);
+}
+
+/* ------------------------------------------------ */
+/* ----------------- end loader ----------------- */
 /* ------------------------------------------------ */
