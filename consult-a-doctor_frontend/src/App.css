@@ -222,6 +222,15 @@ header .menu {
    cursor: pointer;
 }
 
+header .menu:dir(rtl){
+   margin-left: 0;
+   margin-right: 15px;
+}
+
+header .menu svg {
+   vertical-align: middle;
+}
+
 header .languages #language {
    background-color: white;
    padding: 7px;
@@ -311,6 +320,14 @@ header .languages #language {
    box-shadow: inset 0 0 0 2000px rgba(255, 255, 255, 0.449);
 }
 
+.hero:dir(rtl) {
+   transform: scaleX(-1);
+}
+
+.hero .container:dir(rtl) {
+   transform: scaleX(-1);
+}
+
 .hero .hero-content {
    margin-top: 100px;
    max-width: 70%;
@@ -325,6 +342,8 @@ header .languages #language {
 
 .hero .hero-content .heading p {
    font-size: 16px;
+   color: var(--grayish-text-color);
+   font-weight: 600;
 }
 
 .hero .hero-content .heading h1 .theme-colored {
@@ -347,6 +366,11 @@ header .languages #language {
    margin-right: 10px;
    width: 34px;
    color: var(--second-theme-color);
+}
+
+.hero .hero-content .hero_features li img:dir(rtl) {
+   margin-right: 0;
+   margin-left: 10px;
 }
 
 .hero .hero-content .hero_features li p {
@@ -464,6 +488,19 @@ header .languages #language {
 .doctor_supp .supp-content .supp_text .description br {
    margin-bottom: 12px;
 }
+
+@media (max-width: 860px) {
+   .doctor_supp .supp-content {
+      flex-direction: column-reverse;
+      text-align: center;
+   }
+   .doctor_supp .supp-content .side_img {
+      width: 90%;
+      margin: auto;
+      margin-top: 20px;
+   }
+}
+
 
 /* ------------------------------------------------ */
 /* ----------------- end doctor support ----------------- */
@@ -1113,6 +1150,10 @@ header .languages #language {
    color:rgb(30, 27, 27)
 }
 
+.edit_profile .meeting_submission {
+   display: flex;
+   flex-direction: column;
+}
 
 .edit_profile .meeting_submission .durations {
    display: flex;
@@ -1135,9 +1176,11 @@ header .languages #language {
    cursor: pointer;
 }
 
-.edit_profile .meeting_submission .schedule_time {
+.edit_profile .meeting_submission .schedule_time, .edit_profile .meeting_submission .meeting_title{
    text-align: center;
    margin-bottom: 25px;
+   display: flex;
+   flex-direction: column;
 }
 
 .edit_profile .meeting_submission .schedule_time .heading {
@@ -1154,13 +1197,17 @@ header .languages #language {
    flex-grow: 1;
 }
 
-.edit_profile .meeting_submission .schedule_time #meetingTime {
+.edit_profile .meeting_submission .schedule_time #meetingTime, .edit_profile .meeting_submission #meetingTitle {
    color: #000;
    padding: 10px;
    border-radius: 3px;
    background-color: #FFF;
    width: auto;
    border: 1px solid gray
+}
+
+.edit_profile .meeting_submission input#title {
+   width: 300px;
 }
 
 .edit_profile .meeting_submission .doctor_times {
@@ -1233,7 +1280,11 @@ header .languages #language {
    height: max-content;
    max-height: 85%;
    overflow: visible;
-   /* overflow: auto; */
+}
+
+.edit_profile .form_wrapper .content_wrapper {
+   overflow: auto;
+   max-height: 60vh;
 }
 
 .edit_profile .heading {
@@ -1241,12 +1292,9 @@ header .languages #language {
     margin-bottom: 30px;
 }
 
-.edit_profile .form_wrapper form >div {
+.edit_profile .form_wrapper form > div {
    margin-bottom: 20px;
    position: relative;
-   display: flex;
-   gap: 10px;
-   align-items: center;
 }
 
 .edit_profile .form_wrapper form label {
