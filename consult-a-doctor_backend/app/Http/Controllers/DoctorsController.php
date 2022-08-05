@@ -41,7 +41,7 @@ class DoctorsController extends Controller
     public function getDoctorInfo($doctor_id) {
 
         $doctorInfo = DB::table("users")
-        ->select("fname", "lname", "email", "date_of_birth", "profile_pic", "rate", "about", "background_img", "university", "specializations.name")
+        ->select("users.id", "fname", "lname", "email", "date_of_birth", "profile_pic", "rate", "about", "background_img", "university", "specializations.name")
         ->join("doctor_specifics", "users.id", "=", "doctor_specifics.doctor_id")
         ->join("specializations", "doctor_specifics.speciality_id", "=", "specializations.id")
         ->where("users.id", $doctor_id)

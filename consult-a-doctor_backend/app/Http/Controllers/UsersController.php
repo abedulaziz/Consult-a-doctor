@@ -72,13 +72,13 @@ class UsersController extends Controller
         $workPeriods = User::find($doctor_id)->getDoctorAvailabilities()->where("week_day", $week_day)->select("from", "to")->orderBy("from", "asc")->get();
         $selectedDayAppoints = Appointment::where([["date", $req->date], ["patient_id", $doctor_id]])->orWhere([["date", $req->date], ["doctor_id", $doctor_id]])->select("from", "to", )->orderBy("from", "asc")->get();
 
-        if (!$workPeriods) return response()->json(["message" => "Doctor is not available on this time."]);
+        if (count($workPeriods)) return response()->json(["message" => "Doctor is not available on this time."], 404);
 
 
         return response()->json([
             "available_periods" => getHourlyWorkPeriods($workPeriods),
             "other_appointments" => $selectedDayAppoints
-        ]);
+        ], 200);
     }
 
 
