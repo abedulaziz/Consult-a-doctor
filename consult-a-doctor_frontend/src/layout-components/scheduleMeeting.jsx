@@ -16,7 +16,6 @@ const ScheduleMeeting = ({ doctor_id }) => {
    const [scheduledTimes, setScheduledTiems] = useState(null);
    const [selectedDuration, setSelectedDuration] = useState(null);
 
-   const selectedMeetingTime = useRef(null)
 
    const userInfo = useSelector((state) => state.userInfo.value);
    const {
@@ -53,11 +52,39 @@ const ScheduleMeeting = ({ doctor_id }) => {
       }
    };
 
-   const validateMeetingReq = (ev) => {
-      ev.preventDefault();
+   const submitData = async(data) => {
+      if (selectedDuration) {
 
-      if (selectedDuration && selectedMeetingTime) {
+         const timeTo = new Date(new Date(data.meeting_date + " " + data.meeting_time).getTime() + 5 * 60000).toLocaleTimeString('en-GB', { hour12: false })
+         console.log(timeTo);
+         try {
+            const confirmMeeting = await axios.post(
+               `meetings/appointments/set-appointment`,
+               {
+                  doctor_id,
+                  patient_id: userInfo.user_id,
+                  title: data.meeting_title,
+                  date: data.meeting_date,
+                  from: data.meeting_time,
+                  to: timeTo,
+                  duration: selectedDuration
+               },
+               {
+                  headers: {
+                     Authorization: `Bearer ${userInfo.JWT}`,
+                  },
+               }
+            );
+            console.log(confirmMeeting.data);
+            message(confirmMeeting.data.message, "green")
+            dispatch(setBookMeetingPopup(null))
 
+         } catch (err) {
+            message(err.response.data.message, "red");
+         }
+      }
+      else {
+         message("Please select a duration", "red")
       }
    };
 
@@ -78,67 +105,84 @@ const ScheduleMeeting = ({ doctor_id }) => {
    return (
       <>
          <div className="edit_profile">
-            <form onSubmit={handleSubmit((data) => checkDayAvailability(data))} className="form_wrapper">
-               <span href="#" className="cd-popup-close img-replace" onClick={() => dispatch(setBookMeetingPopup(null))}></span>
-
+            <div className="form_wrapper">
                <div className="profile_pic">
                   <img src={userInfo.profile_pic} />
                </div>
+               <span href="#" className="cd-popup-close img-replace" onClick={() => dispatch(setBookMeetingPopup(null))}></span>
+
                <div className="popup_header">
                   <h2 className="heading">Schedule a meeting</h2>
                </div>
-               {bookMeetingStage == 1 ? (
-                  <div className="meeting_date">
-                     <label htmlFor="meetingDate">Pick a date for the meeting</label>
-                     <div className="meeting_date">
-                        <input
-                           {...register("meeting_date", { required: "Please select a date for the meeting" })}
-                           type="date"
-                           name="meeting_date"
-                           id="meetingDate"
-                           min={getStringifiedCurrDate(new Date())}
-                        />
-                        <p className="error">{errors.meeting_date?.message}</p>
-                     </div>
-                     <div className="submit-date">
-                        <button id="scheduleMeetNextStage">Next</button>
-                     </div>
-                  </div>
-               ) : (
-                  <div className="meeting_submission">
-                     <h4 className="heading">Select a duration</h4>
-                     <ul className="durations">
-                        <li data-duration="5"  onClick={(ev) => handleDurationClicked(ev) }>5 min - 10$</li>
-                        <li data-duration="10" onClick={(ev) => handleDurationClicked(ev)}>10 min - 20$</li>
-                        <li data-duration="20" onClick={(ev) => handleDurationClicked(ev)}>20 min - 30$</li>
-                     </ul>
-                     <div className="schedule_time">
-                        <h4 className="heading">meeting time: </h4>
-                        <p className="desc">Please select time that doesn't conflict with scheduled times if existed</p>
-                        <div className="input_wrapper">
-                           <select ref={selectedMeetingTime} type="time" name="meeting_time" id="meetingTime">
-                              {availableTimes && availableTimes.map((availTime) => <option value={availTime.from}>{availTime.from}</option>)}
-                           </select>
-                        </div>
-                     </div>
+               <div className="content_wrapper">
 
-                     <div className="doctor_times">
-
-                        <div className="booked_times">
-                           <h5>Schuduled times</h5>
-                           <ul className="unavailable_list">
-                              {scheduledTimes && scheduledTimes.map((takenTime, i) => <TimeDuration key={i} from={takenTime.from} to={takenTime.to} />)}
-                           </ul>
+                  {bookMeetingStage == 1 ? (
+                     <form className="meeting_date" onSubmit={handleSubmit((data) => checkDayAvailability(data))}>
+                        <label htmlFor="meetingDate">Pick a date for the meeting</label>
+                        <div className="meeting_date">
+                           <input
+                              {...register("meeting_date", { required: "Please select a date for the meeting" })}
+                              type="date"
+                              name="meeting_date"
+                              id="meetingDate"
+                              min={getStringifiedCurrDate(new Date())}
+                           />
+                           <p className="error">{errors.meeting_date?.message}</p>
                         </div>
-                     </div>
-                     <div className="submit-date">
-                        <button id="scheduleMeetNextStage" onClick={(ev) => validateMeetingReq(ev)}>
-                           Confirm meeting
-                        </button>
-                     </div>
-                  </div>
-               )}
-            </form>
+                        <div className="submit-date">
+                           <button id="scheduleMeetNextStage">Next</button>
+                        </div>
+                     </form>
+                  ) : (
+                     <form onSubmit={handleSubmit((data) => submitData(data))} className="meeting_submission">
+                        <h4 className="heading">Select a duration</h4>
+                        <ul className="durations">
+                           <li data-duration="5"  onClick={(ev) => handleDurationClicked(ev) }>5 min - 10$</li>
+                           <li data-duration="10" onClick={(ev) => handleDurationClicked(ev)}>10 min - 20$</li>
+                           <li data-duration="20" onClick={(ev) => handleDurationClicked(ev)}>20 min - 30$</li>
+                        </ul>
+                        <div className="schedule_time">
+                           <h4 className="heading">Meeting time: </h4>
+                           <p className="desc">Please select time that doesn't conflict with scheduled times if existed</p>
+                           <div className="input_wrapper">
+                              <select {...register("meeting_time", {required: "Please select a time for the meeting" })} type="time" name="meeting_time" id="meetingTime">
+                                 {availableTimes && availableTimes.map((availTime) => <option value={availTime.from}>{availTime.from}</option>)}
+                              </select>
+                              <p className="error">{errors.meeting_time?.message}</p>
+                           </div>
+                        </div>
+
+                        <div className="meeting_title">
+                           <h4 className="heading">Meeting title</h4>
+                           <div className="title">
+                              <input
+                                 {...register("meeting_title", { required: "Please select a title for the meeting", minLength: {value: 5, message: "Title length should be 5 or more characters"} })}
+                                 type="text"
+                                 name="meeting_title"
+                                 id="meetingTitle"
+                              />
+                              <p className="error">{errors.meeting_title?.message}</p>
+                           </div>
+                        </div>
+
+                        <div className="doctor_times">
+
+                           <div className="booked_times">
+                              <h5>Schuduled times</h5>
+                              <ul className="unavailable_list">
+                                 {scheduledTimes && scheduledTimes.map((takenTime, i) => <TimeDuration key={i} from={takenTime.from} to={takenTime.to} />)}
+                              </ul>
+                           </div>
+                        </div>
+                        <div className="submit-date">
+                           <button id="scheduleMeetNextStage">
+                              Confirm meeting
+                           </button>
+                        </div>
+                     </form>
+                  )}
+               </div>
+            </div>
          </div>
       </>
    );
