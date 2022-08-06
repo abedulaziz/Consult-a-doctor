@@ -2,13 +2,14 @@ import React from "react";
 
 import axios from 'axios';
 import message from '../helper-components/message';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {setAddSpecialization} from '../redux/slices/popupControllerSlice'
 
 import { useForm } from "react-hook-form";
 
 const AddSpecializationPopup = () => {
 
+  const userInfo = useSelector((state) => state.userInfo.value)
    const dispatch = useDispatch()
 
    const addNewSpecialization = async(data) => {
@@ -19,11 +20,13 @@ const AddSpecializationPopup = () => {
         const addSpecRqust = await axios({
           method: "post",
           url: "admins/new-specialization",
-          data
+          data,
+          headers: {Authorization: `Bearer ${userInfo.JWT}`, "Content-Type": "multipart/form-data" },
 
         })
         console.log(addSpecRqust);
         message(addSpecRqust.data.message, "green")
+        dispatch(setAddSpecialization(null))
 
 
      } catch (err) {
