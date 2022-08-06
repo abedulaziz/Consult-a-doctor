@@ -21,7 +21,7 @@ class Doctor_specificFactory extends Factory
             'speciality_id' => $this->faker->numberBetween(1, 7),
             'rate' => $this->faker->randomFloat(1, 1, 5),
             'about' => $this->faker->text(30),
-            'background_img' =>"1234213512354",
+            'background_img_uri' => null,
             'university' =>$this->faker->name()
         ];
     }

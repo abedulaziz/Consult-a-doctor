@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer("speciality_id");
             $table->float('rate', 9, 1);
             $table->text('about');
-            $table->binary('background_img');
+            $table->string('background_img_uri')->nullable();
             $table->string('university');
             $table->timestamps();
         });
