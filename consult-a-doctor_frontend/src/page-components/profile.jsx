@@ -16,6 +16,7 @@ import EditProfile from "../helper-components/editProfile";
 import { ReactComponent as Heart } from "../assets/icons/heart.svg";
 import { ReactComponent as Plus } from "../assets/icons/plus.svg";
 import { ReactComponent as Edit } from "../assets/icons/edit-profile.svg";
+import DefaultProfilePic from '../assets/backgrounds/default_profile_picture.svg';
 
 // helper components
 import AddBlogPopup from "../helper-components/addBlogPopup";
@@ -24,13 +25,12 @@ import { setPopupVisibility } from "../redux/slices/addBlogPopupSlice";
 import { changePopupVisib, setName, setDoctorProfilePic } from "../redux/slices/bookMeetingSlice";
 import { setEditProfilePopup, setAddBlogPopup, setBookMeetingPopup } from "../redux/slices/popupControllerSlice";
 
-import Doctor1 from "../assets/backgrounds/doctor1.jpg";
-
 const Profile = () => {
    const [loader, setLoader] = useState(<Loader />);
    const dispatch = useDispatch();
 
    let navigate = useNavigate();
+   const [backgroundPic, setBackgroundPic] = useState(null)
    const [university, setUniversity] = useState("");
    const [about, setAbout] = useState("");
    const [blogs, setBlogs] = useState([]);
@@ -59,8 +59,9 @@ const Profile = () => {
             // setFullname(doctorInfo.fname + " " + doctorInfo.lname);
             dispatch(setName({ prop: "fname", value: doctorInfo.fname }));
             dispatch(setName({ prop: "lname", value: doctorInfo.lname }));
-            dispatch(setDoctorProfilePic(doctorInfo.profile_pic));
+            dispatch(setDoctorProfilePic(doctorInfo.profile_pic_uri));
 
+            setBackgroundPic(doctorInfo.background_img_uri )
             setUniversity(doctorInfo.university);
             setAbout(doctorInfo.about);
             setBlogs(doctorInfoRqust.data.doctor_blogs);
@@ -83,7 +84,7 @@ const Profile = () => {
          {loader}
          <Header />
          <main>
-            <div className="profile_background">
+            <div className="profile_background" style={{backgroundImage: `url(${backgroundPic})`}}>
                <div className="background-info_wrapper">
                   <div className="empty_left_box"></div>
                   <div className="info-and-book_meeting">
@@ -106,7 +107,7 @@ const Profile = () => {
                   <div className="card-container">
                      <div className="doctor-card">
                         <div className="profile_img">
-                           <img src={bookMeeting.profile_pic} alt="profile picture" />
+                           <img src={bookMeeting.profile_pic ? bookMeeting.profile_pic : DefaultProfilePic} alt="profile picture" />
                            {!isAccountOwner && (
                               <div className="follow">
                                  <span>FOLLOW</span>
@@ -144,7 +145,7 @@ const Profile = () => {
                         <h3 className="posts_header">Posts</h3>
                         {isAccountOwner && (
                            <div className="profile_options">
-                              <button className="edit-profile" title="Edit profile" onClick={() => dispatch(setEditProfilePopup(<EditProfile />))}>
+                              <button className="edit-profile" title="Edit profile" onClick={() => dispatch(setEditProfilePopup(<EditProfile university={university} about={about} />))}>
                                  <Edit />
                               </button>
                               <button className="add-blog" onClick={() => dispatch(setAddBlogPopup(<AddBlogPopup />))}>
@@ -160,7 +161,7 @@ const Profile = () => {
                               return (
                                  <Post
                                     key={index}
-                                    profilePic={Doctor1}
+                                    profilePic={bookMeeting.profile_pic ? bookMeeting.profile_pic : DefaultProfilePic}
                                     fullName={bookMeeting.fname + " " + bookMeeting.lname}
                                     content={blog.content}
                                     createdAt={`${date.getFullYear()}/${date.getMonth()}/${date.getDay()}`}

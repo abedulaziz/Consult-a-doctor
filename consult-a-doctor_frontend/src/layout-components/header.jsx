@@ -9,6 +9,7 @@ import NavItem from '../helper-components/navItem';
 
 // icons
 import {ReactComponent as Menu} from '../assets/icons/menu.svg';
+import DefaultProfilePic from '../assets/backgrounds/default_profile_picture.svg';
 
 import Logo from '../assets/brand/transparent_background_brand.png';
 import MobileLogo from '../assets/brand/transparent_background_logo.png';
@@ -139,7 +140,7 @@ const Header = () => {
           <>
             <div className='profile-pic' onClick={() => getProfileInfo()}>
               <div className="pic_wrapper">
-                <img src={userInfo.profile_pic} alt="profile" />
+                <img src={userInfo.profile_pic ? userInfo.profile_pic : DefaultProfilePic } alt="profile" />
               </div>
             </div>
             <div className="menu">
