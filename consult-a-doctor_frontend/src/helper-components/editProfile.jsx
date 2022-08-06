@@ -6,6 +6,7 @@ import message from "../helper-components/message";
 import { insertInfo } from "../redux/slices/userSlice";
 import { changePopupVisib, setDoctorFullname } from "../redux/slices/bookMeetingSlice";
 import { setEditProfilePopup } from "../redux/slices/popupControllerSlice";
+import DefaultProfilePic from '../assets/backgrounds/default_profile_picture.svg'
 
 // import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -78,7 +79,7 @@ const EditProfile = ({university, about}) => {
          <div className="form_wrapper">
             <a href="#" className="cd-popup-close img-replace" onClick={() => dispatch(setEditProfilePopup(null)) }></a>
             <div className="profile_pic">
-               <img src={bookMeeting.profile_pic} />
+               <img src={bookMeeting.profile_pic ? bookMeeting.profile_pic : DefaultProfilePic} />
             </div>
 
             <h2 className="heading">Edit your profile</h2>

@@ -8,6 +8,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 
 import message from "../helper-components/message";
+import DefaultProfilePic from '../assets/backgrounds/default_profile_picture.svg'
 
 const ScheduleMeeting = ({ doctor_id }) => {
    const weekDays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
@@ -107,7 +108,7 @@ const ScheduleMeeting = ({ doctor_id }) => {
          <div className="edit_profile">
             <div className="form_wrapper">
                <div className="profile_pic">
-                  <img src={userInfo.profile_pic} />
+                  <img src={userInfo.profile_pic ? userInfo.profile_pic : DefaultProfilePic} />
                </div>
                <span href="#" className="cd-popup-close img-replace" onClick={() => dispatch(setBookMeetingPopup(null))}></span>
 

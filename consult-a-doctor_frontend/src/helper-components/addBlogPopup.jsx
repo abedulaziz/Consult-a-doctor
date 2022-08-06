@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setAddBlogPopup } from "../redux/slices/popupControllerSlice";
+import message from '../helper-components/message';
 
 import axios from "axios";
 
@@ -20,6 +21,9 @@ const AddBlogPopup = () => {
                },
             });
             console.log(doctorInfoRqust.data);
+            message(doctorInfoRqust.data.message, "green")
+            dispatch(setAddBlogPopup(null))
+
          } catch (error) {
             console.log(error);
          }
