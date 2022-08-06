@@ -13,11 +13,9 @@ class UsersController extends Controller
     public function updateUserInfo(Request $request, $user_id) {
 
         $validator = Validator::make($request->all(), [
-            'fname' => 'required|string|min:2|max:50',
-            'lname' => 'required|string|min:2|max:50',
-            'password' => 'required|string|min:6',
-            'date_of_birth' => 'required|date',
-            "profile_pic" => 'required|image'
+            'fname' => 'string|min:2|max:50',
+            'lname' => 'string|min:2|max:50',
+            "profile_pic" => 'image'
         ]);
 
         if ($validator->fails()) {
@@ -25,28 +23,37 @@ class UsersController extends Controller
         }
 
         $user = User::find($user_id);
+        $imageURI = generateURIPath($request, "profile_pic");
 
-        $user->update([
-            "fname" => $request->fname,
-            "lname" => $request->lname,
-            "password" => $request->password,
-            "date_of_birth" => $request->date_of_birth,
-            "profile_pic" => $request->profile_pic,
-        ]);
+        if ($user->type == "patient") {
+            $user->update([
+                "fname" => $request->fname,
+                "lname" => $request->lname,
+                "profile_pic_uri" => $imageURI,
+            ]);
+        }
 
         if ($user->type == "doctor") {
 
             $validator = Validator::make($request->all(), [
-                'about' => 'required|string|min:10|max:100',
-                'university' => 'required|string'
+                'about' => 'string|min:10|max:100',
+                'university' => 'string',
+                "background_image" => "image"
             ]);
             if ($validator->fails()) {
                 return response()->json($validator->errors(), 400);
             }
 
+            $backgroundImgURI = generateURIPath($request, "background_img");
+            $user->update([
+                "fname" => $request->fname,
+                "lname" => $request->lname,
+                "profile_pic_uri" => $imageURI,
+            ]);
             $user->getDoctorSpecifics->update([
                 "about" => $request->about,
                 "university" => $request->university,
+                "background_img_uri" => $backgroundImgURI
             ]);
         }
 
@@ -104,10 +111,6 @@ class UsersController extends Controller
                 "message" => "Unvalid time"
             ]);
         }
-
-
-        $newtimestamp = strtotime('05:05:03 + 160 minutes');
-        echo date('H:i:s', $newtimestamp);
 
         return response()->json([
             "available_periods" => $selectedDayAppoints
@@ -167,4 +170,21 @@ function getHourlyWorkPeriods($workPeriods) {
       }
     }
     return $finalArray;
+}
+
+
+function generateURIPath($request, $file) {
+    $imageURI;
+
+    if ($request->hasFile($file)) {
+        $profilePicture = $request->file($file);
+        $imageName = $profilePicture->getClientOriginalName();
+        $path = "public/user_images/";
+
+        $profilePicture->storeAs($path, $imageName);
+
+        $imageURI = asset($path . $imageName);
+    }
+
+    return $imageURI;
 }
