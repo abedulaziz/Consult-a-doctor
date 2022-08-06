@@ -46,8 +46,8 @@ function App() {
           <Route path='/sign-in' element={<SignIn /> }></Route>
           <Route path='/sign-up' element={<SignUp />}></Route> 
           <Route path='/doctor/sign-up' element={<DoctorSignUp />}></Route>
-          <Route path='/admin/specializations' element={<AdminSpecializations />} ></Route>
-          <Route path='/admin/doctor_requests' element={<DoctorRequests />} ></Route>
+          <Route path='/admins/:admin_id/specializations' element={<AdminSpecializations />} ></Route>
+          <Route path='/admins/:admin_id/doctor_requests' element={<DoctorRequests />} ></Route>
         </Routes>
       </Router>
 

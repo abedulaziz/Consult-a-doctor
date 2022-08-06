@@ -31,7 +31,7 @@ const SignIn = () => {
       const userInfo = signInRqust.data
       dispatch(insertInfo({access_token: userInfo.access_token, user_id: userInfo.user_id, profile_pic: userInfo.profile_pic}))
 
-      navigate('/')
+      userInfo.user_type === "admin" ? navigate(`/admins/${userInfo.user_id}/specializations`) : navigate('/')
       
     } catch (err) {
       regisError.current.classList.add("regis_error")
