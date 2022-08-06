@@ -15,7 +15,7 @@ class UsersController extends Controller
         $validator = Validator::make($request->all(), [
             'fname' => 'string|min:2|max:50',
             'lname' => 'string|min:2|max:50',
-            "profile_pic" => 'image'
+            "profile_pic" => 'image|max:1000|nullable'
         ]);
 
         if ($validator->fails()) {
@@ -38,13 +38,13 @@ class UsersController extends Controller
             $validator = Validator::make($request->all(), [
                 'about' => 'string|min:10|max:100',
                 'university' => 'string',
-                "background_image" => "image"
+                "background_pic" => "image"
             ]);
             if ($validator->fails()) {
                 return response()->json($validator->errors(), 400);
             }
 
-            $backgroundImgURI = generateURIPath($request, "background_img");
+            $backgroundImgURI = generateURIPath($request, "background_pic");
             $user->update([
                 "fname" => $request->fname,
                 "lname" => $request->lname,
@@ -174,7 +174,7 @@ function getHourlyWorkPeriods($workPeriods) {
 
 
 function generateURIPath($request, $file) {
-    $imageURI;
+    $imageURI = null;
 
     if ($request->hasFile($file)) {
         $profilePicture = $request->file($file);
