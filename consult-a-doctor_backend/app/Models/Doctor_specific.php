@@ -13,7 +13,8 @@ class Doctor_specific extends Model
     protected $fillable = [
         "about",
         "background_img",
-        "university"
+        "university",
+        "background_img_uri"
     ];
 
     public function getDoctorSpecific() {
