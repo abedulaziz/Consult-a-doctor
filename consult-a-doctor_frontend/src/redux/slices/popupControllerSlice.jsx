@@ -4,7 +4,8 @@ const initialState = {
   value: {
     editProfilePopup: null,
     addBlogPopup: null,
-    bookMeetingPopup: null
+    bookMeetingPopup: null,
+    addSpecialization: null
   },
 }
 
@@ -20,11 +21,14 @@ export const popupControllerSlice = createSlice({
     },
     setBookMeetingPopup: (state, action) => {
       state.value.bookMeetingPopup = action.payload
+    },
+    setAddSpecialization: (state, action) => {
+      state.value.addSpecialization = action.payload
     }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setEditProfilePopup, setAddBlogPopup, setBookMeetingPopup } = popupControllerSlice.actions
+export const { setEditProfilePopup, setAddBlogPopup, setBookMeetingPopup, setAddSpecialization } = popupControllerSlice.actions
 
 export default popupControllerSlice.reducer

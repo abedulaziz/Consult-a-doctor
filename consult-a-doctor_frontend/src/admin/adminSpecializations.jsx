@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {setAddSpecialization} from '../redux/slices/popupControllerSlice'
 
 import axios from "axios";
 
@@ -14,9 +16,11 @@ import AddSpecializationPopup from '../helper-components/addSpecializationPopup'
 import { ReactComponent as Plus } from "../assets/icons/plus.svg";
 
 const AdminSpecializations = () => {
-   const [specializationPopup, setSpecializationPopup] = useState(null)
    const [specializationsInfo, setSpecializationsInfo] = useState(null);
 
+   const popupController = useSelector(state => state.popupController.value) 
+   const dispatch = useDispatch()
+   
    useEffect(() => {
       try {
          const getSpecializations = async () => {
@@ -44,7 +48,7 @@ const AdminSpecializations = () => {
                   <p>Specializations added here will be global and doctors can commit to.</p>
                </div>
 
-               <div className="add_spec_icon" onClick={() => setSpecializationPopup(<AddSpecializationPopup />)}>
+               <div className="add_spec_icon" onClick={() => dispatch(setAddSpecialization(<AddSpecializationPopup />))}>
                   <Plus />
                </div>
             </div>
@@ -69,7 +73,7 @@ const AdminSpecializations = () => {
                </table>
             </div>
          </div>
-         {specializationPopup}
+         {popupController.addSpecialization}
       </div>
    );
 };
