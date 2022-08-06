@@ -3,6 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { t } from "i18next";
 import axios from "axios";
+import Loader from "../helper-components/loader";
 
 // layout components
 import Header from "../layout-components/header";
@@ -12,6 +13,7 @@ import Specialization from "../layout-components/specialization";
 const Specializations = () => {
   const [specializations, setSpecializations] = React.useState(null);
 
+  const [loader, setLoader] = React.useState(<Loader />);
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -21,6 +23,7 @@ const Specializations = () => {
 
         console.log(specRqust);
         setSpecializations(specRqust.data.specializations);
+        setLoader(null)
       };
       getSpecializations();
     } catch (err) {
@@ -30,6 +33,7 @@ const Specializations = () => {
 
   return (
     <>
+    {loader}
       <Header />
       <main>
         <div className="specs">

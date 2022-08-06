@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Loader from '../helper-components/loader';
 
 import { t } from "i18next";
 
@@ -15,6 +16,7 @@ import { ReactComponent as SearchIcon } from "../assets/icons/search.svg";
 
 
 const Doctors = () => {
+  const [loader, setLoader] = React.useState(<Loader />);
   const [doctors, setDoctors] = React.useState(null);
   const [searchValue, setSearchValue] = React.useState("")
 
@@ -26,6 +28,7 @@ const Doctors = () => {
         const doctorsRqust = await axios.get(`/${specialization_id}/doctors`);
         console.log(doctorsRqust)
         setDoctors(doctorsRqust.data.doctors);
+        setLoader(null)
       };
       getSpecDoctors();
     } catch (err) {
@@ -75,6 +78,7 @@ const Doctors = () => {
 
   return (
     <>
+      {loader}
       <Header />
 
       <main>

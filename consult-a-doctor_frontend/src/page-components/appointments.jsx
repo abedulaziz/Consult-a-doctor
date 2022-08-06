@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import Loader from '../helper-components/loader';
 
 // layout components
 import Header from "../layout-components/header";
@@ -10,6 +11,7 @@ import Footer from "../layout-components/footer";
 import Appointment from "../layout-components/appointment";
 
 const Appointments = () => {
+  const [loader, setLoader] = React.useState(<Loader />);
   const [appoinAsDoctor, setAppoinAsDoctor] = React.useState(null);
   const [appoinAsPatient, setAppoinAsPatient] = React.useState(null);
 
@@ -27,6 +29,7 @@ const Appointments = () => {
         console.log(appoinRqust);
         setAppoinAsDoctor(appoinRqust.data.appointmentsAsDoctor);
         setAppoinAsPatient(appoinRqust.data.appointmentsAsPatient);
+        setLoader(null)
       };
       getAppointments();
     } catch (err) {
@@ -36,6 +39,7 @@ const Appointments = () => {
 
   return (
     <>
+    {loader}
       <Header />
 
       <div className="appointments">
