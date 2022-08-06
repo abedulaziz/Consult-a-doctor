@@ -179,7 +179,7 @@ function generateURIPath($request, $file) {
     if ($request->hasFile($file)) {
         $profilePicture = $request->file($file);
         $imageName = $profilePicture->getClientOriginalName();
-        $path = "public/user_images/";
+        $path = "storage/user_images/";
 
         $profilePicture->storeAs($path, $imageName);
 

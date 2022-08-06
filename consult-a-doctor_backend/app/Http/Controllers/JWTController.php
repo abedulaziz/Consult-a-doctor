@@ -88,7 +88,7 @@ class JWTController extends Controller
         return response()->json([
             "access_token" => $token,
             "user_id" => auth()->id(),
-            "profile_pic" => auth()->user()->profile_pic
+            "profile_pic" => auth()->user()->profile_pic_uri
         ]);
     }
 
