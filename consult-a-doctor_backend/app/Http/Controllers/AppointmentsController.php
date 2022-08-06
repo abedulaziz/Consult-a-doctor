@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Appointment;
 use App\Models\User;
+use Validator;
 
 class AppointmentsController extends Controller
 {
@@ -28,7 +29,7 @@ class AppointmentsController extends Controller
 
             }
 
-            $users = User::select("fname", "lname", "profile_pic")->findMany([$meetingInfo->patient_id, $meetingInfo->doctor_id]);
+            $users = User::select("id", "fname", "lname", "profile_pic")->findMany([$meetingInfo->patient_id, $meetingInfo->doctor_id]);
 
             return response()->json([
                 "meeting_info" => $users,
@@ -40,5 +41,32 @@ class AppointmentsController extends Controller
                 "message" => "You're unauthorized"
             ], 403);
         }
+    }
+
+
+    public function setAppointment(Request $request) {
+
+        $validator = Validator::make($request->all(), [
+            'date' => 'required|date|after_or_equal:today',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $newAppointment = new Appointment;
+        $newAppointment->doctor_id = $request->doctor_id;
+        $newAppointment->patient_id = $request->patient_id;
+        $newAppointment->title = $request->title;
+        $newAppointment->date = $request->date;
+        $newAppointment->from = $request->from;
+        $newAppointment->to = $request->to;
+        $newAppointment->duration = $request->duration;
+
+        $newAppointment->save();
+
+        return response()->json([
+            "message" => "Appointment booked successfuly"
+        ], 200);
     }
 }
