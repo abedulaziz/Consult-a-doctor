@@ -8,11 +8,13 @@ import Header from "./layout/header";
 
 // helper components
 import SpecTableRow from "./admin_helper_components/specializationTableRow";
+import AddSpecializationPopup from '../helper-components/addSpecializationPopup';
 
 // icons
 import { ReactComponent as Plus } from "../assets/icons/plus.svg";
 
 const AdminSpecializations = () => {
+   const [specializationPopup, setSpecializationPopup] = useState(null)
    const [specializationsInfo, setSpecializationsInfo] = useState(null);
 
    useEffect(() => {
@@ -36,13 +38,13 @@ const AdminSpecializations = () => {
          <div className="container">
             <Header />
 
-            <div className="adding_spec">
+            <div className="adding_spec" >
                <div className="text">
                   <h3>Add New Specialization</h3>
                   <p>Specializations added here will be global and doctors can commit to.</p>
                </div>
 
-               <div className="add_spec_icon">
+               <div className="add_spec_icon" onClick={() => setSpecializationPopup(<AddSpecializationPopup />)}>
                   <Plus />
                </div>
             </div>
@@ -67,6 +69,7 @@ const AdminSpecializations = () => {
                </table>
             </div>
          </div>
+         {specializationPopup}
       </div>
    );
 };
