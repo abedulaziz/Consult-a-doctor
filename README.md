@@ -11,7 +11,7 @@
 <br><br>
 
 
-<img src="./readme/title2.svg"/>
+<img src="./readme/title2.svg" id="-project-philosophy"/>
 
 
 > Consult a doctor is a medical web application targets patients and doctors to benefit each of them. You can consider the application as your always-ready doctor.
@@ -38,9 +38,9 @@
 
 <br><br>
 
-<img src="./readme/title3.svg"/>
+<img src="./readme/title3.svg" id="-wireframes" />
 
-> This design was planned before on paper, then moved to Figma app for the fine details.
+> This design was planned before on paper, then moved to Figma app for the fine details. Here are some figma samples.
 Note that the app styling is a fresh CSS modules without using any library or preprocessor.
 
 | Landing  | Profile  |
@@ -58,22 +58,23 @@ Note that the app styling is a fresh CSS modules without using any library or pr
 
 <br><br>
 
-<img src="./readme/title4.svg"/>
+<img src="./readme/title4.svg" id="-tech-stack" />
 
-Here's a brief high-level overview of the tech stack the Well app uses:
+Here's a brief high-level overview of the tech stack the Consult a Doctor uses:
 
-- This project uses the [Flutter app development framework](https://flutter.dev/). Flutter is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile, desktop, and the web.
-- For persistent storage (database), the app uses the [Hive](https://hivedb.dev/) package which allows the app to create a custom storage schema and save it to a local database.
-- To send local push notifications, the app uses the [flutter_local_notifications](https://pub.dev/packages/flutter_local_notifications) package which supports Android, iOS, and macOS.
-  - 🚨 Currently, notifications aren't working on macOS. This is a known issue that we are working to resolve!
-- The app uses the font ["Work Sans"](https://fonts.google.com/specimen/Work+Sans) as its main font, and the design of the app adheres to the material design guidelines.
+- This project uses the [React frontend framework for the frontend](https://reactjs.org/). React is a free and open-source front-end JavaScript library for building user interfaces based on UI components.
+
+- For the storage (database), the app uses the [MySQL](https://www.mysql.com/) relational database management system.
+
+- The app uses [Laravel](https://laravel.com/) web application framework for dealing with the backend and filtering/authorizing HTTP requests.
 
 
 
 <br><br>
-<img src="./readme/title5.svg"/>
 
-> Using the mentioned tech stack and the wireframes build with figma from the user stories we have, the implementation of the app is shown as below, these are screenshots and gifs from the real app.
+<img src="./readme/title5.svg" id="-impplementation" />
+
+> Using the mentioned tech stack and the wireframes build with figma from the user stories we have, the implementation of the app is shown as below, these are screenshot samples from the real app.
 
 | Landing  | Profile  |
 | -----------------| -----|
@@ -89,7 +90,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 
 <br><br>
-<img src="./readme/title6.svg"/>
+<img src="./readme/title6.svg" id="-how-to-run" />
 
 
 > This is an example of how you may give instructions on setting up your project locally.
