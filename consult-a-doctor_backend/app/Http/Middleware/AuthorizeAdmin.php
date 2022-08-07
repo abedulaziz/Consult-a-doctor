@@ -16,11 +16,18 @@ class AuthorizeAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->type == "admin") {
-            return $next($request);
+        if (auth()->id()) {
+
+            if (auth()->user()->type == "admin") {
+                return $next($request);
+            }
+            return response()->json([
+                "message" => "Unautherized action"
+            ], 403);
+
         }
         return response()->json([
-            "message" => "Unautherized action"
-        ], 403);
+            "message" => "Your are unauthenticated"
+        ], 401);
     }
 }
