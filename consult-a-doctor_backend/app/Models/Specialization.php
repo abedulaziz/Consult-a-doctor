@@ -10,6 +10,11 @@ class Specialization extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        "name",
+        "background_image"
+    ];
+
     public function specialityDoctors() {
 
     return $this->hasMany(Doctor_specific::class, "speciality_id");

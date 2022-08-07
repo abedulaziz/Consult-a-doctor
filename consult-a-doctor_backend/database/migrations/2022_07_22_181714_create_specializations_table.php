@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('specializations', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->binary("background_image")->nullable;
+            $table->string("background_image")->nullable;
             $table->timestamps();
         });
     }
