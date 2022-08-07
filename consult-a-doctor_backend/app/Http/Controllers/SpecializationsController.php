@@ -52,13 +52,13 @@ class specializationsController extends Controller
     }
 
     // delete existing specialization
-    public function deleteSpecialization(Request $request) {
+    public function deleteSpecialization($specialization_id) {
         Specialization::where([
-            "id" => $request->id
+            "id" => $specialization_id
         ])->delete();
 
         return response()->json([
-            "messaege" => "Specialization deleted successfully"
+            "message" => "Specialization deleted successfully"
         ]);
     }
 }
