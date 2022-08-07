@@ -73,7 +73,15 @@ class Account_requestsController extends Controller
     public function acceptRequest(Request $request, $account_req_id) {
 
         $userID = User::count() + 1;
-        return $request->availabilities;
+        $availOptions = $request->only("availabilities");
+        $availData = [];
+
+
+        foreach($availOptions as $key => $value) {
+            $availData[] = $value;
+
+        }
+        User::find($userID)->getDoctorAvailabilities->createMany($availData);
 
         User::create([
             'fname' => $request->fname,
@@ -88,16 +96,11 @@ class Account_requestsController extends Controller
             'speciality_id' => $request->speciality_id,
             'about' => $request->about,
             'university' => $request->university,
-            'doctor_id' => $userID
+            'doctor_id' => $userID,
+            'rate'=> 0
         ]);
 
-        foreach($request->availabilities as $availability) {
 
-        }
-
-        Availability::create([
-
-        ]);
 
         Account_request::where([
             "id" => $account_req_id

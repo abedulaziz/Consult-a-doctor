@@ -14,7 +14,10 @@ class Doctor_specific extends Model
         "about",
         "background_img",
         "university",
-        "background_img_uri"
+        "background_img_uri",
+        "speciality_id",
+        'rate',
+        "doctor_id"
     ];
 
     public function getDoctorSpecific() {
