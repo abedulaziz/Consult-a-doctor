@@ -19,7 +19,6 @@ const AccountRequest = ({ID, fname, lname, email, gender, date_of_birth, special
            url: `/users/${ID}/deny`,
            headers: {Authorization: `Bearer ${userInfo.JWT}`, "Content-Type": "multipart/form-data" },
          });
-         console.log(denyRqust)
          message(denyRqust.data.message, "green")
 
        } catch(err) {
@@ -49,7 +48,6 @@ const AccountRequest = ({ID, fname, lname, email, gender, date_of_birth, special
            data: accountData,
            headers: {Authorization: `Bearer ${userInfo.JWT}`, "Content-Type": "multipart/form-data" },
          });
-         console.log(acceptRqust)
          message(acceptRqust.data.message, "green")
 
        } catch(err) {

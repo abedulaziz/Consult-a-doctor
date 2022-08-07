@@ -52,7 +52,6 @@ const Profile = () => {
                   Authorization: `Bearer ${userInfo.JWT}`,
                },
             });
-            console.log(doctorInfoRqust.data);
 
             const doctorInfo = doctorInfoRqust.data.doctor_info;
 

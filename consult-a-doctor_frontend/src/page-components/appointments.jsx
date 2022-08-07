@@ -26,7 +26,6 @@ const Appointments = () => {
           }
         });
 
-        console.log(appoinRqust);
         setAppoinAsDoctor(appoinRqust.data.appointmentsAsDoctor);
         setAppoinAsPatient(appoinRqust.data.appointmentsAsPatient);
         setLoader(null)

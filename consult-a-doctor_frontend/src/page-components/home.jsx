@@ -31,7 +31,6 @@ const Home = () => {
       try {
          const getTopDoctors = async () => {
             const topDoctorsRqust = await axios.get("/users/top-four-doctors");
-            console.log(topDoctorsRqust);
             setTopDoctors(topDoctorsRqust.data.topDoctors);
          };
          getTopDoctors();
@@ -43,7 +42,6 @@ const Home = () => {
       const animateTopDoctors = () => {
          const parent = topDoctorsSection.current;
          const secondChild = parent.childNodes[1]
-         console.log(parent.querySelector(".top_doctor"));
          // secondChild.style.right = "100px"
          
          setInterval(() => {

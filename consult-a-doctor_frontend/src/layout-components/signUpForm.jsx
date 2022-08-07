@@ -40,14 +40,11 @@ const SignUpForm = ({ isDoctorSignUp = false }) => {
             );
             navigate("/");
 
-            console.log(registerRqust);
          } catch (err) {
-            console.log(err);
             alert("Email or/and password is incorrect.");
          }
       }
 
-      console.log(registrationData);
    };
 
    return (

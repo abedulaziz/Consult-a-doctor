@@ -23,7 +23,6 @@ const EditProfile = ({university, about}) => {
    const dispatch = useDispatch();
 
    const editProfileData = async (data) => {
-      console.log(data);
       const {fname, lname, about, university, profile_pic, background_pic} = data
 
       const postedData = {
@@ -32,7 +31,6 @@ const EditProfile = ({university, about}) => {
          about,
          university,
       }
-      console.log(profile_pic)
       if (profile_pic.length) postedData["profile_pic"] = profile_pic[0]
       if (background_pic.length) postedData["background_pic"] = background_pic[0]
 
@@ -44,7 +42,6 @@ const EditProfile = ({university, about}) => {
            data: postedData,
            headers: {Authorization: `Bearer ${userInfo.JWT}`, "Content-Type": "multipart/form-data" },
          });
-         console.log(updateInfoRqust)
          message(updateInfoRqust.data.message, "green")
          dispatch(setEditProfilePopup(null))
 

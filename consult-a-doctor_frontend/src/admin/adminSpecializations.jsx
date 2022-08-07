@@ -25,14 +25,12 @@ const AdminSpecializations = () => {
       try {
          const getSpecializations = async () => {
             const specRqust = await axios.get("/specializations");
-            console.log(specRqust);
 
             const specializations = specRqust.data.specializations;
             setSpecializationsInfo(specializations);
          };
          getSpecializations();
       } catch (err) {
-         console.log(err);
       }
    }, []);
 

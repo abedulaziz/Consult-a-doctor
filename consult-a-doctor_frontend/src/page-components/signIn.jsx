@@ -27,7 +27,6 @@ const SignIn = () => {
         email: data.email,
         password: data.password
       })
-      console.log(signInRqust);
       const userInfo = signInRqust.data
       dispatch(insertInfo({access_token: userInfo.access_token, user_id: userInfo.user_id, profile_pic: userInfo.profile_pic}))
 

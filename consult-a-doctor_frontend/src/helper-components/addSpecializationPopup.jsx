@@ -13,7 +13,6 @@ const AddSpecializationPopup = () => {
    const dispatch = useDispatch()
 
    const addNewSpecialization = async(data) => {
-      console.log(data);
       data.specialization_image = data.specialization_image[0]
 
       try {
@@ -24,7 +23,6 @@ const AddSpecializationPopup = () => {
           headers: {Authorization: `Bearer ${userInfo.JWT}`, "Content-Type": "multipart/form-data" },
 
         })
-        console.log(addSpecRqust);
         message(addSpecRqust.data.message, "green")
         dispatch(setAddSpecialization(null))
 

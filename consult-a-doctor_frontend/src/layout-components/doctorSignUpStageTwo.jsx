@@ -44,7 +44,6 @@ const DoctorSignUpStageTwo = () => {
       doctorAccountRqust.speciality_id = data.speciality_id;
       doctorAccountRqust.about = data.about;
 
-      console.log(doctorAccountRqust);
 
       try {
          await axios.post("users/doctor-account-request", doctorAccountRqust);
@@ -59,7 +58,6 @@ const DoctorSignUpStageTwo = () => {
       const getSpecializations = async () => {
          const SpecRqust = await axios.get("/specializations");
 
-         console.log(SpecRqust);
          setSpecializations(SpecRqust.data.specializations);
       };
       getSpecializations();

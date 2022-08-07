@@ -13,7 +13,6 @@ const DoctorRequests = () => {
       try {
          const getAccountRequests = async () => {
             const doctorAccountRqust = await axios.get("/users/get-doctor-account-requests");
-            console.log(doctorAccountRqust);
 
             const accountRequests = doctorAccountRqust.data.account_requests;
             setAccountRequest(accountRequests);

@@ -11,7 +11,6 @@ const AddBlogPopup = () => {
    const blogContent = React.useRef(null);
 
    const submitBlog = async () => {
-      console.log(blogContent.current.value.length);
       if (blogContent.current.value.length !== 0) {
          try {
             let rqustBody = { content: blogContent.current.value };
@@ -20,7 +19,6 @@ const AddBlogPopup = () => {
                   Authorization: `Bearer ${userInfo.JWT}`,
                },
             });
-            console.log(doctorInfoRqust.data);
             message(doctorInfoRqust.data.message, "green")
             dispatch(setAddBlogPopup(null))
 

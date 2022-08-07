@@ -34,7 +34,6 @@ const Options = ({ children }) => {
       ev.currentTarget.classList.add("media-off");
       mediaSetting[ev.currentTarget.dataset.type] = false;
     }
-    console.log(mediaSetting);
     if (mediaSetting.video === false && mediaSetting.audio === false) myVideo.current.srcObject = null;
     else
       navigator.mediaDevices.getUserMedia(mediaSetting).then((myStream) => {

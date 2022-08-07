@@ -11,7 +11,6 @@ import Notifications from "../WebRTC-components/notifications";
 
 const Meeting = () => {
    const { me, name, setMyName, stream, setMeetingToName, setMeetingToMeetingID } = useContext(SocketContext);
-   console.log(me);
    const { meeting_id } = useParams();
    const currentUserInfo = useSelector((state) => state.userInfo.value);
 
@@ -30,7 +29,6 @@ const Meeting = () => {
             );
             const meetingInfo = meetingIDRqust.data.meeting_info;
 
-            console.log(meetingIDRqust);
             setMeetingToMeetingID(meetingIDRqust.data.second_party_meeting_id);
 
             if (meetingInfo[0].id == currentUserInfo.ID) {

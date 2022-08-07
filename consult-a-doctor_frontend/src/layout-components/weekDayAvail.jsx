@@ -19,7 +19,6 @@ const WeekDayAvail = ({weekDay, name, id}) => {
   const dispatch = useDispatch()
   const weekDayAvail = availabilities[name]
 
-  // console.log(weekDayAvail);
 
 
 

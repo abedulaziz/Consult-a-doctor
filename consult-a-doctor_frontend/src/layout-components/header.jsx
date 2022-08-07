@@ -65,7 +65,6 @@ const Header = () => {
         }
       })
 
-      console.log(userInfoRqust)
       const info = userInfoRqust.data.user_info
 
       if (info.type === "doctor") {

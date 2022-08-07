@@ -21,7 +21,6 @@ const Specializations = () => {
       const getSpecializations = async () => {
         const specRqust = await axios.get("/specializations");
 
-        console.log(specRqust);
         setSpecializations(specRqust.data.specializations);
         setLoader(null)
       };

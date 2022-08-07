@@ -43,7 +43,6 @@ const ScheduleMeeting = ({ doctor_id }) => {
                },
             }
          );
-         console.log(workPeriodsRqust.data);
 
          setAvailableTimes(workPeriodsRqust.data.available_periods);
          setScheduledTiems(workPeriodsRqust.data.other_appointments);
@@ -57,7 +56,6 @@ const ScheduleMeeting = ({ doctor_id }) => {
       if (selectedDuration) {
 
          const timeTo = new Date(new Date(data.meeting_date + " " + data.meeting_time).getTime() + 5 * 60000).toLocaleTimeString('en-GB', { hour12: false })
-         console.log(timeTo);
          try {
             const confirmMeeting = await axios.post(
                `meetings/appointments/set-appointment`,
@@ -76,7 +74,6 @@ const ScheduleMeeting = ({ doctor_id }) => {
                   },
                }
             );
-            console.log(confirmMeeting.data);
             message(confirmMeeting.data.message, "green")
             dispatch(setBookMeetingPopup(null))
 

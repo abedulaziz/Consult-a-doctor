@@ -49,7 +49,6 @@ const ContextProvider = ({ children }) => {
 
   const answerCall = () => {
     setCallAccepted(true)
-    console.log(userVideo);
 
     const peer = new Peer({ initiator: false, trickle: false, stream})
     
@@ -61,7 +60,6 @@ const ContextProvider = ({ children }) => {
       
       userVideo.current.srcObject = currentStream
 
-      console.log(userVideo.current.srcObject, currentStream)
     })
     peer.signal(call.signal)
 

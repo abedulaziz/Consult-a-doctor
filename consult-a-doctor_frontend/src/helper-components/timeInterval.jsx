@@ -19,7 +19,6 @@ const TimeInterval = ({weekDay, from, to}) => {
   const weekDays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
 
 
-  // console.log(timeInterval.current.parentNode);
 
   const ValidateTime = () => {
     let hourFrom = timeFrom.current.value;
@@ -99,7 +98,6 @@ const TimeInterval = ({weekDay, from, to}) => {
       <div className="trash">
         <Trash onClick={() =>{
           dispatch(deleteInterval({day:weekDay, from: timeFrom.current.value, to: timeTo.current.value}))
-          console.log(availabilities)
           }
         }  />
       </div>
