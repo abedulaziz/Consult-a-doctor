@@ -72,18 +72,7 @@ class Account_requestsController extends Controller
     }
     public function acceptRequest(Request $request, $account_req_id) {
 
-        $userID = User::count() + 1;
-        $availOptions = $request->only("availabilities");
-        $availData = [];
-
-
-        foreach($availOptions as $key => $value) {
-            $availData[] = $value;
-
-        }
-        User::find($userID)->getDoctorAvailabilities->createMany($availData);
-
-        User::create([
+        $doctor = User::create([
             'fname' => $request->fname,
             'lname' => $request->lname,
             'email' => $request->email,
@@ -92,15 +81,32 @@ class Account_requestsController extends Controller
             "gender" => $request->gender
         ]);
 
+
+        $availOptions = $request->only("availabilities");
+
+        foreach($availOptions as $value) {
+            $availData[] = $value;
+            $value = json_decode($value);
+
+            foreach ($value as $key => $val) {
+                foreach ($val as $timeInterval) {
+                    Availability::create([
+                        "doctor_id" => $doctor->id,
+                        "week_day" => $key,
+                        "from" => $timeInterval[0],
+                        "to" => $timeInterval[1]
+                    ]);
+                }
+            }
+        }
+
         Doctor_specific::create([
             'speciality_id' => $request->speciality_id,
             'about' => $request->about,
             'university' => $request->university,
-            'doctor_id' => $userID,
+            'doctor_id' => $doctor->id,
             'rate'=> 0
         ]);
-
-
 
         Account_request::where([
             "id" => $account_req_id
