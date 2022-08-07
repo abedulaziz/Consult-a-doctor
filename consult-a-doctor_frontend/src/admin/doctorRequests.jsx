@@ -53,11 +53,13 @@ const DoctorRequests = () => {
                               fname={req.fname}
                               lname={req.lname}
                               email={req.email}
+                              password={req.password}
                               gender={req.gender}
                               date_of_birth={req.date_of_birth}
-                              speciality={req.speciality}
+                              speciality_id={req.speciality_id}
                               about={req.about}
                               university={req.university}
+                              availabilities={req.availabilities}
                            />
                         ))}
                   </tbody>

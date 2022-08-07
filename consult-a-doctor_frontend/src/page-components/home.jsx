@@ -40,17 +40,25 @@ const Home = () => {
       }
 
       // top doctors section animation
-      console.log(topDoctorsSection.current);
-      const parent = topDoctorsSection.current;
-      setInterval(() => {
-         parent.appendChild(parent.childNodes[0]);
-         parent.childNodes.forEach((child) => {
-            child.classList.remove("active");
-         });
+      const animateTopDoctors = () => {
+         const parent = topDoctorsSection.current;
+         const secondChild = parent.childNodes[1]
+         console.log(parent.querySelector(".top_doctor"));
+         // secondChild.style.right = "100px"
+         
+         setInterval(() => {
+            
+            parent.appendChild(parent.childNodes[0]);
+            parent.childNodes.forEach((child) => {
+               child.classList.remove("active");
+            });
+   
+            parent.childNodes[0].style.order = "5";
+            parent.childNodes[1].classList.add("active");
+         }, 3000);
+      }
+      animateTopDoctors()
 
-         parent.childNodes[0].style.order = "5";
-         parent.childNodes[1].classList.add("active");
-      }, 3000);
    }, []);
 
    return (

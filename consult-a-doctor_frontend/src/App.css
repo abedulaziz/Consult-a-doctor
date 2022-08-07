@@ -184,7 +184,6 @@ header .header-content .account_status .sign-up_button {
    height: 100%;
    object-fit: cover;
    object-position: 50% 10%;
-   min-width: max-content;
 }
 
 header .account_status .profile-widget {
@@ -859,7 +858,7 @@ header .languages #language {
 
 .profile_background {
    margin-top: 99.53333px;
-   background-image: url("./assets/backgrounds/close-up-doctor-front-bright-background_53419-4416.webp");
+   /* background-image: url("./assets/backgrounds/close-up-doctor-front-bright-background_53419-4416.webp"); */
    background-color: var(--grayish-background-color);
    background-size: cover;
    background-position: 50% 50%;
@@ -1310,6 +1309,7 @@ header .languages #language {
 .edit_profile .form_wrapper .edit_pictures {
     display: flex;
     gap: 30px;
+    justify-content: center;
     /* margin-bottom: 20px; */
 }
 
@@ -1376,7 +1376,7 @@ header .languages #language {
 
 .edit_profile .form_wrapper .edit_pictures .background_pic_wrapper {
     width: calc(100% - 150px - 30px);
-    height: 250px
+    height: 250px;
 }
 
 
@@ -1398,12 +1398,16 @@ header .languages #language {
     width: 100%;
     height: 100%;
     border-radius: 50%;
+    object-fit: cover;
+    object-position: 50% 10%;
 }
 
 .edit_profile .form_wrapper form .button_wrapper #submitChanges{
     background-color: var(--main-theme-color);
     color: #FFF;
-    width: 100%
+    position: relative;
+    transform: translateX(-50%);
+    left: 50%;
 }
 
 
@@ -2160,6 +2164,7 @@ footer .footer_content .buttom_footer .social-media ul li {
 tr {
    border-bottom: 1px solid rgb(159, 159, 159);
    font-size: 17px;
+   position: relative;
 }
 
 .admin_background .content_table table td {
@@ -2169,7 +2174,22 @@ tr {
    font-size: 16px;
 }
 
-.admin_background .content_table table td button {
+.admin_background .content_table table .options {
+   position: absolute;
+   padding: 10px;
+   background-color: #FFF;
+   border: 1px solid gray;
+   right: 0;
+   top: 40px;
+   border-radius: 4px;
+   z-index: 999;
+}
+
+.admin_background .content_table table tr svg {
+   cursor: pointer;
+}
+
+.admin_background .content_table table button {
    border: none;
    background-color: rgb(255, 67, 67);
    color: #fff;
@@ -2178,8 +2198,8 @@ tr {
    border-radius: 4px;
 }
 
-.admin_background .content_table table td button.change_img {
-   background-color: var(--admin-theme-color);
+.admin_background .content_table table button.accept {
+   background-color:rgb(143, 236, 2);
    margin-left: 5px;
 }
 

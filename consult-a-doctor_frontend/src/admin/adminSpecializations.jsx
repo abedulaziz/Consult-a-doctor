@@ -62,7 +62,7 @@ const AdminSpecializations = () => {
                      <th>Doctors</th>
                      <th>Created at</th>
                      <th>Updated at</th>
-                     <th>Edition</th>
+                     <th></th>
                   </thead>
                   <tbody>
                      {specializationsInfo &&

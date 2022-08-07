@@ -19,20 +19,37 @@
 > There are several specializations available in the app. Patients or doctors are able to create video chat rooms with doctors and discuss their medical issue.
 
 ### User Stories
-- As a patient, I want to book meetings with doctors and inquire my medical issue 
-- As a doctor, I want to benefit materially from the meetings and add blogs on my profile concerning my medical speciality
-- As an admin, I want to add/remove specializations and accept/deny doctor account requests
+- As a patient, I want to search doctors and access thier profiles.
+- As a patient, I want to schedule a meeting with any doctor.
+- As a patient, I want to inquire my medical issue with specialized doctor.
+
+<br>
+
+- As a doctor, I want to benefit materially from the meetings.
+- As a doctor, I want to add blogs on my profile concerning my medical speciality
+- As a doctor, I want to update my profile information.
+- As a doctor, I want to set a profile picture and profile background image.
+
+<br>
+
+- As an admin, I want to add new specializations to the app.
+- As an admin, I want to delete specializations from the app.
+- As an admin, I want to accept and deny doctor account requests.
 
 <br><br>
 
 <img src="./readme/title3.svg"/>
 
 > This design was planned before on paper, then moved to Figma app for the fine details.
-Note that i didn't use any styling library or theme, all from scratch and using pure css modules
+Note that the app styling is a fresh CSS modules without using any library or preprocessor.
 
-| Landing  | Home/Search  |
+| Landing  | Profile  |
 | -----------------| -----|
 | ![Landing](./readme/wireframes/figma-landing_page.png) | ![Profile](./readme/wireframes/figma-profile.png) |
+
+| Specializations  | Doctor sign-up  |
+| -----------------| -----|
+| ![Landing](./readme/wireframes/figma-specializations.png) | ![Profile](./readme/wireframes/figma%20-%20doctor_sign_up.png) |
 
 <!-- | Artists results  | Artist's Albums  |
 | -----------------| -----|
@@ -56,11 +73,19 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 <br><br>
 <img src="./readme/title5.svg"/>
 
-> Uing the above mentioned tecch stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
+> Using the mentioned tech stack and the wireframes build with figma from the user stories we have, the implementation of the app is shown as below, these are screenshots and gifs from the real app.
 
-| Landing  | Home/Search  |
+| Landing  | Profile  |
 | -----------------| -----|
 | ![Landing](./readme/wireframes/app-landing_page.png) | ![Profile](./readme/wireframes/app-profile.png) |
+
+| sign-in | Doctor sign-up  |
+| -----------------| -----|
+| ![Landing](./readme/wireframes/app%20-%20sign_in.png) | ![Profile](./readme/wireframes/app%20-%20doctor_sign_up.png) |
+
+| Appointments  |  Specializations |
+| -----------------| -----|
+| ![Landing](./readme/wireframes/app%20-%20appointments.png) | ![Profile](./readme/wireframes/app%20-%20specializations.png) |
 
 
 <br><br>
@@ -75,25 +100,46 @@ To get a local copy up and running follow these simple example steps.
 This is an example of how to list things you need to use the software and how to install them.
 * npm
   ```sh
-  npm install npm@latest -g
+  npm install
   ```
 
 ### Installation
 
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/abedulaziz/Consult-a-doctor.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+3. Navigate to the backend folder
+   ```sh
+   cd consult-a-doctor_backend
+   ```
+4. Run laravel server
+   ```sh
+   php artisan serve
+   ```
+5. Navigate to the frontend folder
+   ```sh
+   cd ..
+   cd consult-a-doctor_frontend
+   ```
+6. Run Node.js server for the frontend
+   ```sh
+   cd npm start
+   ```
+6. Navigate to the WebRTC folder
+   ```sh
+   cd ..
+   cd WebRTC_backend
+   ```
+6. Run Node.js server for WebRTC feature
+   ```sh
+   cd npm run serve
    ```
 
 
