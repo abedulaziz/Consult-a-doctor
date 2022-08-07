@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Account_request;
+use App\Models\User;
+use App\Models\Doctor_specific;
+use App\Models\Availability;
 use Validator;
 
 use Illuminate\Validation\Rules\Enum;
@@ -26,7 +29,7 @@ class Account_requestsController extends Controller
             'password' => 'required|string|confirmed|min:6',
             'date_of_birth' => 'required|date',
             'gender' => ["required", new Enum(Gender::class)],
-            'speciality' => 'required|string',
+            'speciality_id' => 'required|integer',
             'about' => 'required|string',
             'university' => 'required|string',
             'availabilities' => 'required|json'
@@ -49,11 +52,59 @@ class Account_requestsController extends Controller
 
     public function getAccountRequests() {
 
-        $accountReq = Account_request::select("id", "fname", "lname", "email", "gender", "date_of_birth", "speciality", "about", "university", "created_at")->get();
+        $accountReq = Account_request::get();
 
 
         return response()->json([
             "account_requests" => $accountReq
+        ]);
+    }
+
+
+    public function denyRequest($account_req_id) {
+        Account_request::where([
+            "id" => $account_req_id
+        ])->delete();
+
+        return response()->json([
+            "message" => "Account request deleted successfully"
+        ]);
+    }
+    public function acceptRequest(Request $request, $account_req_id) {
+
+        $userID = User::count() + 1;
+        return $request->availabilities;
+
+        User::create([
+            'fname' => $request->fname,
+            'lname' => $request->lname,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            "date_of_birth" => $request->date_of_birth,
+            "gender" => $request->gender
+        ]);
+
+        Doctor_specific::create([
+            'speciality_id' => $request->speciality_id,
+            'about' => $request->about,
+            'university' => $request->university,
+            'doctor_id' => $userID
+        ]);
+
+        foreach($request->availabilities as $availability) {
+
+        }
+
+        Availability::create([
+
+        ]);
+
+        Account_request::where([
+            "id" => $account_req_id
+        ])->delete();
+
+        return response()->json([
+            "message" => "Account request accepted successfully"
         ]);
     }
 }

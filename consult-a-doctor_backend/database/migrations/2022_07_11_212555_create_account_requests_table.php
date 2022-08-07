@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->enum('gender', array("male", "female"));
             $table->date('date_of_birth');
-            $table->string("speciality");
+            $table->integer("speciality_id");
             $table->text('about');
             $table->string('university');
             $table->JSON('availabilities');
