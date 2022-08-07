@@ -9,11 +9,11 @@ class Availability extends Model
 {
     use HasFactory;
 
-    protected $casts = [
-        "monday" => "array",
-        "tuesday" => "array",
-        "wednesday" => "array",
-        "thursday" => "array",
-        "friday" => "array"
+    protected $fillable = [
+        "doctor_id",
+        "from",
+        "to",
+        "week_day"
     ];
+
 }

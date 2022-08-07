@@ -83,4 +83,6 @@ Route::group(["middleware" => "verifyOwnership"], function () {
 Route::group(["middleware" => "authAdmin"], function() {
     Route::post("/admins/new-specialization", [SpecializationsController::class, "addNewSpecialization"]);
     Route::delete("/admins/delete-specialization/{specialization_id}", [SpecializationsController::class, "deleteSpecialization"]);
+    Route::delete("/users/{account_req_id}/deny", [Account_requestsController::class, 'denyRequest']);
+    Route::post("/users/{account_req_id}/accept", [Account_requestsController::class, 'acceptRequest']);
 });
