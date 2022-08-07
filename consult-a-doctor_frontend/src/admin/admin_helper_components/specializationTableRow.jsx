@@ -38,7 +38,6 @@ const SpecializationTableRow = ({ ID, spec_name, doctorsCount, created_at, updat
             <td onClick={() => setRowOptionsVisib(rowOptionsVisib == "none" ? "block" : "none")}><More /></td>
             <div className="options" style={{display: rowOptionsVisib}}>
                <button className="delete" onClick={(ev) => deleteSpec(ev)}>Delete</button>
-               <button className="change_img">Change image</button>
             </div>
          </tr>
 
