@@ -3,6 +3,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteInterval, fillInputs, previousStage } from "../redux/slices/doctorSignUpSlice";
 import { useForm } from "react-hook-form";
+import message from '../helper-components/message';
 
 import { useTranslation, Trans } from "react-i18next";
 
@@ -40,7 +41,7 @@ const DoctorSignUpStageTwo = () => {
       const doctorAccountRqust = { ...registrationData.value };
       doctorAccountRqust.availabilities = JSON.stringify(validAvailabilities);
       doctorAccountRqust.university = data.university;
-      doctorAccountRqust.speciality = data.speciality;
+      doctorAccountRqust.speciality_id = data.speciality_id;
       doctorAccountRqust.about = data.about;
 
       console.log(doctorAccountRqust);
@@ -48,9 +49,9 @@ const DoctorSignUpStageTwo = () => {
       try {
          await axios.post("users/doctor-account-request", doctorAccountRqust);
 
-         alert("Your doctor account request has been sent.");
+         message("Your doctor account request has been sent.", "green");
       } catch (err) {
-         console.log(err);
+         message("This email has already been taken", "red")
       }
    };
 
@@ -82,15 +83,15 @@ const DoctorSignUpStageTwo = () => {
             <div className="speciality_wrapper">
                <h4>{t("lang.doctor_sign_up.second_step_regis.speciality_label")}</h4>
                <select
-                  {...register("speciality", { required: "Speciality field is required" })}
+                  {...register("speciality_id", { required: "Speciality field is required" })}
                   type="text"
-                  name="speciality"
-                  id="speciality"
+                  name="speciality_id"
+                  id="specialityId"
                   placeholder="Speciality"
                >
                   {specializations &&
                      specializations.map((spec) => (
-                        <option key={spec.id} value={spec.name}>
+                        <option key={spec.id} spec_id={spec.id} value={spec.id}>
                            {spec.name}
                         </option>
                      ))}

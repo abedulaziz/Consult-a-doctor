@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Loader from '../helper-components/loader';
+import DefaultPicture from '../assets/backgrounds/default_profile_picture.svg';
 
 import { t } from "i18next";
 
@@ -115,7 +116,7 @@ const Doctors = () => {
                   return fullname.match(new RegExp(searchValue, "i"))
                 })
                 .map(doctor => 
-                  <DoctorCard doctor_id={doctor.doctor_id} key={doctor.doctor_id} profile_pic={doctor.profile_pic} fullname={doctor.fname + " " + doctor.lname} followers="23" />
+                  <DoctorCard doctor_id={doctor.doctor_id} key={doctor.doctor_id} profile_pic={doctor.profile_pic ? doctor.profile_pic : DefaultPicture} fullname={doctor.fname + " " + doctor.lname} followers="23" />
                 )}
 
               </div>
