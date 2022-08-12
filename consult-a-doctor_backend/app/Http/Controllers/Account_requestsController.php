@@ -78,7 +78,8 @@ class Account_requestsController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             "date_of_birth" => $request->date_of_birth,
-            "gender" => $request->gender
+            "gender" => $request->gender,
+            "type" => $request->type
         ]);
 
 

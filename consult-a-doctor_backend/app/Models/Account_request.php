@@ -18,6 +18,7 @@ class Account_request extends Model
         'gender',
         "availabilities",
         "speciality_id",
+        "type",
         "about",
         "university"
     ];
