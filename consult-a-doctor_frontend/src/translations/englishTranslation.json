@@ -64,6 +64,20 @@
          }
       }
    },
+   "profile": {
+      "background": {
+         "book_meeting_but": "Book a meeting"
+      },
+      "doctor_card": {
+         "follow_but": "FOLLOW",
+         "about_word": "ABOUT",
+         "followers": "FOLLOWERS",
+         "posts": "POSTS",
+         "followings": "FOLLOWINGS"
+      },
+      "doctor_posts": "Posts",
+      "add_blog": "Add blog"
+   },
    "sign_in": {
       "left_section": {
          "brand_statement": "Ease of use - Experienced doctors - Trusted advice",

@@ -64,6 +64,20 @@
          }
       }
    },
+   "profile": {
+      "background": {
+         "book_meeting_but": "Réserver une réunion"
+      },
+      "doctor_card": {
+         "follow_but": "SUIVRE",
+         "about_word": "PROPOS",
+         "followers": "SUIVEURS",
+         "posts": "DES POSTES",
+         "followings": "SUIVANTS"
+      },
+      "doctor_posts": "Des postes",
+      "add_blog": "Ajouter un blog"
+   },
    "sign_in": {
       "left_section": {
          "brand_statement": "Facilité d'utilisation - Médecins expérimentés - Conseils de confiance",

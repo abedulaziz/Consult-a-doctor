@@ -64,6 +64,20 @@
          }
       }
    },
+   "profile": {
+      "background": {
+         "book_meeting_but": "احجز اجتماعًا"
+      },
+      "doctor_card": {
+         "follow_but": "تابع",
+         "about_word": "حول",
+         "followers": "المتابعين",
+         "posts": "المقالات",
+         "followings": "المتابعون"
+      },
+      "doctor_posts": "المقالات",
+      "add_blog": "إضافة مقال"
+   },
    "sign_in": {
       "left_section": {
          "brand_statement": "سهولة في الإستخدام - أطباء ذوو خبرة - إستشارة موثوقة",
