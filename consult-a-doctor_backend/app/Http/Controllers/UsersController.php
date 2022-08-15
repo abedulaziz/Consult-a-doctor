@@ -179,9 +179,9 @@ function generateURIPath($request, $file) {
     if ($request->hasFile($file)) {
         $profilePicture = $request->file($file);
         $imageName = $profilePicture->getClientOriginalName();
-        $path = "storage/user_images/";
 
-        $profilePicture->storeAs($path, $imageName);
+        $profilePicture->move(public_path('/storage/user_images/'), $imageName);
+        $path = "/storage/user_images/";
 
         $imageURI = asset($path . $imageName);
     }
