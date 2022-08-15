@@ -2,7 +2,7 @@ import React from "react";
 
 import axios from "axios";
 
-import { useTranslation, Trans } from "react-i18next";
+import { Trans } from "react-i18next";
 
 // icons
 import CheckTwoSqure from "../assets/icons/CheckTwoSquare.svg";

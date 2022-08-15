@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../helper-components/loader";
 
+import { Trans } from "react-i18next";
+import { t } from "i18next";
 import axios from "axios";
 
 // layout components
@@ -94,7 +96,7 @@ const Profile = () => {
 
                      {!isAccountOwner && (
                         <div className="book-meeting">
-                           <button onClick={() => dispatch(setBookMeetingPopup(<ScheduleMeeting doctor_id={doctor_id} />))}>Book a meeting</button>
+                           <button onClick={() => dispatch(setBookMeetingPopup(<ScheduleMeeting doctor_id={doctor_id} />))}>{t("lang.profile.background.book_meeting_but")}</button>
                         </div>
                      )}
                   </div>
@@ -109,7 +111,7 @@ const Profile = () => {
                            <img src={bookMeeting.profile_pic ? bookMeeting.profile_pic : DefaultProfilePic} alt="profile picture" />
                            {!isAccountOwner && (
                               <div className="follow">
-                                 <span>FOLLOW</span>
+                                 <span>{t("lang.profile.doctor_card.follow_but")}</span>
                                  <Heart />
                               </div>
                            )}
@@ -117,22 +119,22 @@ const Profile = () => {
 
                         <div className="details_wrapper">
                            <div className="about">
-                              <h4>ABOUT</h4>
+                              <h4>{t("lang.profile.doctor_card.about_word")}</h4>
                               <p>{about}</p>
                            </div>
 
                            <div className="followings">
                               <div className="followers">
                                  <p className="counter">{followers}</p>
-                                 <p>FOLLOWERS</p>
+                                 <p>{t("lang.profile.doctor_card.followers")}</p>
                               </div>
                               <div className="posts">
                                  <p className="counter">{blogs.length}</p>
-                                 <p>POSTS</p>
+                                 <p>{t("lang.profile.doctor_card.posts")}</p>
                               </div>
                               <div className="following">
                                  <p className="counter">{followings}</p>
-                                 <p>FOLLOWINGS</p>
+                                 <p>{t("lang.profile.doctor_card.followings")}</p>
                               </div>
                            </div>
                         </div>
@@ -141,14 +143,14 @@ const Profile = () => {
 
                   <div className="posts">
                      <div className="heading">
-                        <h3 className="posts_header">Posts</h3>
+                        <h3 className="posts_header">{t("lang.profile.doctor_posts")}</h3>
                         {isAccountOwner && (
                            <div className="profile_options">
                               <button className="edit-profile" title="Edit profile" onClick={() => dispatch(setEditProfilePopup(<EditProfile university={university} about={about} />))}>
                                  <Edit />
                               </button>
                               <button className="add-blog" onClick={() => dispatch(setAddBlogPopup(<AddBlogPopup />))}>
-                                 <Plus /> <span>Add blog</span>
+                                 <Plus /> <span>{t("lang.profile.add_blog")}</span>
                               </button>
                            </div>
                         )}

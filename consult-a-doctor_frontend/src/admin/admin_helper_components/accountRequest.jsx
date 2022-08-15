@@ -37,6 +37,7 @@ const AccountRequest = ({ID, fname, lname, email, gender, date_of_birth, special
          gender,
          speciality_id,
          about,
+         type: "doctor",
          university,
          availabilities
       }
