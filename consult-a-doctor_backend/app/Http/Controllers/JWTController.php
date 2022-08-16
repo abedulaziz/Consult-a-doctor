@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Validator;
+use JWTAuth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Enum;
+use Tymon\JWTAuth\Facades\JWTFactory;
 
 enum Gender: string {
     case MALE = "male";
@@ -58,11 +60,8 @@ class JWTController extends Controller
         if (!$token = auth()->attempt($validator->validated())) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-        return response()->json([
-            "access_token" => $token,
-            "user_id" => auth()->id(),
-            "profile_pic" => auth()->user()->profile_pic
-        ]);
+        
+        return $this->respondWithToken(generateToken());
     }
 
     /**
@@ -85,12 +84,7 @@ class JWTController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        return response()->json([
-            "access_token" => $token,
-            "user_id" => auth()->id(),
-            "profile_pic" => auth()->user()->profile_pic_uri,
-            "user_type" => auth()->user()->type
-        ]);
+        return $this->respondWithToken(generateToken());
     }
 
     /**
@@ -141,4 +135,16 @@ class JWTController extends Controller
         ]);
     }
 
+}
+
+
+function generateToken() {
+
+    $payload = JWTFactory::sub(auth()->id())
+    ->user_profile_pic_uri(auth()->user()->profile_pic_uri)
+    ->user_type(auth()->user()->type)
+    ->make();
+
+    $token = JWTAuth::encode($payload)->get();
+    return $token;
 }
