@@ -106,16 +106,41 @@
       "header": "إنشاء حساب جديد",
       "desc": "كن عضوا في مجتمعنا",
       "user_info_form": {
-         "fname": "الإسم الاول",
-         "lname": "الإسم الأخير",
-         "email": "البريد الإلكتروني",
-         "password": "كلمة المرور",
-         "password_confirm": "تأكيد كلمة المرور",
-         "dob": "تاريخ الولادة: ",
+         "fname": {
+            "placeholder": "الإسم الاول",
+            "empty_fname_mess": "الإسم الاول إلزامي",
+            "min_length_mess": "الحد الأدنى للإسم هو 2",
+            "max_length_mess": "الحد الأقصى للإسم هو 40"
+         },
+         "lname": {
+            "placeholder": "الإسم الأخير",
+            "empty_lname_mess": "الإسم الأخير إلزامي",
+            "min_length_mess": "الحد الأدنى للإسم هو 2",
+            "max_length_mess": "الحد الأقصى للإسم هو 40"
+         },
+         "email": {
+            "placeholder": "البريد الإلكتروني",
+            "empty_email_mess": "البريد الالكتروني إلزامي",
+            "invalid_email": "بريد إلكتروني غير صالح"
+         },
+         "password": {
+            "placeholder": "كلمة المرور",
+            "empty_pass_mess": "كلمة المرور إلزامية",
+            "invalid_pass": "كلمة المرور غير صالحة"
+         },
+         "password_confirm": {
+            "placeholder": "تأكيد كلمة المرور",
+            "unmatched_pass": "كلمات المرور غير متطابقة"
+         },
+         "dob": {
+            "placeholder": "تاريخ الولادة: ",
+            "empty_dob_mess": "تاريخ الميلاد إلزامي"
+         },
          "gender": {
             "label": "الجنس: ",
             "option_1": "ذكر",
-            "option_2": "أنثى"
+            "option_2": "أنثى",
+            "unselected_gender_mess": "إختيار الجنس إلزامي"
          },
          "button": "تسجيل الحساب"
       },

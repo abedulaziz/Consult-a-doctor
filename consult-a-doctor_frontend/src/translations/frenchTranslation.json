@@ -106,16 +106,41 @@
       "header": "S'inscrire",
       "desc": "Devenez membre de notre communauté",
       "user_info_form": {
-         "fname": "Prénom",
-         "lname": "Nom de famille",
-         "email": "E-mail",
-         "password": "Mot de passe",
-         "password_confirm": "Confirmation mot de passe",
-         "dob": "Date de naissance: ",
+         "fname": {
+            "placeholder": "Prénom",
+            "empty_fname_mess": "Le prénom est requis",
+            "min_length_mess": "La longueur minimale est de 2",
+            "max_length_mess": "La longueur maximale est de 40"
+         },
+         "lname": {
+            "placeholder": "Nom de famille",
+            "empty_lname_mess": "Le nom de famille est requis",
+            "min_length_mess": "La longueur minimale est de 2",
+            "max_length_mess": "La longueur maximale est de 40"
+         },
+         "email": {
+            "placeholder": "E-mail",
+            "empty_email_mess": "L'e-mail est requis",
+            "invalid_email": "Email invalide"
+         },
+         "password": {
+            "placeholder": "Mot de passe",
+            "empty_pass_mess": "Mot de passe requis",
+            "invalid_pass": "Entrer un mot de passe valide s'il vous plait"
+         },
+         "password_confirm": {
+            "placeholder": "Confirmation mot de passe",
+            "unmatched_pass": "Les mots de passe ne correspondent pas"
+         },
+         "dob": {
+            "placeholder": "Date de naissance: ",
+            "empty_dob_mess": "La date de naissance est obligatoire"
+         },
          "gender": {
             "label": "Le genre: ",
             "option_1": "Mâle",
-            "option_2": "Femelle"
+            "option_2": "Femelle",
+            "unselected_gender_mess": "S'il vous plait selectionnez votre genre"
          },
          "button": "S'inscrire"
       },

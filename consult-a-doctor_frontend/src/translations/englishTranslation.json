@@ -87,16 +87,16 @@
          "header": "Sign in",
          "desc": "Log-in to your account",
          "form": {
-               "email": {
-                  "placeholder": "E-mail",
-                  "empty_email_mess": "Email is required",
-                  "invalid_email": "Invalid email"
-               },
-               "password": {
-                  "placeholder": "Password",
-                  "empty_pass_mess": "Password is required",
-                  "invalid_pass": "Please enter a valid password"
-               },
+            "email": {
+               "placeholder": "E-mail",
+               "empty_email_mess": "Email is required",
+               "invalid_email": "Invalid email"
+            },
+            "password": {
+               "placeholder": "Password",
+               "empty_pass_mess": "Password is required",
+               "invalid_pass": "Please enter a valid password"
+            },
             "button": "Log in"
          }
       },
@@ -106,16 +106,41 @@
       "header": "Sign up",
       "desc": "Become a member in our community",
       "user_info_form": {
-         "fname": "First name",
-         "lname": "Last name",
-         "email": "E-mail",
-         "password": "Password",
-         "password_confirm": "Password confirmation",
-         "dob": "Date of birth: ",
+         "fname": {
+            "placeholder": "First name",
+            "empty_fname_mess": "First name is required",
+            "min_length_mess": "Minimum length is 2",
+            "max_length_mess": "Maximum length is 40"
+         },
+         "lname": {
+            "placeholder": "Last name",
+            "empty_lname_mess": "Last name is required",
+            "min_length_mess": "Minimum length is 2",
+            "max_length_mess": "Maximum length is 40"
+         },
+         "email": {
+            "placeholder": "E-mail",
+            "empty_email_mess": "Email is required",
+            "invalid_email": "Invalid email"
+         },
+         "password": {
+            "placeholder": "Password",
+            "empty_pass_mess": "Password is required",
+            "invalid_pass": "Please enter a valid password"
+         },
+         "password_confirm": {
+            "placeholder": "Password confirmation",
+            "unmatched_pass": "Passwords don't match"
+         },
+         "dob": {
+            "placeholder": "Date of birth: ",
+            "empty_dob_mess": "Date of birth is required"
+         },
          "gender": {
             "label": "Gender: ",
             "option_1": "Male",
-            "option_2": "Female"
+            "option_2": "Female",
+            "unselected_gender_mess": "Please select your gender"
          },
          "button": "Register"
       },
