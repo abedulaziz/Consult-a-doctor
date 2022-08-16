@@ -87,8 +87,16 @@
          "header": "Connexion",
          "desc": "Connectez-vous à votre compte",
          "form": {
-            "email": "E-mail",
-            "password": "Mot de passe",
+            "email": {
+               "placeholder": "E-mail",
+               "empty_email_mess": "L'e-mail est requis",
+               "invalid_email": "Email invalide"
+            },
+            "password": {
+               "placeholder": "Mot de passe",
+               "empty_pass_mess": "Mot de passe requis",
+               "invalid_pass": "Entrer un mot de passe valide s'il vous plait"
+            },
             "button": "Connexion"
          }
       },

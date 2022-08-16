@@ -87,8 +87,16 @@
          "header": "Sign in",
          "desc": "Log-in to your account",
          "form": {
-            "email": "E-mail",
-            "password": "Password",
+               "email": {
+                  "placeholder": "E-mail",
+                  "empty_email_mess": "Email is required",
+                  "invalid_email": "Invalid email"
+               },
+               "password": {
+                  "placeholder": "Password",
+                  "empty_pass_mess": "Password is required",
+                  "invalid_pass": "Please enter a valid password"
+               },
             "button": "Log in"
          }
       },
