@@ -5,6 +5,7 @@ import { insertInfo } from "../redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import message from '../helper-components/message.js';
 
 // icons
 import { ReactComponent as ChevronsRight } from "../assets/icons/chevrons-right.svg";
@@ -31,20 +32,14 @@ const SignUpForm = ({ isDoctorSignUp = false }) => {
             const registerRqust = await axios.post(`register`, data);
             const regisInfo = registerRqust.data;
 
-            dispatch(
-               insertInfo({
-                  access_token: regisInfo.access_token,
-                  user_id: regisInfo.user_id,
-                  profile_pic: regisInfo.profile_pic,
-               })
-            );
+            const JWT = regisInfo.access_token;
+            localStorage.setItem("JWT", JWT);
             navigate("/");
 
          } catch (err) {
-            alert("Email or/and password is incorrect.");
+            message(err.response.data.email, "red");
          }
       }
-
    };
 
    return (
@@ -52,19 +47,27 @@ const SignUpForm = ({ isDoctorSignUp = false }) => {
          <div className="fullname">
             <div className="fname_wrapper">
                <input
-                  {...register("fname", { required: "First name is required", minLength: { value: 2, message: "Minimum length is 2" } })}
+                  {...register("fname", {
+                     required: t("lang.sign_up.user_info_form.fname.empty_fname_mess"),
+                     minLength: { value: 2, message: t("lang.sign_up.user_info_form.fname.min_length_mess") },
+                     maxLength: { value: 40, message: t("lang.sign_up.user_info_form.fname.max_length_mess") },
+                  })}
                   type="text"
                   name="fname"
-                  placeholder={t("lang.sign_up.user_info_form.fname")}
+                  placeholder={t("lang.sign_up.user_info_form.fname.placeholder")}
                />
                <p className="error">{errors.fname?.message}</p>
             </div>
-            <div className="fname_wrapper">
+            <div className="lname_wrapper">
                <input
-                  {...register("lname", { required: "Last name is required", minLength: { value: 2, message: "Minimum length is 2" } })}
+                  {...register("lname", {
+                     required: t("lang.sign_up.user_info_form.lname.empty_lname_mess"),
+                     minLength: { value: 2, message: t("lang.sign_up.user_info_form.lname.min_length_mess") },
+                     maxLength: { value: 40, message: t("lang.sign_up.user_info_form.lname.min_length_mess") },
+                  })}
                   type="text"
                   name="lname"
-                  placeholder={t("lang.sign_up.user_info_form.lname")}
+                  placeholder={t("lang.sign_up.user_info_form.lname.placeholder")}
                />
                <p className="error">{errors.lname?.message}</p>
             </div>
@@ -74,13 +77,13 @@ const SignUpForm = ({ isDoctorSignUp = false }) => {
             <div className="email_wrapper">
                <input
                   {...register("email", {
-                     required: "Email is required",
-                     pattern: { value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, message: "Invalid email" },
+                     required: t("lang.sign_up.user_info_form.email.empty_email_mess"),
+                     pattern: { value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, message: t("lang.sign_up.user_info_form.email.invalid_email") },
                   })}
                   type="text"
                   name="email"
                   id="email"
-                  placeholder={t("lang.sign_up.user_info_form.email")}
+                  placeholder={t("lang.sign_up.user_info_form.email.placeholder")}
                />
                <p className="error">{errors.email?.message}</p>
             </div>
@@ -90,13 +93,16 @@ const SignUpForm = ({ isDoctorSignUp = false }) => {
             <div className="password_wrapper" ref={password}>
                <input
                   {...register("password", {
-                     required: "Password is required",
-                     pattern: { value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm, message: "Please enter a valid password" },
+                     required: t("lang.sign_up.user_info_form.password.empty_pass_mess"),
+                     pattern: {
+                        value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm,
+                        message: t("lang.sign_up.user_info_form.password.invalid_pass"),
+                     },
                   })}
                   type="password"
                   name="password"
                   id="password"
-                  placeholder={t("lang.sign_up.user_info_form.password")}
+                  placeholder={t("lang.sign_up.user_info_form.password.placeholder")}
                />
                <p className="error">{errors.password?.message}</p>
             </div>
@@ -105,12 +111,12 @@ const SignUpForm = ({ isDoctorSignUp = false }) => {
             <div className="password_wrapper">
                <input
                   {...register("password_confirmation", {
-                     validate: (value) => value === password.current.querySelector("input#password").value || "Password doesn't match",
+                     validate: (value) => value === password.current.querySelector("input#password").value || t("lang.sign_up.user_info_form.password_confirm.unmatched_pass"),
                   })}
                   type="password"
                   name="password_confirmation"
                   id="passwordConfirmation"
-                  placeholder={t("lang.sign_up.user_info_form.password_confirm")}
+                  placeholder={t("lang.sign_up.user_info_form.password_confirm.placeholder")}
                />
                <p className="error">{errors.password_confirmation?.message}</p>
             </div>
@@ -118,8 +124,8 @@ const SignUpForm = ({ isDoctorSignUp = false }) => {
 
          <div className="dob">
             <div className="dob_wrapper">
-               <span>{t("lang.sign_up.user_info_form.dob")}</span>
-               <input {...register("date_of_birth", { required: "Date of birth is required" })} type="date" name="date_of_birth" id="dateOfBirth" />
+               <span>{t("lang.sign_up.user_info_form.dob.placeholder")}</span>
+               <input {...register("date_of_birth", { required: t("lang.sign_up.user_info_form.dob.empty_dob_mess") })} type="date" name="date_of_birth" id="dateOfBirth" />
             </div>
             <p className="error">{errors.date_of_birth?.message}</p>
          </div>
@@ -128,9 +134,9 @@ const SignUpForm = ({ isDoctorSignUp = false }) => {
             <div className="gender_wrapper">
                <span className="title">{t("lang.sign_up.user_info_form.gender.label")}</span>
                <div className="selected_gender">
-                  <input {...register("gender", { required: "Please select your gender" })} type="radio" id="male" name="gender" value="male" />
+                  <input {...register("gender", { required: t("lang.sign_up.user_info_form.gender.unselected_gender_mess")})} type="radio" id="male" name="gender" value="male" />
                   <label htmlFor="male">{t("lang.sign_up.user_info_form.gender.option_1")}</label>
-                  <input {...register("gender", { required: "Please select your gender" })} type="radio" id="female" name="gender" value="female" />
+                  <input {...register("gender", { required: t("lang.sign_up.user_info_form.gender.unselected_gender_mess") })} type="radio" id="female" name="gender" value="female" />
                   <label htmlFor="female">{t("lang.sign_up.user_info_form.gender.option_2")}</label>
                </div>
             </div>
