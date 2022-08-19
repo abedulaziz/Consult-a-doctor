@@ -1,170 +1,145 @@
-import React from 'react';
-import {Link, useNavigate} from 'react-router-dom';
-import { useSelector } from 'react-redux'
-import axios from 'axios';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { setUserProfilePopup } from "../redux/slices/popupControllerSlice";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import jwt_decode from "jwt-decode";
 
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 // helper components
-import NavItem from '../helper-components/navItem';
+import NavItem from "../helper-components/navItem";
+import PatientInfoPopup from "../helper-components/patientInfoPopup";
 
 // icons
-import {ReactComponent as Menu} from '../assets/icons/menu.svg';
-import DefaultProfilePic from '../assets/backgrounds/default_profile_picture.svg';
+import { ReactComponent as Menu } from "../assets/icons/menu.svg";
+import DefaultProfilePic from "../assets/backgrounds/default_profile_picture.svg";
 
-import Logo from '../assets/brand/transparent_background_brand.png';
-import MobileLogo from '../assets/brand/transparent_background_logo.png';
+import Logo from "../assets/brand/transparent_background_brand.png";
+import MobileLogo from "../assets/brand/transparent_background_logo.png";
 
 const Header = () => {
-  const { t, i18n } = useTranslation();
-  const header = React.useRef(null);
-  const NavBar = React.useRef(null);
-  const [userProfileWidget, setUserProfileWidget] = React.useState(null)
-  const navigate = useNavigate()
+   const { t, i18n } = useTranslation();
+   const header = React.useRef(null);
+   const NavBar = React.useRef(null);
+   const navigate = useNavigate();
 
-  const userInfo = useSelector((state) => state.userInfo.value)
+   const dispatch = useDispatch();
 
-  const [logo, setLogo] = React.useState(MobileLogo)
+   const [userInfo, setUserInfo] = React.useState(null);
 
-  React.useEffect(() => {
-    window.screen.width < 590 ? setLogo(MobileLogo) : setLogo(Logo)
-    
-  }, [])
+   const [logo, setLogo] = React.useState(MobileLogo);
 
-  window.addEventListener("scroll", () => {
+   React.useEffect(() => {
+      window.screen.width < 590 ? setLogo(MobileLogo) : setLogo(Logo);
 
-    if (window.pageYOffset > 0) {
+      const checkAuthentication = async () => {
+         try {
+            await axios.get("isAuthenticated", {
+               headers: {
+                  Authorization: `Bearer ${localStorage.getItem("JWT")}`,
+               },
+            });
 
-      if (header.current !== null) {
-        header.current.style.padding = "15px 0"
-        header.current.style.backgroundColor = "var(--light-text-color)"
+            setUserInfo(jwt_decode(localStorage.getItem("JWT")));
+         } catch (err) {
+            setUserInfo(undefined);
+         }
+      };
+      checkAuthentication();
+   }, []);
+
+   window.addEventListener("scroll", () => {
+      if (window.pageYOffset > 0) {
+         if (header.current !== null) {
+            header.current.style.padding = "15px 0";
+            header.current.style.backgroundColor = "var(--light-text-color)";
+         }
+      } else {
+         if (header.current !== null) {
+            header.current.style.padding = "20px 0";
+            header.current.style.backgroundColor = "transparent";
+         }
       }
-    }
-    else {
-      if (header.current !== null) {
-        header.current.style.padding = "20px 0"
-        header.current.style.backgroundColor = "transparent"
-      }
-    }
-  });
+   });
 
-  const displayNav = () => {
-    let currDisplay = NavBar.current.style.display
-    
-    if (currDisplay === "none" || currDisplay === "") {
-      NavBar.current.style.display = "block"
-    }
-    else NavBar.current.style.display = "none"
-  }
+   const displayNav = () => {
+      let currDisplay = NavBar.current.style.display;
 
-  const getProfileInfo = async() => {
+      if (currDisplay === "none" || currDisplay === "") {
+         NavBar.current.style.display = "block";
+      } else NavBar.current.style.display = "none";
+   };
 
-    try {
-      const userInfoRqust = await axios.get(`users/${userInfo.user_id}/user-info`, {
-        headers: {
-          Authorization: `Bearer ${userInfo.JWT}`
-        }
-      })
+   return (
+      <header className="page_heading" ref={header}>
+         <div className="container">
+            <div className="header-content">
+               <div className="brand">
+                  <div className="logo">
+                     <img src={logo} alt="consult a doctor" />
+                  </div>
+               </div>
 
-      const info = userInfoRqust.data.user_info
+               <nav ref={NavBar}>
+                  <div className="nav-wrapper">
+                     <NavItem path="/" className="home-link" content={t("lang.header.nav_links.home_link")} />
+                     <NavItem path="/doctor/specializations" className="specializations-link" content={t("lang.header.nav_links.specializations_link")} />
+                     <NavItem path="/doctor/all/accounts" className="doctors-link" content={t("lang.header.nav_links.doctors_link")} />
+                     <NavItem
+                        path={userInfo ? `/${userInfo.sub}/appointments` : "/sign-in"}
+                        className="appointments-link"
+                        content={t("lang.header.nav_links.my_appointments")}
+                     />
+                  </div>
+               </nav>
 
-      if (info.type === "doctor") {
-        navigate(`/doctor/${userInfo.user_id}/profile`)
-      }
-      else {
-        if (!userProfileWidget)
-        setUserProfileWidget(
-          <div className="profile-widget">
-            <div className="profile-img_wrapper">
-              <img src={userInfo.profile_pic} />
+               <div className="account_status">
+                  <div className="languages">
+                     <select name="language" defaultValue={t("lang.header.current_lan")} id="language" onChange={(ev) => i18n.changeLanguage(ev.target.value)}>
+                        <option value="en">English</option>
+                        <option value="ar">العربية</option>
+                        <option value="fr">Français</option>
+                     </select>
+                  </div>
+
+                  {userInfo !== null && (
+                     <>
+                        {userInfo !== undefined ? (
+                           <>
+                              <div
+                                 className="profile-pic"
+                                 onClick={() =>
+                                    userInfo.type === "doctor" ? navigate(`/doctor/${userInfo.sub}/profile`) : dispatch(setUserProfilePopup(<PatientInfoPopup />))
+                                 }
+                              >
+                                 <div className="pic_wrapper">
+                                    <img src={userInfo.profile_pic_uri ? userInfo.profile_pic_uri : DefaultProfilePic} alt="profile" />
+                                 </div>
+                              </div>
+                              <div className="menu">
+                                 <Menu onClick={() => displayNav()} />
+                              </div>
+                           </>
+                        ) : (
+                           <>
+                              <Link to="/sign-in">
+                                 <button className="sign-in_button">{t("lang.header.registration.sign_in_button")}</button>
+                              </Link>
+                              <Link to="/sign-up">
+                                 <button className="sign-up_button">{t("lang.header.registration.sign_up_button")}</button>
+                              </Link>
+                              <div className="menu">
+                                 <Menu onClick={() => displayNav()} />
+                              </div>
+                           </>
+                        )}
+                     </>
+                  )}
+               </div>
             </div>
+         </div>
+      </header>
+   );
+};
 
-            <div className="first_name">
-              First name: {info.fname}
-            </div>
-            <div className="last_name">
-              Last name: {info.lname}
-            </div>
-            <div className="email">
-              Email: {info.email}
-            </div>
-            <div className="age">
-              Age: {new Date().getFullYear() - new Date(info.date_of_birth).getFullYear()} years old
-            </div>
-          </div>
-        )
-        else setUserProfileWidget(null)
-      }
-
-
-    } catch (err) {
-      
-    }
-  }
-
-  return (
-    <header className='page_heading' ref={header}>
-
-      <div className='container'>
-        <div className='header-content'>
-
-          <div className="brand">
-            <div className="logo">
-              <img src={ logo } alt="consult a doctor" />
-            </div>
-          </div>
-          
-          <nav ref={NavBar}>
-
-            <div className="nav-wrapper">
-
-              <NavItem path="/" className="home-link" content={t("lang.header.nav_links.home_link")} />
-              <NavItem path="/doctor/specializations" className="specializations-link" content={t("lang.header.nav_links.specializations_link")} />
-              <NavItem path="/doctor/all/accounts" className="doctors-link" content={t("lang.header.nav_links.doctors_link")} />
-              <NavItem path={ userInfo.user_id ? `/${userInfo.user_id}/appointments` : "/sign-in"} className="appointments-link" content={t("lang.header.nav_links.my_appointments")} />
-
-            </div>
-
-          </nav>
-
-          <div className="account_status">
-          <div className="languages">
-            <select name="language" defaultValue={t("lang.header.current_lan")} id="language" onChange={(ev) => i18n.changeLanguage(ev.target.value)}>
-              <option value="en">English</option>
-              <option value="ar">العربية</option>
-              <option value="fr">Français</option>
-            </select>
-          </div>
-
-          {userInfo.JWT ? 
-          <>
-            <div className='profile-pic' onClick={() => getProfileInfo()}>
-              <div className="pic_wrapper">
-                <img src={userInfo.profile_pic ? userInfo.profile_pic : DefaultProfilePic } alt="profile" />
-              </div>
-            </div>
-            <div className="menu">
-              <Menu onClick={() => displayNav()} />
-            </div>
-            {userProfileWidget}
-          </>
-          :
-          <>
-            <Link to="/sign-in"><button className='sign-in_button'>{t("lang.header.registration.sign_in_button")}</button></Link>
-            <Link to="/sign-up"><button className='sign-up_button'>{t("lang.header.registration.sign_up_button")}</button></Link>
-            <div className="menu">
-              <Menu onClick={() => displayNav()} />
-            </div>
-          </>
-          }
-
-          </div>
-        
-        </div>
-      </div>
-
-
-    </header>
-  )
-}
-
-export default Header
+export default Header;

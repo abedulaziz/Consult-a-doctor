@@ -35,7 +35,7 @@ const SignIn = () => {
 
          const userData = jwt_decode(JWT);
 
-         userData.user_type === "admin" ? navigate(`/admins/${userData.sub}/specializations`) : navigate("/");
+         userData.type === "admin" ? navigate(`/admins/${userData.sub}/specializations`) : navigate("/");
       } catch (err) {
          regisError.current.classList.add("regis_error");
          regisError.current.textContent = "Incorrect email or password.";
