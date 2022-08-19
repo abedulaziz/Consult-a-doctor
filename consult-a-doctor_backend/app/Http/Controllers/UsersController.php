@@ -136,14 +136,6 @@ class UsersController extends Controller
         ]);
     }
 
-    public function getUserInfo($user_id) {
-        $userInfo = User::select("fname", "lname", "email", "date_of_birth", "type")->find($user_id);
-
-        return response()->json([
-            "user_info" => $userInfo
-        ]);
-    }
-
 }
 
 
@@ -180,8 +172,8 @@ function generateURIPath($request, $file) {
         $profilePicture = $request->file($file);
         $imageName = $profilePicture->getClientOriginalName();
 
-        $profilePicture->move(public_path('/storage/user_images/'), $imageName);
         $path = "/storage/user_images/";
+        $profilePicture->move(public_path($path), $imageName);
 
         $imageURI = asset($path . $imageName);
     }

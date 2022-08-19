@@ -58,6 +58,7 @@ Route::get("/specializations", [SpecializationsController::class, "getSpecializa
 // get doctor's blogs
 Route::get("/users/{doctor_id}/blogs", [BlogsController::class, "getBlogs"]);
 
+
 // routes grouped under a middleware that requires the user not to be the owner of the account when visiting a profile page
 Route::group(["middleware" => "verifyAuth"], function () {
     Route::post("/users/{doctor_id}/follow", [FollowingsController::class, "followDoctor"]);
@@ -69,10 +70,10 @@ Route::group(["middleware" => "verifyAuth"], function () {
     Route::post("/meetings/appointments/set-appointment", [AppointmentsController::class, "setAppointment"]);
     // get selected doctor's info
     Route::get("/users/{doctor_id}/doctor-info", [DoctorsController::class, "getDoctorInfo"]);
+    Route::get("/isAuthenticated", function() {return response()->json(["message" => "Authenticated"], 200);});
 });
 
 Route::group(["middleware" => "verifyOwnership"], function () {
-    Route::get("/users/{user_id}/user-info", [UsersController::class, "getUserInfo"]);
     Route::post("/users/{user_id}/update-info", [UsersController::class, "updateUserInfo"]);
     Route::get("/users/{user_id}/appointments", [UsersController::class, "getUserAppointments"]);
     Route::post("/users/{user_id}/add-blog", [BlogsController::class, "addBlog"]);
