@@ -19,7 +19,7 @@ class specializationsController extends Controller
 
     // add new specialization
     public function addNewSpecialization(Request $request) {
-        // echo "haha";
+
         $validator = Validator::make($request->all(), [
             'specialization' => 'string|min:2|max:50',
             "specialization_image" => 'image|max:1000|nullable'
@@ -34,9 +34,9 @@ class specializationsController extends Controller
         if ($request->hasFile("specialization_image")) {
             $specBackground = $request->file("specialization_image");
             $imageName = $specBackground->getClientOriginalName();
-            $path = "storage/specialization_backgrounds/";
-
-            $specBackground->storeAs($path, $imageName);
+            // $path = "storage/specialization_backgrounds/";
+            $path = "/storage/specialization_backgrounds/";
+            $specBackground->move(public_path($path), $imageName);
 
             $imageURI = asset($path . $imageName);
         }
