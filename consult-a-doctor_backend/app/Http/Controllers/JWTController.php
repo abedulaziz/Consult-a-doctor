@@ -60,7 +60,7 @@ class JWTController extends Controller
         if (!$token = auth()->attempt($validator->validated())) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-        
+
         return $this->respondWithToken(generateToken());
     }
 
@@ -139,10 +139,15 @@ class JWTController extends Controller
 
 
 function generateToken() {
+    $user = auth()->user();
 
     $payload = JWTFactory::sub(auth()->id())
-    ->user_profile_pic_uri(auth()->user()->profile_pic_uri)
-    ->user_type(auth()->user()->type)
+    ->fname($user->fname)
+    ->lname($user->lname)
+    ->email($user->email)
+    ->dob($user->date_of_birth)
+    ->profile_pic_uri($user->profile_pic_uri)
+    ->type($user->type)
     ->make();
 
     $token = JWTAuth::encode($payload)->get();

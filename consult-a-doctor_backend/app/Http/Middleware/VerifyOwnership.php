@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 use Illuminate\Http\Request;
 
 class VerifyOwnership
@@ -17,14 +18,14 @@ class VerifyOwnership
     public function handle(Request $request, Closure $next)
     {
 
-        if (auth()->id()) {
+        if (Auth::check()) {
 
             if (auth()->id() == $request->route("user_id")) return $next($request);
-            else {
-                return response()->json([
-                    "message" => "Unautherized user"
-                ], 403);
-            }
+
+            return response()->json([
+                "message" => "Unautherized user"
+            ], 403);
+
         }
         return response()->json([
             "message" => "Unauthenticated user"
