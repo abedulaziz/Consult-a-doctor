@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;700&family=Ubuntu:wght@300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;700&family=Ubuntu:wght@300;400;500;700&display=swap");
 
 :root {
    --main-theme-color: #022e7a;
@@ -25,7 +25,7 @@ body {
 }
 
 body:dir(rtl) {
-   font-family: 'IBM Plex Sans Arabic', sans-serif;;
+   font-family: "IBM Plex Sans Arabic", sans-serif;
 }
 
 .container {
@@ -162,7 +162,7 @@ header .header-content .account_status button {
 }
 
 header .header-content .account_status button:dir(rtl) {
-   font-family: 'IBM Plex Sans Arabic', sans-serif;
+   font-family: "IBM Plex Sans Arabic", sans-serif;
 }
 
 header .header-content .account_status .sign-up_button {
@@ -186,34 +186,16 @@ header .header-content .account_status .sign-up_button {
    object-position: 50% 10%;
 }
 
-header .account_status .profile-widget {
-   position: absolute;
-   right: 0;
-   top: 50px;
-   background: var(--main-theme-color);
-   padding: 20px;
-   border-radius: 5px;
-   color: var(--light-text-color);
+.edit_profile .content_wrapper .profile-widget > div {
+   display: flex;
+   margin-bottom: 30px;
+   justify-content: space-between;
 }
 
-header .account_status .profile-widget > div:not(:last-child) {
-   margin-bottom: 10px;
+.edit_profile .content_wrapper .profile-widget > div .info_value {
+   color: var(--grayish-text-color);
 }
 
-header .account_status .profile-widget .profile-img_wrapper {
-   width: 100px;
-   height: 100px;
-   margin: auto;
-   border-radius: 50%;
-   overflow: hidden;
-}
-
-header .account_status .profile-widget .profile-img_wrapper img {
-   width: 100%;
-   height: 100%;
-   object-fit: cover;
-   object-position: 50% 10%;
-}
 
 header .menu {
    display: none;
@@ -221,7 +203,7 @@ header .menu {
    cursor: pointer;
 }
 
-header .menu:dir(rtl){
+header .menu:dir(rtl) {
    margin-left: 0;
    margin-right: 15px;
 }
@@ -234,7 +216,7 @@ header .languages #language {
    background-color: white;
    padding: 7px;
    border: none;
-   margin:0 10px;
+   margin: 0 10px;
    border-radius: 4px;
 }
 
@@ -499,7 +481,6 @@ header .languages #language {
       margin-top: 20px;
    }
 }
-
 
 /* ------------------------------------------------ */
 /* ----------------- end doctor support ----------------- */
@@ -777,6 +758,19 @@ header .languages #language {
    flex-wrap: wrap;
 }
 
+.doctors .doctors_content .doctor-cards .fallback_text {
+   min-height: 300px;
+   text-align: center;
+   width: 100%;
+}
+
+.doctors .doctors_content .doctor-cards .fallback_text p {
+   transform: translateY(-50%);
+   top: 50%;
+   position: relative;
+   color: var(--grayish-text-color);
+}
+
 .doctors .doctors_content .doctor-cards .card {
    flex-basis: calc(25% - (30px / 4));
    background-color: var(--light-text-color);
@@ -1027,7 +1021,7 @@ header .languages #language {
 
 .doctor-details .posts .heading .profile_options {
    display: flex;
-   gap: 10px
+   gap: 10px;
 }
 
 .doctor-details .posts .heading .edit-profile {
@@ -1067,8 +1061,12 @@ header .languages #language {
    justify-content: left;
 }
 
+.doctor-details .posts .post .heading:dir(rtl) {
+   justify-content: right;
+}
+
 .doctor-details .posts .post .heading .profile_pic {
-   min-width: 60px;
+   width: 60px;
    height: 60px;
    border-radius: 50%;
    overflow: hidden;
@@ -1146,7 +1144,7 @@ header .languages #language {
    padding: 10px;
    border: 1px solid gray;
    border-radius: 3px;
-   color:rgb(30, 27, 27)
+   color: rgb(30, 27, 27);
 }
 
 .edit_profile .meeting_submission {
@@ -1161,7 +1159,7 @@ header .languages #language {
    margin: 0 0 25px;
 }
 
-.edit_profile .meeting_submission .heading{
+.edit_profile .meeting_submission .heading {
    margin-bottom: 15px;
 }
 
@@ -1175,7 +1173,8 @@ header .languages #language {
    cursor: pointer;
 }
 
-.edit_profile .meeting_submission .schedule_time, .edit_profile .meeting_submission .meeting_title{
+.edit_profile .meeting_submission .schedule_time,
+.edit_profile .meeting_submission .meeting_title {
    text-align: center;
    margin-bottom: 25px;
    display: flex;
@@ -1196,13 +1195,14 @@ header .languages #language {
    flex-grow: 1;
 }
 
-.edit_profile .meeting_submission .schedule_time #meetingTime, .edit_profile .meeting_submission #meetingTitle {
+.edit_profile .meeting_submission .schedule_time #meetingTime,
+.edit_profile .meeting_submission #meetingTitle {
    color: #000;
    padding: 10px;
    border-radius: 3px;
-   background-color: #FFF;
+   background-color: #fff;
    width: auto;
-   border: 1px solid gray
+   border: 1px solid gray;
 }
 
 .edit_profile .meeting_submission input#title {
@@ -1212,7 +1212,7 @@ header .languages #language {
 .edit_profile .meeting_submission .doctor_times {
    display: flex;
    margin-bottom: 25px;
-   gap: 10px
+   gap: 10px;
 }
 
 .edit_profile .meeting_submission .doctor_times > div {
@@ -1229,11 +1229,8 @@ header .languages #language {
 }
 
 .edit_profile .meeting_submission .doctor_times > div .unavailable_list li {
-   color:#fb5e5e;
+   color: #fb5e5e;
 }
-
-
-
 
 .edit_profile #scheduleMeetNextStage {
    text-align: center;
@@ -1268,7 +1265,7 @@ header .languages #language {
 .edit_profile .form_wrapper {
    margin: auto;
    width: 700px;
-   background-color: #FFF;
+   background-color: #fff;
    position: absolute;
    top: 50%;
    left: 50%;
@@ -1287,8 +1284,8 @@ header .languages #language {
 }
 
 .edit_profile .heading {
-    text-align: center;
-    margin-bottom: 30px;
+   text-align: center;
+   margin-bottom: 30px;
 }
 
 .edit_profile .form_wrapper form > div {
@@ -1297,7 +1294,7 @@ header .languages #language {
 }
 
 .edit_profile .form_wrapper form label {
-    min-width: max-content;
+   color: var(--grayish-text-color);
 }
 
 .edit_profile .form_wrapper form input {
@@ -1307,79 +1304,76 @@ header .languages #language {
 }
 
 .edit_profile .form_wrapper .edit_pictures {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    /* margin-bottom: 20px; */
+   display: flex;
+   gap: 30px;
+   justify-content: center;
 }
 
 .edit_profile .form_wrapper .edit_pictures label {
-    padding-bottom: 10px;
-    text-align: center;
-    width: 100%;
-    height: 15%;
-    display: block;
+   padding-bottom: 10px;
+   text-align: center;
+   width: 100%;
+   height: 15%;
+   display: block;
 }
 
 .edit_profile .form_wrapper .edit_pictures .file_wrapper {
-    height: 85%;
-    border: 2px dashed #000;
-    border-radius: 15px;
-    position: relative;
-    overflow: hidden;
+   height: 85%;
+   border: 2px dashed #000;
+   border-radius: 15px;
+   position: relative;
+   overflow: hidden;
 }
 
 .edit_profile .form_wrapper .edit_pictures .file_wrapper img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 20%;
-    left: 0;
-    top: 0;
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   object-position: center 20%;
+   left: 0;
+   top: 0;
 }
 
 .edit_profile .form_wrapper .edit_pictures .file_wrapper input[type="file"] {
-    width: 100%;
-    height: 100%;
-    border: none;
-    position: absolute;
-    padding: 0;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    cursor: pointer;
+   width: 100%;
+   height: 100%;
+   border: none;
+   position: absolute;
+   padding: 0;
+   top: 0;
+   left: 0;
+   opacity: 0;
+   cursor: pointer;
 }
 
 .edit_profile .form_wrapper .edit_pictures .file_wrapper .dotted_wrapper {
-    border: 2px dashed #000;
-    height:calc(100% - 30px);
-    margin: 15px;
-    border-radius: 15px;
-    font-size: 16px;
-    color: var(--grayish-text-color);
-    position: relative;
+   border: 2px dashed #000;
+   height: calc(100% - 30px);
+   margin: 15px;
+   border-radius: 15px;
+   font-size: 16px;
+   color: var(--grayish-text-color);
+   position: relative;
 }
 
 .edit_profile .form_wrapper .edit_pictures .file_wrapper .dotted_wrapper .centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    min-width: max-content;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   min-width: max-content;
 }
 
 .edit_profile .form_wrapper .edit_pictures .profile_pic_wrapper {
-    flex-basis: 150px;
-    height: 250px;
+   flex-basis: 150px;
+   height: 250px;
 }
 
 .edit_profile .form_wrapper .edit_pictures .background_pic_wrapper {
-    width: calc(100% - 150px - 30px);
-    height: 250px;
+   width: calc(100% - 150px - 30px);
+   height: 250px;
 }
-
-
 
 .edit_profile .form_wrapper .profile_pic {
    width: 100px;
@@ -1390,26 +1384,25 @@ header .languages #language {
    top: -40px;
    padding: 5px;
    border-radius: 50%;
-   background-color: #FFF;
+   background-color: #fff;
    overflow: hidden;
 }
 
 .edit_profile .form_wrapper .profile_pic img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: 50% 10%;
+   width: 100%;
+   height: 100%;
+   border-radius: 50%;
+   object-fit: cover;
+   object-position: 50% 10%;
 }
 
-.edit_profile .form_wrapper form .button_wrapper #submitChanges{
-    background-color: var(--main-theme-color);
-    color: #FFF;
-    position: relative;
-    transform: translateX(-50%);
-    left: 50%;
+.edit_profile .form_wrapper form .button_wrapper #submitChanges {
+   background-color: var(--main-theme-color);
+   color: #fff;
+   position: relative;
+   transform: translateX(-50%);
+   left: 50%;
 }
-
 
 /* media queries */
 
@@ -1753,7 +1746,8 @@ footer .footer_content .buttom_footer .social-media ul li {
    width: 100%;
 }
 
-.regis_box .right-section .regis_form > div input, .edit_profile .form_wrapper input {
+.regis_box .right-section .regis_form > div input,
+.edit_profile .form_wrapper input {
    border: none;
    border-bottom: 1px solid #fff;
    color: var(--light-text-color);
@@ -1775,11 +1769,13 @@ footer .footer_content .buttom_footer .social-media ul li {
    gap: 10px;
 }
 
-.regis_box .right-section .regis_form .button_wrapper, .edit_profile .form_wrapper form .button_wrapper {
+.regis_box .right-section .regis_form .button_wrapper,
+.edit_profile .form_wrapper form .button_wrapper {
    justify-content: center;
 }
 
-.regis_box .right-section .regis_form .button_wrapper .regis_button, .edit_profile .form_wrapper #submitChanges {
+.regis_box .right-section .regis_form .button_wrapper .regis_button,
+.edit_profile .form_wrapper #submitChanges {
    padding: 10px;
    width: 100%;
    background-color: var(--second-theme-color);
@@ -1891,7 +1887,7 @@ footer .footer_content .buttom_footer .social-media ul li {
 
 .screens .screens_wrapper .videos_container .user-video {
    width: 100%;
-   height: 100%
+   height: 100%;
 }
 
 .screens .screens_wrapper .videos_container .video_wrapper {
@@ -1907,7 +1903,6 @@ footer .footer_content .buttom_footer .social-media ul li {
 
 .screens .screens_wrapper .my-video > div video {
    background-color: #363c47;
-
 }
 
 .screens .options {
@@ -1921,7 +1916,7 @@ footer .footer_content .buttom_footer .social-media ul li {
    left: 50%;
    transform: translate;
    transform: translateX(-50%);
-   margin: auto
+   margin: auto;
 }
 
 .screens .options .option_buttons {
@@ -2100,7 +2095,17 @@ footer .footer_content .buttom_footer .social-media ul li {
    height: 40px;
    border-radius: 50%;
    margin-left: 10px;
-   background-color: #000;
+   background-color: #eaeaea;
+   overflow: hidden;
+   text-align: center;
+}
+
+.admin_background .header .head_container .profile_info .profile_pic_wrapper svg {
+   width: 85%;
+   position: relative;
+   top:50%;
+   transform: translateY(-50%);
+   height: 85%;
 }
 
 .admin_background .header .head_container .profile_info .profile-img_wrapper img {
@@ -2174,10 +2179,14 @@ tr {
    font-size: 16px;
 }
 
+.admin_background .content_table table td svg {
+   width: 22px
+}
+
 .admin_background .content_table table .options {
    position: absolute;
    padding: 10px;
-   background-color: #FFF;
+   background-color: #fff;
    border: 1px solid gray;
    right: 0;
    top: 40px;
@@ -2199,7 +2208,7 @@ tr {
 }
 
 .admin_background .content_table table button.accept {
-   background-color:rgb(143, 236, 2);
+   background-color: rgb(143, 236, 2);
    margin-left: 5px;
 }
 
@@ -2212,27 +2221,27 @@ tr {
 /* ------------------------------------------------ */
 
 .blog-content textarea {
-    width: 100%;
-    height: 200px;
-    resize: none;
+   width: 100%;
+   height: 200px;
+   resize: none;
 }
 
 .submit_blog {
-    text-align: center;
+   text-align: center;
 }
 
-.submit_blog #submit_blog, .edit_profile #scheduleMeetNextStage {
-    padding: 15px 20px;
-    background-color: var(--main-theme-color);
-    border: none;
-    border-radius: 5px;
-    color: #FFF;
-    margin: 20px 0;
-    font-size: 16px;
-    box-shadow: 0 0 7px gray;
-    cursor: pointer;
+.submit_blog #submit_blog,
+.edit_profile #scheduleMeetNextStage {
+   padding: 15px 20px;
+   background-color: var(--main-theme-color);
+   border: none;
+   border-radius: 5px;
+   color: #fff;
+   margin: 20px 0;
+   font-size: 16px;
+   box-shadow: 0 0 7px gray;
+   cursor: pointer;
 }
-
 
 .cd-popup-close {
    position: absolute;
@@ -2315,7 +2324,7 @@ tr {
    position: fixed;
    width: 100%;
    height: 100vh;
-   background-color: #FFF;
+   background-color: #fff;
    z-index: 99999;
    top: 0;
    left: 0;

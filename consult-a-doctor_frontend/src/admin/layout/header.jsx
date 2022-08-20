@@ -1,9 +1,14 @@
 import React from 'react'
+import jwt_decode from 'jwt-decode'
 
 // icons
 import {ReactComponent as SearchIcon} from '../../assets/icons/admin_search.svg';
+import {ReactComponent as AdminPic} from '../../assets/icons/admin_profile_picture.svg';
 
 const Header = () => {
+  const decodedJWT = jwt_decode(localStorage.getItem('JWT'))
+  const adminName = decodedJWT.fname + " " + decodedJWT.lname
+
   return (
     <div className='header'>
 
@@ -20,9 +25,9 @@ const Header = () => {
         </div>
         <div className="profile_info">
 
-          <p className="admin_name">John Doe</p>
+          <p className="admin_name">{adminName}</p>
           <div className="profile_pic_wrapper">
-            <img src="" alt="" />
+            <AdminPic />
           </div>
 
         </div>
