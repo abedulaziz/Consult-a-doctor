@@ -20,7 +20,7 @@ const AddSpecializationPopup = () => {
           method: "post",
           url: "admins/new-specialization",
           data,
-          headers: {Authorization: `Bearer ${userInfo.JWT}`, "Content-Type": "multipart/form-data" },
+          headers: {Authorization: `Bearer ${localStorage.getItem("JWT")}`, "Content-Type": "multipart/form-data" },
 
         })
         message(addSpecRqust.data.message, "green")
