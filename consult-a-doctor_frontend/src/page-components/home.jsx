@@ -1,5 +1,6 @@
 import React from "react";
 
+import { useSelector } from 'react-redux'
 import axios from "axios";
 
 import { Trans } from "react-i18next";
@@ -26,6 +27,8 @@ import { t } from "i18next";
 const Home = () => {
    const [topDoctors, setTopDoctors] = React.useState(null);
    const topDoctorsSection = React.useRef(null);
+
+   const popupController = useSelector((state) => state.popupController.value);
 
    React.useEffect(() => {
       try {
@@ -163,6 +166,8 @@ const Home = () => {
          </main>
 
          <Footer />
+
+         {popupController.userProfilePopup}
       </div>
    );
 };
