@@ -5,7 +5,7 @@ import jwt_decode from 'jwt-decode'
 import {ReactComponent as SearchIcon} from '../../assets/icons/admin_search.svg';
 import {ReactComponent as AdminPic} from '../../assets/icons/admin_profile_picture.svg';
 
-const Header = () => {
+const Header = ({searchValue}) => {
   const decodedJWT = jwt_decode(localStorage.getItem('JWT'))
   const adminName = decodedJWT.fname + " " + decodedJWT.lname
 
@@ -17,8 +17,7 @@ const Header = () => {
 
           <div className="search-box">
             <SearchIcon />
-            <input type="text" name="search" id="search" placeholder='Search' />
-            {/* <input onChange={(ev) => setSearchValue(ev.target.value)} type="text" placeholder="Search" /> */}
+            <input id="search" onChange={(ev) => searchValue(ev.target.value)} type="text" placeholder="Search" />
 
           </div>
 

@@ -8,6 +8,7 @@ import axios from "axios";
 
 const DoctorRequests = () => {
    const [accountRequest, setAccountRequest] = useState(null);
+   const [searchValue, setSearchValue] = useState("");
 
    useEffect(() => {
       try {
@@ -22,11 +23,14 @@ const DoctorRequests = () => {
          console.log(err);
       }
    }, []);
+
+   const getSearchValue = (text) => setSearchValue(text);
+
    return (
       <div className="admin_background">
          <Sidebar />
          <div className="container">
-            <Header />
+            <Header searchValue={getSearchValue} />
 
             <div className="content_table">
                <h3 className="table_header">Doctor account requests</h3>
@@ -44,8 +48,12 @@ const DoctorRequests = () => {
                      </tr>
                   </thead>
                   <tbody>
-                     {accountRequest &&
-                        accountRequest.map((req) => (
+                     {accountRequest && accountRequest
+                        .filter((req) => {
+                           const fullname = req.fname + " " + req.lname;
+                           return fullname.match(new RegExp(searchValue, "i"));
+                        })
+                        .map((req) => (
                            <AccountRequest
                               key={req.id}
                               ID={req.id}
