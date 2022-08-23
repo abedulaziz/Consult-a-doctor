@@ -2191,6 +2191,8 @@ tr {
    right: 0;
    top: 40px;
    border-radius: 4px;
+   outline: none;
+   box-shadow: 0 0 5px gray;
    z-index: 999;
 }
 
@@ -2205,6 +2207,10 @@ tr {
    padding: 7px;
    cursor: pointer;
    border-radius: 4px;
+}
+
+.admin_background .content_table table button:disabled {
+   opacity: .5;
 }
 
 .admin_background .content_table table button.accept {

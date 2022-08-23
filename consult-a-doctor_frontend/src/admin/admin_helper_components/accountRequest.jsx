@@ -1,32 +1,36 @@
 import React from "react";
-import {useSelector} from 'react-redux';
 
-import axios from 'axios';
-import message from '../../helper-components/message';
-import {ReactComponent as More} from '../../assets/icons/more-vertical.svg';
+import axios from "axios";
+import message from "../../helper-components/message";
+import { ReactComponent as More } from "../../assets/icons/more-vertical.svg";
 
-const AccountRequest = ({ID, fname, lname, email, gender, date_of_birth, speciality_id, about, university, password, availabilities}) => {
-   const weekDays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+const AccountRequest = ({ ID, fname, lname, email, gender, date_of_birth, speciality_id, about, university, password, availabilities }) => {
+   const reqOptions = React.useRef(null);
+   const specRow = React.useRef(null);
 
-   const userInfo = useSelector((state) => state.userInfo.value);
-   const [rowOptionsVisib, setRowOptionsVisib] = React.useState("none")
-
-   const denyRequest = async() => {
+   const denyRequest = async (ev) => {
+      const target = ev.currentTarget;
+      target.setAttribute("disabled", "disabled");
 
       try {
          const denyRqust = await axios({
-           method: "delete",
-           url: `/users/${ID}/deny`,
-           headers: {Authorization: `Bearer ${userInfo.JWT}`, "Content-Type": "multipart/form-data" },
+            method: "delete",
+            url: `/users/${ID}/deny`,
+            headers: { Authorization: `Bearer ${localStorage.getItem("JWT")}`, "Content-Type": "multipart/form-data" },
          });
-         message(denyRqust.data.message, "green")
+         message(denyRqust.data.message, "green");
+         specRow.current.remove();
+      } catch (err) {
+         message(err.response.data.message, "red");
+      }
 
-       } catch(err) {
-         message(err.response.data.message, "red")
-       }
-   }
+      target.removeAttribute("disabled");
+      reqOptions.current.style.visibility = "hidden";
+   };
 
-   const acceptRequest = async() => {
+   const acceptRequest = async (ev) => {
+      const target = ev.currentTarget;
+      target.setAttribute("disabled", "disabled");
 
       const accountData = {
          fname,
@@ -39,26 +43,28 @@ const AccountRequest = ({ID, fname, lname, email, gender, date_of_birth, special
          about,
          type: "doctor",
          university,
-         availabilities
-      }
-      
+         availabilities,
+      };
+
       try {
          const acceptRqust = await axios({
-           method: "post",
-           url: `/users/${ID}/accept`,
-           data: accountData,
-           headers: {Authorization: `Bearer ${userInfo.JWT}`, "Content-Type": "multipart/form-data" },
+            method: "post",
+            url: `/users/${ID}/accept`,
+            data: accountData,
+            headers: { Authorization: `Bearer ${localStorage.getItem("JWT")}`, "Content-Type": "multipart/form-data" },
          });
-         message(acceptRqust.data.message, "green")
+         message(acceptRqust.data.message, "green");
+         specRow.current.remove();
+      } catch (err) {
+         message(err.response.data.message, "red");
+      }
 
-       } catch(err) {
-         message(err.response.data.message, "red")
-       }
-   }
-
+      target.removeAttribute("disabled");
+      reqOptions.current.style.visibility = "hidden";
+   };
 
    return (
-      <tr>
+      <tr ref={specRow}>
          <td>{fname}</td>
          <td>{lname}</td>
          <td>{email}</td>
@@ -67,11 +73,34 @@ const AccountRequest = ({ID, fname, lname, email, gender, date_of_birth, special
          <td>{speciality_id}</td>
          <td>{about}</td>
          <td>{university}</td>
-         <td onClick={() => setRowOptionsVisib(rowOptionsVisib == "none" ? "block" : "none")}><More /></td>
-         <div className="options" style={{display: rowOptionsVisib}}>
-               <button className="deny" onClick={(ev) => denyRequest(ev)}>Deny</button>
-               <button className="accept" onClick={() => acceptRequest()}>Accept</button>
-            </div>
+         <td
+            onClick={() => {
+               if (reqOptions.current.style.visibility == "hidden") {
+                  reqOptions.current.style.visibility = "visible";
+                  reqOptions.current.focus();
+               }
+            }}
+         >
+            <More />
+         </td>
+         <div
+            ref={reqOptions}
+            style={{ visibility: "hidden" }}
+            className="options"
+            tabIndex="-1"
+            onBlur={(ev) => {
+               if (!ev.currentTarget.contains(ev.relatedTarget)) {
+                  ev.currentTarget.style.visibility = "hidden";
+               }
+            }}
+         >
+            <button className="deny" onClick={(ev) => denyRequest(ev)}>
+               Deny
+            </button>
+            <button className="accept" onClick={(ev) => acceptRequest(ev)}>
+               Accept
+            </button>
+         </div>
       </tr>
    );
 };

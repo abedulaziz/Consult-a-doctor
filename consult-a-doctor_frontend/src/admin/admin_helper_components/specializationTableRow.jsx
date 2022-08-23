@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux';
 import axios from 'axios';
 import message from '../../helper-components/message';
 
-import {ReactComponent as More} from '../../assets/icons/more-vertical.svg';
+import {ReactComponent as Trash} from '../../assets/icons/trash.svg';
 
 const SpecializationTableRow = ({ ID, spec_name, doctorsCount, created_at, updated_at }) => {
 
@@ -34,7 +34,7 @@ const SpecializationTableRow = ({ ID, spec_name, doctorsCount, created_at, updat
             <td>{doctorsCount}</td>
             <td>{created_at}</td>
             <td>{updated_at}</td>
-            <td onClick={() => setRowOptionsVisib(rowOptionsVisib == "none" ? "block" : "none")}><More /></td>
+            <td onClick={() => setRowOptionsVisib(rowOptionsVisib == "none" ? "block" : "none")}><Trash /></td>
             <div className="options" style={{display: rowOptionsVisib}}>
                <button className="delete" onClick={(ev) => deleteSpec(ev)}>Delete</button>
             </div>
