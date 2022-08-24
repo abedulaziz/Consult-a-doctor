@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import jwt_decode from 'jwt-decode';
 import Loader from '../helper-components/loader';
 
 // layout components
@@ -15,14 +16,14 @@ const Appointments = () => {
   const [appoinAsDoctor, setAppoinAsDoctor] = React.useState(null);
   const [appoinAsPatient, setAppoinAsPatient] = React.useState(null);
 
-  const userInfo = useSelector((state) => state.userInfo.value);
+  const userID = jwt_decode(localStorage.getItem("JWT")).sub
 
   React.useEffect(() => {
     try {
       const getAppointments = async () => {
-        const appoinRqust = await axios.get(`/users/${userInfo.user_id}/appointments`, {
+        const appoinRqust = await axios.get(`/users/${userID}/appointments`, {
           headers: {
-            Authorization: `Bearer ${userInfo.JWT}`
+            Authorization: `Bearer ${localStorage.getItem("JWT")}`
           }
         });
 
