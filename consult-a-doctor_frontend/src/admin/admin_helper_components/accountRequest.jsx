@@ -25,7 +25,7 @@ const AccountRequest = ({ ID, fname, lname, email, gender, date_of_birth, specia
       }
 
       target.removeAttribute("disabled");
-      reqOptions.current.style.visibility = "hidden";
+      reqOptions.current.style.display = "none";
    };
 
    const acceptRequest = async (ev) => {
@@ -60,7 +60,7 @@ const AccountRequest = ({ ID, fname, lname, email, gender, date_of_birth, specia
       }
 
       target.removeAttribute("disabled");
-      reqOptions.current.style.visibility = "hidden";
+      reqOptions.current.style.display = "none";
    };
 
    return (
@@ -75,8 +75,8 @@ const AccountRequest = ({ ID, fname, lname, email, gender, date_of_birth, specia
          <td>{university}</td>
          <td
             onClick={() => {
-               if (reqOptions.current.style.visibility == "hidden") {
-                  reqOptions.current.style.visibility = "visible";
+               if (reqOptions.current.style.display == "none") {
+                  reqOptions.current.style.display = "block";
                   reqOptions.current.focus();
                }
             }}
@@ -85,12 +85,12 @@ const AccountRequest = ({ ID, fname, lname, email, gender, date_of_birth, specia
          </td>
          <div
             ref={reqOptions}
-            style={{ visibility: "hidden" }}
+            style={{ display: "none" }}
             className="options"
             tabIndex="-1"
             onBlur={(ev) => {
                if (!ev.currentTarget.contains(ev.relatedTarget)) {
-                  ev.currentTarget.style.visibility = "hidden";
+                  ev.currentTarget.style.display = "none";
                }
             }}
          >
