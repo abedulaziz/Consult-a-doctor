@@ -4,10 +4,10 @@ import { t } from "i18next";
 
 // icons
 import Logo from '../assets/brand/transparent_background_logo.png';
-import Facebook from '../assets/icons/facebook.svg';
-import Instagram from '../assets/icons/instagram.svg';
-import Twitter from '../assets/icons/twitter.svg';
-import Linkedin from '../assets/icons/linkedin.svg';
+import {ReactComponent as Facebook} from '../assets/icons/facebook.svg';
+import {ReactComponent as Instagram} from '../assets/icons/instagram.svg';
+import {ReactComponent as Twitter} from '../assets/icons/twitter.svg';
+import {ReactComponent as Linkedin} from '../assets/icons/linkedin.svg';
 
 // helper components
 import FooterLink from '../helper-components/footerLink';
@@ -15,8 +15,8 @@ import FooterLink from '../helper-components/footerLink';
 const Footer = () => {
   return (
     <footer>
-      <div className="container">
-        <div className="footer_content">
+      <div className="footer_content">
+        <div className="container">
 
           <div className="sections">
 
@@ -56,19 +56,26 @@ const Footer = () => {
             </div>
 
           </div>
-          <div className="buttom_footer">
+
+        </div>
+      </div>
+      <div className="buttom_footer">
+        <div className="container">
+          <div className="buttom_footer_content">
+
             <div className="logo">
               <img src={ Logo }/>
             </div>
 
             <div className="social-media">
               <ul>
-                <li className="facebook"><img src={ Facebook } alt="facebook" /></li>
-                <li className="instagram"><img src={ Instagram } alt="instagram" /></li>
-                <li className="twitter"><img src={ Twitter } alt="twitter" /></li>
-                <li className="linkedin"><img src={ Linkedin } alt="linkedin" /></li>
+                <li className="facebook"><Facebook /></li>
+                <li className="instagram"><Instagram /></li>
+                <li className="twitter"><Twitter /></li>
+                <li className="linkedin"><Linkedin /></li>
               </ul>
             </div>
+
           </div>
 
         </div>

@@ -7,9 +7,9 @@ import { Trans } from "react-i18next";
 
 // icons
 import CheckTwoSqure from "../assets/icons/CheckTwoSquare.svg";
-import PersonVideo from "../assets/icons/PersonVideo.svg";
-import Development from "../assets/icons/Development.svg";
-import HandsThumbsUp from "../assets/icons/HandThumbsUp.svg";
+import PersonVideo from "../assets/icons/PersonVideo.png";
+import Development from "../assets/icons/Development.png";
+import HandsThumbsUp from "../assets/icons/HandThumbsUp.png";
 
 // backgrounds
 import DoctorsSupportImg from "../assets/backgrounds/doctors_support.png";
