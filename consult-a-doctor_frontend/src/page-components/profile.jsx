@@ -18,7 +18,7 @@ import EditProfile from "../helper-components/editProfile";
 import { ReactComponent as Heart } from "../assets/icons/heart.svg";
 import { ReactComponent as Plus } from "../assets/icons/plus.svg";
 import { ReactComponent as Edit } from "../assets/icons/edit-profile.svg";
-import DefaultProfilePic from '../assets/backgrounds/default_profile_picture.svg';
+import DefaultProfilePic from "../assets/backgrounds/default_profile_picture.svg";
 
 // helper components
 import AddBlogPopup from "../helper-components/addBlogPopup";
@@ -32,16 +32,9 @@ const Profile = () => {
    const dispatch = useDispatch();
 
    let navigate = useNavigate();
-   const [backgroundPic, setBackgroundPic] = useState(null)
-   const [university, setUniversity] = useState("");
-   const [about, setAbout] = useState("");
-   const [blogs, setBlogs] = useState([]);
-   const [followers, setFollowers] = useState(0);
-   const [followings, setFollowings] = useState(0);
+   const [doctorInfo, setDoctorInfo] = useState({});
 
-   const [isAccountOwner, setIsAccountOwner] = useState(false);
 
-   const userInfo = useSelector((state) => state.userInfo.value);
    const bookMeeting = useSelector((state) => state.bookMeeting.value);
    const popupController = useSelector((state) => state.popupController.value);
    const { doctor_id } = useParams();
@@ -51,25 +44,28 @@ const Profile = () => {
          try {
             const doctorInfoRqust = await axios.get(`users/${doctor_id}/doctor-info`, {
                headers: {
-                  Authorization: `Bearer ${userInfo.JWT}`,
+                  Authorization: `Bearer ${localStorage.getItem("JWT")}`,
                },
             });
+            // console.log(doctorInfoRqust.data);
 
             const doctorInfo = doctorInfoRqust.data.doctor_info;
 
-            // setFullname(doctorInfo.fname + " " + doctorInfo.lname);
             dispatch(setName({ prop: "fname", value: doctorInfo.fname }));
             dispatch(setName({ prop: "lname", value: doctorInfo.lname }));
             dispatch(setDoctorProfilePic(doctorInfo.profile_pic_uri));
 
-            setBackgroundPic(doctorInfo.background_img_uri )
-            setUniversity(doctorInfo.university);
-            setAbout(doctorInfo.about);
-            setBlogs(doctorInfoRqust.data.doctor_blogs);
-            setFollowers(doctorInfoRqust.data.followers);
-            setFollowings(doctorInfoRqust.data.followings);
-
-            setIsAccountOwner(doctorInfoRqust.data.isAccountOwner);
+            const info = {
+               background_img_uri: doctorInfo.background_img_uri,
+               university: doctorInfo.university,
+               about: doctorInfo.about,
+               blogs: doctorInfoRqust.data.doctor_blogs,
+               followers: doctorInfoRqust.data.followers,
+               followings: doctorInfoRqust.data.followings,
+               doctor_blogs: doctorInfoRqust.data.doctor_blogs,
+               isAccountOwner: doctorInfoRqust.data.isAccountOwner
+            }
+            setDoctorInfo(info)
             setLoader(null);
          } catch (err) {
             if (err.response.data.message == "Unvalid token") {
@@ -85,18 +81,20 @@ const Profile = () => {
          {loader}
          <Header />
          <main>
-            <div className="profile_background" style={{backgroundImage: `url(${backgroundPic})`}}>
+            <div className="profile_background" style={{ backgroundImage: `url(${doctorInfo.background_img_uri})` }}>
                <div className="background-info_wrapper">
                   <div className="empty_left_box"></div>
                   <div className="info-and-book_meeting">
                      <div className="doctor_info">
                         <h2>{bookMeeting.fname + " " + bookMeeting.lname}</h2>
-                        <p className="university">{university}</p>
+                        <p className="university">{doctorInfo.university}</p>
                      </div>
 
-                     {!isAccountOwner && (
+                     {!doctorInfo.isAccountOwner && (
                         <div className="book-meeting">
-                           <button onClick={() => dispatch(setBookMeetingPopup(<ScheduleMeeting doctor_id={doctor_id} />))}>{t("lang.profile.background.book_meeting_but")}</button>
+                           <button onClick={() => dispatch(setBookMeetingPopup(<ScheduleMeeting doctor_id={doctor_id} />))}>
+                              {t("lang.profile.background.book_meeting_but")}
+                           </button>
                         </div>
                      )}
                   </div>
@@ -109,7 +107,7 @@ const Profile = () => {
                      <div className="doctor-card">
                         <div className="profile_img">
                            <img src={bookMeeting.profile_pic ? bookMeeting.profile_pic : DefaultProfilePic} alt="profile picture" />
-                           {!isAccountOwner && (
+                           {!doctorInfo.isAccountOwner && (
                               <div className="follow">
                                  <span>{t("lang.profile.doctor_card.follow_but")}</span>
                                  <Heart />
@@ -120,20 +118,20 @@ const Profile = () => {
                         <div className="details_wrapper">
                            <div className="about">
                               <h4>{t("lang.profile.doctor_card.about_word")}</h4>
-                              <p>{about}</p>
+                              <p>{doctorInfo.about}</p>
                            </div>
 
                            <div className="followings">
                               <div className="followers">
-                                 <p className="counter">{followers}</p>
+                                 <p className="counter">{doctorInfo.followers}</p>
                                  <p>{t("lang.profile.doctor_card.followers")}</p>
                               </div>
                               <div className="posts">
-                                 <p className="counter">{blogs.length}</p>
+                                 <p className="counter">{doctorInfo.blogs && doctorInfo.blogs.length}</p>
                                  <p>{t("lang.profile.doctor_card.posts")}</p>
                               </div>
                               <div className="following">
-                                 <p className="counter">{followings}</p>
+                                 <p className="counter">{doctorInfo.followings}</p>
                                  <p>{t("lang.profile.doctor_card.followings")}</p>
                               </div>
                            </div>
@@ -144,20 +142,25 @@ const Profile = () => {
                   <div className="posts">
                      <div className="heading">
                         <h3 className="posts_header">{t("lang.profile.doctor_posts")}</h3>
-                        {isAccountOwner && (
+                        {doctorInfo.isAccountOwner && (
                            <div className="profile_options">
-                              <button className="edit-profile" title="Edit profile" onClick={() => dispatch(setEditProfilePopup(<EditProfile university={university} about={about} />))}>
+                              <button
+                                 className="edit-profile"
+                                 title="Edit profile"
+                                 onClick={() => dispatch(setEditProfilePopup(<EditProfile university={doctorInfo.university} about={doctorInfo.about} />))}
+                              >
                                  <Edit />
                               </button>
                               <button className="add-blog" onClick={() => dispatch(setAddBlogPopup(<AddBlogPopup />))}>
-                                 <Plus /> <span>{t("lang.profile.add_blog")}</span>
+                                 <span>{t("lang.profile.add_blog")}</span>
+                                 <Plus />
                               </button>
                            </div>
                         )}
                      </div>
                      <div className="posts_container">
-                        {blogs &&
-                           blogs.map((blog, index) => {
+                        {doctorInfo.blogs &&
+                           doctorInfo.blogs.map((blog, index) => {
                               let date = new Date(blog.created_at);
                               return (
                                  <Post
