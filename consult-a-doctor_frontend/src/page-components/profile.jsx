@@ -19,6 +19,7 @@ import { ReactComponent as Heart } from "../assets/icons/heart.svg";
 import { ReactComponent as Plus } from "../assets/icons/plus.svg";
 import { ReactComponent as Edit } from "../assets/icons/edit-profile.svg";
 import DefaultProfilePic from "../assets/backgrounds/default_profile_picture.svg";
+import Loupe from "../assets/icons/loupe.png";
 
 // helper components
 import AddBlogPopup from "../helper-components/addBlogPopup";
@@ -33,7 +34,6 @@ const Profile = () => {
 
    let navigate = useNavigate();
    const [doctorInfo, setDoctorInfo] = useState({});
-
 
    const bookMeeting = useSelector((state) => state.bookMeeting.value);
    const popupController = useSelector((state) => state.popupController.value);
@@ -63,9 +63,9 @@ const Profile = () => {
                followers: doctorInfoRqust.data.followers,
                followings: doctorInfoRqust.data.followings,
                doctor_blogs: doctorInfoRqust.data.doctor_blogs,
-               isAccountOwner: doctorInfoRqust.data.isAccountOwner
-            }
-            setDoctorInfo(info)
+               isAccountOwner: doctorInfoRqust.data.isAccountOwner,
+            };
+            setDoctorInfo(info);
             setLoader(null);
          } catch (err) {
             if (err.response.data.message == "Unvalid token") {
@@ -159,7 +159,7 @@ const Profile = () => {
                         )}
                      </div>
                      <div className="posts_container">
-                        {doctorInfo.blogs &&
+                        {doctorInfo.blogs?.length ? (
                            doctorInfo.blogs.map((blog, index) => {
                               let date = new Date(blog.created_at);
                               return (
@@ -171,7 +171,15 @@ const Profile = () => {
                                     createdAt={`${date.getFullYear()}/${date.getMonth()}/${date.getDay()}`}
                                  />
                               );
-                           })}
+                           })
+                        ) : (
+                           <div className="no-posts">
+                              <p>
+                                 <img src={Loupe} />
+                                 <p className="no-posts-mess">No posted blogs yet</p>
+                              </p>
+                           </div>
+                        )}
                      </div>
                   </div>
                </div>

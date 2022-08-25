@@ -654,6 +654,7 @@ header .languages #language {
    height: calc((86vw - 25vw) / 2);
    width: 100%;
    background-color: var(--grayish-background-color);
+   cursor: pointer;
 }
 
 .specs .spec_content .specs-container .specialization img {
@@ -934,6 +935,7 @@ header .languages #language {
    height: 400px;
    position: relative;
    border: 1px solid gray;
+   background-color: #727272;
 }
 
 .doctor-details .doctor-card .profile_img img {
@@ -1040,10 +1042,14 @@ header .languages #language {
    color: var(--light-text-color);
    border-radius: 3px;
    cursor: pointer;
-   font-size: 16px;
+   font-size: 15px;
    display: flex;
    align-items: center;
    gap: 5px;
+}
+
+.doctor-details .posts .heading .add-blog svg {
+   width: 20px;
 }
 
 .doctor-details .posts .post {
@@ -1088,6 +1094,29 @@ header .languages #language {
 .doctor-details .posts .post .heading .created_at {
    font-size: 14px;
    color: #9c9c9c;
+}
+
+.doctor-details .posts .no-posts {
+   text-align: center;
+   height: 350px;
+   opacity: .7;
+}
+
+.doctor-details .posts .no-posts p {
+   position: relative;
+   top: 50%;
+   transform: translateY(-50%);
+   
+}
+
+.doctor-details .posts .no-posts p img {
+   width: 3em
+}
+
+.doctor-details .posts .no-posts p .no-posts-mess {
+   color: var(--grayish-text-color);
+   margin-top: 10px;
+   font-size: 17px;
 }
 
 .layer {
@@ -1526,7 +1555,7 @@ header .languages #language {
 /* ------------------------------------------------ */
 
 footer {
-   padding: 30px 0;
+   padding-top: 30px;
    background-color: var(--main-theme-color);
    color: var(--light-text-color);
 }
@@ -1542,11 +1571,11 @@ footer .footer_content .sections > div {
 
 footer .footer_content .sections > div .section {
    margin-bottom: 30px;
+   font-size: 16px
 }
 
 footer .footer_content .sections > div .section h3 {
-   color: var(--second-theme-color);
-   font-size: 26px;
+   color: rgba(255, 255, 255, 0.514);
    font-weight: 400;
 }
 
@@ -1559,29 +1588,34 @@ footer .footer_content .sections > div .section ul li a {
    text-decoration: none;
 }
 
-footer .footer_content .buttom_footer {
+footer .buttom_footer {
+   background-color:#002056;
+   border-top: 1px solid rgba(147, 147, 147, 0.551);
+}
+
+footer .buttom_footer_content {
    display: flex;
    justify-content: space-between;
    align-items: center;
+   padding: 20px 0;
 }
 
-footer .footer_content .buttom_footer .logo {
+footer .buttom_footer_content .logo {
    width: 60px;
 }
 
-footer .footer_content .buttom_footer .logo img {
+footer .buttom_footer_content .logo img {
    width: 100%;
 }
 
-footer .footer_content .buttom_footer .social-media ul {
+footer .buttom_footer_content .social-media ul {
    display: flex;
    gap: 15px;
 }
 
-footer .footer_content .buttom_footer .social-media ul li {
+footer .buttom_footer_content .social-media ul li {
    cursor: pointer;
 }
-
 /* ------------------------------------------------ */
 /* ----------------- end footer ----------------- */
 /* ------------------------------------------------ */
@@ -2065,6 +2099,7 @@ footer .footer_content .buttom_footer .social-media ul li {
    padding: 10px;
    background-color: #fff;
    border-radius: 50px;
+   box-shadow: 0 0 10px 1px rgba(158, 158, 158, 0.59);
 }
 
 .admin_background .header .head_container .options .search-box > * {
@@ -2121,7 +2156,7 @@ footer .footer_content .buttom_footer .social-media ul li {
    justify-content: space-between;
    align-items: center;
    border-radius: 4px;
-   box-shadow: 0 0 10px 1px rgba(93, 93, 93, 0.59);
+   box-shadow: 0 0 10px 1px rgba(212, 212, 212, 0.59);
 }
 
 .admin_background .adding_spec p {
@@ -2151,7 +2186,7 @@ footer .footer_content .buttom_footer .social-media ul li {
    background-color: #fff;
    margin-top: 20px;
    padding: 25px;
-   box-shadow: 0 0 10px 1px rgba(93, 93, 93, 0.59);
+   box-shadow: 0 0 10px 1px rgba(212, 212, 212, 0.59);
    border-radius: 4px;
 }
 
@@ -2176,6 +2211,7 @@ tr {
    padding: 8px 0;
    color: rgb(71, 71, 71);
    padding-right: 10px;
+   border-bottom: 1px solid rgba(159, 159, 159, 0.54);
    font-size: 16px;
 }
 
@@ -2198,6 +2234,7 @@ tr {
 
 .admin_background .content_table table tr svg {
    cursor: pointer;
+   vertical-align: middle;
 }
 
 .admin_background .content_table table button {
