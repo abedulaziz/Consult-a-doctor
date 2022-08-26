@@ -47,8 +47,6 @@ const Profile = () => {
                   Authorization: `Bearer ${localStorage.getItem("JWT")}`,
                },
             });
-            // console.log(doctorInfoRqust.data);
-
             const doctorInfo = doctorInfoRqust.data.doctor_info;
 
             dispatch(setName({ prop: "fname", value: doctorInfo.fname }));
@@ -168,7 +166,7 @@ const Profile = () => {
                                     profilePic={bookMeeting.profile_pic ? bookMeeting.profile_pic : DefaultProfilePic}
                                     fullName={bookMeeting.fname + " " + bookMeeting.lname}
                                     content={blog.content}
-                                    createdAt={`${date.getFullYear()}/${date.getMonth()}/${date.getDay()}`}
+                                    createdAt={`${date.getFullYear()}/${date.getMonth() +1}/${date.getDate()}`}
                                  />
                               );
                            })
