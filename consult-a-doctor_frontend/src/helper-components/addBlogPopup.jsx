@@ -1,53 +1,58 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setAddBlogPopup } from "../redux/slices/popupControllerSlice";
-import message from '../helper-components/message';
+import message from "../helper-components/message";
+
+import RichTextEditor from "../helper-components/richTextEditor";
 
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 const AddBlogPopup = () => {
-   const userInfo = useSelector((state) => state.userInfo.value);
+   const userInfo = jwt_decode(localStorage.getItem("JWT"));
    const dispatch = useDispatch();
-   const blogContent = React.useRef(null);
+   const [blogContent, setBlogContent] = React.useState("");
 
    const submitBlog = async () => {
-      if (blogContent.current.value.length !== 0) {
+      console.log(blogContent);
+      if (blogContent !== "<p><br></p>" && blogContent !== "") {
          try {
-            let rqustBody = { content: blogContent.current.value };
-            const doctorInfoRqust = await axios.post(`users/${userInfo.user_id}/add-blog`, rqustBody, {
+            let rqustBody = { content: blogContent };
+            const doctorInfoRqust = await axios.post(`users/${userInfo.sub}/add-blog`, rqustBody, {
                headers: {
-                  Authorization: `Bearer ${userInfo.JWT}`,
+                  Authorization: `Bearer ${localStorage.getItem("JWT")}`,
                },
             });
-            message(doctorInfoRqust.data.message, "green")
-            dispatch(setAddBlogPopup(null))
-
+            message(doctorInfoRqust.data.message, "green");
+            dispatch(setAddBlogPopup(null));
          } catch (error) {
             console.log(error);
          }
       }
-      blogContent.current.focus();
+      else {
+         message("Empty blog content", "red")
+      }
+
    };
 
    return (
       <div className="edit_profile">
          <div className="form_wrapper">
-            <a href="#" className="cd-popup-close img-replace" onClick={() => dispatch(setAddBlogPopup(null))}></a>
+            <span className="cd-popup-close img-replace" onClick={() => dispatch(setAddBlogPopup(null))}></span>
 
             <div className="profile_pic">
-               <img src={userInfo.profile_pic} />
+               <img src={userInfo.profile_pic_uri} />
             </div>
 
             <h2 className="heading">Add new blog</h2>
 
-            <div className="blog-content">
-                <textarea ref={blogContent} placeholder="Blog content" name="content" id="content"></textarea>
-            </div>
-            <div className="submit_blog">
-              <button id="submit_blog" onClick={() => submitBlog()}>Submit</button>
-            </div>
-            <a href="#" className="cd-popup-close img-replace" onClick={() => dispatch(setAddBlogPopup(null))}></a>
+            <RichTextEditor blogContent={setBlogContent} />
 
+            <div className="submit_blog">
+               <button id="submit_blog" onClick={() => submitBlog()}>
+                  Submit
+               </button>
+            </div>
          </div>
       </div>
    );
