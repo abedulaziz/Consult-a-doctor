@@ -221,6 +221,37 @@
          "header": "Ajouter un nouveau blog",
          "placeholder": "Écrivez votre blog...",
          "submit_button": "Submit"
+      },
+      "schedule_meeting": {
+         "header": "Planifier une réunion",
+         "first_step": {
+            "placeholder": "Choisissez une date pour la réunion",
+            "unselected_date_mess": "Veuillez sélectionner une date pour la réunion",
+            "next_button": "Prochaine"
+         },
+         "second_step": {
+            "duration": {
+               "title": "Sélectionnez une durée",
+               "durations": {
+                  "five_min": "5 min - 10$",
+                  "ten_min": "10 min - 20$",
+                  "twenty_min": "20 min - 30$"
+               }
+            },
+            "time": {
+               "title": "Heure de réunion:",
+               "caption": "Veuillez sélectionner une heure qui n'entre pas en conflit avec les heures programmées, le cas échéant",
+               "unselected_time_mess": "Veuillez sélectionner une heure pour la réunion"
+            },
+            "title": {
+               "title": "Titre de la réunion",
+               "empty_title_mess": "le titre est requis",
+               "min_length_mess": "La longueur du titre doit être supérieure à 4 caractères",
+               "max_length_mess": "La longueur du titre ne doit pas dépasser 40 caractères"
+            },
+            "booked_times": "Horaires programmés",
+            "confirm_button": "Confirmer la réunion"
+         }
       }
    }
 }

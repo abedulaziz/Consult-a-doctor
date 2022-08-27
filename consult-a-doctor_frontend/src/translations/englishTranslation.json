@@ -221,6 +221,37 @@
          "header": "Add new blog",
          "placeholder": "Write your blog...",
          "submit_button": "Submit"
+      },
+      "schedule_meeting": {
+         "header": "Schedule a meeting",
+         "first_step": {
+            "placeholder": "Pick a date for the meeting",
+            "unselected_date_mess": "Please select a date for the meeting",
+            "next_button": "Next"
+         },
+         "second_step": {
+            "duration": {
+               "title": "Select a duration",
+               "durations": {
+                  "five_min": "5 min - 10$",
+                  "ten_min": "10 min - 20$",
+                  "twenty_min": "20 min - 30$"
+               }
+            },
+            "time": {
+               "title": "Meeting time:",
+               "caption": "Please select a time that doesn't conflict with scheduled times if existed",
+               "unselected_time_mess": "Please select a time for the meeting"
+            },
+            "title": {
+               "title": "Meeting title",
+               "empty_title_mess": "First name is required",
+               "min_length_mess": "Title length must be greater than 4 characters",
+               "max_length_mess": "Title length shouldn't exceed 40 characters"
+            },
+            "booked_times": "Scheduled times",
+            "confirm_button": "Confirm meeting"
+         }
       }
    }
 }
