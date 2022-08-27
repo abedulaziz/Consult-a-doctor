@@ -166,7 +166,7 @@ const Profile = () => {
                                     profilePic={bookMeeting.profile_pic ? bookMeeting.profile_pic : DefaultProfilePic}
                                     fullName={bookMeeting.fname + " " + bookMeeting.lname}
                                     content={blog.content}
-                                    createdAt={`${date.getFullYear()}/${date.getMonth() +1}/${date.getDate()}`}
+                                    createdAt={`${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`}
                                  />
                               );
                            })

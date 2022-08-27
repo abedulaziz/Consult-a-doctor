@@ -72,14 +72,18 @@ const EditProfile = ({ university, about }) => {
                <img src={bookMeeting.profile_pic ? bookMeeting.profile_pic : DefaultProfilePic} />
             </div>
 
-            <h2 className="heading">Edit your profile</h2>
+            <h2 className="heading">{t("lang.popups.edit_profile.header")}</h2>
 
             <div className="content_wrapper">
                <form onSubmit={handleSubmit((data) => editProfileData(data))} id="editProfileData" className="edit_profile_data">
                   <div className="fname_wrapper">
-                     <label htmlFor="fname">First name: </label>
+                     <label htmlFor="fname">{t("lang.popups.edit_profile.user_info.fname.placeholder")}</label>
                      <input
-                        {...register("fname", { required: "First name is required", minLength: { value: 2, message: "Minimum length is 2" } })}
+                        {...register("fname", {
+                           required: t("lang.popups.edit_profile.user_info.fname.empty_fname_mess"),
+                           minLength: { value: 2, message: t("lang.popups.edit_profile.user_info.fname.min_length_mess") },
+                           maxLength: { value: 40, message: t("lang.popups.edit_profile.user_info.fname.max_length_mess") },
+                        })}
                         type="text"
                         name="fname"
                         id="fname"
@@ -88,9 +92,13 @@ const EditProfile = ({ university, about }) => {
                      <p className="error">{errors.fname?.message}</p>
                   </div>
                   <div className="lname_wrapper">
-                     <label htmlFor="lname">Last name: </label>
+                     <label htmlFor="lname">{t("lang.popups.edit_profile.user_info.lname.placeholder")}</label>
                      <input
-                        {...register("lname", { required: "Last name is required", minLength: { value: 2, message: "Minimum length is 2" } })}
+                        {...register("lname", {
+                           required: t("lang.popups.edit_profile.user_info.lname.empty_lname_mess"),
+                           minLength: { value: 2, message: t("lang.popups.edit_profile.user_info.lname.min_length_mess") },
+                           maxLength: { value: 40, message: t("lang.popups.edit_profile.user_info.lname.max_length_mess") },
+                        })}
                         type="text"
                         name="lname"
                         id="lname"
@@ -99,9 +107,9 @@ const EditProfile = ({ university, about }) => {
                      <p className="error">{errors.lname?.message}</p>
                   </div>
                   <div className="university_wrapper">
-                     <label htmlFor="university">University: </label>
+                     <label htmlFor="university">{t("lang.popups.edit_profile.user_info.university.placeholder")}</label>
                      <input
-                        {...register("university", { required: "University is required" })}
+                        {...register("university", { required: t("lang.popups.edit_profile.user_info.university.empty_university_mess") })}
                         type="text"
                         name="university"
                         id="university"
@@ -110,17 +118,23 @@ const EditProfile = ({ university, about }) => {
                      <p className="error">{errors.university?.message}</p>
                   </div>
                   <div className="about_wrapper">
-                     <label htmlFor="about">About: </label>
-                     <input {...register("about", { required: "Your about is required" })} type="text" name="about" id="about" defaultValue={about} />
+                     <label htmlFor="about">{t("lang.popups.edit_profile.user_info.about.placeholder")}</label>
+                     <input
+                        {...register("about", { required: t("lang.popups.edit_profile.user_info.about.empty_about_mess") })}
+                        type="text"
+                        name="about"
+                        id="about"
+                        defaultValue={about}
+                     />
                      <p className="error">{errors.about?.message}</p>
                   </div>
 
                   <div className="edit_pictures">
                      <div className="profile_pic_wrapper">
-                        <label htmlFor="profilePic">Profile picture</label>
+                        <label htmlFor="profilePic">{t("lang.popups.edit_profile.user_info.profile_picture")}</label>
                         <div className="file_wrapper">
                            <div className="dotted_wrapper">
-                              <span className="centered">Pick a picture</span>
+                              <span className="centered">{t("lang.popups.edit_profile.user_info.image_caption")}</span>
                            </div>
                            <img src="" alt="" />
                            <input
@@ -135,10 +149,10 @@ const EditProfile = ({ university, about }) => {
                      </div>
 
                      <div className="background_pic_wrapper">
-                        <label htmlFor="background_pic">Background image</label>
+                        <label htmlFor="background_pic">{t("lang.popups.edit_profile.user_info.background_image")}</label>
                         <div className="file_wrapper">
                            <div className="dotted_wrapper">
-                              <span className="centered">Pick a picture</span>
+                              <span className="centered">{t("lang.popups.edit_profile.user_info.image_caption")}</span>
                            </div>
                            <img src="" alt="" />
                            <input
@@ -155,7 +169,7 @@ const EditProfile = ({ university, about }) => {
 
                   <div className="button_wrapper">
                      <button id="submitChanges" className="submit_changes">
-                        Submit
+                     {t("lang.popups.edit_profile.user_info.submit_button")}
                      </button>
                   </div>
                </form>
