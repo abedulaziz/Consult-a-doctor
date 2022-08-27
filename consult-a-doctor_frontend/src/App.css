@@ -1368,6 +1368,10 @@ header .languages #language {
    top: 0;
 }
 
+.edit_profile .form_wrapper .edit_pictures .file_wrapper img[src=""] {
+   display: none;
+}
+
 .edit_profile .form_wrapper .edit_pictures .file_wrapper input[type="file"] {
    width: 100%;
    height: 100%;

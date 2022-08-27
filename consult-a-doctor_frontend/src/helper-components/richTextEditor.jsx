@@ -1,8 +1,8 @@
 import React from "react";
 import { Editor, EditorState, getDefaultKeyBinding, RichUtils } from "draft-js";
 import "draft-js/dist/Draft.css";
-import { convertToRaw } from "draft-js";
 import { stateToHTML } from "draft-js-export-html";
+import { t } from "i18next";
 
 class RichTextEditor extends React.Component {
    constructor(props) {
@@ -75,7 +75,7 @@ class RichTextEditor extends React.Component {
                   handleKeyCommand={this.handleKeyCommand}
                   keyBindingFn={this.mapKeyToEditorCommand}
                   onChange={this.onChange}
-                  placeholder="Write your blog..."
+                  placeholder={t("lang.popups.add_blog.placeholder")}
                   ref="editor"
                   spellCheck={true}
                />

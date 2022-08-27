@@ -7,6 +7,7 @@ import RichTextEditor from "../helper-components/richTextEditor";
 
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import { t } from "i18next";
 
 const AddBlogPopup = () => {
    const userInfo = jwt_decode(localStorage.getItem("JWT"));
@@ -44,13 +45,13 @@ const AddBlogPopup = () => {
                <img src={userInfo.profile_pic_uri} />
             </div>
 
-            <h2 className="heading">Add new blog</h2>
+            <h2 className="heading">{t("lang.popups.add_blog.header")}</h2>
 
             <RichTextEditor blogContent={setBlogContent} />
 
             <div className="submit_blog">
                <button id="submit_blog" onClick={() => submitBlog()}>
-                  Submit
+               {t("lang.popups.add_blog.submit_button")}
                </button>
             </div>
          </div>
