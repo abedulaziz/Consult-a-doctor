@@ -186,5 +186,36 @@
             "my_appointments": "مواعيدي"
          }
       }
+   },
+   "popups": {
+      "edit_profile": {
+         "header": "عدل ملفك الشخصي",
+         "user_info": {
+            "fname": {
+               "placeholder": "الإسم الاول",
+               "empty_fname_mess": "الإسم الاول إلزامي",
+               "min_length_mess": "الحد الأدنى للإسم هو 2",
+               "max_length_mess": "الحد الأقصى للإسم هو 40"
+            },
+            "lname": {
+               "placeholder": "الإسم الأخير",
+               "empty_lname_mess": "الإسم الأخير إلزامي",
+               "min_length_mess": "الحد الأدنى للإسم هو 2",
+               "max_length_mess": "الحد الأقصى للإسم هو 40"
+            },
+            "university": {
+               "placeholder": "الجامعة:",
+               "empty_university_mess": "إسم الجامعة مطلوب"
+            },
+            "about":{
+               "placeholder": "حول:",
+               "empty_about_mess": "من فضلك أكتب سيرتك الذاتية"
+            },
+            "profile_picture": "الصورة الشخصية",
+            "background_image": "الصورة الخلفية",
+            "image_caption": "إختر صورة",
+            "submit_button": "حفظ"
+         }
+      }
    }
 }

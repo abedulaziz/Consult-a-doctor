@@ -186,5 +186,36 @@
             "my_appointments": "Mes rendez-vous"
          }
       }
+   },
+   "popups": {
+      "edit_profile": {
+         "header": "Modifier votre profil",
+         "user_info": {
+            "fname": {
+               "placeholder": "Prénom",
+               "empty_fname_mess": "Le prénom est requis",
+               "min_length_mess": "La longueur minimale est de 2",
+               "max_length_mess": "La longueur maximale est de 40"
+            },
+            "lname": {
+               "placeholder": "Nom de famille",
+               "empty_lname_mess": "Le nom de famille est requis",
+               "min_length_mess": "La longueur minimale est de 2",
+               "max_length_mess": "La longueur maximale est de 40"
+            },
+            "university": {
+               "placeholder": "Université:",
+               "empty_university_mess": "L'université est obligatoire"
+            },
+            "about":{
+               "placeholder": "À propos de:",
+               "empty_about_mess": "Votre à propos est nécessaire"
+            },
+            "profile_picture": "Image de profil",
+            "background_image": "Image de fond",
+            "image_caption": "Sélectionnez une image",
+            "submit_button": "Soumettre"
+         }
+      }
    }
 }

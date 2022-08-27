@@ -24,15 +24,15 @@
       },
       "features": {
          "section_1": {
-            "header": "Online Consultants",
+            "header": "Online Consultations",
             "desc": "Book a meeting with your doctor and make an online video chat."
          },
          "section_2": {
-            "header": "Doctor Development",
+            "header": "Doctors benefit",
             "desc": "If you are a doctor, you will benefit from the experiences gained from patients in addition to benefiting materially."
          },
          "section_3": {
-            "header": "Follow Doctors",
+            "header": "Follow up on doctors",
             "desc": "Follow doctors accounts where they do share their experiences and thoughts in their field."
          }
       },
@@ -184,6 +184,37 @@
             "specializations_link": "Specializations",
             "doctors_link": "Doctors",
             "my_appointments": "My Appointments"
+         }
+      }
+   },
+   "popups": {
+      "edit_profile": {
+         "header": "Edit your profile",
+         "user_info": {
+            "fname": {
+               "placeholder": "First name",
+               "empty_fname_mess": "First name is required",
+               "min_length_mess": "Minimum length is 2",
+               "max_length_mess": "Maximum length is 40"
+            },
+            "lname": {
+               "placeholder": "Last name",
+               "empty_lname_mess": "Last name is required",
+               "min_length_mess": "Minimum length is 2",
+               "max_length_mess": "Maximum length is 40"
+            },
+            "university": {
+               "placeholder": "University:",
+               "empty_university_mess": "University is required"
+            },
+            "about":{
+               "placeholder": "About:",
+               "empty_about_mess": "Your about is required"
+            },
+            "profile_picture": "Profile picture",
+            "background_image": "Background image",
+            "image_caption": "Select an image",
+            "submit_button": "Submit"
          }
       }
    }
