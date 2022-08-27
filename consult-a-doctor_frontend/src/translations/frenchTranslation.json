@@ -216,6 +216,11 @@
             "image_caption": "Sélectionnez une image",
             "submit_button": "Soumettre"
          }
+      },
+      "add_blog": {
+         "header": "Ajouter un nouveau blog",
+         "placeholder": "Écrivez votre blog...",
+         "submit_button": "Submit"
       }
    }
 }

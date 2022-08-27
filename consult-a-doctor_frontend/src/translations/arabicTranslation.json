@@ -216,6 +216,11 @@
             "image_caption": "إختر صورة",
             "submit_button": "حفظ"
          }
+      },
+      "add_blog": {
+         "header": "أضف مقال جديد",
+         "placeholder": "أكتب مقالتك...",
+         "submit_button": "إضافة"
       }
    }
 }

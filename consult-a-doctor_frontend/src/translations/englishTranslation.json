@@ -216,6 +216,11 @@
             "image_caption": "Select an image",
             "submit_button": "Submit"
          }
+      },
+      "add_blog": {
+         "header": "Add new blog",
+         "placeholder": "Write your blog...",
+         "submit_button": "Submit"
       }
    }
 }
