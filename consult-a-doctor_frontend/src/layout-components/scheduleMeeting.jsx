@@ -69,7 +69,7 @@ const ScheduleMeeting = ({ doctor_id }) => {
                },
                {
                   headers: {
-                     Authorization: `Bearer ${userInfo.JWT}`,
+                     Authorization: `Bearer ${localStorage.getItem("JWT")}`,
                   },
                }
             );
