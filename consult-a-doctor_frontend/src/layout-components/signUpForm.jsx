@@ -37,7 +37,7 @@ const SignUpForm = ({ isDoctorSignUp = false }) => {
             navigate("/");
 
          } catch (err) {
-            message(err.response.data.email, "red");
+            message(err.response.data.email);
          }
       }
    };

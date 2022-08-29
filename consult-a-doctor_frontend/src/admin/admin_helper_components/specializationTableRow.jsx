@@ -19,10 +19,10 @@ const SpecializationTableRow = ({ ID, spec_name, doctorsCount, created_at, updat
            url: `/admins/delete-specialization/${ID}`,
            headers: {Authorization: `Bearer ${userInfo.JWT}`, "Content-Type": "multipart/form-data" },
          });
-         message(updateInfoRqust.data.message, "green")
+         message(updateInfoRqust.data.message, false)
 
        } catch(err) {
-         message(err.response.data.message, "red")
+         message(err.response.data.message)
        }
    }
 

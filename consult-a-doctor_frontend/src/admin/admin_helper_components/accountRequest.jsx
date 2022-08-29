@@ -18,10 +18,10 @@ const AccountRequest = ({ ID, fname, lname, email, gender, date_of_birth, specia
             url: `/users/${ID}/deny`,
             headers: { Authorization: `Bearer ${localStorage.getItem("JWT")}`, "Content-Type": "multipart/form-data" },
          });
-         message(denyRqust.data.message, "green");
+         message(denyRqust.data.message, false);
          specRow.current.remove();
       } catch (err) {
-         message(err.response.data.message, "red");
+         message(err.response.data.message);
       }
 
       target.removeAttribute("disabled");
@@ -53,10 +53,10 @@ const AccountRequest = ({ ID, fname, lname, email, gender, date_of_birth, specia
             data: accountData,
             headers: { Authorization: `Bearer ${localStorage.getItem("JWT")}`, "Content-Type": "multipart/form-data" },
          });
-         message(acceptRqust.data.message, "green");
+         message(acceptRqust.data.message, false);
          specRow.current.remove();
       } catch (err) {
-         message(err.response.data.message, "red");
+         message(err.response.data.message);
       }
 
       target.removeAttribute("disabled");

@@ -48,7 +48,7 @@ const ScheduleMeeting = ({ doctor_id }) => {
          setScheduledTiems(workPeriodsRqust.data.other_appointments);
          setBookMeetingStage(2);
       } catch (err) {
-         message(err.response.data.message, "red");
+         message(err.response.data.message);
       }
    };
 
@@ -73,13 +73,13 @@ const ScheduleMeeting = ({ doctor_id }) => {
                   },
                }
             );
-            message(confirmMeeting.data.message, "green");
+            message(confirmMeeting.data.message, false);
             dispatch(setBookMeetingPopup(null));
          } catch (err) {
-            message(err.response.data.message, "red");
+            message(err.response.data.message);
          }
       } else {
-         message("Please select a duration", "red");
+         message("Please select a duration");
       }
    };
 

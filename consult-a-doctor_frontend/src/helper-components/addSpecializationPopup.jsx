@@ -23,7 +23,7 @@ const AddSpecializationPopup = () => {
           headers: {Authorization: `Bearer ${localStorage.getItem("JWT")}`, "Content-Type": "multipart/form-data" },
 
         })
-        message(addSpecRqust.data.message, "green")
+        message(addSpecRqust.data.message, false)
         dispatch(setAddSpecialization(null))
 
 

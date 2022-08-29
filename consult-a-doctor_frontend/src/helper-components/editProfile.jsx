@@ -39,10 +39,10 @@ const EditProfile = ({ university, about }) => {
             data: postedData,
             headers: { Authorization: `Bearer ${localStorage.getItem("JWT")}`, "Content-Type": "multipart/form-data" },
          });
-         message(updateInfoRqust.data.message, "green");
+         message(updateInfoRqust.data.message, false);
          dispatch(setEditProfilePopup(null));
       } catch (err) {
-         message(err.response.data.message, "red");
+         message(err.response.data.message);
       }
    };
 

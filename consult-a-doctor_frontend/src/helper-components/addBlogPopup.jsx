@@ -24,14 +24,14 @@ const AddBlogPopup = () => {
                   Authorization: `Bearer ${localStorage.getItem("JWT")}`,
                },
             });
-            message(doctorInfoRqust.data.message, "green");
+            message(doctorInfoRqust.data.message, false);
             dispatch(setAddBlogPopup(null));
          } catch (error) {
             console.log(error);
          }
       }
       else {
-         message("Empty blog content", "red")
+         message("Empty blog content")
       }
 
    };

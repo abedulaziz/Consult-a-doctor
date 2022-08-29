@@ -43,9 +43,9 @@ const DoctorSignUpStageTwo = () => {
       try {
          await axios.post("users/doctor-account-request", doctorAccountRqust);
 
-         message("Your doctor account request has been submitted successfully!.", "green");
+         message("Your doctor account request has been submitted successfully!.", false);
       } catch (err) {
-         message("This email has already been taken", "red");
+         message("This email has already been taken");
       }
    };
 

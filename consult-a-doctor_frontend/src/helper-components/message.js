@@ -1,13 +1,25 @@
+const displayMessage = (text, isError = true) => {
 
-const displayMessage = (text, backgroundColor) => {
-  const message = document.getElementById("actionStatus");
+   const message = document.createElement("div");
+   message.classList.add("action-status");
+   message.id = "actionStatus";
 
-  message.textContent = text
-  message.classList.add(backgroundColor, "active")
-  setTimeout(() => {
-     message.classList.remove("active", backgroundColor)
-  }, 8000);
-}
+   const para = document.createElement("p");
+   para.className = "message";
+   para.textContent = text;
 
+   message.appendChild(para);
+  
+   document.body.appendChild(message);
+   const backgroundColor = isError ? "red" : "green";
+   message.classList.add(backgroundColor, "active");
 
-export default displayMessage
+   setTimeout(() => {
+      message.classList.remove("active", backgroundColor);
+      message.remove();
+   }, 4000);
+
+   console.log(message);
+};
+
+export default displayMessage;
