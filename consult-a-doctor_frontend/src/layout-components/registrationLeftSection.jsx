@@ -10,10 +10,10 @@ import Logo from '../assets/brand/transparent_background_brand.png';
 import DoctorSignUpBackground from '../assets/backgrounds/doctor_sign-up_background.jpg'
 
 // icons
-import Facebook from '../assets/icons/facebook.svg';
-import Instagram from '../assets/icons/instagram.svg';
-import Twitter from '../assets/icons/twitter.svg';
-import Linkedin from '../assets/icons/linkedin.svg';
+import Facebook from '../assets/icons/facebook-dark.svg';
+import Instagram from '../assets/icons/instagram-dark.svg';
+import Twitter from '../assets/icons/twitter-dark.svg';
+import Linkedin from '../assets/icons/linkedin-dark.svg';
 
 const RegistrationLeftSection = ({isDoctorSignUp = false}) => {
   const leftSection = React.useRef(null);
