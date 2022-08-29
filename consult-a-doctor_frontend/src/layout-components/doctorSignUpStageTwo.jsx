@@ -3,9 +3,9 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteInterval, fillInputs, previousStage } from "../redux/slices/doctorSignUpSlice";
 import { useForm } from "react-hook-form";
-import message from '../helper-components/message';
+import message from "../helper-components/message";
 
-import { useTranslation, Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 // helper components
 import WeekDayAvail from "./weekDayAvail";
@@ -15,7 +15,7 @@ import { ReactComponent as ChevronsRight } from "../assets/icons/chevrons-right.
 import axios from "axios";
 
 const DoctorSignUpStageTwo = () => {
-   const {t} = useTranslation()
+   const { t } = useTranslation();
    const [specializations, setSpecializations] = React.useState(null);
 
    const weekDays = React.useRef(null);
@@ -29,14 +29,10 @@ const DoctorSignUpStageTwo = () => {
    } = useForm();
 
    const requestDoctorAccount = async (data) => {
-      const validAvailabilities = { ...registrationData.value.availabilities };
-      for (let weekDay in validAvailabilities) {
-         if (weekDays.current.querySelector("#" + weekDay).checked) {
-            validAvailabilities[weekDay] = validAvailabilities[weekDay].filter((time) => !(time[0] === "00:00" && time[1] === "00:00"));
-         } else {
-            delete validAvailabilities[weekDay];
-         }
-      }
+      const availabilities = { ...registrationData.value.availabilities };
+      const validAvailabilities = getValidAvailabilities(availabilities, weekDays);
+
+      if (!validAvailabilities) return message("You haven't set any availability!");
 
       const doctorAccountRqust = { ...registrationData.value };
       doctorAccountRqust.availabilities = JSON.stringify(validAvailabilities);
@@ -44,13 +40,12 @@ const DoctorSignUpStageTwo = () => {
       doctorAccountRqust.speciality_id = data.speciality_id;
       doctorAccountRqust.about = data.about;
 
-
       try {
          await axios.post("users/doctor-account-request", doctorAccountRqust);
 
-         message("Your doctor account request has been sent.", "green");
+         message("Your doctor account request has been submitted successfully!.", "green");
       } catch (err) {
-         message("This email has already been taken", "red")
+         message("This email has already been taken", "red");
       }
    };
 
@@ -100,7 +95,12 @@ const DoctorSignUpStageTwo = () => {
          <div className="about">
             <div className="about_wrapper">
                <h4>{t("lang.doctor_sign_up.second_step_regis.about.label")}</h4>
-               <textarea {...register("about", { required: "This field is required" })} name="about" id="about" placeholder={t("lang.doctor_sign_up.second_step_regis.about.about_placeholder")}></textarea>
+               <textarea
+                  {...register("about", { required: "This field is required" })}
+                  name="about"
+                  id="about"
+                  placeholder={t("lang.doctor_sign_up.second_step_regis.about.about_placeholder")}
+               ></textarea>
                <p className="error">{errors.about?.message}</p>
             </div>
          </div>
@@ -125,11 +125,25 @@ const DoctorSignUpStageTwo = () => {
 
          <div className="button_wrapper">
             <div onClick={() => dispatch(previousStage())} className="sign-up_previous_step change_step">
-               <ChevronsRight title="Next" />
+               <ChevronsRight title="Back" />
             </div>
          </div>
       </form>
    );
 };
+
+function getValidAvailabilities(availabilities, weekDays) {
+   for (let weekDay in availabilities) {
+      if (weekDays.current.querySelector("#" + weekDay).checked) {
+         availabilities[weekDay] = availabilities[weekDay].filter((time) => !(time[0] === "00:00" && time[1] === "00:00"));
+
+         !availabilities[weekDay].length && delete availabilities[weekDay];
+      } else {
+         delete availabilities[weekDay];
+      }
+   }
+   if (!Object.keys(availabilities).length) return null;
+   return availabilities;
+}
 
 export default DoctorSignUpStageTwo;

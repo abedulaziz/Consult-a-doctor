@@ -2,8 +2,6 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fillInputs, addInterval } from '../redux/slices/doctorSignUpSlice'
 
-// import {useForm} from 'react-hook-form';
-import moment from 'moment';
 
 // helper components
 import TimeInterval from '../helper-components/timeInterval';
@@ -44,7 +42,6 @@ const WeekDayAvail = ({weekDay, name, id}) => {
         </div>
       </div>
       
-
     </div>
   )
 }
