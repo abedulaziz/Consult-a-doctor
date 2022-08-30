@@ -48,7 +48,6 @@ Route::post("/users/doctor-account-request", [Account_requestsController::class,
 // get doctor account requests
 Route::get("/users/get-doctor-account-requests", [Account_requestsController::class, 'getAccountRequests']);
 
-
 // get selected specialization's doctors
 Route::get("/{specialization_id}/doctors", [DoctorsController::class, "specialityDoctors"]);
 
@@ -63,7 +62,7 @@ Route::get("/users/{doctor_id}/blogs", [BlogsController::class, "getBlogs"]);
 Route::group(["middleware" => "verifyAuth"], function () {
     Route::post("/users/{doctor_id}/follow", [FollowingsController::class, "followDoctor"]);
     Route::post("/users/{doctor_id}/unfollow", [FollowingsController::class, "unFollowDoctor"]);
-    Route::get("/users/{doctor_id}/work-periods", [UsersController::class, "getWorkPeriods"]);
+    Route::get("/users/{doctor_id}/working-weekdays", [UsersController::class, "getWorkingWeekdays"]);
     Route::post("/users/{doctor_id}/check-availability", [UsersController::class, "checkDayAvailability"]);
     Route::post("/users/{doctor_id}/available-periods", [UsersController::class, "getAvailablePeriods"]);
     Route::post("/meetings/{meeting_id}", [AppointmentsController::class, "meetingData"]);
@@ -79,7 +78,6 @@ Route::group(["middleware" => "verifyOwnership"], function () {
     Route::post("/users/{user_id}/add-blog", [BlogsController::class, "addBlog"]);
     Route::post("/users/{user_id}/upload-profile-picture", [UsersController::class, "uploadProfilePic"]);
 });
-
 
 Route::group(["middleware" => "authAdmin"], function() {
     Route::post("/admins/new-specialization", [SpecializationsController::class, "addNewSpecialization"]);

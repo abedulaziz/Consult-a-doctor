@@ -63,12 +63,12 @@ class UsersController extends Controller
     }
 
 
-    public function getWorkPeriods($doctor_id) {
+    public function getWorkingWeekdays($doctor_id) {
 
-        $doctorWorkPeriods = User::find($doctor_id)->getDoctorAvailabilities->select("week_day", "from", "to")->where("doctor_id", $doctor_id)->get();
+        $doctorWorkingWeekdays = User::find($doctor_id)->getDoctorAvailabilities()->distinct()->pluck("week_day")->all();
 
         return response()->json([
-            "work_periods" => $doctorWorkPeriods
+            "working_weekdays" => $doctorWorkingWeekdays
         ]);
     }
 
@@ -77,9 +77,10 @@ class UsersController extends Controller
         $week_day = $req->week_day;
 
         $workPeriods = User::find($doctor_id)->getDoctorAvailabilities()->where("week_day", $week_day)->select("from", "to")->orderBy("from", "asc")->get();
+        if (!count($workPeriods)) return response()->json(["message" => "Doctor is not available on this time."], 404);
+
         $selectedDayAppoints = Appointment::where([["date", $req->date], ["patient_id", $doctor_id]])->orWhere([["date", $req->date], ["doctor_id", $doctor_id]])->select("from", "to", )->orderBy("from", "asc")->get();
 
-        if (count($workPeriods)) return response()->json(["message" => "Doctor is not available on this time."], 404);
 
 
         return response()->json([
@@ -145,21 +146,21 @@ function getHourlyWorkPeriods($workPeriods) {
 
     foreach($workPeriods as $period) {
 
-      $from = $period['from'];
-      $to = $period['to'];
-      $start = $from;
+        $from = $period['from'];
+        $to = $period['to'];
+        $start = $from;
 
-      while (strtotime($start) < strtotime($to)) {
-        $object;
+        while (strtotime($start) < strtotime($to)) {
+            $object;
 
-        $addOneHour = date('H:i:s', (strtotime($start) + 3600));
-        if ($addOneHour >= $to) $object = (object) ['from' => $start, 'to' => $to];
+            $addOneHour = date('H:i:s', (strtotime($start) + 3600));
+            if ($addOneHour >= $to) $object = (object) ['from' => $start, 'to' => $to];
 
-        else $object = (object) ['from' => $start, 'to' => $addOneHour];
+            else $object = (object) ['from' => $start, 'to' => $addOneHour];
 
-        array_push($finalArray, $object);
-        $start = $addOneHour;
-      }
+            array_push($finalArray, $object);
+            $start = $addOneHour;
+        }
     }
     return $finalArray;
 }
