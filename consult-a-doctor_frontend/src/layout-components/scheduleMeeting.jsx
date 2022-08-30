@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setBookMeetingPopup } from "../redux/slices/popupControllerSlice";
 
@@ -19,6 +19,8 @@ const ScheduleMeeting = ({ doctor_id }) => {
    const [scheduledTimes, setScheduledTiems] = useState(null);
    const [selectedDuration, setSelectedDuration] = useState(null);
 
+   const [workingWeekDays, setWorkingWeekDays] = useState([]);
+
    const userInfo = useSelector((state) => state.userInfo.value);
    const {
       register,
@@ -26,6 +28,22 @@ const ScheduleMeeting = ({ doctor_id }) => {
       formState: { errors },
    } = useForm();
    const dispatch = useDispatch();
+
+   useEffect(() => {
+      const getWorkingWeekdays = async () => {
+         try {
+            const workingWeekdaysRqust = await axios.get(`/users/${doctor_id}/working-weekdays`, {
+               headers: {
+                  Authorization: `Bearer ${localStorage.getItem("JWT")}`,
+               },
+            });
+            setWorkingWeekDays(workingWeekdaysRqust.data.working_weekdays);
+         } catch (err) {
+            message(err.response.data.message);
+         }
+      };
+      getWorkingWeekdays();
+   }, []);
 
    const checkDayAvailability = async (data) => {
       const weekDay = weekDays[new Date(data.meeting_date).getDay()];
@@ -123,6 +141,14 @@ const ScheduleMeeting = ({ doctor_id }) => {
                            />
                            <p className="error">{errors.meeting_date?.message}</p>
                         </div>
+                        <div className="working_weekdays">
+                           <p>Working week days: </p>
+                           <p className="weekdays">
+                              {workingWeekDays.map((weekday, i) =>
+                                 i === workingWeekDays.length - 1 ? capitalizeFirstLetter(weekday) : capitalizeFirstLetter(weekday) + " - "
+                              )}
+                           </p>
+                        </div>
                         <div className="submit-date">
                            <button id="scheduleMeetNextStage">{t("lang.popups.schedule_meeting.first_step.next_button")}</button>
                         </div>
@@ -194,11 +220,15 @@ const ScheduleMeeting = ({ doctor_id }) => {
    );
 };
 
-export default ScheduleMeeting;
-
 function getStringifiedCurrDate(date) {
    var mm = date.getMonth() + 1;
    var dd = date.getDate();
 
    return [date.getFullYear(), (mm > 9 ? "" : "0") + mm, (dd > 9 ? "" : "0") + dd].join("-");
 }
+
+function capitalizeFirstLetter(string) {
+   return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export default ScheduleMeeting;
