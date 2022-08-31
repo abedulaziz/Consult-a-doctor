@@ -8,11 +8,12 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 
 import { t } from "i18next";
+import jwt_decode from 'jwt-decode';
 
 import message from "../helper-components/message";
 import DefaultProfilePic from "../assets/backgrounds/default_profile_picture.svg";
 
-const ScheduleMeeting = ({ doctor_id }) => {
+const ScheduleMeeting = ({ doctor_id, doctor_profile_pic, doctor_fullname }) => {
    const weekDays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
    const [bookMeetingStage, setBookMeetingStage] = useState(1);
    const [availableTimes, setAvailableTimes] = useState(null);
@@ -21,7 +22,7 @@ const ScheduleMeeting = ({ doctor_id }) => {
 
    const [workingWeekDays, setWorkingWeekDays] = useState([]);
 
-   const userInfo = useSelector((state) => state.userInfo.value);
+   const userInfo = jwt_decode(localStorage.getItem("JWT"));
    const {
       register,
       handleSubmit,
@@ -78,7 +79,7 @@ const ScheduleMeeting = ({ doctor_id }) => {
                `meetings/appointments/set-appointment`,
                {
                   doctor_id,
-                  patient_id: userInfo.user_id,
+                  patient_id: userInfo.sub,
                   title: data.meeting_title,
                   date: data.meeting_date,
                   from: data.meeting_time,
@@ -120,12 +121,13 @@ const ScheduleMeeting = ({ doctor_id }) => {
          <div className="edit_profile">
             <div className="form_wrapper">
                <div className="profile_pic">
-                  <img src={userInfo.profile_pic ? userInfo.profile_pic : DefaultProfilePic} />
+                  <img src={doctor_profile_pic ? doctor_profile_pic : DefaultProfilePic} />
                </div>
                <span className="cd-popup-close img-replace" onClick={() => dispatch(setBookMeetingPopup(null))}></span>
 
                <div className="popup_header">
                   <h2 className="heading">{t("lang.popups.schedule_meeting.header")}</h2>
+                  <p className="doctor_name">{t("lang.popups.schedule_meeting.pre-name")}{doctor_fullname}</p>
                </div>
                <div className="content_wrapper">
                   {bookMeetingStage == 1 ? (
@@ -142,7 +144,7 @@ const ScheduleMeeting = ({ doctor_id }) => {
                            <p className="error">{errors.meeting_date?.message}</p>
                         </div>
                         <div className="working_weekdays">
-                           <p>Working week days: </p>
+                           <p>{t("lang.popups.schedule_meeting.first_step.working_weekdays")}</p>
                            <p className="weekdays">
                               {workingWeekDays.map((weekday, i) =>
                                  i === workingWeekDays.length - 1 ? capitalizeFirstLetter(weekday) : capitalizeFirstLetter(weekday) + " - "

@@ -90,7 +90,11 @@ const Profile = () => {
 
                      {!doctorInfo.isAccountOwner && (
                         <div className="book-meeting">
-                           <button onClick={() => dispatch(setBookMeetingPopup(<ScheduleMeeting doctor_id={doctor_id} />))}>
+                           <button
+                              onClick={() =>
+                                 dispatch(setBookMeetingPopup(<ScheduleMeeting doctor_id={doctor_id} doctor_profile_pic={bookMeeting.profile_pic} doctor_fullname={bookMeeting.fname + " " + bookMeeting.lname} />))
+                              }
+                           >
                               {t("lang.profile.background.book_meeting_but")}
                            </button>
                         </div>
