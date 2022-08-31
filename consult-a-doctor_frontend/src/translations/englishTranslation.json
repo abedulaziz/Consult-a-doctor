@@ -224,8 +224,10 @@
       },
       "schedule_meeting": {
          "header": "Schedule a meeting",
+         "pre-name": "Dr. ",
          "first_step": {
             "placeholder": "Pick a date for the meeting",
+            "working_weekdays": "Weekly working days: ",
             "unselected_date_mess": "Please select a date for the meeting",
             "next_button": "Next"
          },

@@ -224,8 +224,10 @@
       },
       "schedule_meeting": {
          "header": "إحجز لقاء",
+         "pre-name": "د. ",
          "first_step": {
             "placeholder": "اختر تاريخًا للقاء",
+            "working_weekdays": "أيام العمل الاسبوعية: ",
             "unselected_date_mess": "الرجاء تحديد موعد للقاء",
             "next_button": "التالي"
          },

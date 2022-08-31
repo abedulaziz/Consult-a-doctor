@@ -224,8 +224,10 @@
       },
       "schedule_meeting": {
          "header": "Planifier une réunion",
+         "pre-name": "Dr. ",
          "first_step": {
             "placeholder": "Choisissez une date pour la réunion",
+            "working_weekdays": "Jours ouvrés hebdomadaires: ",
             "unselected_date_mess": "Veuillez sélectionner une date pour la réunion",
             "next_button": "Prochaine"
          },
