@@ -84,7 +84,7 @@ const Header = () => {
                   <div className="nav-wrapper">
                      <NavItem path="/" className="home-link" content={t("lang.header.nav_links.home_link")} />
                      <NavItem path="/doctor/specializations" className="specializations-link" content={t("lang.header.nav_links.specializations_link")} />
-                     <NavItem path="/doctor/all/accounts" className="doctors-link" content={t("lang.header.nav_links.doctors_link")} />
+                     <NavItem path="/doctor/*/accounts" className="doctors-link" content={t("lang.header.nav_links.doctors_link")} />
                      <NavItem
                         path={userInfo ? `/${userInfo.sub}/appointments` : "/sign-in"}
                         className="appointments-link"

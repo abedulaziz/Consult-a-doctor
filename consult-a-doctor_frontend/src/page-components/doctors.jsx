@@ -82,6 +82,7 @@ const Doctors = () => {
                                     key={doctor.doctor_id}
                                     profile_pic={doctor.profile_pic_uri}
                                     fullname={doctor.fname + " " + doctor.lname}
+                                    speciality={doctor.name}
                                     followers="23"
                                  />
                               ))

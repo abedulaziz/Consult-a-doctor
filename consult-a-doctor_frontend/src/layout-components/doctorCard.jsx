@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { ReactComponent as Star } from "../assets/icons/star.svg";
 import { ReactComponent as PersonCheck } from "../assets/icons/PersonCheck.svg";
 
-const DoctorCard = ({ doctor_id, profile_pic, fullname, followers }) => {
+const DoctorCard = ({ doctor_id, profile_pic, fullname, followers, speciality }) => {
    return (
       <div className="card">
          <div className="img_wrapper">
@@ -16,6 +16,7 @@ const DoctorCard = ({ doctor_id, profile_pic, fullname, followers }) => {
 
          <div className="doctor-info">
             <h4 className="fullname">{fullname}</h4>
+            <p className="speciality">{speciality}</p>
             <div className="rate">
                <Star />
                <Star />

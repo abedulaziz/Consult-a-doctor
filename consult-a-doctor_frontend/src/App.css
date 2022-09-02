@@ -799,8 +799,14 @@ header .languages #language {
    margin-top: 7px;
 }
 
+.doctors .doctors_content .doctor-cards .card .doctor-info .speciality {
+   font-size: 15px;
+   color: var(--grayish-text-color)
+}
+
 .doctors .doctors_content .doctor-cards .card .doctor-info .rate svg {
    width: 20px;
+   margin-top: 7px;
 }
 
 .doctors .doctors_content .doctor-cards .card .doctor-info .followers {
