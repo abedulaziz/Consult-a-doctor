@@ -242,7 +242,6 @@
             },
             "time": {
                "title": "Heure de réunion:",
-               "caption": "Veuillez sélectionner une heure qui n'entre pas en conflit avec les heures programmées, le cas échéant",
                "unselected_time_mess": "Veuillez sélectionner une heure pour la réunion"
             },
             "title": {
@@ -251,7 +250,6 @@
                "min_length_mess": "La longueur du titre doit être supérieure à 4 caractères",
                "max_length_mess": "La longueur du titre ne doit pas dépasser 40 caractères"
             },
-            "booked_times": "Horaires programmés",
             "confirm_button": "Confirmer la réunion"
          }
       }

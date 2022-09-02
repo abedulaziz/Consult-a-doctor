@@ -242,16 +242,14 @@
             },
             "time": {
                "title": "Meeting time:",
-               "caption": "Please select a time that doesn't conflict with scheduled times if existed",
                "unselected_time_mess": "Please select a time for the meeting"
             },
             "title": {
                "title": "Meeting title",
-               "empty_title_mess": "First name is required",
+               "empty_title_mess": "title of the meeting is required",
                "min_length_mess": "Title length must be greater than 4 characters",
                "max_length_mess": "Title length shouldn't exceed 40 characters"
             },
-            "booked_times": "Scheduled times",
             "confirm_button": "Confirm meeting"
          }
       }
