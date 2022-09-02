@@ -79,44 +79,13 @@ class UsersController extends Controller
         $workPeriods = User::find($doctor_id)->getDoctorAvailabilities()->where("week_day", $week_day)->select("from", "to")->orderBy("from", "asc")->get();
         if (!count($workPeriods)) return response()->json(["message" => "Doctor is not available on this time."], 404);
 
-        $selectedDayAppoints = Appointment::where([["date", $req->date], ["patient_id", $doctor_id]])->orWhere([["date", $req->date], ["doctor_id", $doctor_id]])->select("from", "to", )->orderBy("from", "asc")->get();
-
-
+        $scheduledPeriods = Appointment::where([["date", $req->date], ["patient_id", $doctor_id]])->orWhere([["date", $req->date], ["doctor_id", $doctor_id]])->select("from", "to", )->orderBy("from", "asc")->get();
 
         return response()->json([
-            "available_periods" => getHourlyWorkPeriods($workPeriods),
-            "other_appointments" => $selectedDayAppoints
+            "available_periods" => getAvailabilities($workPeriods, $scheduledPeriods)
         ], 200);
     }
 
-
-    public function getAvailablePeriods($doctor_id, Request $req) {
-        $day = $req->day;
-
-        $workPeriods = User::find($doctor_id)->getDoctorAvailabilities->$day;
-
-        $selectedDayAppoints = User::find($doctor_id)->getDoctorAppoints->where("doctor_id", $doctor_id)->where("date", $req->date);
-
-        function isTimeValid($workPeriods, $req) {
-
-            foreach($workPeriods as $period) {
-
-                if($period["from"] < $req->time and $period["to"] > $req->time) {
-                    return true;
-                }
-            }
-            return false;
-        }
-        if(!isTimeValid($workPeriods, $req)) {
-            return response()->json([
-                "message" => "Unvalid time"
-            ]);
-        }
-
-        return response()->json([
-            "available_periods" => $selectedDayAppoints
-        ]);
-    }
 
 
     public function getUserAppointments($user_id) {
@@ -139,10 +108,10 @@ class UsersController extends Controller
 
 }
 
+function getAvailabilities($workPeriods, $scheduledPeriods) {
 
-function getHourlyWorkPeriods($workPeriods) {
-
-    $finalArray = array();
+    $availabilities = array();
+    $currScheduledIndex = 0;
 
     foreach($workPeriods as $period) {
 
@@ -151,18 +120,23 @@ function getHourlyWorkPeriods($workPeriods) {
         $start = $from;
 
         while (strtotime($start) < strtotime($to)) {
-            $object;
+            $availableduration = array();
+            $addTwentyMin = date('H:i:s', (strtotime($start) + 1200));
 
-            $addOneHour = date('H:i:s', (strtotime($start) + 3600));
-            if ($addOneHour >= $to) $object = (object) ['from' => $start, 'to' => $to];
+            if ($currScheduledIndex == count($scheduledPeriods) or $addTwentyMin <= $scheduledPeriods[$currScheduledIndex]["from"]) {
 
-            else $object = (object) ['from' => $start, 'to' => $addOneHour];
+                $availableduration = [$start, $addTwentyMin];
+                array_push($availabilities, $availableduration);
+            }
 
-            array_push($finalArray, $object);
-            $start = $addOneHour;
+            else if ($addTwentyMin >= $scheduledPeriods[$currScheduledIndex]["to"])
+
+                $currScheduledIndex < count($scheduledPeriods) && $currScheduledIndex++;
+
+            $start = $addTwentyMin;
         }
     }
-    return $finalArray;
+    return $availabilities;
 }
 
 
