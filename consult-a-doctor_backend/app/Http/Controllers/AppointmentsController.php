@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
+
 use App\Models\Appointment;
 use App\Models\User;
 use Validator;
@@ -48,6 +49,8 @@ class AppointmentsController extends Controller
 
         $validator = Validator::make($request->all(), [
             'date' => 'required|date|after_or_equal:today',
+            'title' => 'required|string|min:5|max:50',
+            "duration" => ['required', Rule::in(['5', '10', '20'])]
         ]);
 
         if ($validator->fails()) {
