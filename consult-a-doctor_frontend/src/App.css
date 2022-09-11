@@ -1983,7 +1983,7 @@ footer .buttom_footer_content .social-media ul li {
 .screens .screens_wrapper {
    display: flex;
    gap: 40px;
-   margin: auto 3vw;
+   margin: auto 5vw;
    height: calc(100% - 100px - 40px);
 }
 
@@ -1998,27 +1998,38 @@ footer .buttom_footer_content .social-media ul li {
 }
 
 .screens .screens_wrapper .videos_container {
-   /* display: flex;
-   gap: 4vw; */
+   gap: 4vw; 
    width: 100%;
+}
+
+.screens .screens_wrapper .videos_container > div {
+   display: inline-block;
+   width: 48%;
+   overflow: hidden;
+   aspect-ratio: 1/1;
+   max-height: 100%;
+   top: 50%;
    position: relative;
+   transform: translateY(-50%);
+   margin: auto;
+}
+
+.screens .screens_wrapper .videos_container > div.my-video.small_screen {
+   margin-bottom: 4%;
 }
 
 .screens .screens_wrapper .videos_container .my-video {
-   position: absolute;
-   width: 25vw;
-   height: 15vw;
-   right: 10px;
-   bottom: 10px;
+   margin-right: 4%;
 }
 
-.screens .screens_wrapper .videos_container .user-video {
-   width: 100%;
-   height: 100%;
+.screens .screens_wrapper .videos_container > div .name {
+   color: #FFF;
+   height: 20px
 }
+
 
 .screens .screens_wrapper .videos_container .video_wrapper {
-   height: 100%;
+   height: calc(100% - 20px);
 }
 
 .screens .screens_wrapper .videos_container > div video {
@@ -2105,6 +2116,7 @@ footer .buttom_footer_content .social-media ul li {
 
 .screens .options .notifications {
    text-align: center;
+   color: #FFF;
 }
 
 .screens .options .notifications #answerCall {
@@ -2118,6 +2130,24 @@ footer .buttom_footer_content .social-media ul li {
    font-weight: 500;
    font-size: 17px;
 }
+
+@media (max-width: 600px) {
+   .screens .screens_wrapper .videos_container > div {
+      display: block;
+      width: 100%;
+      top: 0;
+      transform: none;
+      margin: auto;
+      aspect-ratio: unset;
+      height: 48%;
+   }
+   .screens .screens_wrapper .videos_container > div.my-video {
+      margin-bottom: 4%;
+      margin-right: 0
+   }
+}
+
+
 
 /* ------------------------------------------------ */
 /* ----------------- end meeting ----------------- */
