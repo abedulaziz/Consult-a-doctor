@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+import message from '../helper-components/message';
+
 // icons
 import { ReactComponent as Clock } from "../assets/icons/clock.svg";
 import { ReactComponent as Calender } from "../assets/icons/calendar.svg";
@@ -10,17 +12,12 @@ const Appointment = ({ meeting_id, doctor_name, duration, date }) => {
 
 
    const checkMeetingAvailability = () => {
-      const message = document.getElementById("actionStatus");
 
       if (isToday(new Date(date))) {
          navigate(`/meetings/${meeting_id}`)
       }
       else {
-         message.textContent = "Sorry, today is not this date of the meeting"
-         message.classList.add("red", "active")
-         setTimeout(() => {
-            message.classList.remove("active", "red")
-         }, 8000);
+         message("Sorry, today is not the date of the meeting")
 
       }
 

@@ -12,38 +12,39 @@ import Notifications from "../WebRTC-components/notifications";
 const Meeting = () => {
    const { me, name, setMyName, stream, setMeetingToName, setMeetingToMeetingID } = useContext(SocketContext);
    const { meeting_id } = useParams();
-   const currentUserInfo = useSelector((state) => state.userInfo.value);
-
 
    useEffect(() => {
-      const sendMeetingID = async () => {
-         try {
-            const meetingIDRqust = await axios.post(
-               `meetings/${meeting_id}`,
-               { user_meeting_id: me },
-               {
-                  headers: {
-                     Authorization: `Bearer ${currentUserInfo.JWT}`,
-                  },
-               }
-            );
-            const meetingInfo = meetingIDRqust.data.meeting_info;
 
-            setMeetingToMeetingID(meetingIDRqust.data.second_party_meeting_id);
-
-            if (meetingInfo[0].id == currentUserInfo.ID) {
-               setMyName(meetingInfo[0].fname + " " + meetingInfo[0].lname);
-               setMeetingToName(meetingInfo[1].fname + " " + meetingInfo[1].lname);
-            } else {
-               setMyName(meetingInfo[1].fname + " " + meetingInfo[1].lname);
-               setMeetingToName(meetingInfo[0].fname + " " + meetingInfo[0].lname);
+      if (me){
+         
+         console.log(me);
+         const sendMeetingID = async () => {
+            try {
+               const meetingIDRqust = await axios.post(
+                  `meetings/${meeting_id}`,
+                  { user_meeting_id: me },
+                  {
+                     headers: {
+                        Authorization: `Bearer ${localStorage.getItem("JWT")}`,
+                     },
+                  }
+               );
+               const meetingInfo = meetingIDRqust.data;
+   
+               setMeetingToMeetingID(meetingIDRqust.data.second_party_meeting_id);
+   
+               const myInfo = meetingInfo.my_info;
+               const secPartyInfo = meetingInfo.sec_party_info;
+               setMyName(myInfo.fname + " " + myInfo.lname);
+               setMeetingToName(secPartyInfo.fname + " " + secPartyInfo.lname);
+   
+            } catch (err) {
+               console.log(err);
             }
-         } catch (err) {
-            console.log(err);
-         }
-      };
-      sendMeetingID();
-   }, []);
+         };
+         sendMeetingID();
+      }
+   }, [me]);
 
    return (
       <div className="screens">
