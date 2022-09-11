@@ -18,23 +18,16 @@ class AppointmentsController extends Controller
 
         if ($meetingInfo->doctor_id == $user_id or $meetingInfo->patient_id == $user_id) {
 
-            $secPartyMeetingID = null;
-            if (!$meetingInfo->fir_party_meeting_id) {
+            $isDoctor =$meetingInfo->doctor_id == $user_id ? true : false;
 
-                $meetingInfo->update(["fir_party_meeting_id" => $request->user_meeting_id]);
-            }
+            $meetingInfo->update([$isDoctor ? "fir_party_meeting_id" : "sec_party_meeting_id" => $request->user_meeting_id]);
 
-            else {
-                $secPartyMeetingID = $meetingInfo->fir_party_meeting_id;
-                $meetingInfo->update(["sec_party_meeting_id" => $request->user_meeting_id]);
-
-            }
-
-            $users = User::select("id", "fname", "lname", "profile_pic")->findMany([$meetingInfo->patient_id, $meetingInfo->doctor_id]);
+            $users = User::select("id", "fname", "lname", "profile_pic_uri")->findMany([$meetingInfo->doctor_id, $meetingInfo->patient_id]);
 
             return response()->json([
-                "meeting_info" => $users,
-                "second_party_meeting_id" => $secPartyMeetingID
+                "my_info" => $users[$isDoctor ? 1:0],
+                "sec_party_info" => $users[$isDoctor ? 0:1],
+                "second_party_meeting_id" => $meetingInfo->doctor_id == $user_id ? $meetingInfo->sec_party_meeting_id : $meetingInfo->fir_party_meeting_id
             ], 200);
         }
         else {
