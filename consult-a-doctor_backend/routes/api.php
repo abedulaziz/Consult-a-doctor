@@ -60,8 +60,8 @@ Route::get("/users/{doctor_id}/blogs", [BlogsController::class, "getBlogs"]);
 
 // routes grouped under a middleware that requires the user not to be the owner of the account when visiting a profile page
 Route::group(["middleware" => "verifyAuth"], function () {
-    Route::post("/users/{doctor_id}/follow", [FollowingsController::class, "followDoctor"]);
-    Route::post("/users/{doctor_id}/unfollow", [FollowingsController::class, "unFollowDoctor"]);
+    Route::get("/users/{doctor_id}/follow", [FollowingsController::class, "followDoctor"]);
+    Route::get("/users/{doctor_id}/unfollow", [FollowingsController::class, "unFollowDoctor"]);
     Route::get("/users/{doctor_id}/working-weekdays", [UsersController::class, "getWorkingWeekdays"]);
     Route::post("/users/{doctor_id}/check-availability", [UsersController::class, "checkDayAvailability"]);
     Route::post("/users/{doctor_id}/available-periods", [UsersController::class, "getAvailablePeriods"]);

@@ -16,7 +16,7 @@ class FollowingsController extends Controller
 
 
         return response()->json([
-            "message" => $followingInsertion
+            "message" => "You are following this doctor"
         ]);
     }
 
@@ -29,7 +29,7 @@ class FollowingsController extends Controller
         $deletedFollowing->delete();
 
         return response()->json([
-            "message" => "Following deleted successfully"
+            "message" => "You unfollowed this doctor"
         ]);
     }
 }
