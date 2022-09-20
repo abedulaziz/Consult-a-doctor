@@ -52,12 +52,15 @@ class DoctorsController extends Controller
         $following = DB::table("followings")
         ->select("doctor_id")->where("follower_id", $doctor_id)->count();
 
+        $isFollowingTheDoctor = DB::table("followings")->where("follower_id", auth()->id())->where("doctor_id", $doctor_id)->exists();
+
         return response()->json([
             "isAccountOwner" => auth()->id() == $doctor_id ? true: false,
             "doctor_info" => $doctorInfo,
             "doctor_blogs" => $doctorBlogs,
             "followers" => $followers,
-            "followings" => $following
+            "followings" => $following,
+            "isFollowingTheDoctor" => $isFollowingTheDoctor
         ], 200);
 
     }
