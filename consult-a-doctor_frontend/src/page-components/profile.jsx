@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../helper-components/loader";
 
-import { Trans } from "react-i18next";
 import { t } from "i18next";
 import axios from "axios";
 
@@ -20,12 +19,14 @@ import { ReactComponent as Plus } from "../assets/icons/plus.svg";
 import { ReactComponent as Edit } from "../assets/icons/edit-profile.svg";
 import DefaultProfilePic from "../assets/backgrounds/default_profile_picture.svg";
 import Loupe from "../assets/icons/loupe.png";
+import Following from "../assets/icons/following-heart-icon.svg";
 
 // helper components
 import AddBlogPopup from "../helper-components/addBlogPopup";
 
-import { setPopupVisibility } from "../redux/slices/addBlogPopupSlice";
-import { changePopupVisib, setName, setDoctorProfilePic } from "../redux/slices/bookMeetingSlice";
+import message from "../helper-components/message";
+
+import { setName, setDoctorProfilePic } from "../redux/slices/bookMeetingSlice";
 import { setEditProfilePopup, setAddBlogPopup, setBookMeetingPopup } from "../redux/slices/popupControllerSlice";
 
 const Profile = () => {
@@ -34,6 +35,8 @@ const Profile = () => {
 
    let navigate = useNavigate();
    const [doctorInfo, setDoctorInfo] = useState({});
+   const [isFollowingTheDoctor, setIsFollowingTheDoctor] = useState(false);
+   const followBut = useRef(null);
 
    const bookMeeting = useSelector((state) => state.bookMeeting.value);
    const popupController = useSelector((state) => state.popupController.value);
@@ -48,6 +51,7 @@ const Profile = () => {
                },
             });
             const doctorInfo = doctorInfoRqust.data.doctor_info;
+            console.log(doctorInfoRqust.data);
 
             dispatch(setName({ prop: "fname", value: doctorInfo.fname }));
             dispatch(setName({ prop: "lname", value: doctorInfo.lname }));
@@ -64,6 +68,7 @@ const Profile = () => {
                isAccountOwner: doctorInfoRqust.data.isAccountOwner,
             };
             setDoctorInfo(info);
+            setIsFollowingTheDoctor(doctorInfoRqust.data.isFollowingTheDoctor);
             setLoader(null);
          } catch (err) {
             if (err.response.data.message == "Unvalid token") {
@@ -73,6 +78,20 @@ const Profile = () => {
       };
       getDoctorInfo();
    }, []);
+
+   const followOrUnfollowDoctor = async () => {
+      try {
+         const isCurrentlyFollowing = await axios.get(`users/${doctor_id}/${isFollowingTheDoctor ? "unfollow" : "follow"}`, {
+            headers: {
+               Authorization: `Bearer ${localStorage.getItem("JWT")}`,
+            },
+         });
+         message(isCurrentlyFollowing.data.message, false)
+         isCurrentlyFollowing.data.message === "You unfollowed this doctor" ? setIsFollowingTheDoctor(false) : setIsFollowingTheDoctor(true)
+      } catch (err) {
+         message("Something went wrong!");
+      }
+   };
 
    return (
       <>
@@ -92,7 +111,15 @@ const Profile = () => {
                         <div className="book-meeting">
                            <button
                               onClick={() =>
-                                 dispatch(setBookMeetingPopup(<ScheduleMeeting doctor_id={doctor_id} doctor_profile_pic={bookMeeting.profile_pic} doctor_fullname={bookMeeting.fname + " " + bookMeeting.lname} />))
+                                 dispatch(
+                                    setBookMeetingPopup(
+                                       <ScheduleMeeting
+                                          doctor_id={doctor_id}
+                                          doctor_profile_pic={bookMeeting.profile_pic}
+                                          doctor_fullname={bookMeeting.fname + " " + bookMeeting.lname}
+                                       />
+                                    )
+                                 )
                               }
                            >
                               {t("lang.profile.background.book_meeting_but")}
@@ -110,9 +137,15 @@ const Profile = () => {
                         <div className="profile_img">
                            <img src={bookMeeting.profile_pic ? bookMeeting.profile_pic : DefaultProfilePic} alt="profile picture" />
                            {!doctorInfo.isAccountOwner && (
-                              <div className="follow">
-                                 <span>{t("lang.profile.doctor_card.follow_but")}</span>
-                                 <Heart />
+                              <div ref={followBut} className="follow" onClick={() => followOrUnfollowDoctor()}>
+                                 {isFollowingTheDoctor ? (
+                                    <img src={Following} />
+                                 ) : (
+                                    <>
+                                       <span>{t("lang.profile.doctor_card.follow_but")}</span>
+                                       <Heart />
+                                    </>
+                                 )}
                               </div>
                            )}
                         </div>
